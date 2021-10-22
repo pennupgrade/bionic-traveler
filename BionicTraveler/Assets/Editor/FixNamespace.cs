@@ -1,4 +1,4 @@
-namespace MyRpg.Editor
+namespace Editor
 {
     using System;
     using System.IO;
