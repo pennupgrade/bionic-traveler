@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: b5b521558e33412478277bed025157b5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - evil guy-evilGuy_start-0
+  - evil guy-evilGuy_start-1
+  - evil guy-evilGuy_start-2
+  - evil guy-evilGuy_scared-3
+  - evil guy-evilGuy_confident-4
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: b5b521558e33412478277bed025157b5, type: 3}
+  localizations: []

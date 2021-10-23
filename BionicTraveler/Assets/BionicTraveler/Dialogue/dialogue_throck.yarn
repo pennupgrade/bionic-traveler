@@ -1,0 +1,48 @@
+title: Start
+tags: 
+colorID: 0
+position: 356,53
+---
+[[ You: Hi Throckmorton, wanna meet my cat mr harvard? |greet]]
+===
+title: greet
+tags: 
+colorID: 0
+position: 345,307
+---
+Throckmorton: do i know you
+[[ You: sure ya do. I'm Super Robot Model X from CIS12345. I sit in front row |assert]]
+===
+title: assert
+tags: 
+colorID: 1
+position: 346,562
+---
+Throckmorton: Oh you're that person that snores loud af in class
+[[ You: oops yeah. Can I ask for the assignments? |fail]]
+[[ You: no that was mr harvard |deny]]
+===
+title: fail
+tags: lose 
+colorID: 0
+position: 1207,336
+---
+Throckmorton: I don't have any since I dropped the class. Sorry about that. (FAIL)
+<<set $dialogue_win to false>>
+===
+title: deny
+tags: 
+colorID: 0
+position: 686,340
+---
+Throckmorton: hahaha ok. Sure then.  i'll come see him.
+[[You: I would love for you to, but I need to submit the assignments first… and I don’t remember which pages to submit. |success]]
+===
+title: success
+tags: win 
+colorID: 0
+position: 965,335
+---
+Throckmorton: Okay fine here it is:1,3,6,8. I'll come over to see mr harvard now? (SUCCESS)
+<<set $dialogue_win to true>>
+===

@@ -1,0 +1,23 @@
+title: evilGuy_start
+tags: 
+colorID: 0
+position: 578,11
+---
+hahaha I am evil and I will defeat you
+[[oh no so scary|evilGuy_scared]]
+[[you dingus I will defeat you first|evilGuy_confident]]
+===
+title: evilGuy_scared
+tags: 
+colorID: 0
+position: 360,333
+---
+yes time for you to die
+===
+title: evilGuy_confident
+tags: 
+colorID: 0
+position: 732,321
+---
+oh no you defeated me I am now dead
+===
