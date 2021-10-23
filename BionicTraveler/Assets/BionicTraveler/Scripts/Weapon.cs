@@ -10,18 +10,6 @@ namespace BionicTraveler.Scripts
     /// </summary>
     public class Weapon : MonoBehaviour
     {
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-        public void Start()
-        {
-        }
 
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        public void Update()
-        {
-        }
     }
 }

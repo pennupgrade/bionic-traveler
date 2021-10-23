@@ -6,22 +6,18 @@ namespace BionicTraveler.Scripts
     using UnityEngine;
 
     /// <summary>
-    /// Please document me.
+    /// Interface for attack, containing few defined properties and functions,
+    /// other specific fields implemented in implementations.
     /// </summary>
-    public class Attack : MonoBehaviour
+    public interface IAttack<T>
     {
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-        public void Start()
-        {
-        }
+        // properties
+        float range { get; set; }
+        float cooldown { get; set; }
+        float freezeDuration { get; set; }
 
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        public void Update()
-        {
-        }
+        // functions
+        void executeAttack(T attackType);
+        bool didHit(T attackType);
     }
 }
