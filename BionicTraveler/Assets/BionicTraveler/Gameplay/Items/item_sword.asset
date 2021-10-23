@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4c940cd920b6554ca3596e7c6ccfced, type: 3}
-  m_Name: item_sword_test
+  m_Name: item_sword
   m_EditorClassIdentifier: 
-  uniqueName: 
+  id: item_sword
   displayName: 
   description: 
   maxNumber: 0
   inventorySprite: {fileID: 0}
   pickupSprite: {fileID: 0}
-  type: 0
+  pickupRange: 0
+  type: 2
   consumable: {fileID: 0}
-  equippable: {fileID: 0}
+  equippable: {fileID: 11400000, guid: c25ac5584b8534b46990a2e8d20a532c, type: 2}
