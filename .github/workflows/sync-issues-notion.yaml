@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Github issues on Notion
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow whenever the ci-test branch is updated.
+  push:
+    branches: [ ci-test ]
+
+  # Also trigger it for new or edited issues as that is what we are updating.
+  # The assignment and label triggers might get dispatched quite often so we could theoretically remove them.
+  issues:
+    types: [opened, edited, closed, deleted, reopened, assigned, unassigned, labeled, unlabeled ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Ensure only one instance of this job runs at the same time.
+concurrency: 
+  group: notion_update
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  update_notion:
+    name: "Update Notion DB"
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    env:
+        INPUT_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        INPUT_DBID: ${{ secrets.NOTION_DBID }}
+        INPUT_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps: 
+     - name: Updating Issues
+       uses: pennupgrade/github-notion@main
