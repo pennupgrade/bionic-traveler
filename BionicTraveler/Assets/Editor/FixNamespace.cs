@@ -19,8 +19,8 @@ namespace Editor
                 return;
             }
 
-            var actualFile = $"{Path.GetDirectoryName(metaFilePath)}\\{fileName}";
-            var segmentedPath = $"{Path.GetDirectoryName(metaFilePath)}".Split(new[] { '\\' }, StringSplitOptions.None);
+            var actualFile = Path.Combine(Path.GetDirectoryName(metaFilePath), fileName);
+            var segmentedPath = $"{Path.GetDirectoryName(metaFilePath)}".Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.None);
 
             var generatedNamespace = string.Empty;
             string finalNamespace;
