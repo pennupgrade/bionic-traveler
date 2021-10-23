@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: d99032a090e0c314c8e39993ff304375
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - throckDialogue-Start-0
+  - throckDialogue-greet-1
+  - throckDialogue-greet-2
+  - throckDialogue-assert-3
+  - throckDialogue-assert-4
+  - throckDialogue-assert-5
+  - throckDialogue-fail-6
+  - throckDialogue-deny-7
+  - throckDialogue-deny-8
+  - throckDialogue-success-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: d99032a090e0c314c8e39993ff304375, type: 3}
+  localizations: []
