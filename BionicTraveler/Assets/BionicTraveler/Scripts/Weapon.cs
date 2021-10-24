@@ -10,6 +10,24 @@ namespace BionicTraveler.Scripts
     /// </summary>
     public class Weapon : MonoBehaviour
     {
+        //stats
+        public int damage {get; set;}
+        /*1 -> Projectile
+        //2 -> LightMelee
+        //3 -> HeavyMelee
+        4 -> Defense*/
+        
+        public List <int> attackTypes {get; set;}
+        //add item
+
+        
+        /// <summary>
+        /// Start is called before the first frame update.
+        /// </summary>
+        public void Start()
+        {
+
+        }
 
     }
 }
