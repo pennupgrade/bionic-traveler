@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.World
 {
+    using System;
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
@@ -45,28 +46,6 @@ namespace BionicTraveler.Scripts.World
         }
 
         /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        private void Update()
-        {
-            // Check if player is in range and "E" is pressed
-            Vector3 distanceToPlayer = this.player.position - this.transform.position;
-            if (!this.hasBeenPickedUp && distanceToPlayer.magnitude <= this.pickUpRange && Input.GetKeyDown(KeyCode.E))
-            {
-                this.hasBeenPickedUp = true;
-
-                // This is just an example, we do not actually have an inventory from the player yet. TODO: Fix.
-                Inventory inventory = null;
-                inventory.AddItem(this.itemData);
-
-                // TODO: We should destroy ourselves at some point once we have been picked up.
-                // But it might be useful for other scripts to be able to ask us if we have been picked up.
-                // Maybe use an event system?
-                this.gameObject.SetActive(false);
-            }
-        }
-
-        /// <summary>
         /// Initializes class data based on the associated <see cref="ItemData"/>.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:Elements should be ordered by access", Justification = "Editor stuff comes last.")]
@@ -81,6 +60,19 @@ namespace BionicTraveler.Scripts.World
             {
                 Debug.LogWarning($"Item {this.name} does not have a SpriteRenderer!");
             }
+        }
+
+        internal void PickUp(DynamicEntity entity)
+        {
+            Debug.Log("item has been picked up");
+            this.hasBeenPickedUp = true;
+            entity.Inventory.AddItem(this.itemData);
+
+            // TODO: We should destroy ourselves at some point once we have been picked up.
+            // But it might be useful for other scripts to be able to ask us if we have been picked up.
+            // Maybe use an event system?
+            this.gameObject.SetActive(false);
+
         }
 
         /// <summary>

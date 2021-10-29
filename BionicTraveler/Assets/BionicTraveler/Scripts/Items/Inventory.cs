@@ -1,8 +1,8 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
-    using BionicTraveler.Scripts.World;
     using System.Collections.Generic;
     using System.Linq;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -10,6 +10,11 @@
     /// </summary>
     public class Inventory
     {
+        /// <summary>
+        /// The owner of the inventory.
+        /// </summary>
+        private readonly DynamicEntity owner;
+
         /// <summary>
         /// Item container. Stores the items and their counts (for stackable items)
         /// Change the comparator later to define the order of the items.
@@ -19,10 +24,17 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Inventory"/> class.
         /// </summary>
-        public Inventory()
+        /// <param name="owner">The owner of the inventory.</param>
+        public Inventory(DynamicEntity owner)
         {
+            this.owner = owner;
             this.items = new SortedDictionary<ItemData, InventoryItem>();
         }
+
+        /// <summary>
+        /// Gets a read only copy collection of the inventory items.
+        /// </summary>
+        public IReadOnlyCollection<InventoryItem> Items => this.items.Values.ToArray();
 
         /// <summary>
         /// Adds <see cref="Item"/> to the inventory.
@@ -30,6 +42,7 @@
         /// <param name="item">Item to insert.</param>
         public void AddItem(ItemData item)
         {
+            Debug.Log("Inventory received item");
             if (this.items.ContainsKey(item))
             {
                 this.items[item].Add(1);
@@ -78,15 +91,54 @@
                 return null;
             }
 
+            this.Remove(item);
+            return item.CreatePickup(position);
+        }
+
+
+        /// <summary>
+        /// Removes a given item from the inventory.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void Remove(InventoryItem item)
+        {
+            this.Remove(item.ItemData);
+        }
+
+        private void Remove(ItemData item)
+        {
             // Decrement to drop/consume.
             this.items[item].Remove(1);
+
             if (this.items[item].Quantity == 0)
             {
                 // If there's none of that item remaining, remove altogether.
                 this.items.Remove(item);
             }
+        }
 
-            return item.CreatePickup(position);
+        /// <summary>
+        /// Uses the passed <see cref="InventoryItem"/>.
+        /// </summary>
+        /// <param name="item">The item to use.</param>
+        public void Use(InventoryItem item)
+        {
+            Debug.Log($"Using {item.ItemData.DisplayName}");
+
+            this.Remove(item.ItemData);
+            item.ItemData.Interact(this.owner);
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            string result = string.Empty;
+            foreach (var item in this.items)
+            {
+                result += $"{item.Key.DisplayName}, {item.Value.Quantity} \n";
+            }
+
+            return !string.IsNullOrWhiteSpace(result) ? result : "Inventory is empty";
         }
     }
 }

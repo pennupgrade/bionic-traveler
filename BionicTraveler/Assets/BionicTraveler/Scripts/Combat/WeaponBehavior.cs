@@ -3,6 +3,7 @@ namespace BionicTraveler.Scripts.Combat
     using System;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -43,8 +44,12 @@ namespace BionicTraveler.Scripts.Combat
         /// <summary>
         /// Fires the weapon.
         /// </summary>
-        public void Fire()
+        /// <param name="owner">The entity owning the attack.</param>
+        public void Fire(DynamicEntity owner)
         {
+            // Ensure we are at the position of our owner, so our attack spawns right where we are.
+            this.transform.position = owner.transform.position;
+
             var attackData = this.GetAttackData();
             if (attackData == null)
             {
