@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Interaction
 {
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -10,7 +11,7 @@ namespace BionicTraveler.Scripts.Interaction
         /// <inheritdoc/>
         public void OnInteract(GameObject obj)
         {
-            obj.GetComponent<Player>()?.DamageBattery(1);
+            obj.GetComponent<PlayerEntity>()?.DamageBattery(1);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace BionicTraveler.Scripts.Combat
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -10,7 +11,7 @@ namespace BionicTraveler.Scripts.Combat
     /// </summary>
     public class CombatBehavior : MonoBehaviour
     {
-        private WeaponBehavior weaponBehavior;
+        private WeaponBehavior weaponBehaviour;
         private List<WeaponBehavior> dormantWeapons;
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace BionicTraveler.Scripts.Combat
             // Add new behavior.
             var newWeapon = this.gameObject.AddComponent<WeaponBehavior>();
             newWeapon.SetData(weaponData);
-            this.weaponBehavior = newWeapon;
+            this.weaponBehaviour = newWeapon;
         }
 
         /// <summary>
@@ -53,16 +54,19 @@ namespace BionicTraveler.Scripts.Combat
         /// </summary>
         private void Update()
         {
-            if (this.weaponBehavior != null)
+            if (this.weaponBehaviour != null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    this.weaponBehavior.Fire();
+                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    this.weaponBehavior.SwitchWeaponMode();
+                    // TODO: Make pretty.
+                    this.weaponBehaviour.SwitchWeaponMode();
+                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
+                    this.weaponBehaviour.SwitchWeaponMode();
                 }
             }
 
@@ -81,13 +85,13 @@ namespace BionicTraveler.Scripts.Combat
         private void RemoveCurrentWeapon()
         {
             // Add our current weapon behavior to a list of all weapon behaviors that we can try to free.
-            if (this.weaponBehavior != null)
+            if (this.weaponBehaviour != null)
             {
-                this.dormantWeapons.Add(this.weaponBehavior);
-                this.weaponBehavior.enabled = false;
+                this.dormantWeapons.Add(this.weaponBehaviour);
+                this.weaponBehaviour.enabled = false;
             }
 
-            this.weaponBehavior = null;
+            this.weaponBehaviour = null;
         }
     }
 }
