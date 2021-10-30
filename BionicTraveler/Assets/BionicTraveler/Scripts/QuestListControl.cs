@@ -32,7 +32,8 @@ namespace BionicTraveler.Scripts
             addQuest("Acquire Metal Arm", "Go get that metal arm, girl. I don't really know how.");
             for (int i = 0; i < 20; i++)
             {
-                addQuest("BLANK", "Nothing");
+                addQuest("BLANK"+i, "Nothing");
+                //ButtonListQuest.addBox("BLANK" + i, "Nothing");
             }
 
             for(int i = 0; i < questCount; i++)
@@ -43,7 +44,8 @@ namespace BionicTraveler.Scripts
                 //textbox.SetActive(true);
 
                 button.GetComponent<ButtonListQuest>().setText(questListNames[i]);
-                button.GetComponent<ButtonListQuest>().setBox(questListNames[0], questListDescrips[0]);
+                button.GetComponent<ButtonListQuest>().setDesc(questListDescrips[i]);
+                //button.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
                 //textbox.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
 
                 button.transform.SetParent(buttonTemplate.transform.parent, false);
