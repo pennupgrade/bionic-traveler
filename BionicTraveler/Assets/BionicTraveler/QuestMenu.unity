@@ -266,16 +266,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 12625932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977b9dd2874d00840a2c2b8e7b802049, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ccc8aac2da4ff948827af5eb7a061c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   quest: {fileID: 287974433}
-  strName: 
-  strDesc: 
   questName: {fileID: 2046617829}
   questDescrip: {fileID: 930258777}
   DescripBox: {fileID: 443864640}
-  i: 0
 --- !u!1 &145072943
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -721,15 +718,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 662560465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad2c6bd9dcd23d24d9edaefb61fabd2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e67937cc1ffd3643b40252e78ec6d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 12625932}
   questCompleted: 0
   questButtons: []
-  questCount: 0
-  questListNames: []
-  questListDescrips: []
 --- !u!1 &757638774
 GameObject:
   m_ObjectHideFlags: 0
