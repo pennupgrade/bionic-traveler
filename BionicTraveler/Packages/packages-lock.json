@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.stylecop.analyzer": {
-      "version": "file:Unity-StyleCop",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.2d.animation": {
       "version": "5.0.9",
       "depth": 0,
