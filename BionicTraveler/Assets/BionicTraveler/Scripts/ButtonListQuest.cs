@@ -14,8 +14,8 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         public Text quest;
 
-        public string n;
-        public string d;
+        public string strName;
+        public string strDesc;
         public Text questName;
         public Text questDescrip;
         public GameObject DescripBox;
@@ -25,13 +25,13 @@ namespace BionicTraveler.Scripts
 
         public void setText(string name)
         {
-            n = name;
+            strName = name;
             quest.text = name;
         }
 
         public void setDesc(string Desc)
         {
-            d = Desc;
+            strDesc = Desc;
             questDescrip.text = Desc;
         }
 
@@ -56,7 +56,7 @@ namespace BionicTraveler.Scripts
             {
                 
                 DescripBox.SetActive(true);
-                setBox(n, d);
+                setBox(strName, strDesc);
             }
         }
     }
