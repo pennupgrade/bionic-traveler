@@ -13,15 +13,26 @@ namespace BionicTraveler.Scripts
 
         [SerializeField]
         public Text quest;
+
+        public string n;
+        public string d;
         public Text questName;
         public Text questDescrip;
         public GameObject DescripBox;
-        private List<string> questNames = new List<string>();
-        private List<string> questDescrips = new List<string>();
+        //private static List<string> questNames = new List<string>();
+        //private static List<string> questDescrips = new List<string>();
+        private int i;
 
         public void setText(string name)
         {
+            n = name;
             quest.text = name;
+        }
+
+        public void setDesc(string Desc)
+        {
+            d = Desc;
+            questDescrip.text = Desc;
         }
 
         public void setBox(string name, string des)
@@ -29,13 +40,13 @@ namespace BionicTraveler.Scripts
             questName.text = name;
             questDescrip.text = des;
         }
-
-        public void addBox(string name, string des)
+/*
+        public static void addBox(string name, string des)
         {
-            questNames.Add(name);
-            questDescrips.Add(des);
+            //questNames.Add(name);
+            //questDescrips.Add(des);
         }
-
+*/
         public void onClick()
         {
             if (DescripBox.activeInHierarchy == true)
@@ -43,7 +54,9 @@ namespace BionicTraveler.Scripts
                 DescripBox.SetActive(false);
             } else
             {
+                
                 DescripBox.SetActive(true);
+                setBox(n, d);
             }
         }
     }
