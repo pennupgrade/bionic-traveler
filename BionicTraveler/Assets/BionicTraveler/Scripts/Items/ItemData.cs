@@ -162,6 +162,15 @@
         /// <inheritdoc/>
         public override int GetHashCode()
         {
+            if (Application.isEditor)
+            {
+                // Needed so editor does not throw exceptions when this is not set.
+                if (this.id == null)
+                {
+                    return 0;
+                }
+            }
+
             return this.id.GetHashCode();
         }
     }
