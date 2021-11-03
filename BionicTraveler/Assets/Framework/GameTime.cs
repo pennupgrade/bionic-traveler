@@ -1,18 +1,11 @@
 ﻿namespace BionicTraveler.Assets.Framework
 {
+    /// <summary>
+    /// Describes a time instant in the game.
+    /// </summary>
     public sealed class GameTime
     {
         private bool isDefault;
-
-        public static GameTime Now => new GameTime();
-
-        /// <summary>
-        /// Gets the default time which represents the moment the game has started (0 seconds).
-        /// All calls to <see cref="HasTimeElapsed(float)"/> will return true.
-        /// If you need to compare against game startup without having calls evaluate to true,
-        /// use <see cref="Now"/> at startup instead.
-        /// </summary>
-        public static GameTime Default => new GameTime(true);
 
         private GameTime()
         {
@@ -32,8 +25,29 @@
             }
         }
 
+        /// <summary>
+        /// Gets the current game time.
+        /// </summary>
+        public static GameTime Now => new GameTime();
+
+        /// <summary>
+        /// Gets the default time which represents the moment the game has started (0 seconds).
+        /// All calls to <see cref="HasTimeElapsed(float)"/> will return true.
+        /// If you need to compare against game startup without having calls evaluate to true,
+        /// use <see cref="Now"/> at startup instead.
+        /// </summary>
+        public static GameTime Default => new GameTime(true);
+
+        /// <summary>
+        /// Gets the time this <see cref="GameTime"/> represents.
+        /// </summary>
         public float Time { get; }
 
+        /// <summary>
+        /// Returns whether the specified time has elapsed.
+        /// </summary>
+        /// <param name="timeInSeconds">The time in seconds.</param>
+        /// <returns>Whether the time has elapsed.</returns>
         public bool HasTimeElapsed(float timeInSeconds)
         {
             // Special behavior for our default case.
