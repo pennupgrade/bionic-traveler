@@ -6,47 +6,44 @@ namespace BionicTraveler.Scripts
     using UnityEngine;
     using UnityEngine.UI;
 
-    /// <summary>
-    /// Please document me.
-    /// </summary>
-    public class Quest : MonoBehaviour {
+    // May eventually make this an abstract class and have specific quests implement this
+    // class for different listeners
+    
+    public class Quest {
+        
+        private string name;
+        private string description;
+        private bool isCompleted;
 
-        [SerializeField]
-        public Text quest;
+        private QuestManager manager = QuestManager.Instance;
 
-        public string strName;
-        public string strDesc;
-        public Text questName;
-        public Text questDescrip;
-        public GameObject DescripBox;
-        //private static List<string> questNames = new List<string>();
-        //private static List<string> questDescrips = new List<string>();
-        private int i;
+        // Should not be able to make a quest without name and description
+        private Quest() { }
 
-        public void setText(string name)
+        public Quest(string name, string description)
         {
-            strName = name;
-            quest.text = name;
+            this.name = name;
+            this.description = description;
+            this.isCompleted = false;
         }
 
-        public void setDesc(string Desc)
+        public void setName(string newName)
         {
-            strDesc = Desc;
-            questDescrip.text = Desc;
+            name = newName;
         }
 
-        public void setBox(string name, string des)
+        public void setDescription(string newDescription)
         {
-            questName.text = name;
-            questDescrip.text = des;
+            description = newDescription;
         }
-/*
-        public static void addBox(string name, string des)
+
+        public void setIsCompleted(bool completed)
         {
-            //questNames.Add(name);
-            //questDescrips.Add(des);
+            isCompleted = completed;
+            // Also call Quest Manager's function
         }
-*/
+
+        // Quest's button in Quest Menu
         public void onClick()
         {
             if (DescripBox.activeInHierarchy == true)
@@ -59,6 +56,12 @@ namespace BionicTraveler.Scripts
                 DescripBox.SetActive(true);
                 setBox(strName, strDesc);
             }
+ 
+        }
+
+        // Abstract method for listeners for quest completion
+        public void listener()
+        {
         }
     }
 }
