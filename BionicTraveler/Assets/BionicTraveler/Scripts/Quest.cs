@@ -9,7 +9,7 @@ namespace BionicTraveler.Scripts
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class ButtonListQuest : MonoBehaviour {
+    public class Quest : MonoBehaviour {
 
         [SerializeField]
         public Text quest;
