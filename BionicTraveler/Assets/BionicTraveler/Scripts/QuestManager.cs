@@ -8,7 +8,7 @@ namespace BionicTraveler.Scripts
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class QuestListControl : MonoBehaviour
+    public class QuestManager : MonoBehaviour
     {
         [SerializeField]
         public GameObject buttonTemplate;

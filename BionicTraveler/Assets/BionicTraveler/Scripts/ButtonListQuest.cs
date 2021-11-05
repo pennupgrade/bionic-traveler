@@ -51,7 +51,8 @@ namespace BionicTraveler.Scripts
         {
             if (DescripBox.activeInHierarchy == true)
             {
-                DescripBox.SetActive(false);
+                //DescripBox.SetActive(false);
+                setBox(strName, strDesc);
             } else
             {
                 
