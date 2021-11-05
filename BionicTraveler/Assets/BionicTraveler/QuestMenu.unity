@@ -135,9 +135,8 @@ GameObject:
   - component: {fileID: 12625936}
   - component: {fileID: 12625935}
   - component: {fileID: 12625934}
-  - component: {fileID: 12625937}
   m_Layer: 5
-  m_Name: Quest01
+  m_Name: UIButton Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,17 +149,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12625932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 287974432}
-  m_Father: {fileID: 816881676}
-  m_RootOrder: 0
+  m_Father: {fileID: 280462862}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -15}
+  m_AnchoredPosition: {x: 254.87881, y: -32}
   m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12625934
@@ -207,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 12625937}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BionicTraveler.Scripts.ButtonListQuest, Assembly-CSharp
         m_MethodName: onClick
         m_Mode: 1
@@ -257,24 +256,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12625932}
   m_CullTransparentMesh: 1
---- !u!114 &12625937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12625932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccc8aac2da4ff948827af5eb7a061c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 287974433}
-  strName: 
-  strDesc: 
-  questName: {fileID: 2046617829}
-  questDescrip: {fileID: 930258777}
-  DescripBox: {fileID: 443864640}
 --- !u!1 &145072943
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +346,7 @@ GameObject:
   - component: {fileID: 280462862}
   - component: {fileID: 280462864}
   - component: {fileID: 280462863}
+  - component: {fileID: 280462865}
   m_Layer: 5
   m_Name: QuestWindow
   m_TagString: Untagged
@@ -386,6 +368,7 @@ RectTransform:
   - {fileID: 145072944}
   - {fileID: 662560466}
   - {fileID: 443864641}
+  - {fileID: 12625933}
   m_Father: {fileID: 2137258948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -432,6 +415,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280462861}
   m_CullTransparentMesh: 1
+--- !u!114 &280462865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280462861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81516fd045f2e84287c97713d572de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleBox: {fileID: 145072943}
+  descriptionBox: {fileID: 443864640}
+  buttonPrefab: {fileID: 12625932}
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,9 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e67937cc1ffd3643b40252e78ec6d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonTemplate: {fileID: 12625932}
-  questCompleted: 0
-  questButtons: []
 --- !u!1 &757638774
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,8 +817,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 12625933}
+  m_Children: []
   m_Father: {fileID: 828898903}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

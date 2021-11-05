@@ -1,3 +1,5 @@
+using UnityEngine.UI;
+
 namespace BionicTraveler.Scripts
 {
     using System;
@@ -8,9 +10,14 @@ namespace BionicTraveler.Scripts
     public class QuestManager : MonoBehaviour
     {
         public static QuestManager Instance { get; private set; }
+
+        private GameObject questContainer;
+        public GameObject titleBox;
+        public GameObject descriptionBox;
+        public GameObject buttonPrefab;
         
-        private List<Quest> activeQuests = new List<Quest>();
-        private List<Quest> completedQuests = new List<Quest>();
+        private List<GameObject> activeQuests = new List<GameObject>();
+        private List<GameObject> completedQuests = new List<GameObject>();
 
         private void Awake()
         {
@@ -21,53 +28,27 @@ namespace BionicTraveler.Scripts
             }
         }
 
-        public void addQuest(string name, string description)
+        public void AddQuest(string questName, string description)
         {
-            Quest quest = new Quest(name, description);
-            questListNames.Add(name);
-            questListDescrips.Add(des);
-            questButtons.Add(Instantiate(buttonTemplate) as GameObject);
+            GameObject quest = Quest.NewQuest(questName, description, buttonPrefab);
+            activeQuests.Add(quest);
+            quest.transform.SetParent(questContainer.transform);
         }
 
-        void Start()
+        public void QuestClicked(string questName, string description)
         {
-            addQuest("Acquire Metal Arm", "Go get that metal arm, girl. I don't really know how.");
-            for (int i = 0; i < 20; i++)
-            {
-                addQuest("BLANK"+i, "Nothing");
-                //ButtonListQuest.addBox("BLANK" + i, "Nothing");
-            }
+            titleBox.name = questName;
+            descriptionBox.name = description;
+        }
 
-            for(int i = 0; i < questCount; i++)
-            {
-                GameObject button = questButtons[i];
-                button.SetActive(true);
-                questCompleted.Add(false);
-                //GameObject textbox = Instantiate(boxTemplate) as GameObject;
-                //textbox.SetActive(true);
-
-                button.GetComponent<Quest>().setText(questListNames[i]);
-                button.GetComponent<Quest>().setDesc(questListDescrips[i]);
-                //button.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
-                //textbox.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
-
-                button.transform.SetParent(buttonTemplate.transform.parent, false);
-                //textbox.transform.SetParent(boxTemplate.transform.parent, false);
-            }
+        public void Start()
+        {
+            // Search can be improved, just attempting to do search via tree rather than drag and drop
+            GameObject self = this.gameObject;
+            questContainer = self.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
+            AddQuest("temp1", "first one");
         }
         
-        void Update()
-        {
-            for (int i = 0; i < questCount; i++)
-            {
-                if (questCompleted[i])
-                {
-                    questButtons[i].GetComponent<Quest>().setText("COMPLETED");
-                } else
-                {
-                    questButtons[i].GetComponent<Quest>().setText(questListNames[i]);
-                }
-            }
-        }
+        // Need to make a temporary button/input to create and mark quests as complete
     }
 }

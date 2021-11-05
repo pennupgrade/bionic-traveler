@@ -9,59 +9,56 @@ namespace BionicTraveler.Scripts
     // May eventually make this an abstract class and have specific quests implement this
     // class for different listeners
     
-    public class Quest {
+    public class Quest : MonoBehaviour {
         
-        private string name;
+        private string questName;
         private string description;
         private bool isCompleted;
-
-        private QuestManager manager = QuestManager.Instance;
-
+        
         // Should not be able to make a quest without name and description
         private Quest() { }
 
-        public Quest(string name, string description)
+        // Factory method to create a quest GameObject with components
+        public static GameObject NewQuest(string questName, string description, GameObject buttonPrefab)
         {
-            this.name = name;
-            this.description = description;
-            this.isCompleted = false;
+            GameObject quest = Instantiate(buttonPrefab);
+            quest.name = "Quest: " + questName;
+            Button questButton = quest.GetComponent<Button>();
+            questButton.name = quest.name;
+            Quest questQuest = quest.AddComponent<Quest>();
+            questQuest.questName = questName;
+            questQuest.description = description;
+            questQuest.isCompleted = false;
+            quest.SetActive(true);
+            return quest;
         }
 
-        public void setName(string newName)
+        public void SetName(string newName)
         {
             name = newName;
         }
 
-        public void setDescription(string newDescription)
+        public void SetDescription(string newDescription)
         {
             description = newDescription;
         }
 
-        public void setIsCompleted(bool completed)
+        public void SetIsCompleted(bool completed)
         {
             isCompleted = completed;
             // Also call Quest Manager's function
         }
 
         // Quest's button in Quest Menu
-        public void onClick()
+        public void OnClick()
         {
-            if (DescripBox.activeInHierarchy == true)
-            {
-                //DescripBox.SetActive(false);
-                setBox(strName, strDesc);
-            } else
-            {
-                
-                DescripBox.SetActive(true);
-                setBox(strName, strDesc);
-            }
- 
+            QuestManager.Instance.QuestClicked(name, description);
         }
 
         // Abstract method for listeners for quest completion
-        public void listener()
+        public void Listener()
         {
+            // Does nothing for now
         }
     }
 }
