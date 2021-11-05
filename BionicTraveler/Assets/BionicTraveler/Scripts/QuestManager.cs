@@ -45,8 +45,8 @@ namespace BionicTraveler.Scripts
                 //GameObject textbox = Instantiate(boxTemplate) as GameObject;
                 //textbox.SetActive(true);
 
-                button.GetComponent<ButtonListQuest>().setText(questListNames[i]);
-                button.GetComponent<ButtonListQuest>().setDesc(questListDescrips[i]);
+                button.GetComponent<Quest>().setText(questListNames[i]);
+                button.GetComponent<Quest>().setDesc(questListDescrips[i]);
                 //button.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
                 //textbox.GetComponent<ButtonListQuest>().setBox(questListNames[i], questListDescrips[i]);
 
@@ -61,10 +61,10 @@ namespace BionicTraveler.Scripts
             {
                 if (questCompleted[i])
                 {
-                    questButtons[i].GetComponent<ButtonListQuest>().setText("COMPLETED");
+                    questButtons[i].GetComponent<Quest>().setText("COMPLETED");
                 } else
                 {
-                    questButtons[i].GetComponent<ButtonListQuest>().setText(questListNames[i]);
+                    questButtons[i].GetComponent<Quest>().setText(questListNames[i]);
                 }
             }
         }
