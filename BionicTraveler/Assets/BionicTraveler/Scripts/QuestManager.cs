@@ -5,24 +5,25 @@ namespace BionicTraveler.Scripts
     using System.Collections.Generic;
     using UnityEngine;
 
-    /// <summary>
-    /// Please document me.
-    /// </summary>
     public class QuestManager : MonoBehaviour
     {
-        [SerializeField]
-        public GameObject buttonTemplate;
-        //public bool questCompleted;
-        //public GameObject boxTemplate;
-        public List<GameObject> questButtons = new List<GameObject>();
-        private int questCount = 0;
-        private List<string> questListNames = new List<string>();
-        private List<string> questListDescrips = new List<string>();
-        public List<bool> questCompleted = new List<bool>();
+        public static QuestManager Instance { get; private set; }
+        
+        private List<Quest> activeQuests = new List<Quest>();
+        private List<Quest> completedQuests = new List<Quest>();
 
-        void addQuest(string name, string des)
+        private void Awake()
         {
-            questCount += 1;
+            if (Instance != null && Instance != this) {
+                Destroy(this.gameObject);
+            } else {
+                Instance = this;
+            }
+        }
+
+        public void addQuest(string name, string description)
+        {
+            Quest quest = new Quest(name, description);
             questListNames.Add(name);
             questListDescrips.Add(des);
             questButtons.Add(Instantiate(buttonTemplate) as GameObject);
