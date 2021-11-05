@@ -30,7 +30,7 @@ namespace Items
         public abstract void ActivateAbility();
 
 
-        public Mechanic GetMechanic()
+        public Mechanic GetMechanicType()
         {
             return MechanicBP;
         }
