@@ -10,16 +10,24 @@ namespace BionicTraveler.Scripts
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class Settings : MonoBehaviour
+    
+    /// Script should be attached to the 'SettingsMenu' canvas
+    /// Three AudioMixers can be dragged in, corresponding to bgm, sfx, and voice named bgmMixer, sfxMixer, voiceMixer respectively
+    /// Public integer 'difficulty' doesn't do anything, but can be called as 'Settings.difficulty'
+    
+    public class settings : MonoBehaviour
     {
         /// <summary>
         /// Start is called before the first frame update.
         /// </summary>
+        private bool open;
 
-        public AudioMixer bgmMixer, sfxMixer, voiceMixer;
+        private Canvas canvas;
+        
+        public AudioMixer bgmMixer, sfxMixer, voiceMixer; //AudioMixers to be dragged in
         
         //public float bgmMixerVal, sfxMixerVal, voiceMixerVal; //debug
-        
+
         private float masterVolume;
         private bool masterOn;
 
@@ -34,10 +42,50 @@ namespace BionicTraveler.Scripts
 
         public int difficulty;
 
+        void Start()
+        {
+            canvas = GetComponent<Canvas>();
+            Close();
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Toggle();
+            }
+        }
+
+        public void Open()
+        {
+            open = true;
+            canvas.enabled = true;
+            Time.timeScale = 0;
+        }
+
+        public void Close()
+        {
+            open = false;
+            canvas.enabled = false;
+            Time.timeScale = 1;
+        }
+
+        public void Toggle()
+        {
+            if (open)
+            {
+                Close();
+            }
+            else
+            {
+                Open();
+            }
+        }
         public void SetDifficulty(int diff)
         {
             difficulty = diff;
         }
+        
         
         private void LogScaling(AudioMixer mixerName, float masterVal, bool isMaster, string volumeLabel, float sliderVal, bool isOn)
         {
