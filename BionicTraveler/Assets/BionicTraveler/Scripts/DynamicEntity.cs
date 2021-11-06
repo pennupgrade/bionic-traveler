@@ -37,7 +37,7 @@ public class DynamicEntity : Entity
     /// <summary>
     /// Gets or sets a value indicating whether entity is stunned.
     /// </summary>
-    internal bool Stunned { get => this.stunned; set => this.stunned = value; }
+    internal bool IsStunned { get => this.stunned; set => this.stunned = value; }
 
     /// <summary>
     /// Function for moving a dynamic entity to a target position.
@@ -104,9 +104,9 @@ public class DynamicEntity : Entity
 
     private IEnumerator StaggerHandler(int ms)
     {
-        this.Stunned = true;
+        this.IsStunned = true;
         yield return new WaitForSeconds(ms / 1000f);
-        this.Stunned = false;
+        this.IsStunned = false;
     }
 
 }

@@ -1,16 +1,12 @@
-namespace Items
+namespace BionicTraveler.Scripts.Items
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using BionicTraveler.Scripts.Items;
-
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
     /// Please document me.
     /// </summary>
-    public abstract class BodyPart
+    public abstract class Bodypart
     {
         [SerializeField]
         private PlayerEntity player;

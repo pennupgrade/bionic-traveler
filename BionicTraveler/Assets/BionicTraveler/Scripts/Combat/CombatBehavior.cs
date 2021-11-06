@@ -62,6 +62,9 @@ namespace BionicTraveler.Scripts.Combat
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
+                    // TODO: Make pretty.
+                    this.weaponBehaviour.SwitchWeaponMode();
+                    this.weaponBehaviour.Fire();
                     this.weaponBehaviour.SwitchWeaponMode();
                 }
             }

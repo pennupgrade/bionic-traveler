@@ -1,5 +1,6 @@
 namespace Items
 {
+    using BionicTraveler.Scripts.Items;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace Items
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class HookShot : BodyPart
+    public class HookShot : Bodypart
     {
 
        
