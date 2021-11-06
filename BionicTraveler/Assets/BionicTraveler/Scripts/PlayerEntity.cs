@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using BionicTraveler.Scripts;
+using BionicTraveler.Scripts.Combat;
 using BionicTraveler.Scripts.Interaction;
 using BionicTraveler.Scripts.World;
 using Items;
@@ -33,9 +34,9 @@ public class PlayerEntity : DynamicEntity
     public float InteractionRange { get => interactionRange; set => interactionRange = value; }
 
     // TODO: Uncomment these after merging Combat classes
-    // private Weapon PrimaryWeapon;
-    // private Weapon SecondaryWeapon;
-    // private List<Chip> ActiveChips = new List<Chip>();
+    private CombatBehavior PrimaryWeapon;
+    private Weapon SecondaryWeapon;
+    private List<Chip> ActiveChips = new List<Chip>();
 
     public enum MovementState
     {
