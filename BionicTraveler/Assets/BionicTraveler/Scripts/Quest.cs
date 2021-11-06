@@ -14,6 +14,8 @@ namespace BionicTraveler.Scripts
         private string questName;
         private string description;
         private bool isCompleted;
+
+        private int clickedCount = 0;
         
         // Should not be able to make a quest without name and description
         private Quest() { }
@@ -40,6 +42,11 @@ namespace BionicTraveler.Scripts
             return quest;
         }
 
+        public string GetQuestName()
+        {
+            return questName;
+        }
+
         public void SetName(string newName)
         {
             name = newName;
@@ -53,19 +60,22 @@ namespace BionicTraveler.Scripts
         public void SetIsCompleted(bool completed)
         {
             isCompleted = completed;
-            // Also call Quest Manager's function
+            QuestManager.Instance.CompleteQuest(questName);
         }
 
         // Quest's button in Quest Menu
         public void OnClick()
         {
             QuestManager.Instance.QuestClicked(name, description);
+            clickedCount += 1;
+            if (clickedCount == 5) {
+                SetIsCompleted(true);
+            }
         }
 
         // Abstract method for listeners for quest completion
         public void Listener()
         {
-            // Does nothing for now
         }
     }
 }
