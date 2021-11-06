@@ -34,15 +34,21 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         public ItemData ItemData => this.itemData;
 
+        public void SetItemData(ItemData itemData)
+        {
+            this.itemData = itemData;
+        }
+
         /// <summary>
         /// Gets a value indicating whether this Pickup has been collected.
         /// </summary>
         public bool HasBeenPickedUp => this.hasBeenPickedUp;
 
         // Awake is called when the script instance is being loaded.
-        private void Awake()
+        private void Start()
         {
-            this.pickUpRange = this.itemData.PickupRange;
+            Debug.Log("calling start for new pickup, " + this.ItemData);
+            this.pickUpRange = this.ItemData.PickupRange;
         }
 
         /// <summary>
@@ -72,7 +78,6 @@ namespace BionicTraveler.Scripts.World
             // But it might be useful for other scripts to be able to ask us if we have been picked up.
             // Maybe use an event system?
             this.gameObject.SetActive(false);
-
         }
 
         /// <summary>

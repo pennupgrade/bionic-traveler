@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c940cd920b6554ca3596e7c6ccfced, type: 3}
   m_Name: item_healing_potion_sm
   m_EditorClassIdentifier: 
-  uniqueName: item_healing_potion_sm
+  id: 
   displayName: Healing Potion (small)
   description: A small healing potion that heals you a little bit.
   maxNumber: 25
   inventorySprite: {fileID: 0}
-  pickupSprite: {fileID: 7482667652216324306, guid: 910b5deeada9843428903035c3aab188, type: 3}
+  pickupSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  pickupRange: 0
   type: 1
   consumable: {fileID: 11400000, guid: 4a17f0d04bc8af5458318bb770a9ce1f, type: 2}
   equippable: {fileID: 0}

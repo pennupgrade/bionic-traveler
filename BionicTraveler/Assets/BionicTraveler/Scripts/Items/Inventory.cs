@@ -1,4 +1,6 @@
-﻿namespace BionicTraveler.Scripts.Items
+﻿using System;
+
+namespace BionicTraveler.Scripts.Items
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -79,7 +81,7 @@
         /// <param name="item">Item to remove.</param>
         /// <param name="position">Position to drop the item.</param>
         /// <returns>A pickup if the item was dropped, null otherwise.</returns>
-        public Pickup DropItem(ItemData item, Vector3 position)
+        public ItemData DropItem(ItemData item, Vector3 position)
         {
             // TODO: We could make the inventory aware of its owner (entity) or pass an entity to calculate
             // an appropriate drop off position.
@@ -87,12 +89,11 @@
             // Cannot remove the item is not in inventory.
             if (!this.items.ContainsKey(item))
             {
-                // TODO: Maybe throw exception?
-                return null;
+                throw new ArgumentException("item not in inventory");
             }
 
             this.Remove(item);
-            return item.CreatePickup(position);
+            return item;
         }
 
 
