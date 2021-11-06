@@ -90,20 +90,15 @@ public class PlayerEntity : DynamicEntity
             interactable => Vector3.Distance(
                 interactable.transform.position, this.transform.position) < this.interactionRange).ToArray();
 
-        Debug.Log(interactables.Length);
-
-
         foreach (var a in interactables)
         {
-            a.GetComponent<IInteractable>().OnInteract(this.gameObject);
+            //a.GetComponent<IInteractable>().OnInteract(this.gameObject);
         }
 
         //player pickup
         var pickups = GameObject.FindObjectsOfType<Pickup>().Where(pickup => Vector3.Distance(
             pickup.transform.position,
             this.transform.position) < this.interactionRange).ToArray();
-
-        Debug.Log(pickups.Length);
 
         foreach (var a in pickups)
         {
@@ -119,13 +114,11 @@ public class PlayerEntity : DynamicEntity
         //Drink Health Potion
         if (Input.GetKeyDown(KeyCode.H))
         {
-            foreach (var i in Inventory.GetAllItems())
+            foreach (var item in Inventory.Items)
             {
-                Inventory.Use(i, this);
+                this.Inventory.Use(item);
             }
         }
-
-
     }
 
     private void Move()

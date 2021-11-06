@@ -16,9 +16,12 @@ public class DynamicEntity : Entity
     /// </summary>
     public DynamicEntity()
     {
-        this.Inventory = new Inventory();
+        this.Inventory = new Inventory(this);
     }
 
+    /// <summary>
+    /// Gets the inventory.
+    /// </summary>
     public Inventory Inventory { get; }
 
     /// <summary>
