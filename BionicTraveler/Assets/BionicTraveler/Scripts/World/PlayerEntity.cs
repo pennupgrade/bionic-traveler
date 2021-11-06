@@ -56,7 +56,7 @@ namespace BionicTraveler.Scripts.World
         }
 
         // Fixed Update is called at fixed intervals in real time
-        private void FixedUpdate()
+        private void Update()
         {
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
