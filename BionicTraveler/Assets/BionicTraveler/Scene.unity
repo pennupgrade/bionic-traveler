@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae23516e96728fe488d2ebada872abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questContainer: {fileID: 816881675}
   questDetails: {fileID: 443864640}
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
@@ -5595,10 +5596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422e9bea528868f4f8f29a0808a06e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmMixer: {fileID: 24100000, guid: 634c3eeec87a5a844b7ebcacdadaea2f, type: 2}
-  sfxMixer: {fileID: 24100000, guid: 4e7cf0c5fdd58c945b9e8132df3c5cba, type: 2}
-  voiceMixer: {fileID: 24100000, guid: 6dad74ac68b4f354393752e9ffa55845, type: 2}
-  difficulty: 0
 --- !u!114 &2064395852
 MonoBehaviour:
   m_ObjectHideFlags: 0

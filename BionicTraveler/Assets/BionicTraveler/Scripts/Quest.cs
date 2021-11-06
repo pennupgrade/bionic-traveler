@@ -27,15 +27,18 @@ namespace BionicTraveler.Scripts
             quest.name = "Quest: " + questName;
             quest.SetActive(true);
             
+            //makes a Quest object and sets name, description, and completion status
             Quest questQuest = quest.AddComponent<Quest>();
             questQuest.questName = questName;
             questQuest.description = description;
             questQuest.isCompleted = false;
             
+            //makes a button, adds a listener that tracks if button has been clicked
             Button questButton = quest.GetComponent<Button>();
             questButton.name = quest.name;
             questButton.onClick.AddListener(questQuest.OnClick);
 
+            //sets the text desplayed on the button
             Text text = questButton.GetComponentInChildren<Text>();
             text.text = questName;
             

@@ -11,11 +11,16 @@ namespace BionicTraveler.Scripts
     {
         public static QuestManager Instance { get; private set; }
 
+        [SerializeField]
         private GameObject questContainer;
-        public GameObject questDetails;
-        public Text questTitle;
-        public Text questDescription;
-        public GameObject buttonPrefab;
+        [SerializeField]
+        private GameObject questDetails;
+        [SerializeField]
+        private Text questTitle;
+        [SerializeField]
+        private Text questDescription;
+        [SerializeField]
+        private GameObject buttonPrefab;
 
         private string questOpened = null;
         
@@ -40,7 +45,7 @@ namespace BionicTraveler.Scripts
 
         public void CompleteQuest(string questName)
         {
-            // Possibily more efficient way of doing this?
+            // Possibly more efficient way of doing this?
             foreach (GameObject quest in activeQuests)
             {
                 Quest script = quest.GetComponent<Quest>();
@@ -50,6 +55,8 @@ namespace BionicTraveler.Scripts
                     completedQuests.Add(quest);
                     quest.transform.SetParent(null);
                     quest.transform.SetParent(questContainer.transform);
+                    Text text = quest.GetComponentInChildren<Text>();
+                    text.text = "COMPLETED";
                     return;
                 }
             }
@@ -79,7 +86,6 @@ namespace BionicTraveler.Scripts
         {
             // Search can be improved, just attempting to do search via tree rather than drag and drop
             GameObject self = this.gameObject;
-            questContainer = self.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
             for (int i = 0; i < 20; i++)
             {
                 AddQuest("temp" + i, i.ToString());
