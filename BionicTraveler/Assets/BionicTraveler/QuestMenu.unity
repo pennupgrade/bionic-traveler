@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 12625935}
   - component: {fileID: 12625934}
   m_Layer: 5
-  m_Name: UIButton Prefab
+  m_Name: UIButtonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,7 +375,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 873, y: 384}
+  m_SizeDelta: {x: 870, y: 409}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280462863
 MonoBehaviour:
@@ -427,8 +427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81516fd045f2e84287c97713d572de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleBox: {fileID: 145072943}
-  descriptionBox: {fileID: 443864640}
+  questDetails: {fileID: 443864640}
+  questTitle: {fileID: 2046617829}
+  questDescription: {fileID: 930258777}
   buttonPrefab: {fileID: 12625932}
 --- !u!1 &287974431
 GameObject:
@@ -599,7 +600,6 @@ GameObject:
   - component: {fileID: 662560468}
   - component: {fileID: 662560467}
   - component: {fileID: 662560470}
-  - component: {fileID: 662560471}
   m_Layer: 5
   m_Name: ButtonScrollList
   m_TagString: Untagged
@@ -709,18 +709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!114 &662560471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662560465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e67937cc1ffd3643b40252e78ec6d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &757638774
 GameObject:
   m_ObjectHideFlags: 0
