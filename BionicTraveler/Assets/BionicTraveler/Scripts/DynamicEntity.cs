@@ -1,53 +1,71 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class DynamicEntity : Entity
+/// <summary>
+/// Class for all entities that can move themselves.
+/// </summary>
+public abstract class DynamicEntity : Entity
 {
     private Vector3 direction;
     private Vector3 velocity;
     private bool stunned;
     private bool invincible;
-    private Vector3 finalTarget;
 
     /// <summary>
-    /// Function for moving a dynamic entity to a target position
+    /// Gets or sets direction for SpriteRenderer/FSM.
     /// </summary>
-    /// <param name="target">Target world position to move to</param>
+    internal Vector3 Direction { get => this.direction; set => this.direction = value; }
+
+    /// <summary>
+    /// Gets or sets velocity.
+    /// </summary>
+    internal Vector3 Velocity { get => this.velocity; set => this.velocity = value; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether entity is stunned.
+    /// </summary>
+    internal bool Stunned { get => this.stunned; set => this.stunned = value; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether entity is invincible.
+    /// </summary>
+    internal bool Invincible { get => this.invincible; set => this.invincible = value; }
+
+    /// <summary>
+    /// Function for moving a dynamic entity to a target position.
+    /// </summary>
+    /// <param name="target">Target world position to move to.</param>
     public void MoveTo(Vector3 target)
     {
-        Vector3 pos = gameObject.transform.position;
-        float angle = Mathf.Rad2Deg * (Mathf.Atan2(target.y - pos.y, target.x - pos.x));
-        if (angle > 315 || angle < 45) { direction = Vector3.right; }
-        else if (angle < 135) { direction = Vector3.up; }
-        else if (angle < 225) { direction = Vector3.left; }
-        else { direction = Vector3.down; }
-        base.MoveTo(target);
-    }
+        Vector3 pos = this.gameObject.transform.position;
+        float angle = Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x);
+        if (angle > 315 || angle < 45)
+        {
+            this.Direction = Vector3.right;
+        }
+        else if (angle < 135)
+        {
+            this.Direction = Vector3.up;
+        }
+        else if (angle < 225)
+        {
+            this.Direction = Vector3.left;
+        }
+        else
+        {
+            this.Direction = Vector3.down;
+        }
 
-    private void Move(Vector3 target)
-    {
-        //use to implement smaller movement steps with pathfinding, if not using NavMesh
+        base.MoveTo(target);
     }
 
     /// <summary>
     /// Makes DEntity invincible for specified number of milliseconds
     /// </summary>
     /// <param name="ms">Number of milliseconds to remain invincible</param>
-    public void iFrame(int ms)
+    public void IFrame(int ms)
     {
-        StartCoroutine(iFrameHandler(ms));
-    }
-
-    private IEnumerator iFrameHandler(int ms)
-    {
-        invincible = true;
-        yield return new WaitForSeconds(ms / 1000f);
-        invincible = false;
-    }
-
-    private void StunLock()
-    {
-        stunned = true;
+        this.StartCoroutine(this.IFrameHandler(ms));
     }
 
     /// <summary>
@@ -56,27 +74,21 @@ public class DynamicEntity : Entity
     /// <param name="ms">The number of milliseconds to stun the entity</param>
     public void Stagger(int ms)
     {
-        StartCoroutine(StaggerHandler(ms));
+        this.StartCoroutine(this.StaggerHandler(ms));
+    }
+
+    private IEnumerator IFrameHandler(int ms)
+    {
+        this.Invincible = true;
+        yield return new WaitForSeconds(ms / 1000f);
+        this.Invincible = false;
     }
 
     private IEnumerator StaggerHandler(int ms)
     {
-        stunned = true;
+        this.Stunned = true;
         yield return new WaitForSeconds(ms / 1000f);
-        stunned = false;
+        this.Stunned = false;
     }
 
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

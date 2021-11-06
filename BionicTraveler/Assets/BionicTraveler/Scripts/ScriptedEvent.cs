@@ -15,7 +15,7 @@ public abstract class ScriptedEvent : MonoBehaviour
     /// <summary>
     /// Plays the cutscenes coroutine
     /// </summary>
-    private void PlaySequence()
+    public void PlaySequence()
     {
         this.StartCoroutine(this.GenerateEvent());
     }
@@ -29,18 +29,18 @@ public abstract class ScriptedEvent : MonoBehaviour
     }
 
     /// <summary>
-    /// Calls an entities' moveTo function
-    ///
-    /// Input:
-    /// Takes in an entity, destination vec3, bool waitForArrival that
-    /// determines whether the scene should halt and wait till the entity
-    /// arrives at the dest, and a threshold float for how close the
-    /// entity should get to the dest before stopping in the case
+    /// Calls an entities' MoveTo function
     /// </summary>
+    /// <param name="e">The entity to move</param>
+    /// <param name="dest">Postion the entity should move to</param>
+    /// <param name="waitForArrival">Whether the scene should halt and wait till the entity
+    /// arrives at the dest</param>
+    /// <param name="threshold">A threshold float for how close the
+    /// entity should get to the dest before snapping</param>
     private void MoveTo(Entity e, Vector3 dest, bool waitForArrival,
         float threshold)
     {
-        e.moveTo(t);
+        e.MoveTo(dest);
         if (waitForArrival)
         {
             WaitForArrival(e, dest, threshold);
@@ -55,7 +55,7 @@ public abstract class ScriptedEvent : MonoBehaviour
     {
         while (true)
         {
-            if (Mathf.Abs(e.pos - t) <= threshold)
+            if (Mathf.Abs((e.gameObject.transform.position - dest).magnitude) <= threshold)
             {
                 break;
             }
@@ -66,7 +66,7 @@ public abstract class ScriptedEvent : MonoBehaviour
     /// Initiates interaction with some interactable i
     /// E.g. NPC
     /// </summary>
-    private void InteractWith(Interactable i)
+    private void InteractWith(IInteractable i)
     {
         i.onInteract();
     }

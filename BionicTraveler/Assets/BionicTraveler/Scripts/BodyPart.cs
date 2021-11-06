@@ -19,12 +19,12 @@ namespace Items
 
         private void SetPrimary()
         {
-            Player.SetPrimary(this);
+            Player.PrimaryBP = this;
         }
 
         private void SetSecondary()
         {
-            Player.SetSecondary(this);
+            Player.SecondaryBP = this;
         }
 
         public abstract void ActivateAbility();

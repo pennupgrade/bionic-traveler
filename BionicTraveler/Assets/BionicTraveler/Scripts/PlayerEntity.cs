@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Items;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 
@@ -12,9 +9,8 @@ public class PlayerEntity : DynamicEntity
     private const float DashDist = 10;
     private const float DashCooldown = 1;
     private bool _dashEnabled = true;
-    public BodyPart PrimaryBodyPart { set; get; }
-
-    public BodyPart SecondaryBodyPart { set; get; }
+    public BodyPart PrimaryBP { set; get; }
+    public BodyPart SecondaryBP { set; get; }
 
     //private Weapon PrimaryWeapon;
     //private Weapon SecondaryWeapon;
@@ -37,7 +33,7 @@ public class PlayerEntity : DynamicEntity
     // Update is called once per frame
     void Update()
     {
-        if (_stunned) return;
+        if (Stunned) return;
         if (Input.GetButtonDown("Dash") && _dashEnabled) StartCoroutine(nameof(Dash));
         switch (MoveState)
         {
@@ -53,7 +49,7 @@ public class PlayerEntity : DynamicEntity
     {
         Rigidbody2D body = GetComponent<Rigidbody2D>();
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        if (!inputDirection.Equals(Vector2.zero)) _direction = inputDirection;
+        if (!inputDirection.Equals(Vector2.zero)) Direction = inputDirection;
         body.velocity = Vector2.Lerp(body.velocity, inputDirection * MoveSpeed, 0.5f);
     }
 
@@ -81,7 +77,7 @@ public class PlayerEntity : DynamicEntity
     {
         Rigidbody2D body = GetComponent<Rigidbody2D>();
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        if (!inputDirection.Equals(Vector2.zero)) _direction = inputDirection;
+        if (!inputDirection.Equals(Vector2.zero)) Direction = inputDirection;
         _dashEnabled = false;
         for (int i = 0; i < DashDist; i++)
         {

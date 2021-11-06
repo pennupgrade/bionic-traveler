@@ -30,10 +30,10 @@ namespace Items
         /// </summary>
         public override void ActivateAbility ()
         {
-            hookProjectile = GameObject.Instantiate(projectilePrefab, Player.transform, Quaternion.identity);
+            hookProjectile = GameObject.Instantiate(projectilePrefab, Player.transform.position, Quaternion.identity);
             collide = hookProjectile.GetComponent<Collider2D>();
             //Might Cause Error, double-check
-            Vector3 target = Player.Facing.normalized * maxDist;
+            Vector3 target = Player.Direction.normalized * maxDist;
 
             //instantiate and throw projectilePrefab forward
             //upon collision
