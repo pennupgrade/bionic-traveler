@@ -863,13 +863,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 280462861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c81516fd045f2e84287c97713d572de1, type: 3}
+  m_Script: {fileID: 11500000, guid: ae23516e96728fe488d2ebada872abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   questDetails: {fileID: 443864640}
-  questTitle: {fileID: 2046617829}
-  questDescription: {fileID: 930258777}
-  buttonPrefab: {fileID: 12625932}
+  questTitle: {fileID: 0}
+  questDescription: {fileID: 0}
+  buttonPrefab: {fileID: 0}
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
