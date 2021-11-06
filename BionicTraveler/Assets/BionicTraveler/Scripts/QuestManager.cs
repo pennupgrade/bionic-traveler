@@ -31,8 +31,8 @@ namespace BionicTraveler.Scripts
 
         private string questOpened = null;
 
-        private List<GameObject> activeQuests = new List<GameObject>();
-        private List<GameObject> completedQuests = new List<GameObject>();
+        private List<GameObject> activeQuests = new ();
+        private List<GameObject> completedQuests = new ();
 
         /// <summary>
         /// Adds a quest using inputted questName and description
