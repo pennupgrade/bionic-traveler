@@ -39,12 +39,23 @@ public class DynamicEntity : Entity
     /// </summary>
     internal bool Stunned { get => this.stunned; set => this.stunned = value; }
 
-
     /// <summary>
     /// Function for moving a dynamic entity to a target position.
     /// </summary>
     /// <param name="target">Target world position to move to.</param>
-    public void MoveTo(Vector3 target)
+    public void MoveTo(Vector3 target, bool smooth = false)
+    {
+        this.SetDirection(target);
+
+        base.MoveTo(target, smooth);
+
+    }
+
+    /// <summary>
+    /// Sets Direction for this Dynamic Entity.
+    /// </summary>
+    /// <param name="target">Target world position to look at</param>
+    public void SetDirection(Vector3 target)
     {
         Vector3 pos = this.gameObject.transform.position;
         float angle = Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x);
@@ -64,8 +75,6 @@ public class DynamicEntity : Entity
         {
             this.Direction = Vector3.down;
         }
-
-        base.MoveTo(target);
     }
 
     /// <summary>

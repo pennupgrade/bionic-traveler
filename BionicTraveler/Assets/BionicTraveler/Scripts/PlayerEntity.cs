@@ -14,10 +14,10 @@ public class PlayerEntity : DynamicEntity
     private const float MoveSpeed = 10;
     private const float DashDist = 10;
     private const float DashCooldown = 1;
-    private bool dashEnabled = true;
     private float interactionRange = 100;
+    private bool dashEnabled = true;
 
-    /// <summary>
+    /// <summary>   
     /// Gets or sets the BodyPart to activate with PrimaryBP input.
     /// </summary>
     public BodyPart PrimaryBP { get => this.primaryBP; set => this.primaryBP = value; }
@@ -32,17 +32,18 @@ public class PlayerEntity : DynamicEntity
     /// </summary>
     public float InteractionRange { get => interactionRange; set => interactionRange = value; }
 
-    //private Weapon PrimaryWeapon;
-    //private Weapon SecondaryWeapon;
-    //private List<Chip> ActiveChips = new List<Chip>();
+    // TODO: Uncomment these after merging Combat classes
+    // private Weapon PrimaryWeapon;
+    // private Weapon SecondaryWeapon;
+    // private List<Chip> ActiveChips = new List<Chip>();
+
     public enum MovementState
     {
-        Default,
-        Stun,
+        Normal,
         Traverse,
     }
 
-    private MovementState MoveState = MovementState.Default;
+    private MovementState MoveState = MovementState.Normal;
     private BodyPart primaryBP;
     private int batteryHealth = 50;
 
@@ -71,14 +72,18 @@ public class PlayerEntity : DynamicEntity
     {
     }
 
-    // Update is called once per frame
-    void Update()
+    // Fixed Update is called at fixed intervals in real time
+    void FixedUpdate()
     {
-        if (Stunned) return;
-        if (Input.GetButtonDown("Dash") && dashEnabled) StartCoroutine(nameof(Dash));
+        if (this.Stunned)
+        {
+            return;
+        }
+
+        if (Input.GetButtonDown("Dash")) StartCoroutine(nameof(Dash));
         switch (MoveState)
         {
-            case MovementState.Default:
+            case MovementState.Normal:
                 Move();
                 break;
             default:
@@ -123,10 +128,10 @@ public class PlayerEntity : DynamicEntity
 
     private void Move()
     {
-        Rigidbody2D body = GetComponent<Rigidbody2D>();
+        Rigidbody2D body = this.GetComponent<Rigidbody2D>();
         Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         if (!inputDirection.Equals(Vector2.zero)) Direction = inputDirection;
-        body.velocity = Vector2.Lerp(body.velocity, inputDirection * MoveSpeed, 0.5f);
+        body.velocity = Vector2.Lerp(inputDirection * MoveSpeed, Vector2.zero, 0.5f);
     }
 
     public Transform GetTransform()
