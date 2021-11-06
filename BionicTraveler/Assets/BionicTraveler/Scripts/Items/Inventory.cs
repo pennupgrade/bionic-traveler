@@ -24,12 +24,23 @@
             this.items = new SortedDictionary<ItemData, InventoryItem>();
         }
 
+        public override string ToString()
+        {
+            string result = "";
+            foreach (var item in this.items)
+            {
+                result += $"{item.Key.DisplayName}, {item.Value.Quantity} \n";
+            }
+            return result;
+        }
+
         /// <summary>
         /// Adds <see cref="Item"/> to the inventory.
         /// </summary>
         /// <param name="item">Item to insert.</param>
         public void AddItem(ItemData item)
         {
+            Debug.Log("Inventory received item");
             if (this.items.ContainsKey(item))
             {
                 this.items[item].Add(1);
@@ -78,15 +89,30 @@
                 return null;
             }
 
+            this.Remove(item);
+            return item.CreatePickup(position);
+        }
+
+        public InventoryItem[] GetAllItems() => this.items.Values.ToArray();
+
+        public void Use(InventoryItem i, DynamicEntity entity)
+        {
+            Debug.Log($"Using {i.ItemData.DisplayName}");
+
+            this.Remove(i.ItemData);
+            i.ItemData.Interact(entity);
+        }
+
+        public void Remove(ItemData item)
+        {
             // Decrement to drop/consume.
             this.items[item].Remove(1);
+
             if (this.items[item].Quantity == 0)
             {
                 // If there's none of that item remaining, remove altogether.
                 this.items.Remove(item);
             }
-
-            return item.CreatePickup(position);
         }
     }
 }

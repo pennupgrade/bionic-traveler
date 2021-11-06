@@ -40,7 +40,7 @@ public abstract class Entity : MonoBehaviour
     /// <param name = "amt">The amount of health to be added</param>
     public void AddHealth (float amt)
     {
-        Health = (int)Math.Max((float)Health + amt, (float)MaxHealth);
+        Health = (int)Math.Min((float)Health + amt, (float)MaxHealth);
     }
 
     /// <summary>

@@ -15,7 +15,9 @@
         /// <inheritdoc/>
         public override void Use(Entity entity)
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"Health Prior: {entity.GetHealth()}");
+            entity.AddHealth(healingEffect);
+            Debug.Log($"Healed for {healingEffect}; New Health: {entity.GetHealth()}");
         }
     }
 }

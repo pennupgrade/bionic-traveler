@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using BionicTraveler.Scripts.Items;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +10,16 @@ public class DynamicEntity : Entity
     private Vector3 direction;
     private Vector3 velocity;
     private bool stunned;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DynamicEntity"/> class.
+    /// </summary>
+    public DynamicEntity()
+    {
+        this.Inventory = new Inventory();
+    }
+
+    public Inventory Inventory { get; }
 
     /// <summary>
     /// Gets or sets direction for SpriteRenderer/FSM.
@@ -24,6 +35,7 @@ public class DynamicEntity : Entity
     /// Gets or sets a value indicating whether entity is stunned.
     /// </summary>
     internal bool Stunned { get => this.stunned; set => this.stunned = value; }
+
 
     /// <summary>
     /// Function for moving a dynamic entity to a target position.

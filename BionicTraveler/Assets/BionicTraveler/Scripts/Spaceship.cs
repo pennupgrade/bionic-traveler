@@ -11,8 +11,9 @@ namespace BionicTraveler.Scripts
         /// <inheritdoc/>
         public override void OnInteract(GameObject obj)
         {
-            obj.GetComponent<Player>()?.HealBattery();
-            base.OnInteract(obj);
+            Debug.Log("Interacted with Spaceship, healed Player");
+            obj.GetComponent<PlayerEntity>()?.HealBattery();
+            //base.OnInteract(obj);
         }
     }
 }

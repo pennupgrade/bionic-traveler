@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BionicTraveler.Scripts.Interaction;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -68,6 +69,6 @@ public abstract class ScriptedEvent : MonoBehaviour
     /// </summary>
     private void InteractWith(IInteractable i)
     {
-        i.onInteract();
+        i.OnInteract(this.gameObject);
     }
 }
