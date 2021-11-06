@@ -1,24 +1,75 @@
-﻿namespace BionicTraveler.Scripts
+namespace Items
 {
-    using BionicTraveler.Scripts.Items;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
-    /// For stubbing only.
+    /// Please document me.
     /// </summary>
-    [CreateAssetMenu(fileName = "Bodypart", menuName = "Items/Equippables/Bodypart")]
-    public class Bodypart : Equippable
+    public abstract class BodyPart
     {
-        /// <inheritdoc/>
-        public override void Equip(Entity entity)
+        [SerializeField]
+        internal PlayerEntity Player;
+        internal Slot SlotBP;
+        private Item ItemBP;
+        internal Mechanic MechanicBP;
+
+
+        private void SetPrimary()
         {
-            throw new System.NotImplementedException();
+            Player.PrimaryBP = this;
         }
 
-        /// <inheritdoc/>
-        public override void Unequip(Entity entity)
+        private void SetSecondary()
         {
-            throw new System.NotImplementedException();
+            Player.SecondaryBP = this;
         }
+
+        public abstract void ActivateAbility();
+
+
+        public Mechanic GetMechanicType()
+        {
+            return MechanicBP;
+        }
+
+        public enum Mechanic
+        {
+            TraversalMechanic,
+            AttackMechanic
+        }
+
+
+        public Slot getSlot()
+        {
+            return SlotBP;
+        }
+
+        public enum Slot
+        {
+            RightArm,
+            LeftArm,
+            Legs
+        }
+
+        /// <summary>
+        /// Start is called before the first frame update.
+        /// </summary>
+        public void Start()
+        {
+
+        }
+
+        /// <summary>
+        /// Update is called once per frame.
+        /// </summary>
+        public void Update()
+        {
+
+        }
+
+
     }
 }
