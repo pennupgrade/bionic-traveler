@@ -867,9 +867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questDetails: {fileID: 443864640}
-  questTitle: {fileID: 0}
-  questDescription: {fileID: 0}
-  buttonPrefab: {fileID: 0}
+  questTitle: {fileID: 2046617829}
+  questDescription: {fileID: 930258777}
+  buttonPrefab: {fileID: 12625932}
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
