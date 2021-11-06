@@ -23,13 +23,20 @@ namespace BionicTraveler.Scripts
         {
             GameObject quest = Instantiate(buttonPrefab);
             quest.name = "Quest: " + questName;
-            Button questButton = quest.GetComponent<Button>();
-            questButton.name = quest.name;
+            quest.SetActive(true);
+            
             Quest questQuest = quest.AddComponent<Quest>();
             questQuest.questName = questName;
             questQuest.description = description;
             questQuest.isCompleted = false;
-            quest.SetActive(true);
+            
+            Button questButton = quest.GetComponent<Button>();
+            questButton.name = quest.name;
+            questButton.onClick.AddListener(questQuest.OnClick);
+
+            Text text = questButton.GetComponentInChildren<Text>();
+            text.text = questName;
+            
             return quest;
         }
 
