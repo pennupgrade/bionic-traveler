@@ -38,6 +38,23 @@ namespace BionicTraveler.Scripts
             quest.transform.SetParent(questContainer.transform);
         }
 
+        public void CompleteQuest(string questName)
+        {
+            // Possibily more efficient way of doing this?
+            foreach (GameObject quest in activeQuests)
+            {
+                Quest script = quest.GetComponent<Quest>();
+                if (script.GetQuestName() == questName)
+                {
+                    activeQuests.Remove(quest);
+                    completedQuests.Add(quest);
+                    quest.transform.SetParent(null);
+                    quest.transform.SetParent(questContainer.transform);
+                    return;
+                }
+            }
+        }
+
         public void QuestClicked(string questName, string description)
         {
             if (questOpened == null)
@@ -70,7 +87,7 @@ namespace BionicTraveler.Scripts
 
             // AddQuest("temp1", "first one");
         }
-        
-        // Need to make a temporary button/input to create and mark quests as complete
+
+
     }
 }
