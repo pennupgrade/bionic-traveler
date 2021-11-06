@@ -3,6 +3,8 @@ namespace Items
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.Items;
+
     using UnityEngine;
 
     /// <summary>
@@ -11,20 +13,25 @@ namespace Items
     public abstract class BodyPart
     {
         [SerializeField]
-        internal PlayerEntity Player;
-        internal Slot SlotBP;
-        private Item ItemBP;
+        private PlayerEntity player;
+
+        [SerializeField]
+        protected Slot slotBP;
+        private ItemData ItemBP;
         internal Mechanic MechanicBP;
 
+        public PlayerEntity Player => this.player;
+
+        public Slot SlotBP => this.slotBP;
 
         private void SetPrimary()
         {
-            Player.PrimaryBP = this;
+            this.player.PrimaryBP = this;
         }
 
         private void SetSecondary()
         {
-            Player.SecondaryBP = this;
+            this.player.SecondaryBP = this;
         }
 
         public abstract void ActivateAbility();
@@ -42,16 +49,9 @@ namespace Items
         }
 
 
-        public Slot getSlot()
+        public Slot GetSlot()
         {
-            return SlotBP;
-        }
-
-        public enum Slot
-        {
-            RightArm,
-            LeftArm,
-            Legs
+            return this.slotBP;
         }
 
         /// <summary>
@@ -59,7 +59,6 @@ namespace Items
         /// </summary>
         public void Start()
         {
-
         }
 
         /// <summary>
@@ -67,9 +66,13 @@ namespace Items
         /// </summary>
         public void Update()
         {
-
         }
+    }
 
-
+    public enum Slot
+    {
+        RightArm,
+        LeftArm,
+        Legs
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using BionicTraveler.Scripts.Combat;
 
 public abstract class Entity : MonoBehaviour
 {
@@ -10,7 +11,13 @@ public abstract class Entity : MonoBehaviour
     [SerializeField]
     private float BaseSpeed = 1f;
 
-    
+    private bool invincible;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether entity is invincible.
+    /// </summary>
+    internal bool IsInvincible { get => this.invincible; set => this.invincible = value; }
+
     /// <summary>
     /// Retrieve MaxHealth from Entity
     /// </summary>
@@ -40,15 +47,27 @@ public abstract class Entity : MonoBehaviour
     /// Decrease the current Health value by some fixed amount
     /// </summary>
     /// <param name="amt">The amount of health lost</param>
-    public void LoseHealth (float amt)
+    public void LoseHealth(float amt)
     {
-        Health = (int)Math.Min((float)Health - amt, 0f);
+        this.Health = (int)Math.Max(this.Health - amt, 0f);
+        Debug.Log($"{this.gameObject.name}: My health is now {this.Health}");
     }
 
     /// <summary>
-    /// OnHit functionality to be implemented in children of Entity
+    /// OnHit functionality to be implemented in children of Entity.
     /// </summary>
-    //public abstract void OnHit();
+    /// <param name="attack">The attack.</param>
+    public virtual void OnHit(Attack attack)
+    {
+        if (this.IsInvincible)
+        {
+            return;
+        }
+
+        Debug.Log($"{this.gameObject.name} just got hit");
+        var damage = attack.AttackData.GetBaseDamage();
+        this.LoseHealth(damage);
+    }
 
     /// <summary>
     /// Move the entity to some specified destination

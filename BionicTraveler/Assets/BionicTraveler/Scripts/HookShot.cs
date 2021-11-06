@@ -50,7 +50,7 @@ namespace Items
         new public void Start()
         {
             MechanicBP = Mechanic.TraversalMechanic;
-            SlotBP = Slot.RightArm;
+            this.slotBP = Slot.RightArm;
         }
 
     }

@@ -13,9 +13,4 @@
         /// <param name="entity">The entity that consumes the item.</param>
         public abstract void Use(Entity entity);
     }
-
-    // Stub.
-    public class Entity
-    {
-    }
 }

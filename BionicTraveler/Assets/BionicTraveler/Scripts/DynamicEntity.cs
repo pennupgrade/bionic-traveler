@@ -4,12 +4,11 @@ using UnityEngine;
 /// <summary>
 /// Class for all entities that can move themselves.
 /// </summary>
-public abstract class DynamicEntity : Entity
+public class DynamicEntity : Entity
 {
     private Vector3 direction;
     private Vector3 velocity;
     private bool stunned;
-    private bool invincible;
 
     /// <summary>
     /// Gets or sets direction for SpriteRenderer/FSM.
@@ -25,11 +24,6 @@ public abstract class DynamicEntity : Entity
     /// Gets or sets a value indicating whether entity is stunned.
     /// </summary>
     internal bool Stunned { get => this.stunned; set => this.stunned = value; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether entity is invincible.
-    /// </summary>
-    internal bool Invincible { get => this.invincible; set => this.invincible = value; }
 
     /// <summary>
     /// Function for moving a dynamic entity to a target position.
@@ -79,9 +73,9 @@ public abstract class DynamicEntity : Entity
 
     private IEnumerator IFrameHandler(int ms)
     {
-        this.Invincible = true;
+        this.IsInvincible = true;
         yield return new WaitForSeconds(ms / 1000f);
-        this.Invincible = false;
+        this.IsInvincible = false;
     }
 
     private IEnumerator StaggerHandler(int ms)

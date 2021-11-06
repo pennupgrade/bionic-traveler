@@ -152,5 +152,14 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets a value indicating whether the projectile gets destroyed on impact.
         /// </summary>
         public bool ProjectileDestroyOnImpact => this.projectileDestroyOnImpact;
+
+        /// <summary>
+        /// Calculates the attack's base damage. Currently just returns <see cref="this.Damage"/>.
+        /// </summary>
+        /// <returns>The attack's base damage.</returns>
+        public float GetBaseDamage()
+        {
+            return this.Damage;
+        }
     }
 }
