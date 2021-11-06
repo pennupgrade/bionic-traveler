@@ -3,31 +3,50 @@
     using UnityEngine;
 
     /// <summary>
-    /// Handles main player movement,
+    /// Describes the player's current movement state.
+    /// </summary>
+    public enum MovementState
+    {
+        /// <summary>
+        /// Normal movement.
+        /// </summary>
+        Normal,
+
+        /// <summary>
+        /// Traversal movement.
+        /// </summary>
+        Traverse,
+    }
+
+    /// <summary>
+    /// Handles main player movement.
     /// </summary>
     public class PlayerMovement : MonoBehaviour
     {
-        public enum MovementState
-        {
-            Normal,
-            Traverse,
-        }
+        private MovementState moveState;
 
-        private MovementState MoveState = MovementState.Normal;
-
-        public float movementSpeed = 3f;
-        public float movementSpeedFrameMult = 1f; // Multiplier per frame.
-
-        public Rigidbody2D rb;
-        public Animator animator;
+        [SerializeField]
+        private float movementSpeed = 3f;
+        [SerializeField]
+        private float movementSpeedFrameMult = 1f; // Multiplier per frame.
+        [SerializeField]
+        private Rigidbody2D rb;
+        [SerializeField]
+        private Animator animator;
 
         private Vector2 movement;
         private PlayerEntity player;
+
+        /// <summary>
+        /// Gets the current movement state.
+        /// </summary>
+        public MovementState CurrentMovementState => this.moveState;
 
         // Start is called before the first frame update
         private void Start()
         {
             this.player = this.gameObject.GetComponent<PlayerEntity>();
+            this.moveState = MovementState.Normal;
         }
 
         // Update is called once per frame
@@ -37,6 +56,9 @@
             {
                 return;
             }
+
+            // Reset state.
+            this.moveState = MovementState.Normal;
 
             if (this.movement != Vector2.zero)
             {
