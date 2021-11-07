@@ -28,11 +28,14 @@ namespace BionicTraveler.Scripts
         private Text questDescription;
         [SerializeField]
         private GameObject buttonPrefab;
+        [SerializeField]
+        private Canvas canvas;
 
         private string questOpened = null;
+        private bool open;
 
-        private List<GameObject> activeQuests = new ();
-        private List<GameObject> completedQuests = new ();
+        private List<GameObject> activeQuests = new List<GameObject>();
+        private List<GameObject> completedQuests = new List<GameObject>();
 
         /// <summary>
         /// Adds a quest using inputted questName and description
@@ -112,6 +115,44 @@ namespace BionicTraveler.Scripts
             }
 
             // AddQuest("temp1", "first one");
+        }
+
+        /// <summary>
+        /// Listens for 'Q' key press, which will open menu if it is closed and vice versa.
+        /// </summary>
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (this.open)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    this.Open();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Opens the QuestMenu and pauses the game.
+        /// </summary>
+        public void Open()
+        {
+            this.open = true;
+            this.canvas.enabled = true;
+            Time.timeScale = 0;
+        }
+
+        /// <summary>
+        /// Closes the QuestMenu canvas and resumes the game.
+        /// </summary>
+        public void Close()
+        {
+            this.open = false;
+            this.canvas.enabled = false;
+            Time.timeScale = 1;
         }
 
         private void Awake()
