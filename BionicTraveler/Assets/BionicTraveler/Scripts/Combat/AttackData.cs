@@ -73,6 +73,10 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("Should the projectile entity get destroyed on hit or not.")]
         private bool projectileDestroyOnImpact;
 
+        [SerializeField]
+        [Tooltip("The attack prefab, if any.")]
+        private Attack prefab;
+
         /// <summary>
         /// Gets the display name of the attack.
         /// </summary>
@@ -152,6 +156,11 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets a value indicating whether the projectile gets destroyed on impact.
         /// </summary>
         public bool ProjectileDestroyOnImpact => this.projectileDestroyOnImpact;
+
+        /// <summary>
+        /// Gets the prefab, if any.
+        /// </summary>
+        public Attack Prefab => this.prefab;
 
         /// <summary>
         /// Calculates the attack's base damage. Currently just returns <see cref="this.Damage"/>.

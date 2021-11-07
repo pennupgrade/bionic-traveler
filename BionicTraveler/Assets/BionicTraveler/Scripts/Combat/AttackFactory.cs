@@ -27,6 +27,16 @@
                 throw new ArgumentNullException(nameof(data));
             }
 
+            // If we have a prefab, use that.
+            if (data.Prefab != null)
+            {
+                Debug.Log("Using attack prefab");
+                var attackPrefab = GameObject.Instantiate(data.Prefab);
+                attackPrefab.name = $"{data.name}";
+                attackPrefab.SetData(data);
+                return attackPrefab;
+            }
+
             var attack = CreateAttack(gameObject, data.Type);
             attack.SetData(data);
             return attack;
@@ -37,7 +47,7 @@
             return type switch
             {
                 AttackType.Melee => gameObject.AddComponent<MeleeAttack>(),
-                AttackType.RangedProjectile => gameObject.AddComponent< ProjectileAttack>(),
+                AttackType.RangedProjectile => gameObject.AddComponent<ProjectileAttack>(),
                 _ => throw new InvalidOperationException($"Invalid type {type}"),
             };
         }

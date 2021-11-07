@@ -24,6 +24,11 @@ namespace BionicTraveler.Scripts.Combat
         public bool HasBeenDisposed { get; private set; }
 
         /// <summary>
+        /// Gets the owner of the attack.
+        /// </summary>
+        protected DynamicEntity Owner { get; private set; }
+
+        /// <summary>
         /// Sets the attack data. Should only be used once. Since Unity does not allow constructors
         /// for GameObjects we have to make do with this.
         /// </summary>
@@ -36,6 +41,14 @@ namespace BionicTraveler.Scripts.Combat
             }
 
             this.AttackData = attackData ?? throw new ArgumentNullException(nameof(attackData));
+        }
+
+        /// <summary>
+        /// Called when the attack was just started. By default, moves the attack to the owner's position.
+        /// </summary>
+        public virtual void OnAttackStarted()
+        {
+            this.transform.position = this.Owner.transform.position;
         }
 
         /// <summary>
@@ -72,15 +85,18 @@ namespace BionicTraveler.Scripts.Combat
         public abstract void Dispose();
 
         /// <summary>
-        /// Starts the attack.
+        ///  /// Starts the attack.
         /// First calls <see cref="GetTargets"/> to get nearby targets.
         /// Then calls <see cref="IsValidTarget(Entity)"/> on all targets to determine whether they can be attacked.
         /// Lastly, calls <see cref="AttackTargets(Entity[])"/> to execute the attack.
         /// Continues every tick until attack has finished.
         /// </summary>
-        public void StartAttack()
+        /// <param name="owner">The owner.</param>
+        public void StartAttack(DynamicEntity owner)
         {
+            this.Owner = owner;
             this.isRunning = true;
+            this.OnAttackStarted();
             this.ExecuteAttack();
         }
 
@@ -113,6 +129,13 @@ namespace BionicTraveler.Scripts.Combat
                 this.Dispose();
                 this.isRunning = false;
                 this.HasBeenDisposed = true;
+
+                if (this.AttackData.Prefab != null)
+                {
+                    Destroy(this.gameObject);
+                    Debug.Log($"Attack::ExecuteAttack: Freed prefab object");
+                }
+
                 Destroy(this);
             }
         }

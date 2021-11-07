@@ -22,6 +22,7 @@ namespace BionicTraveler.Scripts.Combat
 
         /// <summary>
         /// Gets a value indicating whether all attacks owned by this object have been disposed.
+        /// TODO: Fix for prefabs.
         /// </summary>
         public bool HaveAllAttacksBeenDisposed =>
                 this.gameObject.GetComponents<Attack>().All(attack => attack.HasBeenDisposed);
@@ -47,9 +48,6 @@ namespace BionicTraveler.Scripts.Combat
         /// <param name="owner">The entity owning the attack.</param>
         public void Fire(DynamicEntity owner)
         {
-            // Ensure we are at the position of our owner, so our attack spawns right where we are.
-            this.transform.position = owner.transform.position;
-
             var attackData = this.GetAttackData();
             if (attackData == null)
             {
@@ -60,9 +58,9 @@ namespace BionicTraveler.Scripts.Combat
             {
                 if (this.GetLastAttackTime().HasTimeElapsed(attackData.Cooldown))
                 {
-                    Debug.Log("WeaponBehavior::Update: Starting new attack!");
-                    var attack = AttackFactory.CreateAttack(this.gameObject, this.WeaponData.PrimaryAttackData);
-                    attack.StartAttack();
+                    Debug.Log($"WeaponBehavior::Update: Starting new attack {attackData.DisplayName}!");
+                    var attack = AttackFactory.CreateAttack(this.gameObject, attackData);
+                    attack.StartAttack(owner);
                     this.SetLastAttackTime(GameTime.Now);
                 }
             }

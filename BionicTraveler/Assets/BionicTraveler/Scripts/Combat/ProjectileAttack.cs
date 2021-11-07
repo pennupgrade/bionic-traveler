@@ -1,6 +1,7 @@
 namespace BionicTraveler.Scripts.Combat
 {
     using BionicTraveler.Scripts.World;
+    using UnityEngine;
 
     /// <summary>
     /// Describes a ranged attack that creates a projectile.
@@ -8,19 +9,28 @@ namespace BionicTraveler.Scripts.Combat
     public class ProjectileAttack : Attack
     {
         private bool hasImpacted;
+        private Entity hitEntity;
+        private bool hasCollidedWithOwner;
 
         /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
-            // TODO: Get targets in range or maybe defer to collision event?
-            return new Entity[0];
+            // Hit entity is read from collision event.
+            return this.hitEntity != null ? new Entity[] { this.hitEntity } : new Entity[0];
         }
 
         /// <inheritdoc/>
         public override void AttackTargets(Entity[] targets)
         {
-            // TODO: Fire projectile and wait for impact.
-            this.hasImpacted = true;
+            if (targets.Length > 0)
+            {
+                foreach (var target in targets)
+                {
+                    target.OnHit(this);
+                }
+
+                this.hasImpacted = true;
+            }
         }
 
         /// <inheritdoc/>
@@ -33,6 +43,37 @@ namespace BionicTraveler.Scripts.Combat
         public override void Dispose()
         {
             // TODO: Dispose projectile.
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Do not collide with owner of projectile unless we have collided with them before.
+            // This ensures that projectiles only collide with the owner once they have left the
+            // owners collider once.
+            var entity = collision.GetComponent<Entity>();
+            if (entity == this.Owner && !this.hasCollidedWithOwner)
+            {
+                return;
+            }
+
+            // We hit something that is not an entity, just remove us.
+            if (entity == null)
+            {
+                this.hasImpacted = true;
+                return;
+            }
+
+            this.hitEntity = entity;
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            var entity = collision.GetComponent<Entity>();
+            if (entity == this.Owner)
+            {
+                this.hasCollidedWithOwner = true;
+                return;
+            }
         }
     }
 }
