@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae23516e96728fe488d2ebada872abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questContainer: {fileID: 816881675}
   questDetails: {fileID: 443864640}
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
