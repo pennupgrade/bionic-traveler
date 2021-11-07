@@ -3,6 +3,7 @@ namespace BionicTraveler.Scripts.Combat
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -57,14 +58,14 @@ namespace BionicTraveler.Scripts.Combat
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    this.weaponBehaviour.Fire();
+                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     // TODO: Make pretty.
                     this.weaponBehaviour.SwitchWeaponMode();
-                    this.weaponBehaviour.Fire();
+                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                     this.weaponBehaviour.SwitchWeaponMode();
                 }
             }
