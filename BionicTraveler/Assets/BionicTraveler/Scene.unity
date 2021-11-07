@@ -786,6 +786,7 @@ GameObject:
   - component: {fileID: 280462864}
   - component: {fileID: 280462863}
   - component: {fileID: 280462865}
+  - component: {fileID: 280462866}
   m_Layer: 5
   m_Name: QuestWindow
   m_TagString: Untagged
@@ -871,7 +872,28 @@ MonoBehaviour:
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
   buttonPrefab: {fileID: 12625932}
-  canvas: 
+  canvas: {fileID: 280462866}
+--- !u!223 &280462866
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280462861}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
