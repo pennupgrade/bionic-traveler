@@ -5599,7 +5599,6 @@ MonoBehaviour:
   bgmMixer: {fileID: 24100000, guid: 7a535fdec2a4dcb41813b45bda269eb0, type: 2}
   sfxMixer: {fileID: 24100000, guid: aaceeb338fabaf44db3a4a662ebab2c9, type: 2}
   voiceMixer: {fileID: 24100000, guid: 35abcfe7349641540b95747cbd57498e, type: 2}
-  Difficulty: 0
 --- !u!114 &2064395852
 MonoBehaviour:
   m_ObjectHideFlags: 0
