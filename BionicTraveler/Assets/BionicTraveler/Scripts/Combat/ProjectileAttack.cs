@@ -1,6 +1,6 @@
 namespace BionicTraveler.Scripts.Combat
 {
-    using BionicTraveler.Scripts.Items;
+    using BionicTraveler.Scripts.World;
 
     /// <summary>
     /// Describes a ranged attack that creates a projectile.

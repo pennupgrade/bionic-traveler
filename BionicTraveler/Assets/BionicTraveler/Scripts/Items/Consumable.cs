@@ -1,5 +1,6 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>

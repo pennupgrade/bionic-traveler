@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Combat
 {
+    using BionicTraveler.Scripts.World;
     using System.Linq;
     using UnityEngine;
 

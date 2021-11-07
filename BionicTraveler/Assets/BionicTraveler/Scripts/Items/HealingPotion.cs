@@ -1,5 +1,6 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -15,9 +16,9 @@
         /// <inheritdoc/>
         public override void Use(Entity entity)
         {
-            Debug.Log($"Health Prior: {entity.GetHealth()}");
-            entity.AddHealth(healingEffect);
-            Debug.Log($"Healed for {healingEffect}; New Health: {entity.GetHealth()}");
+            Debug.Log($"Health Prior: {entity.Health}");
+            entity.AddHealth(this.healingEffect);
+            Debug.Log($"Healed for {this.healingEffect}; New Health: {entity.Health}");
         }
     }
 }

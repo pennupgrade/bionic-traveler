@@ -2,7 +2,7 @@ namespace BionicTraveler.Scripts.Combat
 {
     using System;
     using System.Collections.Generic;
-    using BionicTraveler.Scripts.Items;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>

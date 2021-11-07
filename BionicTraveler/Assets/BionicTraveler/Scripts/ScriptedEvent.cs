@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BionicTraveler.Scripts.Interaction;
+using BionicTraveler.Scripts.World;
 using UnityEngine;
 using UnityEngine.Playables;
 

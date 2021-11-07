@@ -43,7 +43,7 @@ namespace BionicTraveler.Scripts.World
         public void DamageBattery(int damage)
         {
             this.batteryHealth = Mathf.Max(0, this.batteryHealth - damage);
-            Debug.Log(this.GetHealth());
+            Debug.Log(this.Health);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace BionicTraveler.Scripts.World
         public void HealBattery()
         {
             this.batteryHealth = 50;
-            Debug.Log(this.GetHealth());
+            Debug.Log(this.Health);
         }
 
         // Fixed Update is called at fixed intervals in real time
