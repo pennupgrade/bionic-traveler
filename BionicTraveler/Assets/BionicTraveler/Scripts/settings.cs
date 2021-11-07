@@ -18,23 +18,25 @@ namespace BionicTraveler.Scripts
     ///      50% volume :  -6dB
     ///       0% volume : -80dB
     ///     AudioMixer will be -80dB (muted) unless both the master toggle and corresponding toggle are checked
-    /// Drop down box changes int Difficulty
+    /// Drop down box changes int Difficulty, retrieved with GetDifficulty()
     ///     0 : Peaceful
     ///     1 : Adventure
     ///     2 : Hell
     /// </summary>
-
     public class Settings : MonoBehaviour
     {
-        public static Settings Instance { get; private set; }
         private bool open; // True if the menu is open
-        
+
         [SerializeField]
         private Canvas canvas; // Canvas containing the menu
-        
-        [SerializeField]
-        private AudioMixer bgmMixer, sfxMixer, voiceMixer; //AudioMixers to be dragged in
 
+        [SerializeField]
+        private AudioMixer bgmMixer; // AudioMixers to be dragged in
+
+        [SerializeField]
+        private AudioMixer sfxMixer;
+        [SerializeField]
+        private AudioMixer voiceMixer;
         private float masterVolume;
         private bool masterOn;
 
@@ -43,144 +45,175 @@ namespace BionicTraveler.Scripts
 
         private float sfxVolume;
         private bool sfxOn;
-        
+
         private float voiceVolume;
         private bool voiceOn;
-        
-        public int Difficulty;
+
+        private int difficulty;
+
+        /// <summary>
+        /// Gets singleton
+        /// </summary>
+        public static Settings Instance { get; private set; }
+
+        /// <summary>
+        /// Menu is closed upon game launch
+        /// </summary>
+        public void Start()
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// Listens for 'Esc' key press which will open the menu if it is closed and vice versa
+        /// </summary>
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (this.open)
+                {
+                    this.Close();
+                }
+                else
+                {
+                    this.Open();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Opens the SettingsMenu canvas and pauses the game
+        /// </summary>
+        public void Open()
+        {
+            this.open = true;
+            this.canvas.enabled = true;
+            Time.timeScale = 0;
+        }
+
+        /// <summary>
+        /// Closes the SettingsMenu canvas and resumes the game
+        /// </summary>
+        public void Close()
+        {
+            this.open = false;
+            this.canvas.enabled = false;
+            Time.timeScale = 1;
+        }
+
+        /// <summary>
+        /// Returns difficulty
+        /// 0 : Peaceful
+        /// 1 : Adventure
+        /// 2 : Hell
+        /// </summary>
+        /// <returns>game difficulty</returns>
+        public int GetDifficulty()
+        {
+            return this.difficulty;
+        }
+
+        private void SetDifficulty(int diff)
+        {
+            this.difficulty = diff;
+        }
+
+        private void SetMaster(float masterSlider)
+        {
+            this.masterVolume = masterSlider;
+            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+        }
+
+        private void MuteMaster(bool muteMaster)
+        {
+            this.masterOn = muteMaster;
+            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+        }
+
+        private void SetBgm(float bgmSlider)
+        {
+            this.bgmVolume = bgmSlider;
+            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+        }
+
+        private void MuteBgm(bool muteBgm)
+        {
+            this.bgmOn = muteBgm;
+            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+        }
+
+        private void SetSfx(float sfxSlider)
+        {
+            this.sfxVolume = sfxSlider;
+            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+        }
+
+        private void MuteSfx(bool muteSfx)
+        {
+            this.sfxOn = muteSfx;
+            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+        }
+
+        private void SetVoice(float voiceSlider)
+        {
+            this.voiceVolume = voiceSlider;
+            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+        }
+
+        private void MuteVoice(bool muteVoice)
+        {
+            this.voiceOn = muteVoice;
+            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+        }
 
         private void Awake()
         {
-            if (Instance != null && Instance != this) {
+            if (Instance != null && Instance != this)
+            {
                 Destroy(this.gameObject);
-            } else {
+            }
+            else
+            {
                 Instance = this;
             }
         }
 
-        void Start() // Menu is closed upon game launch
-        {
-            Close();
-        }
-
-        public void Update() // Listens for 'Esc' key press which will open the menu if it is closed and vice versa
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (open)
-                {
-                    Close();
-                }
-                else
-                {
-                    Open();
-                }
-            }
-        }
-
-        public void Open() // Opens the SettingsMenu canvas and pauses the game
-        {
-            open = true;
-            canvas.enabled = true;
-            Time.timeScale = 0;
-        }
-
-        public void Close() // Closes the SettingsMenu canvas and resumes the game
-        {
-            open = false;
-            canvas.enabled = false;
-            Time.timeScale = 1;
-        }
-        
-        public void SetDifficulty(int diff) // Sets Difficulty equal to the drop down box
-        {
-            Difficulty = diff;
-        }
-        
         /// <summary>
         /// Converts float values on each of the sliders to a decibel level on each of the AudioMixers
         /// If the mixer and master toggles are both on
         ///     Reads the mixer and master sliders, converting the product to a log scale from 0 to -80
         /// Otherwise mute the channel (set volume to -80dB)
         /// </summary>
-        /// <param name="mixerName"></param> name of the AudioMixer
-        /// <param name="masterVal"></param> float value of master slider
-        /// <param name="isMaster"></param> boolean true if master toggle is checked
-        /// <param name="volumeLabel"></param> name of volume exposed volume field
-        /// <param name="sliderVal"></param> float value of mixer slider
-        /// <param name="isOn"></param> boolean true if mixer toggle is checked
+        /// <param name="mixerName">name of the AudioMixer</param>
+        /// <param name="masterVal">float value of master slider</param>
+        /// <param name="isMaster">boolean true if master toggle is checked</param>
+        /// <param name="volumeLabel">name of volume exposed volume field</param>
+        /// <param name="sliderVal">float value of mixer slider</param>
+        /// <param name="isOn">boolean true if mixer toggle is checked</param>
         /// Eg.
-        ///     mixerName = 'bgmMixer'
-        ///     masterVal = 1.0f
-        ///     isMaster = masterOn = true
-        ///     volumeLabel = 'bgmVolume'
-        ///     sliderVal = 0.5f
-        ///     isOn = bgmOn = true
+        /// mixerName = 'bgmMixer'
+        /// masterVal = 1.0f
+        /// isMaster = masterOn = true
+        /// volumeLabel = 'bgmVolume'
+        /// sliderVal = 0.5f
+        /// isOn = bgmOn = true
         ///
-        ///     The exposed float 'bgmVolume' on the AudioMixer 'bgmMixer' will be set to log10(1.0 * 0.5) = -6.0f
+        /// The exposed float 'bgmVolume' on the AudioMixer 'bgmMixer' will be set to log10(1.0 * 0.5) = -6.0f
         private void LogScaling(AudioMixer mixerName, float masterVal, bool isMaster, string volumeLabel, float sliderVal, bool isOn)
         {
             if (isOn && isMaster)
             {
                 mixerName.SetFloat(volumeLabel, Mathf.Log10(Mathf.Max(sliderVal * masterVal, 0.0001f)) * 20);
-                
             }
             else
             {
                 mixerName.SetFloat(volumeLabel, -80f);
             }
-        }
-
-        public void SetMaster(float masterSlider) // Updates all mixer volumes when the master slider is changed
-        {
-            masterVolume = masterSlider;
-            LogScaling(bgmMixer, masterVolume, masterOn, "bgmVolume", bgmVolume, bgmOn);
-            LogScaling(sfxMixer, masterVolume, masterOn, "sfxVolume", sfxVolume, sfxOn);
-            LogScaling(voiceMixer, masterVolume, masterOn, "voiceVolume", voiceVolume, voiceOn);
-            }
-
-        public void MuteMaster(bool muteMaster) // Updates all mixer volumes when the master toggle is changed
-        {
-            masterOn = muteMaster;
-            LogScaling(bgmMixer, masterVolume, masterOn, "bgmVolume", bgmVolume, bgmOn);
-            LogScaling(sfxMixer, masterVolume, masterOn, "sfxVolume", sfxVolume, sfxOn);
-            LogScaling(voiceMixer, masterVolume, masterOn, "voiceVolume", voiceVolume, voiceOn);
-        }
-        
-        public void SetBgm(float bgmSlider) // Updates only the bgm mixer when bgm slider is changed
-        {
-            bgmVolume = bgmSlider;
-            LogScaling(bgmMixer, masterVolume, masterOn, "bgmVolume", bgmVolume, bgmOn);
-        }
-
-        public void MuteBgm(bool muteBgm) // Updates only the bgm mixer when bgm toggle is changed
-        {
-            bgmOn = muteBgm;
-            LogScaling(bgmMixer, masterVolume, masterOn, "bgmVolume", bgmVolume, bgmOn);
-        }
-        
-        public void SetSfx(float sfxSlider) // Updates only the sfx mixer when sfx slider is changed
-        {
-            sfxVolume = sfxSlider;
-            LogScaling(sfxMixer, masterVolume, masterOn, "sfxVolume", sfxVolume, sfxOn);
-        }
-        
-        public void MuteSfx(bool muteSfx) // Updates only the sfx mixer when sfx toggle is changed
-        {
-            sfxOn = muteSfx;
-            LogScaling(sfxMixer, masterVolume, masterOn, "sfxVolume", sfxVolume, sfxOn);
-        }
-
-        public void SetVoice(float voiceSlider) // Updates only the voice mixer when voice slider is changed
-        {
-            voiceVolume = voiceSlider;
-            LogScaling(voiceMixer, masterVolume, masterOn, "voiceVolume", voiceVolume, voiceOn);
-        }
-
-        public void MuteVoice(bool muteVoice) // Updates only the voice mixer when voice toggle is changed
-        {
-            voiceOn = muteVoice;
-            LogScaling(voiceMixer, masterVolume, masterOn, "voiceVolume", voiceVolume, voiceOn);
         }
     }
 }
