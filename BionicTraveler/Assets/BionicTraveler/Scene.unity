@@ -871,7 +871,7 @@ MonoBehaviour:
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
   buttonPrefab: {fileID: 12625932}
-  canvas: {fileID: 2137258947}
+  canvas: 
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,6 +5597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a32ad6a0b05524495f2c0e0692e73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 2064395854}
+  bgmMixer: {fileID: 24100000, guid: 7a535fdec2a4dcb41813b45bda269eb0, type: 2}
+  sfxMixer: {fileID: 24100000, guid: aaceeb338fabaf44db3a4a662ebab2c9, type: 2}
+  voiceMixer: {fileID: 24100000, guid: 35abcfe7349641540b95747cbd57498e, type: 2}
 --- !u!114 &2064395852
 MonoBehaviour:
   m_ObjectHideFlags: 0
