@@ -108,6 +108,7 @@ namespace BionicTraveler.Scripts
         /// </summary>
         public void Start()
         {
+            this.Close();
             // Search can be improved, just attempting to do search via tree rather than drag and drop
             for (int i = 0; i < 20; i++)
             {
