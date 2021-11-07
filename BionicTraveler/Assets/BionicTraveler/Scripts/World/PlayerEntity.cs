@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.World
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.Items;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -70,9 +71,12 @@ namespace BionicTraveler.Scripts.World
                 pickup.transform.position,
                 this.transform.position) < this.InteractionRange).ToArray();
 
-            foreach (var a in pickups)
+            foreach (var pickup in pickups)
             {
-                a.PickUp(this);
+                if (pickup.transform.DistanceTo(pickup.transform) < pickup.PickUpRange)
+                {
+                    pickup.PickUp(this);
+                }
             }
 
             //press key to show inventory data
@@ -88,6 +92,11 @@ namespace BionicTraveler.Scripts.World
                 {
                     this.Inventory.Use(item);
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.O) && this.Inventory.Items.Count > 0)
+            {
+                var item = this.Inventory.DropItem(this.Inventory.Items.First().ItemData);
             }
         }
 

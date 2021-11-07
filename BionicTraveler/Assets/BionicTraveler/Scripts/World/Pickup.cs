@@ -1,6 +1,5 @@
 namespace BionicTraveler.Scripts.World
 {
-    using System;
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
@@ -18,8 +17,6 @@ namespace BionicTraveler.Scripts.World
         [SerializeField]
         private bool keepSyncedWithTemplate;
 
-        // This is just a placeholder until we have an actual player entity.
-        private Transform player;
         private float pickUpRange;
         private bool hasBeenPickedUp;
 
@@ -34,10 +31,10 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         public ItemData ItemData => this.itemData;
 
-        public void SetItemData(ItemData itemData)
-        {
-            this.itemData = itemData;
-        }
+        /// <summary>
+        /// Gets the pick up range.
+        /// </summary>
+        public float PickUpRange => this.pickUpRange;
 
         /// <summary>
         /// Gets a value indicating whether this Pickup has been collected.
@@ -49,6 +46,16 @@ namespace BionicTraveler.Scripts.World
         {
             Debug.Log("calling start for new pickup, " + this.ItemData);
             this.pickUpRange = this.ItemData.PickupRange;
+        }
+
+        /// <summary>
+        /// Sets the associated item from code and updates all properties based on the template.
+        /// </summary>
+        /// <param name="itemData">The item.</param>
+        public void SetItemData(ItemData itemData)
+        {
+            this.itemData = itemData;
+            this.InitializeFromTemplate();
         }
 
         /// <summary>
@@ -68,9 +75,13 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
-        internal void PickUp(DynamicEntity entity)
+        /// <summary>
+        /// Picks up this pickup and adds it to the inventory of the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity that picked up this pickup.</param>
+        public void PickUp(DynamicEntity entity)
         {
-            Debug.Log("item has been picked up");
+            Debug.Log("Item has been picked up");
             this.hasBeenPickedUp = true;
             entity.Inventory.AddItem(this.itemData);
 

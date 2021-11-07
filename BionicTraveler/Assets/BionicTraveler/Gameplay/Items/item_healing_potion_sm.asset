@@ -18,7 +18,7 @@ MonoBehaviour:
   maxNumber: 25
   inventorySprite: {fileID: 0}
   pickupSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  pickupRange: 0
+  pickupRange: 3
   type: 1
   consumable: {fileID: 11400000, guid: 4a17f0d04bc8af5458318bb770a9ce1f, type: 2}
   equippable: {fileID: 0}
