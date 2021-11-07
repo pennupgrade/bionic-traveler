@@ -2,8 +2,8 @@ namespace BionicTraveler.Scripts.World
 {
     using System.Linq;
     using BionicTraveler.Scripts.Combat;
+    using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.Items;
-    using global::Items;
     using UnityEngine;
 
     /// <summary>
@@ -11,8 +11,6 @@ namespace BionicTraveler.Scripts.World
     /// </summary>
     public class PlayerEntity : DynamicEntity
     {
-        private float interactionRange = 100;
-
         /// <summary>
         /// Gets or sets the BodyPart to activate with PrimaryBP input.
         /// </summary>
@@ -26,7 +24,7 @@ namespace BionicTraveler.Scripts.World
         /// <summary>
         /// Gets or sets the Player interaction range.
         /// </summary>
-        public float InteractionRange { get => interactionRange; set => interactionRange = value; }
+        public float InteractionRange { get; set; } = 1;
 
         // TODO: Uncomment these after merging Combat classes
         private CombatBehavior PrimaryWeapon;
@@ -55,23 +53,22 @@ namespace BionicTraveler.Scripts.World
             Debug.Log(this.Health);
         }
 
-        // Fixed Update is called at fixed intervals in real time
         private void Update()
         {
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
                 interactable => Vector3.Distance(
-                    interactable.transform.position, this.transform.position) < this.interactionRange).ToArray();
+                    interactable.transform.position, this.transform.position) < this.InteractionRange).ToArray();
 
             foreach (var a in interactables)
             {
-                //a.GetComponent<IInteractable>().OnInteract(this.gameObject);
+                a.GetComponent<IInteractable>().OnInteract(this.gameObject);
             }
 
             //player pickup
             var pickups = GameObject.FindObjectsOfType<Pickup>().Where(pickup => Vector3.Distance(
                 pickup.transform.position,
-                this.transform.position) < this.interactionRange).ToArray();
+                this.transform.position) < this.InteractionRange).ToArray();
 
             foreach (var a in pickups)
             {
