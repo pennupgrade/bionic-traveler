@@ -11,11 +11,10 @@ namespace BionicTraveler.Scripts
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class SaveManager : MonoBehaviour
+    public class SaveManager : Menu
     {
-        private Dictionary<string, object> store = new Dictionary<string, object>();
-
-        private string savePath = Application.persistentDataPath + "/saveData";
+        // private Dictionary<string, object> store = new Dictionary<string, object>();
+        // private string savePath = Application.persistentDataPath + "/saveData";
 
         public static SaveManager Instance { get; private set; }
 
@@ -31,39 +30,39 @@ namespace BionicTraveler.Scripts
             }
         }
 
-        public void AddToStore(string key, object value)
-        {
-            this.store.Add(key, value);
-        }
-
-        public object GetFromStore(string key)
-        {
-            object value = null;
-            this.store.TryGetValue(key, out value);
-            return value;
-        }
-
-        public void Save() {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream stream = new FileStream(this.savePath, FileMode.Create);
-            bf.Serialize(stream, this.store);
-            stream.Close();
-        }
-
-        public void Load()
-        {
-            if (File.Exists(this.savePath))
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream stream = new FileStream(this.savePath, FileMode.Open);
-                this.store = bf.Deserialize(stream) as Dictionary<string, object>;
-                stream.Close();
-            }
-            else
-            {
-                Debug.Log("File not found");
-            }
-        }
+        // public void AddToStore(string key, object value)
+        // {
+        //     this.store.Add(key, value);
+        // }
+        //
+        // public object GetFromStore(string key)
+        // {
+        //     object value = null;
+        //     this.store.TryGetValue(key, out value);
+        //     return value;
+        // }
+        //
+        // public void Save() {
+        //     BinaryFormatter bf = new BinaryFormatter();
+        //     FileStream stream = new FileStream(this.savePath, FileMode.Create);
+        //     bf.Serialize(stream, this.store);
+        //     stream.Close();
+        // }
+        //
+        // public void Load()
+        // {
+        //     if (File.Exists(this.savePath))
+        //     {
+        //         BinaryFormatter bf = new BinaryFormatter();
+        //         FileStream stream = new FileStream(this.savePath, FileMode.Open);
+        //         this.store = bf.Deserialize(stream) as Dictionary<string, object>;
+        //         stream.Close();
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("File not found");
+        //     }
+        // }
 
         // /*
         //  *

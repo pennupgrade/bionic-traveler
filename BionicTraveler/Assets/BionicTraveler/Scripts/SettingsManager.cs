@@ -23,13 +23,8 @@ namespace BionicTraveler.Scripts
     ///     1 : Adventure
     ///     2 : Hell
     /// </summary>
-    public class Settings : MonoBehaviour
+    public class SettingsManager : Menu
     {
-        private bool open; // True if the menu is open
-
-        [SerializeField]
-        private Canvas canvas; // Canvas containing the menu
-
         [SerializeField]
         private AudioMixer bgmMixer; // AudioMixers to be dragged in
 
@@ -54,53 +49,7 @@ namespace BionicTraveler.Scripts
         /// <summary>
         /// Gets singleton
         /// </summary>
-        public static Settings Instance { get; private set; }
-
-        /// <summary>
-        /// Menu is closed upon game launch
-        /// </summary>
-        public void Start()
-        {
-            this.Close();
-        }
-
-        /// <summary>
-        /// Listens for 'Esc' key press which will open the menu if it is closed and vice versa
-        /// </summary>
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (this.open)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    this.Open();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Opens the SettingsMenu canvas and pauses the game
-        /// </summary>
-        public void Open()
-        {
-            this.open = true;
-            this.canvas.enabled = true;
-            Time.timeScale = 0;
-        }
-
-        /// <summary>
-        /// Closes the SettingsMenu canvas and resumes the game
-        /// </summary>
-        public void Close()
-        {
-            this.open = false;
-            this.canvas.enabled = false;
-            Time.timeScale = 1;
-        }
+        public static SettingsManager Instance { get; private set; }
 
         /// <summary>
         /// Returns difficulty
