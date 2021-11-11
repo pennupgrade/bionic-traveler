@@ -11,13 +11,8 @@ namespace BionicTraveler.Scripts
     /// stores a container for all the quests, the description box of the quest, the title of the description box,
     /// and the button template that gets copied everytime you create a quest.
     /// </summary>
-    public class QuestManager : MonoBehaviour
+    public class QuestManager : Menu
     {
-        /// <summary>
-        /// Gets an instance of the QuestManager class -> used to make sure that there is the only one instance of QuestManager.
-        /// </summary>
-        public static QuestManager Instance { get; private set; }
-
         [SerializeField]
         private GameObject questContainer;
         [SerializeField]
@@ -28,14 +23,16 @@ namespace BionicTraveler.Scripts
         private Text questDescription;
         [SerializeField]
         private GameObject buttonPrefab;
-        [SerializeField]
-        private Canvas canvas;
 
-        private string questOpened = null;
-        private bool open;
+        private string questOpened;
 
         private List<GameObject> activeQuests = new List<GameObject>();
         private List<GameObject> completedQuests = new List<GameObject>();
+
+        /// <summary>
+        /// Gets an instance of the QuestManager class -> used to make sure that there is the only one instance of QuestManager.
+        /// </summary>
+        public static QuestManager Instance { get; private set; }
 
         /// <summary>
         /// Adds a quest using inputted questName and description
@@ -78,7 +75,7 @@ namespace BionicTraveler.Scripts
         /// <summary>
         /// function is called when a quest's button is clicked
         /// displays the description box of the quest on first click
-        /// hides the description box of the quest on thesecond click.
+        /// hides the description box of the quest on the second click.
         /// </summary>
         /// <param name="questName">quest's name.</param>
         /// <param name="description">quest's description.</param>
@@ -88,7 +85,8 @@ namespace BionicTraveler.Scripts
             {
                 this.questDetails.SetActive(true);
                 this.questOpened = questName;
-            } else if (this.questOpened == questName)
+            }
+            else if (this.questOpened == questName)
             {
                 this.questDetails.SetActive(false);
                 this.questOpened = null;
@@ -106,9 +104,10 @@ namespace BionicTraveler.Scripts
         /// Called when the program is first started
         /// Currently loops through and creates 20 quests.
         /// </summary>
-        public void Start()
+        public override void Start()
         {
-            this.Close();
+            base.Start();
+
             // Search can be improved, just attempting to do search via tree rather than drag and drop
             for (int i = 0; i < 20; i++)
             {
@@ -116,44 +115,6 @@ namespace BionicTraveler.Scripts
             }
 
             // AddQuest("temp1", "first one");
-        }
-
-        /// <summary>
-        /// Listens for 'Q' key press, which will open menu if it is closed and vice versa.
-        /// </summary>
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                if (this.open)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    this.Open();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Opens the QuestMenu and pauses the game.
-        /// </summary>
-        public void Open()
-        {
-            this.open = true;
-            this.canvas.enabled = true;
-            Time.timeScale = 0;
-        }
-
-        /// <summary>
-        /// Closes the QuestMenu canvas and resumes the game.
-        /// </summary>
-        public void Close()
-        {
-            this.open = false;
-            this.canvas.enabled = false;
-            Time.timeScale = 1;
         }
 
         private void Awake()
