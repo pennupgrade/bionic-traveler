@@ -7,7 +7,7 @@ namespace BionicTraveler.Scripts.Combat
     using UnityEngine;
 
     /// <summary>
-    /// Manages a weapon's behavior with support for starting attacks and switching attack modes.
+    /// Manages a weapon's behaviour with support for starting attacks and switching attack modes.
     /// </summary>
     public class WeaponBehaviour : MonoBehaviour
     {

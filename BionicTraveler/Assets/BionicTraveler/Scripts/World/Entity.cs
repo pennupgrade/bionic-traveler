@@ -12,7 +12,7 @@
     {
         private int maxHealth = 100;
         private int health;
-        private bool visible = false;
+        private bool isVisible;
         [SerializeField]
         private float baseSpeed = 1f;
 
@@ -20,6 +20,11 @@
         /// Gets or sets a value indicating whether entity is invincible.
         /// </summary>
         public bool IsInvincible { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is visible.
+        /// </summary>
+        public bool IsVisibible => this.isVisible;
 
         /// <summary>
         /// Gets the health from the entity.
@@ -43,6 +48,11 @@
         {
             this.health = (int)Math.Max(this.health - amt, 0f);
             Debug.Log($"{this.gameObject.name}: My health is now {this.health}");
+
+            if (this.health == 0)
+            {
+                this.Kill();
+            }
         }
 
         /// <summary>
@@ -91,11 +101,21 @@
         }
 
         /// <summary>
-        /// Destroy the EntityGameObject
+        /// Sets the entity's health to 0 and kills it.
+        /// </summary>
+        public void Kill()
+        {
+            Debug.Log("Implement proper dying");
+            this.health = 0;
+            this.Destroy();
+        }
+
+        /// <summary>
+        /// Destroy the EntityGameObject.
         /// </summary>
         public void Destroy()
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
         /// <summary>
@@ -103,7 +123,7 @@
         /// </summary>
         public void MakeInvisible()
         {
-            UnityEditor.SceneVisibilityManager.instance.Hide(gameObject, true);
+            UnityEditor.SceneVisibilityManager.instance.Hide(this.gameObject, true);
         }
 
         /// <summary>
@@ -111,7 +131,7 @@
         /// </summary>
         public void MakeVisible()
         {
-            UnityEditor.SceneVisibilityManager.instance.Show(gameObject, true);
+            UnityEditor.SceneVisibilityManager.instance.Show(this.gameObject, true);
         }
 
         /// <summary>
@@ -119,19 +139,14 @@
         /// </summary>
         public void ToggleVisibility()
         {
-            UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(gameObject, true);
-        }
-
-        public bool IsVisible()
-        {
-            return visible;
+            UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(this.gameObject, true);
         }
 
         // Use this for initialization
         void Start()
         {
             health = maxHealth;
-            visible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(gameObject, true);
+            isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(gameObject, true);
         }
     }
 }
