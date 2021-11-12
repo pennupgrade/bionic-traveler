@@ -28,8 +28,8 @@ namespace BionicTraveler.Scripts.World
         public float InteractionRange { get; set; } = 1;
 
         // TODO: Uncomment these after merging Combat classes
-        private CombatBehavior PrimaryWeapon;
-        //private Weapon SecondaryWeapon;
+        private CombatBehaviour PrimaryWeapon;
+        private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
         private Bodypart primaryBP;

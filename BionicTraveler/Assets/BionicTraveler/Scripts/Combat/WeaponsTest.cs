@@ -15,14 +15,14 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("The second weapon data to use.")]
         private WeaponData weaponDataSecond;
 
-        private CombatBehavior combat;
+        private CombatBehaviour combat;
 
         /// <summary>
         /// Start is called before the first frame update.
         /// </summary>
         public void Start()
         {
-            this.combat = this.gameObject.AddComponent<CombatBehavior>();
+            this.combat = this.gameObject.AddComponent<CombatBehaviour>();
             this.combat.SetWeapon(this.weaponData);
         }
 

@@ -9,15 +9,15 @@ namespace BionicTraveler.Scripts.Combat
     /// <summary>
     /// Manages combat behavior of the currently equipped weapon.
     /// </summary>
-    public class CombatBehavior : MonoBehaviour
+    public class CombatBehaviour : MonoBehaviour
     {
         private WeaponBehavior weaponBehaviour;
         private List<WeaponBehavior> dormantWeapons;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CombatBehavior"/> class.
+        /// Initializes a new instance of the <see cref="CombatBehaviour"/> class.
         /// </summary>
-        public CombatBehavior()
+        public CombatBehaviour()
         {
             this.dormantWeapons = new List<WeaponBehavior>();
         }

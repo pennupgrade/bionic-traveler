@@ -26,7 +26,7 @@
         public override void Equip(Entity entity)
         {
             // Get from entity gameobject.
-            CombatBehavior combatBehavior = null;
+            CombatBehaviour combatBehavior = null;
             combatBehavior.SetWeapon(this.weaponData);
             throw new System.NotImplementedException();
         }
@@ -39,7 +39,7 @@
             Inventory inventory = null;
             inventory.AddItem(itemData);
 
-            CombatBehavior combatBehavior = null;
+            CombatBehaviour combatBehavior = null;
             combatBehavior.RemoveWeapon();
 
             throw new System.NotImplementedException();
