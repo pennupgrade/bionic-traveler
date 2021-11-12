@@ -19,7 +19,7 @@
         // Update is called once per frame
         private void Update()
         {
-            this.transform.position = this.target.position;
+            this.transform.position = new Vector3(this.target.position.x, this.target.position.y, this.transform.position.z);
         }
     }
 }
