@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 280462863}
   - component: {fileID: 280462865}
   - component: {fileID: 280462866}
+  - component: {fileID: 280462867}
   m_Layer: 5
   m_Name: Quest
   m_TagString: Untagged
@@ -872,7 +873,6 @@ MonoBehaviour:
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
   buttonPrefab: {fileID: 12625932}
-  canvas: {fileID: 280462866}
 --- !u!223 &280462866
 Canvas:
   m_ObjectHideFlags: 0
@@ -894,6 +894,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &280462867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280462861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,7 +2685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &757638775
 MonoBehaviour:
   m_ObjectHideFlags: 0

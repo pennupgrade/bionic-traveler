@@ -49,7 +49,7 @@ namespace BionicTraveler.Scripts
             questButton.name = quest.name;
             questButton.onClick.AddListener(questQuest.OnClick);
 
-            // sets the text desplayed on the button
+            // sets the text displayed on the button
             Text text = questButton.GetComponentInChildren<Text>();
             text.text = questName;
 
@@ -103,7 +103,8 @@ namespace BionicTraveler.Scripts
         {
             QuestManager.Instance.QuestClicked(this.name, this.description);
             this.clickedCount += 1;
-            if (this.clickedCount == 5) {
+            if (this.clickedCount == 5)
+            {
                 this.SetIsCompleted(true);
             }
         }

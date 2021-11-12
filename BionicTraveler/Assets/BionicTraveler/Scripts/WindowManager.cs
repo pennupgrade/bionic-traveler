@@ -23,7 +23,11 @@ namespace BionicTraveler
                     this.openedMenu.Close();
                 }
 
-                if (this.openedMenu != SettingsManager.Instance)
+                if (this.openedMenu == SettingsManager.Instance)
+                {
+                    this.openedMenu = null;
+                }
+                else
                 {
                     this.openedMenu = SettingsManager.Instance;
                     this.openedMenu.Open();
@@ -36,7 +40,11 @@ namespace BionicTraveler
                     this.openedMenu.Close();
                 }
 
-                if (this.openedMenu != QuestManager.Instance)
+                if (this.openedMenu == QuestManager.Instance)
+                {
+                    this.openedMenu = null;
+                }
+                else
                 {
                     this.openedMenu = QuestManager.Instance;
                     this.openedMenu.Open();
