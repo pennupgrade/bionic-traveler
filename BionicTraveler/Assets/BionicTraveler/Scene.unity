@@ -894,7 +894,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
->>>>>>> 7515642 (settings and quest menu can be opened and closed)
 --- !u!1 &287974431
 GameObject:
   m_ObjectHideFlags: 0
