@@ -8,7 +8,7 @@
     /// Describes an item that can be used in the game.
     /// </summary>
     [CreateAssetMenu(fileName = "MyNewItem", menuName = "Items/ItemData", order = 0)]
-    public class ItemData : ScriptableObject, IEquatable<ItemData>
+    public class ItemData : ScriptableObject, IEquatable<ItemData>, IComparable<ItemData>
     {
         [SerializeField]
         [Tooltip("The unique internal identifier of the item. This can be used by scripts to query item information.")]
@@ -179,6 +179,12 @@
             }
 
             return this.id.GetHashCode();
+        }
+
+        /// <inheritdoc/>
+        public int CompareTo(ItemData other)
+        {
+            return this.name.CompareTo(other.name);
         }
     }
 }
