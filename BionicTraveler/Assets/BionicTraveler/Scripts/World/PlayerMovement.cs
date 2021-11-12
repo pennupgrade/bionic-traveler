@@ -67,8 +67,8 @@
 
             if (this.movement != Vector2.zero)
             {
-                //this.animator.SetFloat("LastHorizontal", this.movement.x);
-                //this.animator.SetFloat("LastVertical", this.movement.y);
+                this.animator.SetFloat("LastHorizontal", this.movement.x);
+                this.animator.SetFloat("LastVertical", this.movement.y);
                 this.gameObject.GetComponent<DynamicEntity>()?.SetDirection(this.rb.position + this.movement);
             }
 

@@ -93,7 +93,7 @@
             this.Remove(item);
 
             // Create pickup.
-            return PickupCreator.SpawnPickup(this.owner.transform.position + new Vector3(3, 0, 0), item);
+            return PickupCreator.SpawnPickup(this.owner.transform.position + (this.owner.Direction * 2.0f), item);
         }
 
 
