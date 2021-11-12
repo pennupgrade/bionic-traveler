@@ -9,50 +9,50 @@ namespace Items
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class HookShot : Bodypart
-    {
+    //public class HookShot : Bodypart
+    //{
 
        
-        [SerializeField]
-        private float maxDist = 1.0f;
+    //    [SerializeField]
+    //    private float maxDist = 1.0f;
 
-        [SerializeField]
-        private float hookSpeed = 1.0f;
+    //    [SerializeField]
+    //    private float hookSpeed = 1.0f;
 
-        [SerializeField]
-        private GameObject projectilePrefab;
+    //    [SerializeField]
+    //    private GameObject projectilePrefab;
 
-        private GameObject hookProjectile = null;
+    //    private GameObject hookProjectile = null;
 
-        private Collider2D collide = null;
+    //    private Collider2D collide = null;
 
-        /// <summary>
-        /// Activates hookshot ability, sending out projectile in direction of target
-        /// </summary>
-        public override void ActivateAbility ()
-        {
-            hookProjectile = GameObject.Instantiate(projectilePrefab, Player.transform.position, Quaternion.identity);
-            collide = hookProjectile.GetComponent<Collider2D>();
-            //Might Cause Error, double-check
-            Vector3 target = Player.Direction.normalized * maxDist;
+    //    /// <summary>
+    //    /// Activates hookshot ability, sending out projectile in direction of target
+    //    /// </summary>
+    //    public override void ActivateAbility ()
+    //    {
+    //        hookProjectile = GameObject.Instantiate(projectilePrefab, Player.transform.position, Quaternion.identity);
+    //        collide = hookProjectile.GetComponent<Collider2D>();
+    //        //Might Cause Error, double-check
+    //        Vector3 target = Player.Direction.normalized * maxDist;
 
-            //instantiate and throw projectilePrefab forward
-            //upon collision
-                //if hookable –>
-                    //if dynamic –> pull to self
-                    //else –> pull self to
+    //        //instantiate and throw projectilePrefab forward
+    //        //upon collision
+    //            //if hookable –>
+    //                //if dynamic –> pull to self
+    //                //else –> pull self to
 
 
-        }
+    //    }
 
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-        new public void Start()
-        {
-            MechanicBP = Mechanic.TraversalMechanic;
-            this.slotBP = Slot.RightArm;
-        }
+    //    /// <summary>
+    //    /// Start is called before the first frame update.
+    //    /// </summary>
+    //    new public void Start()
+    //    {
+    //        MechanicBP = Mechanic.TraversalMechanic;
+    //        this.slot = Slot.RightArm;
+    //    }
 
-    }
+    //}
 }

@@ -13,16 +13,6 @@ namespace BionicTraveler.Scripts.World
     public class PlayerEntity : DynamicEntity
     {
         /// <summary>
-        /// Gets or sets the BodyPart to activate with PrimaryBP input.
-        /// </summary>
-        public Bodypart PrimaryBP { get => this.primaryBP; set => this.primaryBP = value; }
-
-        /// <summary>
-        /// Gets or sets the BodyPart to activate with SecondaryBP input.
-        /// </summary>
-        public Bodypart SecondaryBP { get; set; }
-
-        /// <summary>
         /// Gets or sets the Player interaction range.
         /// </summary>
         public float InteractionRange { get; set; } = 1;
@@ -32,7 +22,6 @@ namespace BionicTraveler.Scripts.World
         private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
-        private Bodypart primaryBP;
         private int batteryHealth = 50;
 
         /// <summary>

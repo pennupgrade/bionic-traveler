@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e847b7662e1ee744abb9c856f0d8b2a, type: 3}
-  m_Name: bodypart_test
+  m_Script: {fileID: 11500000, guid: a58f89462cf7247418632e1af327341e, type: 3}
+  m_Name: bodypart_teleportation
   m_EditorClassIdentifier: 
-  attackStrength: 25
+  distance: 5

@@ -15,6 +15,8 @@
         private bool isVisible;
         [SerializeField]
         private float baseSpeed = 1f;
+        private Vector3 direction;
+
 
         /// <summary>
         /// Gets or sets a value indicating whether entity is invincible.
@@ -32,18 +34,65 @@
         public int Health => this.health;
 
         /// <summary>
+        /// Gets or sets the direction for SpriteRenderer/FSM.
+        /// </summary>
+        internal Vector3 Direction
+        {
+            get
+            {
+                return this.direction;
+            }
+
+            set
+            {
+                this.direction = value;
+            }
+        }
+
+        /// <summary>
         /// Add some fixed value to the current health value.
         /// </summary>
-        /// <param name = "amt">The amount of health to be added</param>
+        /// <param name = "amt">The amount of health to be added.</param>
         public void AddHealth(float amt)
         {
             this.health = (int)Math.Min(this.health + amt, this.maxHealth);
         }
 
         /// <summary>
-        /// Decrease the current Health value by some fixed amount
+        /// Sets Direction for this Dynamic Entity.
         /// </summary>
-        /// <param name="amt">The amount of health lost</param>
+        /// <param name="target">Target world position to look at</param>
+        public void SetDirection(Vector3 target)
+        {
+            Vector3 pos = this.gameObject.transform.position;
+            float angle = (Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x));
+            if (angle < 0)
+            {
+                angle += 360;
+            }
+
+            if (angle > 315 || angle < 45)
+            {
+                this.Direction = Vector3.right;
+            }
+            else if (angle < 135)
+            {
+                this.Direction = Vector3.up;
+            }
+            else if (angle < 225)
+            {
+                this.Direction = Vector3.left;
+            }
+            else
+            {
+                this.Direction = Vector3.down;
+            }
+        }
+
+        /// <summary>
+        /// Decrease the current Health value by some fixed amount.
+        /// </summary>
+        /// <param name="amt">The amount of health lost.</param>
         public void LoseHealth(float amt)
         {
             this.health = (int)Math.Max(this.health - amt, 0f);
@@ -72,10 +121,10 @@
         }
 
         /// <summary>
-        /// Move the entity to some specified destination
+        /// Move the entity to some specified destination.
         /// </summary>
-        /// <param name="dest">The Transform of the destination to move to</param>
-        /// <param name="smooth">Whether to use a SmoothStep function for the movement; default false</param>
+        /// <param name="dest">The Transform of the destination to move to.</param>
+        /// <param name="smooth">Whether to use a SmoothStep function for the movement; default false.</param>
         public void MoveTo(Vector3 dest, bool smooth = false)
         {
             StartCoroutine(Movement(dest, smooth));
@@ -119,7 +168,7 @@
         }
 
         /// <summary>
-        /// Hides the entity in the current Scene
+        /// Hides the entity in the current Scene.
         /// </summary>
         public void MakeInvisible()
         {
@@ -127,7 +176,7 @@
         }
 
         /// <summary>
-        /// Shows/Un-hides the entity in the current Scene
+        /// Shows/Un-hides the entity in the current Scene.
         /// </summary>
         public void MakeVisible()
         {
@@ -135,18 +184,18 @@
         }
 
         /// <summary>
-        /// Toggles the visibility state of the entity GameObject in the current Scene
+        /// Toggles the visibility state of the entity GameObject in the current Scene.
         /// </summary>
         public void ToggleVisibility()
         {
             UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(this.gameObject, true);
         }
 
-        // Use this for initialization
+        // Use this for initialization.
         void Start()
         {
-            health = maxHealth;
-            isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(gameObject, true);
+            this.health = this.maxHealth;
+            this.isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(this.gameObject, true);
         }
     }
 }

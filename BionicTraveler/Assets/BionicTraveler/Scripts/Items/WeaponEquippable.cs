@@ -6,7 +6,7 @@
 
     /// <summary>
     /// Links weapon data to an equippable. This is necessary since the Unity Inspector does not
-    /// play nice with interface referneces, so we have to make things slightly more complicated
+    /// play nice with interface references, so we have to make things slightly more complicated
     /// and duplicate the equippable for each weapon data. The advantage is a very clean separation
     /// between weapon data, behavior, item and equippable.
     /// </summary>
@@ -23,7 +23,7 @@
         private ItemData itemDataOverride;
 
         /// <inheritdoc/>
-        public override void Equip(Entity entity)
+        public override void Equip(DynamicEntity entity)
         {
             // Get from entity gameobject.
             CombatBehaviour combatBehavior = null;
@@ -32,7 +32,7 @@
         }
 
         /// <inheritdoc/>
-        public override void Unequip(Entity entity)
+        public override void Unequip(DynamicEntity entity)
         {
             // Get entity inventory and add us back to it!
             var itemData = this.itemDataOverride ?? this.weaponData.ItemData;

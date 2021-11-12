@@ -42,6 +42,11 @@
         /// </summary>
         public MovementState CurrentMovementState => this.moveState;
 
+        /// <summary>
+        /// Gets the last movement input.
+        /// </summary>
+        public Vector2 Movement => this.movement;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -64,6 +69,7 @@
             {
                 //this.animator.SetFloat("LastHorizontal", this.movement.x);
                 //this.animator.SetFloat("LastVertical", this.movement.y);
+                this.gameObject.GetComponent<DynamicEntity>()?.SetDirection(this.rb.position + this.movement);
             }
 
             this.movement.x = Input.GetAxisRaw("Horizontal");
@@ -103,6 +109,7 @@
 
             this.rb.MovePosition(this.rb.position + (currentMovement * currentSpeed *
                 this.movementSpeedFrameMult * Time.fixedDeltaTime));
+
 
             // Reset once per frame settings.
             this.movementSpeedFrameMult = 1.0f;

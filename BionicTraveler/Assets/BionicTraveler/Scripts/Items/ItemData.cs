@@ -7,7 +7,7 @@
     /// <summary>
     /// Describes an item that can be used in the game.
     /// </summary>
-    [CreateAssetMenu(fileName = "MyNewItem", menuName = "Items", order = 0)]
+    [CreateAssetMenu(fileName = "MyNewItem", menuName = "Items/ItemData", order = 0)]
     public class ItemData : ScriptableObject, IEquatable<ItemData>
     {
         [SerializeField]
@@ -133,8 +133,15 @@
             }
             else if (this.type == ItemType.Equippable)
             {
-                // TODO: Select replacement equippable and slot.
-                this.equippable.Equip(entity);
+                if (entity is DynamicEntity dynamicEntity)
+                {
+                    // TODO: Select replacement equippable and slot.
+                    this.equippable.Equip(dynamicEntity);
+                }
+                else
+                {
+                    throw new ArgumentException($"{nameof(entity)} is not a dynamic entity.");
+                }
             }
         }
 
