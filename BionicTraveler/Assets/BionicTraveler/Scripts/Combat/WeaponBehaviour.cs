@@ -9,7 +9,7 @@ namespace BionicTraveler.Scripts.Combat
     /// <summary>
     /// Manages a weapon's behavior with support for starting attacks and switching attack modes.
     /// </summary>
-    public class WeaponBehavior : MonoBehaviour
+    public class WeaponBehaviour : MonoBehaviour
     {
         private bool isUsingPrimaryAttack;
         private GameTime lastPrimaryAttackTime;

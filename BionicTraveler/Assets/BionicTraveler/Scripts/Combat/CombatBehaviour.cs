@@ -11,15 +11,15 @@ namespace BionicTraveler.Scripts.Combat
     /// </summary>
     public class CombatBehaviour : MonoBehaviour
     {
-        private WeaponBehavior weaponBehaviour;
-        private List<WeaponBehavior> dormantWeapons;
+        private WeaponBehaviour weaponBehaviour;
+        private List<WeaponBehaviour> dormantWeapons;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CombatBehaviour"/> class.
         /// </summary>
         public CombatBehaviour()
         {
-            this.dormantWeapons = new List<WeaponBehavior>();
+            this.dormantWeapons = new List<WeaponBehaviour>();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace BionicTraveler.Scripts.Combat
             this.RemoveCurrentWeapon();
 
             // Add new behavior.
-            var newWeapon = this.gameObject.AddComponent<WeaponBehavior>();
+            var newWeapon = this.gameObject.AddComponent<WeaponBehaviour>();
             newWeapon.SetData(weaponData);
             this.weaponBehaviour = newWeapon;
         }
