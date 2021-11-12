@@ -65,7 +65,7 @@
         public void SetDirection(Vector3 target)
         {
             Vector3 pos = this.gameObject.transform.position;
-            float angle = (Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x));
+            float angle = Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x);
             if (angle < 0)
             {
                 angle += 360;
@@ -75,15 +75,15 @@
             {
                 this.Direction = Vector3.right;
             }
-            else if (angle < 135)
+            else if (angle > 45 && angle < 135)
             {
                 this.Direction = Vector3.up;
             }
-            else if (angle < 225)
+            else if (angle > 135 && angle < 225)
             {
                 this.Direction = Vector3.left;
             }
-            else
+            else if (angle > 225 && angle < 315)
             {
                 this.Direction = Vector3.down;
             }

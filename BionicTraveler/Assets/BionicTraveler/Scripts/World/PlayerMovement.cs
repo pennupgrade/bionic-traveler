@@ -70,13 +70,15 @@
                 this.animator.SetFloat("LastHorizontal", this.movement.x);
                 this.animator.SetFloat("LastVertical", this.movement.y);
                 this.gameObject.GetComponent<DynamicEntity>()?.SetDirection(this.rb.position + this.movement);
+                this.animator.SetFloat("Horizontal", this.player.Direction.x);
+                this.animator.SetFloat("Vertical", this.player.Direction.y);
             }
 
             this.movement.x = Input.GetAxisRaw("Horizontal");
             this.movement.y = Input.GetAxisRaw("Vertical");
 
-            this.animator.SetFloat("Horizontal", this.movement.x);
-            this.animator.SetFloat("Vertical", this.movement.y);
+            //this.animator.SetFloat("Horizontal", this.movement.x);
+            //this.animator.SetFloat("Vertical", this.movement.y);
             this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
 
             //Debug.Log(this.movement);
