@@ -1,22 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CameraController : MonoBehaviour
+﻿namespace BionicTraveler.Scripts
 {
-    // Start is called before the first frame update
-    private Transform target;
-    [SerializeField] private float smoothSpeed;
+    using UnityEngine;
 
-    private void Start()
+    /// <summary>
+    /// Main camera controller, makes the camera follow the player.
+    /// </summary>
+    public class CameraController : MonoBehaviour
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        
-    }
+        // Start is called before the first frame update
+        private Transform target;
+        [SerializeField] private float smoothSpeed;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        private void Start()
+        {
+            this.target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            this.transform.position = this.target.position;
+        }
     }
 }

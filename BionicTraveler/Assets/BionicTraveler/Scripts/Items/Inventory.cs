@@ -81,9 +81,6 @@
         /// <returns>A pickup if the item was dropped, null otherwise.</returns>
         public Pickup DropItem(ItemData item)
         {
-            // TODO: We could make the inventory aware of its owner (entity) or pass an entity to calculate
-            // an appropriate drop off position.
-
             // Cannot remove the item is not in inventory.
             if (!this.items.ContainsKey(item))
             {
