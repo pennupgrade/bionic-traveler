@@ -75,9 +75,11 @@
             this.movement.x = Input.GetAxisRaw("Horizontal");
             this.movement.y = Input.GetAxisRaw("Vertical");
 
-            //this.animator.SetFloat("Horizontal", this.movement.x);
-            //this.animator.SetFloat("Vertical", this.movement.y);
-            //this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
+            this.animator.SetFloat("Horizontal", this.movement.x);
+            this.animator.SetFloat("Vertical", this.movement.y);
+            this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
+
+            //Debug.Log(this.movement);
 
             // Note that due to how the blend tree is set up, idle jump will never be transitioned into from movement, so we can update
             // jump regardless (might be cleaner to check for idle prior to updating it in code too?). 
