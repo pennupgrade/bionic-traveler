@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Projectile
   type: 1
-  damage: 5
-  range: 100
-  cooldown: 0
+  damage: 50
+  range: 25
+  cooldown: 1
   freezeDuration: 0
   cost: 0
   reloadTime: 0
@@ -26,7 +26,8 @@ MonoBehaviour:
   areaOfEffect: 0
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   animation: {fileID: 0}
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 1d87dd9827bec844b99314fa1441934f, type: 3}
+  audioClipImpact: {fileID: 8300000, guid: 0dcc480622ab71044b2e0416690e9f15, type: 3}
   projectileSpeed: 25
   projectileDestroyOnImpact: 0
   prefab: {fileID: 4805730280483025284, guid: 5a5dde9270e79614aa55740d88a5afaf, type: 3}
