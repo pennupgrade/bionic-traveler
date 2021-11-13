@@ -1,0 +1,41 @@
+fileFormatVersion: 2
+guid: 24833eccce763174888ad788a06e4329
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Bucket_List-Start_Yolo-0
+  - Bucket_List-Start_Yolo-1
+  - Bucket_List-Start_Yolo-2
+  - Bucket_List-Start_Yolo-3
+  - Bucket_List-Start_Yolo-4
+  - Bucket_List-Start_Yolo-5
+  - Bucket_List-Start_Yolo-6
+  - Bucket_List-Start_Yolo-7
+  - Bucket_List-Start_Yolo-8
+  - Bucket_List-Start_Yolo-9
+  - Bucket_List-End-10
+  - Bucket_List-Backstory-11
+  - Bucket_List-Backstory-12
+  - Bucket_List-Backstory-13
+  - Bucket_List-Backstory-14
+  - Bucket_List-Backstory-15
+  - Bucket_List-Backstory-16
+  - Bucket_List-Backstory-17
+  - Bucket_List-Backstory-18
+  - Bucket_List-Backstory-19
+  - Bucket_List-Backstory-20
+  - Bucket_List-Backstory-21
+  - Bucket_List-Backstory-22
+  - Bucket_List-Backstory-23
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 24833eccce763174888ad788a06e4329, type: 3}
+  localizations: []

@@ -18,6 +18,7 @@ namespace BionicTraveler.Scripts.Interaction
         public virtual void OnInteract(GameObject obj)
         {
             Debug.Log("NPC has been interacted by " + obj.name);
+            this.runner = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueRunner>();
             this.runner.StartDialogue(this.dialogueStartNode);
         }
     }

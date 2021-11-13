@@ -13,12 +13,12 @@
         /// Equips an equippable item.
         /// </summary>
         /// <param name="entity">The entity that equips the item.</param>
-        public abstract void Equip(Entity entity);
+        public abstract void Equip(DynamicEntity entity);
 
         /// <summary>
         /// Unequips an equippable item.
         /// </summary>
         /// <param name="entity">The entity that unequips the item.</param>
-        public abstract void Unequip(Entity entity);
+        public abstract void Unequip(DynamicEntity entity);
     }
 }

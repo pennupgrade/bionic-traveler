@@ -2,6 +2,7 @@ namespace BionicTraveler.Scripts.Combat
 {
     using System;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -24,6 +25,11 @@ namespace BionicTraveler.Scripts.Combat
         public bool HasBeenDisposed { get; private set; }
 
         /// <summary>
+        /// Gets the owner of the attack.
+        /// </summary>
+        protected DynamicEntity Owner { get; private set; }
+
+        /// <summary>
         /// Sets the attack data. Should only be used once. Since Unity does not allow constructors
         /// for GameObjects we have to make do with this.
         /// </summary>
@@ -36,6 +42,14 @@ namespace BionicTraveler.Scripts.Combat
             }
 
             this.AttackData = attackData ?? throw new ArgumentNullException(nameof(attackData));
+        }
+
+        /// <summary>
+        /// Called when the attack was just started. By default, moves the attack to the owner's position.
+        /// </summary>
+        public virtual void OnAttackStarted()
+        {
+            this.transform.position = this.Owner.transform.position;
         }
 
         /// <summary>
@@ -67,20 +81,33 @@ namespace BionicTraveler.Scripts.Combat
         public abstract bool HasFinished();
 
         /// <summary>
+        /// Returns whether audio should be played on attack impact.
+        /// </summary>
+        /// <returns>A value indicating whether audio should be played.</returns>
+        public virtual bool ShouldPlayImpactAudio()
+        {
+            return true;
+        }
+
+        /// <summary>
         /// Cleans up any remaining attack resources.
         /// </summary>
         public abstract void Dispose();
 
         /// <summary>
-        /// Starts the attack.
+        ///  /// Starts the attack.
         /// First calls <see cref="GetTargets"/> to get nearby targets.
         /// Then calls <see cref="IsValidTarget(Entity)"/> on all targets to determine whether they can be attacked.
         /// Lastly, calls <see cref="AttackTargets(Entity[])"/> to execute the attack.
         /// Continues every tick until attack has finished.
         /// </summary>
-        public void StartAttack()
+        /// <param name="owner">The owner.</param>
+        public void StartAttack(DynamicEntity owner)
         {
+            this.Owner = owner;
             this.isRunning = true;
+            this.OnAttackStarted();
+            this.PlayAttackAudio();
             this.ExecuteAttack();
         }
 
@@ -113,7 +140,36 @@ namespace BionicTraveler.Scripts.Combat
                 this.Dispose();
                 this.isRunning = false;
                 this.HasBeenDisposed = true;
+
+                // Play impact audio if need be.
+                if (this.ShouldPlayImpactAudio())
+                {
+                    this.PlayImpactAudio();
+                }
+
+                if (this.AttackData.Prefab != null)
+                {
+                    Destroy(this.gameObject);
+                    Debug.Log($"Attack::ExecuteAttack: Freed prefab object");
+                }
+
                 Destroy(this);
+            }
+        }
+
+        private void PlayAttackAudio()
+        {
+            if (this.AttackData.AudioClip != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.AttackData.AudioClip);
+            }
+        }
+
+        private void PlayImpactAudio()
+        {
+            if (this.AttackData.AudioClipImpact != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.AttackData.AudioClipImpact);
             }
         }
 

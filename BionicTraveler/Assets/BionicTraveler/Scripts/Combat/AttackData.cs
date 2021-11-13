@@ -64,6 +64,14 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("Animation of the attack.")]
         private Animation animation;
 
+        [SerializeField]
+        [Tooltip("Audio of the attack.")]
+        private AudioClip audioClip;
+
+        [SerializeField]
+        [Tooltip("Audio of the attack impact.")]
+        private AudioClip audioClipImpact;
+
         // Projectile data, perhaps move to separate ProjectileData at some point. TODO: Evaluate.
         [SerializeField]
         [Tooltip("Speed of the projectile that the weapon ejects.")]
@@ -72,6 +80,10 @@ namespace BionicTraveler.Scripts.Combat
         [SerializeField]
         [Tooltip("Should the projectile entity get destroyed on hit or not.")]
         private bool projectileDestroyOnImpact;
+
+        [SerializeField]
+        [Tooltip("The attack prefab, if any.")]
+        private Attack prefab;
 
         /// <summary>
         /// Gets the display name of the attack.
@@ -144,6 +156,16 @@ namespace BionicTraveler.Scripts.Combat
         public Animation Animation => this.animation;
 
         /// <summary>
+        /// Gets the audio this attack uses.
+        /// </summary>
+        public AudioClip AudioClip => this.audioClip;
+
+        /// <summary>
+        /// Gets the audio this attack uses on impact.
+        /// </summary>
+        public AudioClip AudioClipImpact => this.audioClipImpact;
+
+        /// <summary>
         /// Gets the speed of the projectile.
         /// </summary>
         public float ProjectileSpeed => this.projectileSpeed;
@@ -152,6 +174,11 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets a value indicating whether the projectile gets destroyed on impact.
         /// </summary>
         public bool ProjectileDestroyOnImpact => this.projectileDestroyOnImpact;
+
+        /// <summary>
+        /// Gets the prefab, if any.
+        /// </summary>
+        public Attack Prefab => this.prefab;
 
         /// <summary>
         /// Calculates the attack's base damage. Currently just returns <see cref="this.Damage"/>.

@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: ff4bcfb9ebe31db4fa85a67a5f88645b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Best Friend-Start-0
+  - Best Friend-Start-1
+  - Best Friend-Start-2
+  - Best Friend-Huh-3
+  - Best Friend-Huh-4
+  - Best Friend-Huh-5
+  - Best Friend-Huh-6
+  - Best Friend-Hint-7
+  - Best Friend-Hint-8
+  - Best Friend-Hint-9
+  - Best Friend-Hint-10
+  - Best Friend-Hint-11
+  - Best Friend-End-12
+  - Best Friend-End-13
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: ff4bcfb9ebe31db4fa85a67a5f88645b, type: 3}
+  localizations: []

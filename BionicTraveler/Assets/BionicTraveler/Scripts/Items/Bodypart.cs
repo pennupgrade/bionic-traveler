@@ -1,74 +1,67 @@
 namespace BionicTraveler.Scripts.Items
 {
+    using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
-    /// Please document me.
+    /// Describes a bodypart slot.
     /// </summary>
-    public abstract class Bodypart
+    public enum BodypartSlot
     {
-        [SerializeField]
-        private PlayerEntity player;
-
-        [SerializeField]
-        protected Slot slotBP;
-        private ItemData ItemBP;
-        internal Mechanic MechanicBP;
-
-        public PlayerEntity Player => this.player;
-
-        public Slot SlotBP => this.slotBP;
-
-        private void SetPrimary()
-        {
-            this.player.PrimaryBP = this;
-        }
-
-        private void SetSecondary()
-        {
-            this.player.SecondaryBP = this;
-        }
-
-        public abstract void ActivateAbility();
-
-
-        public Mechanic GetMechanicType()
-        {
-            return MechanicBP;
-        }
-
-        public enum Mechanic
-        {
-            TraversalMechanic,
-            AttackMechanic
-        }
-
-
-        public Slot GetSlot()
-        {
-            return this.slotBP;
-        }
+        /// <summary>
+        /// The right arm.
+        /// </summary>
+        RightArm,
 
         /// <summary>
-        /// Start is called before the first frame update.
+        /// The left arm.
         /// </summary>
-        public void Start()
-        {
-        }
+        LeftArm,
 
         /// <summary>
-        /// Update is called once per frame.
+        /// The legs.
         /// </summary>
-        public void Update()
-        {
-        }
+        Legs,
     }
 
-    public enum Slot
+    /// <summary>
+    /// The base class for all bodyparts.
+    /// </summary>
+    public abstract class Bodypart : Equippable
     {
-        RightArm,
-        LeftArm,
-        Legs
+        protected DynamicEntity Owner { get; private set; }
+
+        /// <summary>
+        /// Gets the player.
+        /// </summary>
+        public DynamicEntity Player => this.Owner;
+
+        /// <summary>
+        /// Gets the slot this bodypart can be equipped in.
+        /// </summary>
+        public abstract BodypartSlot Slot { get; }
+
+        /// <summary>
+        /// Activates the bodypart's ability.
+        /// </summary>
+        public abstract void ActivateAbility();
+
+        /// <inheritdoc/>
+        public override void Equip(DynamicEntity entity)
+        {
+            // TODO: For now, we immediately set it as a bodypart.
+            var bodypartBehavior = entity.gameObject.GetComponent<BodypartBehaviour>();
+            if (bodypartBehavior != null && bodypartBehavior.EquipBodypart(this))
+            {
+                this.Owner = entity ?? throw new System.ArgumentNullException(nameof(entity));
+            }
+        }
+
+        /// <inheritdoc/>
+        public override void Unequip(DynamicEntity entity)
+        {
+            this.Owner = null;
+        }
     }
 }
