@@ -152,7 +152,7 @@
         /// <summary>
         /// Sets the entity's health to 0 and kills it.
         /// </summary>
-        public void Kill()
+        public virtual void Kill()
         {
             Debug.Log("Implement proper dying");
             this.health = 0;
