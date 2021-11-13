@@ -45,7 +45,11 @@ namespace BionicTraveler.Scripts.Combat
             {
                 foreach (var target in targets)
                 {
-                    target.OnHit(this);
+                    // TODO: Make friendlies react to being hit.
+                    if (target.tag == "Enemy")
+                    {
+                        target.OnHit(this);
+                    }
                 }
 
                 this.hasImpacted = true;
