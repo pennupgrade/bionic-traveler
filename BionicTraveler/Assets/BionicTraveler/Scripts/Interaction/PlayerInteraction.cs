@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Interaction
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
@@ -10,22 +11,31 @@ namespace BionicTraveler.Scripts.Interaction
         [SerializeField]
         private float interactionRadius = 1f;
 
-        private void FixedUpdate()
+        private void Update()
         {
-            if (Input.GetAxis("Interact") > 0)
+            if (Input.GetButtonDown("Interact"))
             {
                 this.CheckForInteraction();
             }
         }
 
         private void CheckForInteraction()
+
         {
             var position = this.transform.position;
-            RaycastHit2D hit = Physics2D.CircleCast(position, this.interactionRadius, Vector2.zero);
+            var hits = new List<RaycastHit2D>();
+            var contactFilter = default(ContactFilter2D);
+            int resultsNo = Physics2D.CircleCast(position, this.interactionRadius, Vector2.zero, contactFilter, hits);
 
-            if (hit.collider != null)
+            if (resultsNo > 0)
             {
-                this.Interact(hit.collider.gameObject);
+                foreach (var result in hits)
+                {
+                    if (result.collider != null)
+                    {
+                        this.Interact(result.collider.gameObject);
+                    }
+                }
             }
         }
 

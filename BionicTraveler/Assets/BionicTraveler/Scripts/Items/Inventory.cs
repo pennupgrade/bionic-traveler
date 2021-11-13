@@ -1,5 +1,6 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Scripts.World;
@@ -40,17 +41,20 @@
         /// Adds <see cref="Item"/> to the inventory.
         /// </summary>
         /// <param name="item">Item to insert.</param>
-        public void AddItem(ItemData item)
+        ///<returns>True if the item was added to the inventory, false otherwise.</returns>
+        public bool AddItem(ItemData item)
         {
             Debug.Log("Inventory received item");
             if (this.items.ContainsKey(item))
             {
-                this.items[item].Add(1);
+                return this.items[item].Add(1);
             }
             else
             {
                 this.items[item] = new InventoryItem(item);
             }
+
+            return true;
         }
 
         /// <summary>
@@ -77,24 +81,37 @@
         /// Drops <see cref="item"/>.
         /// </summary>
         /// <param name="item">Item to remove.</param>
-        /// <param name="position">Position to drop the item.</param>
         /// <returns>A pickup if the item was dropped, null otherwise.</returns>
-        public Pickup DropItem(ItemData item, Vector3 position)
+        public Pickup DropItem(ItemData item)
         {
-            // TODO: We could make the inventory aware of its owner (entity) or pass an entity to calculate
-            // an appropriate drop off position.
-
             // Cannot remove the item is not in inventory.
             if (!this.items.ContainsKey(item))
             {
-                // TODO: Maybe throw exception?
-                return null;
+                throw new ArgumentException("Item is not in inventory.");
             }
 
             this.Remove(item);
-            return item.CreatePickup(position);
+
+            // Create pickup.
+            return PickupCreator.SpawnPickup(this.owner.transform.position + (this.owner.Direction * 2.0f), item);
         }
 
+        /// <summary>
+        /// Drops all items in our inventory.
+        /// </summary>
+        /// <returns>An array of pickups.</returns>
+        public Pickup[] DropAll()
+        {
+            List<Pickup> pickups = new List<Pickup>();
+            foreach (var item in this.items.ToArray())
+            {
+                var offset = new Vector3(UnityEngine.Random.Range(-0.8f, 0.8f), UnityEngine.Random.Range(-0.8f, 0.8f), this.owner.transform.position.z);
+                pickups.Add(PickupCreator.SpawnPickup(this.owner.transform.position + offset, item.Key));
+                this.Remove(item.Key);
+            }
+
+            return pickups.ToArray();
+        }
 
         /// <summary>
         /// Removes a given item from the inventory.

@@ -1,6 +1,6 @@
 namespace BionicTraveler.Scripts.World
 {
-    using System;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
@@ -18,8 +18,10 @@ namespace BionicTraveler.Scripts.World
         [SerializeField]
         private bool keepSyncedWithTemplate;
 
-        // This is just a placeholder until we have an actual player entity.
-        private Transform player;
+        [Tooltip("The sound to play when the item is being picked up.")]
+        [SerializeField]
+        private AudioClip pickupSound;
+
         private float pickUpRange;
         private bool hasBeenPickedUp;
 
@@ -35,14 +37,30 @@ namespace BionicTraveler.Scripts.World
         public ItemData ItemData => this.itemData;
 
         /// <summary>
+        /// Gets the pick up range.
+        /// </summary>
+        public float PickUpRange => this.pickUpRange;
+
+        /// <summary>
         /// Gets a value indicating whether this Pickup has been collected.
         /// </summary>
         public bool HasBeenPickedUp => this.hasBeenPickedUp;
 
         // Awake is called when the script instance is being loaded.
-        private void Awake()
+        private void Start()
         {
-            this.pickUpRange = this.itemData.PickupRange;
+            Debug.Log("calling start for new pickup, " + this.ItemData);
+            this.pickUpRange = this.ItemData.PickupRange;
+        }
+
+        /// <summary>
+        /// Sets the associated item from code and updates all properties based on the template.
+        /// </summary>
+        /// <param name="itemData">The item.</param>
+        public void SetItemData(ItemData itemData)
+        {
+            this.itemData = itemData;
+            this.InitializeFromTemplate();
         }
 
         /// <summary>
@@ -62,17 +80,31 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
-        internal void PickUp(DynamicEntity entity)
+        /// <summary>
+        /// Picks up this pickup and adds it to the inventory of the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity that picked up this pickup.</param>
+        public void PickUp(DynamicEntity entity)
         {
-            Debug.Log("item has been picked up");
-            this.hasBeenPickedUp = true;
-            entity.Inventory.AddItem(this.itemData);
+            if (entity.Inventory.AddItem(this.itemData))
+            {
+                Debug.Log("Item has been picked up");
+                this.hasBeenPickedUp = true;
 
-            // TODO: We should destroy ourselves at some point once we have been picked up.
-            // But it might be useful for other scripts to be able to ask us if we have been picked up.
-            // Maybe use an event system?
-            this.gameObject.SetActive(false);
+                if (this.pickupSound != null)
+                {
+                    AudioManager.Instance.PlayOneShot(this.pickupSound);
+                }
+                else
+                {
+                    Debug.LogWarning("Pickup::Pickup: No pickup sound configured!");
+                }
 
+                // TODO: We should destroy ourselves at some point once we have been picked up.
+                // But it might be useful for other scripts to be able to ask us if we have been picked up.
+                // Maybe use an event system?
+                this.gameObject.SetActive(false);
+            }
         }
 
         /// <summary>

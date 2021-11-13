@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.World
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.Items;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -12,26 +13,15 @@ namespace BionicTraveler.Scripts.World
     public class PlayerEntity : DynamicEntity
     {
         /// <summary>
-        /// Gets or sets the BodyPart to activate with PrimaryBP input.
-        /// </summary>
-        public Bodypart PrimaryBP { get => this.primaryBP; set => this.primaryBP = value; }
-
-        /// <summary>
-        /// Gets or sets the BodyPart to activate with SecondaryBP input.
-        /// </summary>
-        public Bodypart SecondaryBP { get; set; }
-
-        /// <summary>
         /// Gets or sets the Player interaction range.
         /// </summary>
         public float InteractionRange { get; set; } = 1;
 
         // TODO: Uncomment these after merging Combat classes
-        private CombatBehavior PrimaryWeapon;
-        //private Weapon SecondaryWeapon;
+        private CombatBehaviour PrimaryWeapon;
+        private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
-        private Bodypart primaryBP;
         private int batteryHealth = 50;
 
         /// <summary>
@@ -70,9 +60,12 @@ namespace BionicTraveler.Scripts.World
                 pickup.transform.position,
                 this.transform.position) < this.InteractionRange).ToArray();
 
-            foreach (var a in pickups)
+            foreach (var pickup in pickups)
             {
-                a.PickUp(this);
+                if (pickup.transform.DistanceTo(pickup.transform) < pickup.PickUpRange)
+                {
+                    pickup.PickUp(this);
+                }
             }
 
             //press key to show inventory data
@@ -88,6 +81,11 @@ namespace BionicTraveler.Scripts.World
                 {
                     this.Inventory.Use(item);
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.O) && this.Inventory.Items.Count > 0)
+            {
+                var item = this.Inventory.DropItem(this.Inventory.Items.First().ItemData);
             }
         }
 

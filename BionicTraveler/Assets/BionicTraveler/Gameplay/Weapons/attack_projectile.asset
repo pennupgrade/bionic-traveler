@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f703dca8571e1a049896eaa27acef399, type: 3}
+  m_Name: attack_projectile
+  m_EditorClassIdentifier: 
+  displayName: Projectile
+  type: 1
+  damage: 50
+  range: 25
+  cooldown: 1
+  freezeDuration: 0
+  cost: 0
+  reloadTime: 0
+  maxAmmo: 0
+  clipSize: 0
+  fovAngle: 0
+  areaOfEffect: 0
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  animation: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 1d87dd9827bec844b99314fa1441934f, type: 3}
+  audioClipImpact: {fileID: 8300000, guid: 02ffb1a03b33bc542a35b40b28692510, type: 3}
+  projectileSpeed: 25
+  projectileDestroyOnImpact: 0
+  prefab: {fileID: 4805730280483025284, guid: 5a5dde9270e79614aa55740d88a5afaf, type: 3}

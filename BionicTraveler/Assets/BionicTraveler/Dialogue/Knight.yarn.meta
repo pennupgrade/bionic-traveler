@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 4196c64ee633d5a40827b53f01031e4a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Knight-Start-0
+  - Knight-Start-1
+  - Knight-Start-2
+  - Knight-Start-3
+  - Knight-Start-4
+  - Knight-Start-5
+  - Knight-Start-6
+  - Knight-Start-7
+  - Knight-Start-8
+  - Knight-Start-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

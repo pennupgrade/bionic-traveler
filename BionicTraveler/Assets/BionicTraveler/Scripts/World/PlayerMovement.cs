@@ -1,5 +1,8 @@
 ﻿namespace BionicTraveler.Scripts.World
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using BionicTraveler.Scripts.Audio;
     using UnityEngine;
 
     /// <summary>
@@ -8,14 +11,20 @@
     public enum MovementState
     {
         /// <summary>
-        /// Normal movement.
+        /// Idle state
         /// </summary>
-        Normal,
+        Idle = 0,
 
         /// <summary>
-        /// Traversal movement.
+        /// Running state
         /// </summary>
-        Traverse,
+        Running = 1,
+
+        /// <summary>
+        /// Dashing state
+        /// </summary>
+        Dashing = 2,
+        Slashing = 3,
     }
 
     /// <summary>
@@ -33,66 +42,127 @@
         private Rigidbody2D rb;
         [SerializeField]
         private Animator animator;
+        [SerializeField]
+        private AudioClip dashSound;
 
         private Vector2 movement;
         private PlayerEntity player;
+
+        [SerializeField]
+        [Tooltip("How long the dash is on cooldown before being usable again")]
+        private float dashCooldown = 5;
+
+        private bool dashAvailable = true;
+        private bool slashAvailable = true;
+
+        [SerializeField]
+        [Tooltip("How long the slash is on cooldown before being usable again")]
+        private float slashCooldown = .5f;
 
         /// <summary>
         /// Gets the current movement state.
         /// </summary>
         public MovementState CurrentMovementState => this.moveState;
 
+        /// <summary>
+        /// Gets the last movement input.
+        /// </summary>
+        public Vector2 Movement => this.movement;
+
         // Start is called before the first frame update
         private void Start()
         {
             this.player = this.gameObject.GetComponent<PlayerEntity>();
-            this.moveState = MovementState.Normal;
+            this.moveState = MovementState.Idle;
         }
 
         // Update is called once per frame
         private void Update()
         {
+
             if (this.player.IsStunned)
             {
                 return;
             }
 
-            // Reset state.
-            this.moveState = MovementState.Normal;
+            //Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).ToString());
+            
+
+            if (Input.GetButtonDown("Dash"))
+            {
+                if (dashAvailable)
+                {
+                    // Dashing!
+                    this.movementSpeedFrameMult = 15f;
+                    AudioManager.Instance.PlayOneShot(this.dashSound);
+                    this.StartCoroutine(this.DashController(this.dashCooldown));
+                }
+                else
+                {
+                    Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
+                }
+            }
+            
 
             if (this.movement != Vector2.zero)
             {
-                //this.animator.SetFloat("LastHorizontal", this.movement.x);
-                //this.animator.SetFloat("LastVertical", this.movement.y);
+                this.gameObject.GetComponent<DynamicEntity>()?.SetDirection(this.rb.position + this.movement);
+                this.animator.SetFloat("Horizontal", this.player.Direction.x);
+                this.animator.SetFloat("Vertical", this.player.Direction.y);
+                this.moveState = (this.movementSpeedFrameMult == 1) ? MovementState.Running : MovementState.Dashing;
+            }
+            else
+            {
+                this.moveState = MovementState.Idle;
+            }
+
+            if (Input.GetButtonDown("Slash1"))
+            {
+                if (slashAvailable)
+                {
+                    //Slashing!
+                    this.StartCoroutine(SlashController(this.slashCooldown));
+                    this.moveState = MovementState.Slashing;
+                }
             }
 
             this.movement.x = Input.GetAxisRaw("Horizontal");
             this.movement.y = Input.GetAxisRaw("Vertical");
 
-            //this.animator.SetFloat("Horizontal", this.movement.x);
-            //this.animator.SetFloat("Vertical", this.movement.y);
-            //this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
+            this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
 
             // Note that due to how the blend tree is set up, idle jump will never be transitioned into from movement, so we can update
-            // jump regardless (might be cleaner to check for idle prior to updating it in code too?). 
-            var isJumping = Input.GetButtonDown("Jump");
+            // jump regardless (might be cleaner to check for idle prior to updating it in code too?).
+            //var isJumping = Input.GetButtonDown("Jump");
             var isIdle = this.movement == Vector2.zero;
-            if (isJumping)
-            {
-                if (isIdle)
-                {
-                    // Reset direction to down. This is our player idle jump.
-                    //this.animator.SetFloat("LastHorizontal", 0);
-                    //this.animator.SetFloat("LastVertical", -1);
-                }
-                else
-                {
-                    // Dashing!
-                    this.movementSpeedFrameMult = 7.5f;
-                }
-            }
+            //if (isJumping)
 
+            this.animator.SetInteger("MovementState", (int)this.moveState);
             //this.animator.SetBool("IsJumping", isJumping);
+        }
+
+        private IEnumerator DashController(float seconds)
+        {
+            this.dashAvailable = false;
+            var elapsed = 0f;
+            while (elapsed < seconds)
+            {
+                elapsed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            this.dashAvailable = true;
+        }
+
+        private IEnumerator SlashController(float seconds)
+        {
+            this.slashAvailable = false;
+            var elapsed = 0f;
+            while (elapsed < seconds)
+            {
+                elapsed += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            this.slashAvailable = true;
         }
 
         private void FixedUpdate()
@@ -104,8 +174,13 @@
             this.rb.MovePosition(this.rb.position + (currentMovement * currentSpeed *
                 this.movementSpeedFrameMult * Time.fixedDeltaTime));
 
+
             // Reset once per frame settings.
-            this.movementSpeedFrameMult = 1.0f;
+            //this.movementSpeedFrameMult = 1.0f;
+            if (!this.animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
+            {
+                this.movementSpeedFrameMult = 1f;
+            }
         }
     }
 }

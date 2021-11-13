@@ -9,9 +9,12 @@
     /// </summary>
     public class DynamicEntity : Entity
     {
-        private Vector3 direction;
         private Vector3 velocity;
         private bool stunned;
+
+        [SerializeField]
+        [TooltipAttribute("The items to drop.")]
+        private LootTable loot;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicEntity"/> class.
@@ -27,11 +30,6 @@
         public Inventory Inventory { get; }
 
         /// <summary>
-        /// Gets or sets direction for SpriteRenderer/FSM.
-        /// </summary>
-        internal Vector3 Direction { get => this.direction; set => this.direction = value; }
-
-        /// <summary>
         /// Gets or sets velocity.
         /// </summary>
         internal Vector3 Velocity { get => this.velocity; set => this.velocity = value; }
@@ -40,6 +38,17 @@
         /// Gets or sets a value indicating whether entity is stunned.
         /// </summary>
         internal bool IsStunned { get => this.stunned; set => this.stunned = value; }
+
+        private void Awake()
+        {
+            if (this.loot != null)
+            {
+                foreach (var item in this.loot.Items)
+                {
+                    this.Inventory.AddItem(item);
+                }
+            }
+        }
 
         /// <summary>
         /// Function for moving a dynamic entity to a target position.
@@ -51,32 +60,6 @@
 
             base.MoveTo(target, smooth);
 
-        }
-
-        /// <summary>
-        /// Sets Direction for this Dynamic Entity.
-        /// </summary>
-        /// <param name="target">Target world position to look at</param>
-        public void SetDirection(Vector3 target)
-        {
-            Vector3 pos = this.gameObject.transform.position;
-            float angle = Mathf.Rad2Deg * Mathf.Atan2(target.y - pos.y, target.x - pos.x);
-            if (angle > 315 || angle < 45)
-            {
-                this.Direction = Vector3.right;
-            }
-            else if (angle < 135)
-            {
-                this.Direction = Vector3.up;
-            }
-            else if (angle < 225)
-            {
-                this.Direction = Vector3.left;
-            }
-            else
-            {
-                this.Direction = Vector3.down;
-            }
         }
 
         /// <summary>
@@ -109,6 +92,13 @@
             this.IsStunned = true;
             yield return new WaitForSeconds(ms / 1000f);
             this.IsStunned = false;
+        }
+
+        /// <inheritdoc/>
+        public override void Kill()
+        {
+            var item = this.Inventory.DropAll();
+            base.Kill();
         }
     }
 }

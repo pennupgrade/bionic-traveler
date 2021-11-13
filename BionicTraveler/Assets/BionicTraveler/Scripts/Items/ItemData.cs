@@ -1,14 +1,15 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
     using System;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
     /// Describes an item that can be used in the game.
     /// </summary>
-    [CreateAssetMenu(fileName = "MyNewItem", menuName = "Items", order = 0)]
-    public class ItemData : ScriptableObject, IEquatable<ItemData>
+    [CreateAssetMenu(fileName = "MyNewItem", menuName = "Items/ItemData", order = 0)]
+    public class ItemData : ScriptableObject, IEquatable<ItemData>, IComparable<ItemData>
     {
         [SerializeField]
         [Tooltip("The unique internal identifier of the item. This can be used by scripts to query item information.")]
@@ -49,6 +50,10 @@
         [SerializeReference]
         [Tooltip("The equippable used when this item is interacted with in the inventory.")]
         private Equippable equippable;
+
+        [SerializeField]
+        [Tooltip("The audio playing when using this item.")]
+        private AudioClip useAudio;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemData"/> class.
@@ -130,11 +135,28 @@
             if (this.type == ItemType.Consumable)
             {
                 this.consumable.Use(entity);
+                this.PlayUseAudio();
             }
             else if (this.type == ItemType.Equippable)
             {
-                // TODO: Select replacement equippable and slot.
-                this.equippable.Equip(entity);
+                if (entity is DynamicEntity dynamicEntity)
+                {
+                    // TODO: Select replacement equippable and slot.
+                    this.equippable.Equip(dynamicEntity);
+                    this.PlayUseAudio();
+                }
+                else
+                {
+                    throw new ArgumentException($"{nameof(entity)} is not a dynamic entity.");
+                }
+            }
+        }
+
+        private void PlayUseAudio()
+        {
+            if (this.useAudio != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.useAudio);
             }
         }
 
@@ -172,6 +194,12 @@
             }
 
             return this.id.GetHashCode();
+        }
+
+        /// <inheritdoc/>
+        public int CompareTo(ItemData other)
+        {
+            return this.name.CompareTo(other.name);
         }
     }
 }
