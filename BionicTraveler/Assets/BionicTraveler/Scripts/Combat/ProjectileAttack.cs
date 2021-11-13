@@ -11,12 +11,23 @@ namespace BionicTraveler.Scripts.Combat
         private bool hasImpacted;
         private Entity hitEntity;
         private bool hasCollidedWithOwner;
+        private Vector3 startDirection;
+        private Vector3 startingPosition;
 
         /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
             // Hit entity is read from collision event.
             return this.hitEntity != null ? new Entity[] { this.hitEntity } : new Entity[0];
+        }
+
+        public override void OnAttackStarted()
+        {
+            // Put attack at player position when we start.
+            base.OnAttackStarted();
+
+            this.startDirection = this.Owner.Direction;
+            Debug.Log(this.startDirection);
         }
 
         /// <inheritdoc/>
@@ -74,6 +85,12 @@ namespace BionicTraveler.Scripts.Combat
                 this.hasCollidedWithOwner = true;
                 return;
             }
+        }
+
+        private void FixedUpdate()
+        {
+            this.gameObject.transform.position = this.gameObject.transform.position +
+                (this.startDirection * this.AttackData.ProjectileSpeed * Time.deltaTime);
         }
     }
 }
