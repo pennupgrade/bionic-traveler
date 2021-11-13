@@ -81,6 +81,15 @@ namespace BionicTraveler.Scripts.Combat
         public abstract bool HasFinished();
 
         /// <summary>
+        /// Returns whether audio should be played on attack impact.
+        /// </summary>
+        /// <returns>A value indicating whether audio should be played.</returns>
+        public virtual bool ShouldPlayImpactAudio()
+        {
+            return true;
+        }
+
+        /// <summary>
         /// Cleans up any remaining attack resources.
         /// </summary>
         public abstract void Dispose();
@@ -98,6 +107,7 @@ namespace BionicTraveler.Scripts.Combat
             this.Owner = owner;
             this.isRunning = true;
             this.OnAttackStarted();
+            this.PlayAttackAudio();
             this.ExecuteAttack();
         }
 
@@ -123,7 +133,6 @@ namespace BionicTraveler.Scripts.Combat
 
             Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
             this.AttackTargets(validTargets.ToArray());
-            this.PlayAttackAudio();
             Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
             if (this.HasFinished())
             {
@@ -131,6 +140,12 @@ namespace BionicTraveler.Scripts.Combat
                 this.Dispose();
                 this.isRunning = false;
                 this.HasBeenDisposed = true;
+
+                // Play impact audio if need be.
+                if (this.ShouldPlayImpactAudio())
+                {
+                    this.PlayImpactAudio();
+                }
 
                 if (this.AttackData.Prefab != null)
                 {
@@ -147,7 +162,14 @@ namespace BionicTraveler.Scripts.Combat
             if (this.AttackData.AudioClip != null)
             {
                 AudioManager.Instance.PlayOneShot(this.AttackData.AudioClip);
-                Debug.Log("aud");
+            }
+        }
+
+        private void PlayImpactAudio()
+        {
+            if (this.AttackData.AudioClipImpact != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.AttackData.AudioClipImpact);
             }
         }
 

@@ -9,10 +9,11 @@ namespace BionicTraveler.Scripts.Combat
     public class ProjectileAttack : Attack
     {
         private bool hasImpacted;
+        private bool isOutOfRange;
         private Entity hitEntity;
         private bool hasCollidedWithOwner;
         private Vector3 startDirection;
-        private Vector3 startingPosition;
+        private Vector3 startPosition;
 
         /// <inheritdoc/>
         public override Entity[] GetTargets()
@@ -21,13 +22,20 @@ namespace BionicTraveler.Scripts.Combat
             return this.hitEntity != null ? new Entity[] { this.hitEntity } : new Entity[0];
         }
 
+        /// <inheritdoc/>
         public override void OnAttackStarted()
         {
             // Put attack at player position when we start.
             base.OnAttackStarted();
 
             this.startDirection = this.Owner.Direction;
-            Debug.Log(this.startDirection);
+            this.startPosition = this.transform.position;
+        }
+
+        /// <inheritdoc/>
+        public override bool ShouldPlayImpactAudio()
+        {
+            return !this.isOutOfRange;
         }
 
         /// <inheritdoc/>
@@ -47,7 +55,7 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override bool HasFinished()
         {
-            return this.hasImpacted;
+            return this.hasImpacted || this.isOutOfRange;
         }
 
         /// <inheritdoc/>
@@ -91,6 +99,13 @@ namespace BionicTraveler.Scripts.Combat
         {
             this.gameObject.transform.position = this.gameObject.transform.position +
                 (this.startDirection * this.AttackData.ProjectileSpeed * Time.deltaTime);
+
+            // If we are too far away from our starting position, finish the attack.
+            var currentDistance = Vector3.Distance(this.transform.position, this.startPosition);
+            if (currentDistance > this.AttackData.Range)
+            {
+                this.isOutOfRange = true;
+            }
         }
     }
 }
