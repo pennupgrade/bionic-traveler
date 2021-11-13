@@ -1,0 +1,41 @@
+fileFormatVersion: 2
+guid: 154513dd9ef557841bd621439e28147f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Bucket List-Start-0
+  - Bucket List-Start-1
+  - Bucket List-Start-2
+  - Bucket List-Start-3
+  - Bucket List-Start-4
+  - Bucket List-Start-5
+  - Bucket List-Start-6
+  - Bucket List-Start-7
+  - Bucket List-Start-8
+  - Bucket List-Start-9
+  - Bucket List-End-10
+  - Bucket List-Backstory-11
+  - Bucket List-Backstory-12
+  - Bucket List-Backstory-13
+  - Bucket List-Backstory-14
+  - Bucket List-Backstory-15
+  - Bucket List-Backstory-16
+  - Bucket List-Backstory-17
+  - Bucket List-Backstory-18
+  - Bucket List-Backstory-19
+  - Bucket List-Backstory-20
+  - Bucket List-Backstory-21
+  - Bucket List-Backstory-22
+  - Bucket List-Backstory-23
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

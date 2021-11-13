@@ -20,6 +20,7 @@ namespace BionicTraveler.Scripts.Interaction
         }
 
         private void CheckForInteraction()
+
         {
             var position = this.transform.position;
             var hits = new List<RaycastHit2D>();
