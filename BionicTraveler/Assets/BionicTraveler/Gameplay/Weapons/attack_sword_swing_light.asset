@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Sword Swing (Light)
   type: 0
-  damage: 10
+  damage: 50
   range: 5
-  cooldown: 5.1
+  cooldown: 1
   freezeDuration: 0
   cost: 0
   reloadTime: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
   animation: {fileID: 0}
   projectileSpeed: 0
   projectileDestroyOnImpact: 0
+  prefab: {fileID: 0}
