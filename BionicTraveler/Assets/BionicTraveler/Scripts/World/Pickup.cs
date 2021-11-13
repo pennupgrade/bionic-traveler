@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.World
 {
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
@@ -16,6 +17,10 @@ namespace BionicTraveler.Scripts.World
         [Tooltip("Whether or not this item should be updated whenever its template changes.")]
         [SerializeField]
         private bool keepSyncedWithTemplate;
+
+        [Tooltip("The sound to play when the item is being picked up.")]
+        [SerializeField]
+        private AudioClip pickupSound;
 
         private float pickUpRange;
         private bool hasBeenPickedUp;
@@ -84,6 +89,15 @@ namespace BionicTraveler.Scripts.World
             Debug.Log("Item has been picked up");
             this.hasBeenPickedUp = true;
             entity.Inventory.AddItem(this.itemData);
+
+            if (this.pickupSound != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.pickupSound);
+            }
+            else
+            {
+                Debug.LogWarning("Pickup::Pickup: No pickup sound configured!");
+            }
 
             // TODO: We should destroy ourselves at some point once we have been picked up.
             // But it might be useful for other scripts to be able to ask us if we have been picked up.

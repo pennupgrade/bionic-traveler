@@ -97,3 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
   keepSyncedWithTemplate: 1
+  pickupSound: {fileID: 8300000, guid: 5a35d42318885a640b437efbe3d88b83, type: 3}
