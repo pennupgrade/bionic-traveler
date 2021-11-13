@@ -1,4 +1,4 @@
-title: Start_Yolo
+title: Yolo_Start
 tags: 
 colorID: 0
 position: -122,-267
@@ -11,17 +11,17 @@ Yol: Right now I'm looking for the legendary hidden temple rumored to be here on
 Yol: Of course, it's probably guarded by some booby traps and wild beasts. But why not live a little?
 Yol: I might be close to kickin' my bucket here, but you know the saying:
 Yol: After all, you only live once.
-[[What's the big rush?|Backstory]]
-[[Yeah... good luck with that.|End]]
+[[What's the big rush?|Yolo_Backstory]]
+[[Yeah... good luck with that.|Yolo_End]]
 ===
-title: End
+title: Yolo_End
 tags: 
 colorID: 0
 position: 340,-66
 ---
 Yol: Well, be seeing you!
 ===
-title: Backstory
+title: Yolo_Backstory
 tags: 
 colorID: 0
 position: 345,-466
@@ -41,5 +41,5 @@ Yol: Moral of the story: Never trust spiders.
 Yol: They're little demons.
 
 MC: Can't say I disagree with you there (I dunno about his other logic though)
-[[End]]
+[[Yolo_End]]
 ===

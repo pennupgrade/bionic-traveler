@@ -1,13 +1,13 @@
-title: Start
+title: BFF_Start
 tags: 
 colorID: 0
 position: 213,-186
 ---
 BF: Heya MC!! Whatcha up to?
-[[Wait, why are you here?|Huh]]
-[[Where should I go?|Hint]]
+[[Wait, why are you here?|BFF_Huh]]
+[[Where should I go?|BFF_Hint]]
 ===
-title: Huh
+title: BFF_Huh
 tags: 
 colorID: 0
 position: 526,-415
@@ -17,9 +17,9 @@ BF: This is the vertical slice for the game! I'm supposed to be a proof of conce
 BF: Oops, I broke the fourth wall again didn't I?
 
 MC: (What does that even mean?)
-[[End]]
+[[BFF_End]]
 ===
-title: Hint
+title: BFF_Hint
 tags: 
 colorID: 0
 position: 520,30
@@ -30,9 +30,9 @@ BF: I also picked up some high-frequency energy waves on my scouter a bit furthe
 BF: So chop chop!! Go look for me! It's a bummer that I can't move from here but I know you'll be able to find something :)
 
 MC: Got it.
-[[End]]
+[[BFF_End]]
 ===
-title: End
+title: BFF_End
 tags: 
 colorID: 0
 position: 859,-209
