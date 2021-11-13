@@ -64,6 +64,10 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("Animation of the attack.")]
         private Animation animation;
 
+        [SerializeField]
+        [Tooltip("Audio of the attack.")]
+        private AudioClip audioClip;
+
         // Projectile data, perhaps move to separate ProjectileData at some point. TODO: Evaluate.
         [SerializeField]
         [Tooltip("Speed of the projectile that the weapon ejects.")]
@@ -146,6 +150,11 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets the animation this attack uses.
         /// </summary>
         public Animation Animation => this.animation;
+
+        /// <summary>
+        /// Gets the audio this attack uses.
+        /// </summary>
+        public AudioClip AudioClip => this.audioClip;
 
         /// <summary>
         /// Gets the speed of the projectile.

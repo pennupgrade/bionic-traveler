@@ -31,8 +31,17 @@ namespace BionicTraveler.Scripts.Audio
         private float effectsVolume;
 
         [SerializeField]
-        [Tooltip("The audio source.")]
-        private AudioSource audioSource;
+        [Tooltip("The volume of the background music.")]
+        [Range(0.0f, 1.0f)]
+        private float musicVolume;
+
+        [SerializeField]
+        [Tooltip("The main audio source.")]
+        private AudioSource mainAudioSource;
+
+        [SerializeField]
+        [Tooltip("The background audio source.")]
+        private AudioSource backgroundSource;
         private bool hasStarted;
 
         private void Awake()
@@ -54,7 +63,7 @@ namespace BionicTraveler.Scripts.Audio
         /// <param name="clip">The clip.</param>
         public void PlayOneShot(AudioClip clip)
         {
-            this.audioSource.PlayOneShot(clip, this.masterVolume * this.effectsVolume);
+            this.mainAudioSource.PlayOneShot(clip, this.masterVolume * this.effectsVolume);
         }
 
         /// <summary>
@@ -67,10 +76,10 @@ namespace BionicTraveler.Scripts.Audio
 
         private void PlayRandomBackgroundClip()
         {
-            this.audioSource.clip = this.GetRandomBackgroundClip();
-            this.audioSource.Play();
+            this.backgroundSource.clip = this.GetRandomBackgroundClip();
+            this.backgroundSource.Play();
             this.hasStarted = true;
-            Debug.Log($"Playing next background clip {this.audioSource.clip.name}");
+            Debug.Log($"Playing next background clip {this.backgroundSource.clip.name}");
         }
 
         private AudioClip GetRandomBackgroundClip()
@@ -83,7 +92,7 @@ namespace BionicTraveler.Scripts.Audio
         /// </summary>
         public void PauseBackgroundMusic()
         {
-            this.audioSource.Pause();
+            this.backgroundSource.Pause();
         }
 
         /// <summary>
@@ -91,7 +100,7 @@ namespace BionicTraveler.Scripts.Audio
         /// </summary>
         public void ResumeBackgroundMusic()
         {
-            this.audioSource.UnPause();
+            this.backgroundSource.UnPause();
         }
 
         /// <summary>
@@ -100,7 +109,7 @@ namespace BionicTraveler.Scripts.Audio
         public void Start()
         {
             this.UpdateVolume();
-            if (this.audioSource.playOnAwake)
+            if (this.backgroundSource.playOnAwake)
             {
                 this.StartBackgroundMusic();
             }
@@ -112,7 +121,7 @@ namespace BionicTraveler.Scripts.Audio
         public void Update()
         {
             // Audio stops when we are not focused, which would then trigger a new song whenever we tab out.
-            if (this.hasStarted && Application.isFocused && !this.audioSource.isPlaying)
+            if (this.hasStarted && Application.isFocused && !this.backgroundSource.isPlaying)
             {
                 this.PlayRandomBackgroundClip();
             }
@@ -127,7 +136,8 @@ namespace BionicTraveler.Scripts.Audio
 
         private void UpdateVolume()
         {
-            this.audioSource.volume = this.masterVolume;
+            this.mainAudioSource.volume = this.masterVolume;
+            this.backgroundSource.volume = this.masterVolume * this.musicVolume;
         }
     }
 }

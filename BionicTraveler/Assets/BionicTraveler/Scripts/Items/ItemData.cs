@@ -1,6 +1,7 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
     using System;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -49,6 +50,10 @@
         [SerializeReference]
         [Tooltip("The equippable used when this item is interacted with in the inventory.")]
         private Equippable equippable;
+
+        [SerializeField]
+        [Tooltip("The audio playing when using this item.")]
+        private AudioClip useAudio;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemData"/> class.
@@ -130,6 +135,7 @@
             if (this.type == ItemType.Consumable)
             {
                 this.consumable.Use(entity);
+                this.PlayUseAudio();
             }
             else if (this.type == ItemType.Equippable)
             {
@@ -137,11 +143,20 @@
                 {
                     // TODO: Select replacement equippable and slot.
                     this.equippable.Equip(dynamicEntity);
+                    this.PlayUseAudio();
                 }
                 else
                 {
                     throw new ArgumentException($"{nameof(entity)} is not a dynamic entity.");
                 }
+            }
+        }
+
+        private void PlayUseAudio()
+        {
+            if (this.useAudio != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.useAudio);
             }
         }
 

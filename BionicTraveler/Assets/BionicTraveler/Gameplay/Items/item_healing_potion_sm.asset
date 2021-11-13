@@ -22,3 +22,4 @@ MonoBehaviour:
   type: 1
   consumable: {fileID: 11400000, guid: 4a17f0d04bc8af5458318bb770a9ce1f, type: 2}
   equippable: {fileID: 0}
+  useAudio: {fileID: 8300000, guid: 98005146ddae5ea4596d72da6d10a39b, type: 3}

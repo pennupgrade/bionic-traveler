@@ -2,6 +2,7 @@ namespace BionicTraveler.Scripts.Combat
 {
     using System;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -122,6 +123,7 @@ namespace BionicTraveler.Scripts.Combat
 
             Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
             this.AttackTargets(validTargets.ToArray());
+            this.PlayAttackAudio();
             Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
             if (this.HasFinished())
             {
@@ -137,6 +139,15 @@ namespace BionicTraveler.Scripts.Combat
                 }
 
                 Destroy(this);
+            }
+        }
+
+        private void PlayAttackAudio()
+        {
+            if (this.AttackData.AudioClip != null)
+            {
+                AudioManager.Instance.PlayOneShot(this.AttackData.AudioClip);
+                Debug.Log("aud");
             }
         }
 

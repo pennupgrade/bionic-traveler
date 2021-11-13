@@ -1,5 +1,6 @@
 ﻿namespace BionicTraveler.Scripts.World
 {
+    using BionicTraveler.Scripts.Audio;
     using UnityEngine;
 
     /// <summary>
@@ -33,6 +34,8 @@
         private Rigidbody2D rb;
         [SerializeField]
         private Animator animator;
+        [SerializeField]
+        private AudioClip dashSound;
 
         private Vector2 movement;
         private PlayerEntity player;
@@ -95,6 +98,7 @@
                 {
                     // Dashing!
                     this.movementSpeedFrameMult = 7.5f;
+                    AudioManager.Instance.PlayOneShot(this.dashSound);
                 }
             }
 
