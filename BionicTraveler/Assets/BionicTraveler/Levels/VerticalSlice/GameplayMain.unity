@@ -5572,8 +5572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4398ce2b7ec7dd941beaaa3646a24c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EffectsVolume: 0
-  MusicVolume: 0
+  EffectsVolume: 1
+  MusicVolume: 1
   backgroundClips:
   - {fileID: 8300000, guid: e9208d36fa888f0428d92b22d71044bb, type: 3}
   - {fileID: 8300000, guid: c9aa91092c43adb45ac910dd63c5e98f, type: 3}

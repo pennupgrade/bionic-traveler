@@ -125,7 +125,7 @@ namespace BionicTraveler.Scripts.Audio
         }
 
         /// <summary>
-        /// Updates volume of AudioSources according to floats
+        /// Updates volume of AudioSources according to floats.
         /// </summary>
         public void UpdateVolume()
         {
