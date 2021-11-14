@@ -1,29 +1,22 @@
 namespace BionicTraveler.Scripts
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
-    using UnityEngine.SceneManagement; 
+    using UnityEngine.SceneManagement;
 
     /// <summary>
-    /// Please document me.
+    /// Transitions into a new scene on trigger.
     /// </summary>
     public class SceneTransition : MonoBehaviour
     {
+        [SerializeField]
+        private string sceneToLoad;
 
-        public string sceneToLoad;
-
-        public void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player") && !other.isTrigger)
             {
-                SceneManager.LoadScene(sceneToLoad); 
+                SceneManager.LoadScene(this.sceneToLoad);
             }
         }
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-
     }
 }

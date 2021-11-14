@@ -97,7 +97,7 @@
         }
 
         /// <summary>
-        /// Drop all items in our inventory.
+        /// Drops all items in our inventory.
         /// </summary>
         /// <returns>An array of pickups.</returns>
         public Pickup[] DropAll()
@@ -105,7 +105,7 @@
             List<Pickup> pickups = new List<Pickup>();
             foreach (var item in this.items.ToArray())
             {
-                var offset = new Vector3(UnityEngine.Random.Range(0, 1.5f), UnityEngine.Random.Range(0, 1.5f), this.owner.transform.position.z);
+                var offset = new Vector3(UnityEngine.Random.Range(-0.8f, 0.8f), UnityEngine.Random.Range(-0.8f, 0.8f), this.owner.transform.position.z);
                 pickups.Add(PickupCreator.SpawnPickup(this.owner.transform.position + offset, item.Key));
                 this.Remove(item.Key);
             }
