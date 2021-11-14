@@ -22,11 +22,11 @@ namespace BionicTraveler.Scripts.Audio
 
         [Tooltip("The volume of all effect sounds.")]
         [Range(0.0f, 1.0f)]
-        public float EffectsVolume;
+        public float EffectsVolume = 0.5f;
 
         [Tooltip("The volume of the background music.")]
         [Range(0.0f, 1.0f)]
-        public float MusicVolume;
+        public float MusicVolume = 0.5f;
 
         [SerializeField]
         [Tooltip("The list of possible background songs.")]

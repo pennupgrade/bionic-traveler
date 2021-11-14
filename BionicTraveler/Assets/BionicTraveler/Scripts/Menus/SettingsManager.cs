@@ -30,14 +30,14 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         private AudioManager audioManager;
 
-        private float masterVolume;
-        private bool masterOn;
+        private float masterVolume = 0.5f;
+        private bool masterOn = true;
 
-        private float bgmVolume;
-        private bool bgmOn;
+        private float bgmVolume = 0.5f;
+        private bool bgmOn = true;
 
-        private float sfxVolume;
-        private bool sfxOn;
+        private float sfxVolume = 0.5f;
+        private bool sfxOn = true;
 
         /*private float voiceVolume;
         private bool voiceOn;*/
