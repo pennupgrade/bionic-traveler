@@ -38,7 +38,7 @@
 
             if (this.Quantity > this.ItemData.MaxNumber)
             {
-                Debug.LogWarning($"InventoryItem::Add: Attempt to add more items of type ${this.ItemData.Id} than allowed.");
+                Debug.LogWarning($"InventoryItem::Add: Attempt to add more items of type {this.ItemData.Id} than allowed.");
                 this.Quantity = this.ItemData.MaxNumber;
                 return false;
             }

@@ -34,6 +34,8 @@ namespace BionicTraveler.Scripts.Combat
         /// <param name="weaponData">The weapon data.</param>
         public void SetData(WeaponData weaponData)
         {
+            Debug.Log("SetData");
+
             if (this.WeaponData != null)
             {
                 throw new InvalidOperationException($"{nameof(this.WeaponData)} is readonly after being set.");
