@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 0}
-  dialogueStartNode: Start
+  dialogueStartNode: BFF_Start
 --- !u!61 &8708636735553445595
 BoxCollider2D:
   m_ObjectHideFlags: 0
