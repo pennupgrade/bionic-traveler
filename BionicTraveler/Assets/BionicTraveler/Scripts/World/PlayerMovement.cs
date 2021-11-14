@@ -85,7 +85,7 @@
                 return;
             }
 
-            Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).ToString());
+            //Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).ToString());
             
 
             if (Input.GetButtonDown("Dash"))

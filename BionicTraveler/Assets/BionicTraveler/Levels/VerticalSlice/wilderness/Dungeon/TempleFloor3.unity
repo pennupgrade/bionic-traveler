@@ -14437,6 +14437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup_Arm_Teleport Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 993295391354806860, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7356325628814216110, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -14544,6 +14548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WildKnightpng
       objectReference: {fileID: 0}
+    - target: {fileID: 4925333826740707054, guid: edaaedf3d493ca8479a896f7a57a011c, type: 3}
+      propertyPath: loot
+      value: 
+      objectReference: {fileID: 11400000, guid: dc951b9dee7908c4faa111bd70ecc571, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edaaedf3d493ca8479a896f7a57a011c, type: 3}
 --- !u!1001 &8813073552726157494
@@ -14599,6 +14607,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3996965058455155890, guid: e25e3bcc89c1ce84eb44e01b672f885d, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903005448724540922, guid: e25e3bcc89c1ce84eb44e01b672f885d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5903005448724540922, guid: e25e3bcc89c1ce84eb44e01b672f885d, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7509811783142985188, guid: e25e3bcc89c1ce84eb44e01b672f885d, type: 3}

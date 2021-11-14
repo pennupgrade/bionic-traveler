@@ -7318,8 +7318,9 @@ MonoBehaviour:
   movementSpeedFrameMult: 1
   rb: {fileID: 8686891111388916199}
   animator: {fileID: 8686891111388916192}
-  dashSound: {fileID: 8300000, guid: a52aa901cd62ba548b51e114f54c157b, type: 3}
+  dashSound: {fileID: 8300000, guid: 26dcac54458730540aacb389eee72562, type: 3}
   dashCooldown: 1
+  slashCooldown: 0.5
 --- !u!114 &8686891111388916205
 MonoBehaviour:
   m_ObjectHideFlags: 0
