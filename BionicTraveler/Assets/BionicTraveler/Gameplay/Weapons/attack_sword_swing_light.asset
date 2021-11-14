@@ -26,8 +26,8 @@ MonoBehaviour:
   areaOfEffect: 0
   sprite: {fileID: 0}
   animation: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: 11dc4751d789521458687e60747be19c, type: 3}
-  audioClipImpact: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 594e7e4941605ea4199ee814f466d4f4, type: 3}
+  audioClipImpact: {fileID: 8300000, guid: 39d4febcebe505e43bb0ad64604d120e, type: 3}
   projectileSpeed: 0
   projectileDestroyOnImpact: 0
   prefab: {fileID: 0}
