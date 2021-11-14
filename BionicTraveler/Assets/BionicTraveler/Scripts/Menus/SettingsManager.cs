@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using BionicTraveler.Scripts.Audio;
 using UnityEngine.Audio;
 
 namespace BionicTraveler.Scripts
@@ -26,12 +28,8 @@ namespace BionicTraveler.Scripts
     public class SettingsManager : Menu
     {
         [SerializeField]
-        private AudioMixer bgmMixer; // AudioMixers to be dragged in
+        private AudioManager audioManager;
 
-        [SerializeField]
-        private AudioMixer sfxMixer;
-        [SerializeField]
-        private AudioMixer voiceMixer;
         private float masterVolume;
         private bool masterOn;
 
@@ -41,8 +39,8 @@ namespace BionicTraveler.Scripts
         private float sfxVolume;
         private bool sfxOn;
 
-        private float voiceVolume;
-        private bool voiceOn;
+        /*private float voiceVolume;
+        private bool voiceOn;*/
 
         private int difficulty;
 
@@ -71,54 +69,60 @@ namespace BionicTraveler.Scripts
         private void SetMaster(float masterSlider)
         {
             this.masterVolume = masterSlider;
-            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
-            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
-            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void MuteMaster(bool muteMaster)
         {
             this.masterOn = muteMaster;
-            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
-            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
-            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void SetBgm(float bgmSlider)
         {
             this.bgmVolume = bgmSlider;
-            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void MuteBgm(bool muteBgm)
         {
             this.bgmOn = muteBgm;
-            this.LogScaling(this.bgmMixer, this.masterVolume, this.masterOn, "bgmVolume", this.bgmVolume, this.bgmOn);
+            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void SetSfx(float sfxSlider)
         {
             this.sfxVolume = sfxSlider;
-            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void MuteSfx(bool muteSfx)
         {
             this.sfxOn = muteSfx;
-            this.LogScaling(this.sfxMixer, this.masterVolume, this.masterOn, "sfxVolume", this.sfxVolume, this.sfxOn);
+            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            this.audioManager.UpdateVolume();
         }
 
+        /* Voices not implemented yet, will fill in later
         private void SetVoice(float voiceSlider)
         {
             this.voiceVolume = voiceSlider;
-            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+            audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
         }
 
         private void MuteVoice(bool muteVoice)
         {
             this.voiceOn = muteVoice;
-            this.LogScaling(this.voiceMixer, this.masterVolume, this.masterOn, "voiceVolume", this.voiceVolume, this.voiceOn);
+            audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
         }
+        */
 
         private void Awake()
         {
@@ -132,36 +136,15 @@ namespace BionicTraveler.Scripts
             }
         }
 
-        /// <summary>
-        /// Converts float values on each of the sliders to a decibel level on each of the AudioMixers
-        /// If the mixer and master toggles are both on
-        ///     Reads the mixer and master sliders, converting the product to a log scale from 0 to -80
-        /// Otherwise mute the channel (set volume to -80dB)
-        /// </summary>
-        /// <param name="mixerName">name of the AudioMixer</param>
-        /// <param name="masterVal">float value of master slider</param>
-        /// <param name="isMaster">boolean true if master toggle is checked</param>
-        /// <param name="volumeLabel">name of volume exposed volume field</param>
-        /// <param name="sliderVal">float value of mixer slider</param>
-        /// <param name="isOn">boolean true if mixer toggle is checked</param>
-        /// Eg.
-        /// mixerName = 'bgmMixer'
-        /// masterVal = 1.0f
-        /// isMaster = masterOn = true
-        /// volumeLabel = 'bgmVolume'
-        /// sliderVal = 0.5f
-        /// isOn = bgmOn = true
-        ///
-        /// The exposed float 'bgmVolume' on the AudioMixer 'bgmMixer' will be set to log10(1.0 * 0.5) = -6.0f
-        private void LogScaling(AudioMixer mixerName, float masterVal, bool isMaster, string volumeLabel, float sliderVal, bool isOn)
+        private float ChangeVolume(float masterVal, bool isMaster, float sliderVal, bool isOn)
         {
             if (isOn && isMaster)
             {
-                mixerName.SetFloat(volumeLabel, Mathf.Log10(Mathf.Max(sliderVal * masterVal, 0.0001f)) * 20);
+                return sliderVal * masterVal;
             }
             else
             {
-                mixerName.SetFloat(volumeLabel, -80f);
+                return 0f;
             }
         }
     }

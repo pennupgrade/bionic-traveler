@@ -16,24 +16,21 @@ namespace BionicTraveler.Scripts.Audio
         /// </summary>
         public static AudioManager Instance => AudioManager.instance;
 
+        /*[Tooltip("The master volume of all sounds.")]
+        [Range(0.0f, 1.0f)]
+        public float MasterVolume;*/
+
+        [Tooltip("The volume of all effect sounds.")]
+        [Range(0.0f, 1.0f)]
+        public float EffectsVolume;
+
+        [Tooltip("The volume of the background music.")]
+        [Range(0.0f, 1.0f)]
+        public float MusicVolume;
+
         [SerializeField]
         [Tooltip("The list of possible background songs.")]
         private List<AudioClip> backgroundClips;
-
-        [SerializeField]
-        [Tooltip("The master volume of all sounds.")]
-        [Range(0.0f, 1.0f)]
-        private float masterVolume;
-
-        [SerializeField]
-        [Tooltip("The volume of all effect sounds.")]
-        [Range(0.0f, 1.0f)]
-        private float effectsVolume;
-
-        [SerializeField]
-        [Tooltip("The volume of the background music.")]
-        [Range(0.0f, 1.0f)]
-        private float musicVolume;
 
         [SerializeField]
         [Tooltip("The main audio source.")]
@@ -63,7 +60,7 @@ namespace BionicTraveler.Scripts.Audio
         /// <param name="clip">The clip.</param>
         public void PlayOneShot(AudioClip clip)
         {
-            this.mainAudioSource.PlayOneShot(clip, this.masterVolume * this.effectsVolume);
+            this.mainAudioSource.PlayOneShot(clip, this.EffectsVolume);
         }
 
         /// <summary>
@@ -127,17 +124,13 @@ namespace BionicTraveler.Scripts.Audio
             }
         }
 
-
-
-        private void OnValidate()
+        /// <summary>
+        /// Updates volume of AudioSources according to floats
+        /// </summary>
+        public void UpdateVolume()
         {
-            this.UpdateVolume();
-        }
-
-        private void UpdateVolume()
-        {
-            this.mainAudioSource.volume = this.masterVolume;
-            this.backgroundSource.volume = this.masterVolume * this.musicVolume;
+            this.mainAudioSource.volume = this.EffectsVolume;
+            this.backgroundSource.volume = this.MusicVolume;
         }
     }
 }

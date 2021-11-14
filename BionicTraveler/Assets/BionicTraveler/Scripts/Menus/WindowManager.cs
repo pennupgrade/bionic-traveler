@@ -33,7 +33,7 @@ namespace BionicTraveler
                     this.openedMenu.Open();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyCode.J))
             {
                 if (this.openedMenu)
                 {
