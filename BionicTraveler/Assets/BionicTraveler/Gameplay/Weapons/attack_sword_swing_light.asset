@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Sword Swing (Light)
   type: 0
   damage: 50
-  range: 5
+  range: 1
   cooldown: 1
   freezeDuration: 0
   cost: 0
@@ -27,6 +27,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   animation: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 11dc4751d789521458687e60747be19c, type: 3}
+  audioClipImpact: {fileID: 0}
   projectileSpeed: 0
   projectileDestroyOnImpact: 0
   prefab: {fileID: 0}
