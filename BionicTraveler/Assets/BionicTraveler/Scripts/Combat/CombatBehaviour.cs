@@ -98,7 +98,7 @@ namespace BionicTraveler.Scripts.Combat
         {
             if (this.weaponBehaviour != null)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("Slash1"))
                 {
                     this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                 }
