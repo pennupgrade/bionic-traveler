@@ -41,17 +41,20 @@
         /// Adds <see cref="Item"/> to the inventory.
         /// </summary>
         /// <param name="item">Item to insert.</param>
-        public void AddItem(ItemData item)
+        ///<returns>True if the item was added to the inventory, false otherwise.</returns>
+        public bool AddItem(ItemData item)
         {
             Debug.Log("Inventory received item");
             if (this.items.ContainsKey(item))
             {
-                this.items[item].Add(1);
+                return this.items[item].Add(1);
             }
             else
             {
                 this.items[item] = new InventoryItem(item);
             }
+
+            return true;
         }
 
         /// <summary>
@@ -93,6 +96,22 @@
             return PickupCreator.SpawnPickup(this.owner.transform.position + (this.owner.Direction * 2.0f), item);
         }
 
+        /// <summary>
+        /// Drop all items in our inventory.
+        /// </summary>
+        /// <returns>An array of pickups.</returns>
+        public Pickup[] DropAll()
+        {
+            List<Pickup> pickups = new List<Pickup>();
+            foreach (var item in this.items.ToArray())
+            {
+                var offset = new Vector3(UnityEngine.Random.Range(0, 1.5f), UnityEngine.Random.Range(0, 1.5f), this.owner.transform.position.z);
+                pickups.Add(PickupCreator.SpawnPickup(this.owner.transform.position + offset, item.Key));
+                this.Remove(item.Key);
+            }
+
+            return pickups.ToArray();
+        }
 
         /// <summary>
         /// Removes a given item from the inventory.

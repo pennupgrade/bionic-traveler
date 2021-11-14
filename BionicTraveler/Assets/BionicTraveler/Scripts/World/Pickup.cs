@@ -86,23 +86,25 @@ namespace BionicTraveler.Scripts.World
         /// <param name="entity">The entity that picked up this pickup.</param>
         public void PickUp(DynamicEntity entity)
         {
-            Debug.Log("Item has been picked up");
-            this.hasBeenPickedUp = true;
-            entity.Inventory.AddItem(this.itemData);
-
-            if (this.pickupSound != null)
+            if (entity.Inventory.AddItem(this.itemData))
             {
-                AudioManager.Instance.PlayOneShot(this.pickupSound);
-            }
-            else
-            {
-                Debug.LogWarning("Pickup::Pickup: No pickup sound configured!");
-            }
+                Debug.Log("Item has been picked up");
+                this.hasBeenPickedUp = true;
 
-            // TODO: We should destroy ourselves at some point once we have been picked up.
-            // But it might be useful for other scripts to be able to ask us if we have been picked up.
-            // Maybe use an event system?
-            this.gameObject.SetActive(false);
+                if (this.pickupSound != null)
+                {
+                    AudioManager.Instance.PlayOneShot(this.pickupSound);
+                }
+                else
+                {
+                    Debug.LogWarning("Pickup::Pickup: No pickup sound configured!");
+                }
+
+                // TODO: We should destroy ourselves at some point once we have been picked up.
+                // But it might be useful for other scripts to be able to ask us if we have been picked up.
+                // Maybe use an event system?
+                this.gameObject.SetActive(false);
+            }
         }
 
         /// <summary>

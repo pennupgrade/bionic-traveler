@@ -13,8 +13,8 @@
         private bool stunned;
 
         [SerializeField]
-        [TooltipAttribute("The item to drop.")]
-        private ItemData loot;
+        [TooltipAttribute("The items to drop.")]
+        private LootTable loot;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicEntity"/> class.
@@ -43,7 +43,10 @@
         {
             if (this.loot != null)
             {
-                this.Inventory.AddItem(this.loot);
+                foreach (var item in this.loot.Items)
+                {
+                    this.Inventory.AddItem(item);
+                }
             }
         }
 
@@ -91,13 +94,10 @@
             this.IsStunned = false;
         }
 
+        /// <inheritdoc/>
         public override void Kill()
         {
-            foreach (var drop in this.Inventory.Items)
-            {
-                var item = this.Inventory.DropItem(drop.ItemData);
-            }
-
+            var item = this.Inventory.DropAll();
             base.Kill();
         }
     }

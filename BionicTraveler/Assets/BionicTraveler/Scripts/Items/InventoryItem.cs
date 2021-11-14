@@ -31,7 +31,8 @@
         /// Adds a given quantity to the inventory.
         /// </summary>
         /// <param name="quantity">The quantity.</param>
-        public void Add(int quantity)
+        /// <returns>True if the item was added to the inventory, false otherwise.</returns>
+        public bool Add(int quantity)
         {
             this.Quantity += quantity;
 
@@ -39,7 +40,10 @@
             {
                 Debug.LogWarning($"InventoryItem::Add: Attempt to add more items of type ${this.ItemData.Id} than allowed.");
                 this.Quantity = this.ItemData.MaxNumber;
+                return false;
             }
+
+            return true;
         }
 
         /// <summary>
