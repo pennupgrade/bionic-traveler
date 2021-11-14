@@ -116,10 +116,8 @@
             //var isJumping = Input.GetButtonDown("Jump");
             var isIdle = this.movement == Vector2.zero;
             //if (isJumping)
-            
 
             this.animator.SetInteger("MovementState", (int)this.moveState);
-            Debug.Log($"{nameof(this.moveState)} = {this.moveState}; MovementState = {this.animator.GetInteger("MovementState")}");
             //this.animator.SetBool("IsJumping", isJumping);
         }
 
