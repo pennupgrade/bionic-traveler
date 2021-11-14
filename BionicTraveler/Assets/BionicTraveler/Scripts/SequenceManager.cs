@@ -10,23 +10,27 @@ public class SequenceManager {
      private List<ScriptedEvent> scriptedEvents;
 
      // ALTERNATIVE IDEAS
-
-     // A list of events that should be associated with each trigger 
-     // (events that should be triggered when the GameObject trigger is active)
+     /// <summary>
+     /// A list of events that should be associated with each trigger 
+     /// (events that should be triggered when the GameObject trigger is active)
+     /// </summary>
      private List<List<ScriptedEvent>> eventLists;
 
-
-    // A list of pairs consisting of a GameObject (trigger) and a 
-    // list of corresponding ScriptedEvents that should start (be triggered)
-    // when that GameObject (trigger) is active
-    private Dictionary<GameObject, List<ScriptedEvent>> triggersEventsPairs;  // maps each trigger to a corresponding list of associated events
+     /// <summary>
+     /// A list of pairs consisting of a GameObject (trigger) and a 
+     /// list of corresponding ScriptedEvents that should start (be triggered)
+     /// when that GameObject (trigger) is active
+     /// </summary>
+     private Dictionary<GameObject, List<ScriptedEvent>> triggersEventsPairs;  // maps each trigger to a corresponding list of associated events
      
 
      private bool eventPlaying;
      private List<bool> eventsPlayingStatus;
      
-
-     // Trigger the event, or list of events, associated 
+     /// <summary>
+     /// Trigger the event, or list of events, associated 
+     /// </summary>
+     /// <param>GameObject signal to trigger corresponding events.</param>
      public void triggerEvent(GameObject trigger) {
         int v = triggers.IndexOf(trigger);
         int triggerIndex = v;
@@ -39,9 +43,10 @@ public class SequenceManager {
                eventToTrigger.PlaySequence();
           }
      }
-
-     // Check all triggers for status - whether or not they have been triggered
-     // uses .activeInHierarchy as the boolean indicator of whether a trigger (GameObject) has been activated
+     /// <summary>
+     /// Check all triggers for status - whether or not they have been triggered
+     /// uses .activeInHierarchy as the boolean indicator of whether a trigger (GameObject) has been activated
+     /// </summary>
      public void update() {
           foreach (GameObject t in triggers) {
                if(t.activeInHierarchy) { 

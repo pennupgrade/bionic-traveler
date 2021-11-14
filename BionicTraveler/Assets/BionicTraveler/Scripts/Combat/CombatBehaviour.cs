@@ -14,6 +14,25 @@ namespace BionicTraveler.Scripts.Combat
         private WeaponBehaviour weaponBehaviour;
         private List<WeaponBehaviour> dormantWeapons;
 
+        [SerializeField]
+        [Tooltip("The weapon data to use.")]
+        private WeaponData firstWeaponData;
+
+        [SerializeField]
+        [Tooltip("The second weapon data to use.")]
+        private WeaponData secondWeaponData;
+
+        private bool usingFirstWeaponData;
+
+        /// <summary>
+        /// Start is called before the first frame update.
+        /// </summary>
+        public void Start()
+        {
+            InitWeapons(this.firstWeaponData, this.secondWeaponData);
+        }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CombatBehaviour"/> class.
         /// </summary>
@@ -50,6 +69,28 @@ namespace BionicTraveler.Scripts.Combat
         }
 
         /// <summary>
+        /// Initializes the two WeaponData options.
+        /// </summary>
+        public void InitWeapons(WeaponData weaponData1, WeaponData weaponData2) {
+            if (weaponData1 is null)
+            {
+                throw new ArgumentNullException(nameof(weaponData1));
+            }
+            if (weaponData2 is null)
+            {
+                throw new ArgumentNullException(nameof(weaponData2));
+            }
+
+            var firstWeapon = this.gameObject.AddComponent<WeaponBehaviour>();
+            firstWeaponData = weaponData1;
+            secondWeaponData = weaponData2;
+
+            usingFirstWeaponData = true;
+            SetWeapon(firstWeaponData);
+        }
+
+
+        /// <summary>
         /// Update is called once per frame.
         /// </summary>
         private void Update()
@@ -67,6 +108,15 @@ namespace BionicTraveler.Scripts.Combat
                     this.weaponBehaviour.SwitchWeaponMode();
                     this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                     this.weaponBehaviour.SwitchWeaponMode();
+                }
+
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    // Switch WeaponData being used
+                    SetWeapon(this.usingFirstWeaponData ? this.firstWeaponData : this.secondWeaponData);
+                    this.usingFirstWeaponData = !this.usingFirstWeaponData;
+                    Debug.Log("value of bool usingFirstWeaponData: ");
+                    Debug.Log(this.usingFirstWeaponData);
                 }
             }
 
