@@ -3,13 +3,13 @@ namespace BionicTraveler
     using UnityEngine;
 
     /// <summary>
-    /// Main game controller for persistence.
+    /// Script to achieve game object persistence.
     /// </summary>
     public class DontDestroyOnLoad : MonoBehaviour
     {
         private void Awake()
         {
-            DontDestroyOnLoad(this.transform.gameObject); // set to dont destroy
+            DontDestroyOnLoad(this.transform.gameObject);
         }
     }
 }
