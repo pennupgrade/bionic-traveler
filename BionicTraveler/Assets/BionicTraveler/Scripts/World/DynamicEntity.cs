@@ -54,12 +54,11 @@
         /// Function for moving a dynamic entity to a target position.
         /// </summary>
         /// <param name="target">Target world position to move to.</param>
-        public void MoveTo(Vector3 target, bool smooth = false)
+        public void MoveTo(Vector3 target, float moveSpeed)
         {
             this.SetDirection(target);
 
-            base.MoveTo(target, smooth);
-
+            base.MoveTo(target, moveSpeed);
         }
 
         /// <summary>

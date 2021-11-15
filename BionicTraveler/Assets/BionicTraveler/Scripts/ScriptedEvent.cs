@@ -25,43 +25,18 @@ public abstract class ScriptedEvent : MonoBehaviour
     /// <summary>
     /// Generates a coroutine of events for the cutscene
     /// </summary>
-    private IEnumerator GenerateEvent()
-    {
-        yield return null;
-    }
+    public abstract IEnumerator GenerateEvent();
 
     /// <summary>
     /// Calls an entities' MoveTo function
     /// </summary>
     /// <param name="e">The entity to move</param>
-    /// <param name="dest">Postion the entity should move to</param>
-    /// <param name="waitForArrival">Whether the scene should halt and wait till the entity
-    /// arrives at the dest</param>
-    /// <param name="threshold">A threshold float for how close the
-    /// entity should get to the dest before snapping</param>
-    private void MoveTo(Entity e, Vector3 dest, bool waitForArrival,
-        float threshold)
+    /// <param name="dest">Postion the entity should move to arrives at
+    /// the dest</param>
+    /// <param name="moveSpeed"> Speed of entity movement</param>
+    public Coroutine MoveTo(Entity e, Vector3 dest, float moveSpeed)
     {
-        e.MoveTo(dest);
-        if (waitForArrival)
-        {
-            WaitForArrival(e, dest, threshold);
-        }
-    }
-
-    /// <summary>
-    ///  Halts the program until entity has gotten within threshold reach of
-    ///  dest
-    /// </summary>
-    private void WaitForArrival(Entity e, Vector3 dest, float threshold)
-    {
-        while (true)
-        {
-            if (Mathf.Abs((e.gameObject.transform.position - dest).magnitude) <= threshold)
-            {
-                break;
-            }
-        }
+        return e.MoveTo(dest, moveSpeed);
     }
 
     /// <summary>

@@ -125,28 +125,41 @@
         /// </summary>
         /// <param name="dest">The Transform of the destination to move to.</param>
         /// <param name="smooth">Whether to use a SmoothStep function for the movement; default false.</param>
-        public void MoveTo(Vector3 dest, bool smooth = false)
+        public Coroutine MoveTo(Vector3 dest, float moveSpeed)
         {
-            StartCoroutine(Movement(dest, smooth));
+            return this.StartCoroutine(this.Movement(dest, moveSpeed));
         }
 
-        private IEnumerator Movement(Vector3 target, bool smooth)
+        private IEnumerator Movement(Vector3 target, float moveSpeed)
         {
-            Transform pos = gameObject.transform;
-            float duration = (pos.position - target).magnitude / baseSpeed;
+            Transform pos = this.gameObject.transform;
+            float duration = (pos.position - target).magnitude / moveSpeed;
             float elapsed = 0f;
-            float t = elapsed / duration;
-            if (smooth) { t = t * t * (3f - 2f * t); }
+            float epsilon = 0.1f;
 
-            while (elapsed < duration)
+            // bool smooth = true;
+            int i = 0;
+            Debug.Log("Duration = " + duration);
+            Debug.Log("Beginning MoveTo While loop");
+            while ((pos.position - target).magnitude > epsilon)
             {
+                Debug.Log("Frame: " + i);
+                Debug.Log("Elapsed: " + elapsed);
+                i++;
+                float t = elapsed / duration;
+                Debug.Log("t: " + t);
+
+                // if (smooth) { t = t * t * (3f - (2f * t)); }
                 pos.position = Vector3.Lerp(pos.position, target, t);
+                Debug.Log("Position: " + pos.position);
+                Debug.Log("=========================");
                 elapsed += Time.deltaTime;
                 yield return null;
             }
 
-            pos.position = target;
+            Debug.Log("Finally finished moveTo inside Entity class, elapsed: " + elapsed);
 
+            // pos.position = target;
         }
 
         /// <summary>
