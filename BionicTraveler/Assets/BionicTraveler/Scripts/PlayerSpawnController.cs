@@ -35,6 +35,10 @@ namespace BionicTraveler.Scripts
                 this.player.transform.position = spawnPoint.transform.position;
                 Debug.Log("PlayerSpawnController::Awake: Initialized new player");
             }
+
+            // If our spawn point is also a transition, tell it we just spawned there to prevent the
+            // player from triggering it again immediately.
+            spawnPoint.GetComponent<SceneTransition>()?.OnSpawnedPlayer(this.player);
         }
 
         private GameObject GetSpawnPoint()

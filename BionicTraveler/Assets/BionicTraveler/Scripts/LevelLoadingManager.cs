@@ -96,9 +96,7 @@ namespace BionicTraveler.Scripts
                 yield return null;
             }
 
-            // We could just move the entire GameObject to the new scene, but this seems unclean
-            // since then we have a duplicated player and need to delete the original one.
-            // Better to cleanly respawn the player and carry over any state that is necessary.
+            // Move our player to the new scene.
             var newScene = SceneManager.GetSceneByName(this.sceneToLoad);
             SceneManager.MoveGameObjectToScene(currentPlayer, newScene);
             Debug.Log("Level loaded and initialized!");
@@ -110,11 +108,7 @@ namespace BionicTraveler.Scripts
                 yield return null;
             }
 
-            // Restore game systems including physics and give all systems one frame while we are still loading.
-            // This allows other scripts to check that we are currently loading when they become activated.
             Time.timeScale = 1;
-            yield return new WaitForFixedUpdate();
-
             this.loadingScreen.SetActive(false);
             this.IsLoading = false;
             Debug.Log("Old level unloaded");
