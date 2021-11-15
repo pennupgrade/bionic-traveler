@@ -1,7 +1,6 @@
 namespace BionicTraveler.Scripts
 {
     using UnityEngine;
-    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Transitions into a new scene on trigger.
@@ -11,11 +10,16 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         private string sceneToLoad;
 
+        [SerializeField]
+        private string spawnPointOverride;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player") && !other.isTrigger)
+            if (other.CompareTag("Player") && !other.isTrigger && !LevelLoadingManager.Instance.IsLoading)
             {
-                SceneManager.LoadScene(this.sceneToLoad);
+                var spawnPoint = !string.IsNullOrWhiteSpace(this.spawnPointOverride) ? this.spawnPointOverride
+                    : LevelLoadingManager.DefaultSpawnPoint;
+                LevelLoadingManager.Instance.StartLoadLevel(this.sceneToLoad, spawnPoint);
             }
         }
     }
