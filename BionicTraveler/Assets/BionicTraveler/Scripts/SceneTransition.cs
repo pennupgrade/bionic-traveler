@@ -9,9 +9,11 @@ namespace BionicTraveler.Scripts
     public class SceneTransition : MonoBehaviour
     {
         [SerializeField]
+        [Tooltip("The name of the scene to load.")]
         private string sceneToLoad;
 
         [SerializeField]
+        [Tooltip("The name of the game object that this transition should lead to.")]
         private string spawnPointOverride;
 
         private bool justSpawnedPlayer;

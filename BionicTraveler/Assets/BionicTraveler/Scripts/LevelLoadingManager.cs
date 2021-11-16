@@ -73,10 +73,10 @@ namespace BionicTraveler.Scripts
             this.IsLoading = true;
             Time.timeScale = 0;
             this.loadingScreen.SetActive(true);
-            this.StartCoroutine(this.LoadYourAsyncScene());
+            this.StartCoroutine(this.LoadSceneAsync());
         }
 
-        private IEnumerator LoadYourAsyncScene()
+        private IEnumerator LoadSceneAsync()
         {
             // Get the current Scene to be able to unload it later.
             Scene currentScene = SceneManager.GetActiveScene();

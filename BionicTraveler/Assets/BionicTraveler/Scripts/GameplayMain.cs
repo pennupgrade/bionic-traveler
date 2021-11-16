@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts
 {
+    using UnityEditor;
     using UnityEngine;
 
     /// <summary>
@@ -10,9 +11,20 @@ namespace BionicTraveler.Scripts
     /// </summary>
     public class GameplayMain : MonoBehaviour
     {
+        /// <summary>
+        /// Gets a value indicating whether the current session was just launched from the editor.
+        /// </summary>
+        public static bool WasJustLaunchedFromEditor { get; private set; }
+
         private void Awake()
         {
             Debug.Log("GameplayMain::Awake: Hello World");
+            GameplayMain.WasJustLaunchedFromEditor = EditorPrefs.GetBool("JustLaunchedFromEditor");
+        }
+
+        private void Start()
+        {
+            GameplayMain.WasJustLaunchedFromEditor = false;
         }
     }
 }

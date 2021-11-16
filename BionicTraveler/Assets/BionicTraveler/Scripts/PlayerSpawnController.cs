@@ -25,13 +25,23 @@ namespace BionicTraveler.Scripts
             if (GameObject.FindGameObjectWithTag("Player") != null)
             {
                 this.player = GameObject.FindGameObjectWithTag("Player");
-                this.player.transform.position = spawnPoint.transform.position;
-                Debug.Log("PlayerSpawnController::Awake: Initialized existing player");
 
+                // If we have an existing player and are loading a scene, adjust player position.
+                // Otherwise, we got started from the editor and manual player position should take precedence.
+                if (LevelLoadingManager.Instance.IsLoading)
+                {
+                    this.player.transform.position = spawnPoint.transform.position;
+                    Debug.Log("PlayerSpawnController::Awake: Initialized existing player to spawn point");
+                }
+                else
+                {
+                    Debug.Log("PlayerSpawnController::Awake: Initialized existing player to prefab location");
+                }
             }
             else
             {
                 this.player = Instantiate(this.playerPrefab);
+                this.player.name = "Player_Spawned";
                 this.player.transform.position = spawnPoint.transform.position;
                 Debug.Log("PlayerSpawnController::Awake: Initialized new player");
             }
