@@ -17,5 +17,15 @@
         {
             return position + (Vector3.up * offset);
         }
+
+        /// <summary>
+        /// Returns the <see cref="Vector2"/> reprensentation of this 3D vector.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <returns>The 2D Vector.</returns>
+        public static Vector2 ToVector2(this Vector3 position)
+        {
+            return new Vector2(position.x, position.y);
+        }
     }
 }

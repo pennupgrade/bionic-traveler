@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Projectile
   type: 1
-  damage: 1
+  damage: 50
   range: 100
   cooldown: 0.1
   freezeDuration: 0
