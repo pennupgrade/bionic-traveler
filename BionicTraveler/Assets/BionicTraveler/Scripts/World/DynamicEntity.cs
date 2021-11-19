@@ -39,6 +39,17 @@
         /// </summary>
         internal bool IsStunned { get => this.stunned; set => this.stunned = value; }
 
+        /// <summary>
+        /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <returns>Whether or not the entity is ahead.</returns>
+        public bool IsAheadOf(Vector3 position)
+        {
+            var dir = (position - this.gameObject.transform.position).normalized;
+            return Vector3.Dot(this.Direction, dir) < 0;
+        }
+
         private void Awake()
         {
             if (this.loot != null)

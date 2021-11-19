@@ -22,9 +22,14 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override void ActivateAbility()
         {
+            // Get teleport target position. We do not allow positions behind us.
+            // This could happen due to bad raytracing when objects are directly in front of us.
             var ourPos = this.Owner.gameObject.transform.position;
             var finalPosition = this.GetTeleportEndPosition(ourPos, this.Owner.Direction, this.distance);
-            this.Owner.gameObject.transform.position = finalPosition;
+            if (!this.Owner.IsAheadOf(finalPosition))
+            {
+                this.Owner.gameObject.transform.position = finalPosition;
+            }
         }
 
         private Vector3 GetTeleportEndPosition(Vector3 startPosition, Vector3 direction, float remainingDistance)

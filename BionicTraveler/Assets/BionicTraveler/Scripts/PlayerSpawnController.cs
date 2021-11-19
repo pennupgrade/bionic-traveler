@@ -63,7 +63,8 @@ namespace BionicTraveler.Scripts
             var location = this.spawnsLocations.FirstOrDefault(loc => loc.name == spawnPoint);
             if (location == null)
             {
-                throw new InvalidOperationException("Cannot find spawn point " + spawnPoint);
+                throw new InvalidOperationException($"Cannot find spawn point {spawnPoint}. Did you" +
+                    $" add the spawn point to the spawn controller locations list?");
             }
 
             return location;
