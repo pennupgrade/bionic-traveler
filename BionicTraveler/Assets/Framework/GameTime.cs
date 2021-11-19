@@ -44,6 +44,11 @@
         public float Time { get; }
 
         /// <summary>
+        /// Gets the elapsed time.
+        /// </summary>
+        public float Elapsed => UnityEngine.Time.time - this.Time;
+
+        /// <summary>
         /// Returns whether the specified time has elapsed.
         /// </summary>
         /// <param name="timeInSeconds">The time in seconds.</param>
