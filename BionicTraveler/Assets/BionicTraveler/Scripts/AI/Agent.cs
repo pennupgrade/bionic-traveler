@@ -33,7 +33,13 @@ namespace BionicTraveler.Scripts.AI
         /// </summary>
         public void Update()
         {
-            this.agent.SetDestination(this.target.position);
+            //this.agent.SetDestination(this.target.position);
+        }
+
+        private void OnGUI()
+        {
+            var x = Screen.width / 2;
+            GUI.Label(new Rect(x - 125, 50, 250, 250), this.agent.velocity.ToString());
         }
     }
 }
