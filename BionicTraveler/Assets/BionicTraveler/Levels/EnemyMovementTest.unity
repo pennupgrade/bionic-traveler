@@ -21252,7 +21252,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -21260,6 +21260,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &963475924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963475921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1091cdf2d32d944ad4465ad9e47cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWeaponData: {fileID: 11400000, guid: 78584e3c6c0864e4f9166828055ccff7, type: 2}
+  secondWeaponData: {fileID: 11400000, guid: 78584e3c6c0864e4f9166828055ccff7, type: 2}
 --- !u!114 &963475928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21274,6 +21288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 1
   loot: {fileID: 0}
+  relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
 --- !u!1001 &1444621944
 PrefabInstance:
   m_ObjectHideFlags: 0

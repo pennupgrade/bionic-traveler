@@ -191,8 +191,10 @@
             UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(this.gameObject, true);
         }
 
-        // Use this for initialization.
-        void Start()
+        /// <summary>
+        /// Start is called just before any of the Update methods is called the first time.
+        /// </summary>
+        protected virtual void Start()
         {
             this.health = this.maxHealth;
             this.isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(this.gameObject, true);

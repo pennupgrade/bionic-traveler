@@ -1,6 +1,8 @@
 ﻿namespace BionicTraveler.Scripts.World
 {
     using System.Collections;
+    using BionicTraveler.Scripts.AI;
+    using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Items;
     using UnityEngine;
 
@@ -16,6 +18,10 @@
         [TooltipAttribute("The items to drop.")]
         private LootTable loot;
 
+        [SerializeField]
+        [TooltipAttribute("The entity relationships.")]
+        private EntityRelationships relationships;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicEntity"/> class.
         /// </summary>
@@ -28,6 +34,16 @@
         /// Gets the inventory.
         /// </summary>
         public Inventory Inventory { get; }
+
+        /// <summary>
+        /// Gets the Enemy Scanner.
+        /// </summary>
+        public EnemyScanner EnemyScanner { get; private set; }
+
+        /// <summary>
+        /// Gets the relationships.
+        /// </summary>
+        public EntityRelationships Relationships => this.relationships;
 
         /// <summary>
         /// Gets or sets velocity.
@@ -59,6 +75,15 @@
                     this.Inventory.AddItem(item);
                 }
             }
+        }
+
+        /// <summary>
+        /// Start is called just before any of the Update methods is called the first time.
+        /// </summary>
+        protected override void Start()
+        {
+            base.Start();
+            this.EnemyScanner = new EnemyScanner(this.relationships);
         }
 
         /// <summary>

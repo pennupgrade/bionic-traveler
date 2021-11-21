@@ -15,9 +15,8 @@ namespace BionicTraveler.Scripts.Combat
         public override Entity[] GetTargets()
         {
             // TODO: Improve target detection.
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy").Where(
-                obj => obj.GetComponent<DynamicEntity>() != null);
-
+            EnemyScanner scanner = this.Owner.EnemyScanner;
+            GameObject[] enemies = scanner.GetEnemies();
             var ourPos = this.gameObject.transform.position;
             var enemiesInRange = enemies.Where(enemy => Vector3.Distance(enemy.transform.position, ourPos)
                                                 < this.AttackData.Range);

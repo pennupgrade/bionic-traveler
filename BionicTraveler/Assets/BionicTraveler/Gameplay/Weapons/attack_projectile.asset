@@ -15,8 +15,8 @@ MonoBehaviour:
   displayName: Projectile
   type: 1
   damage: 50
-  range: 100
-  cooldown: 0.1
+  range: 20
+  cooldown: 1
   freezeDuration: 0
   cost: 0
   reloadTime: 0

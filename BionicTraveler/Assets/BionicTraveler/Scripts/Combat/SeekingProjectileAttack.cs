@@ -32,12 +32,20 @@
             // Put attack at player position when we start.
             base.OnAttackStarted();
 
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy").Where(
-              obj => obj.GetComponent<DynamicEntity>() != null);
+            var enemies = this.Owner.EnemyScanner.GetEnemies();
             var closestEnemy = enemies.OrderBy(enemy => enemy.transform.DistanceTo(this.transform)).FirstOrDefault();
 
             this.target = closestEnemy?.GetComponent<DynamicEntity>();
-            this.startDirection = this.Owner.Direction;
+            if (this.target == null)
+            {
+                // Ensures we always have a valid direction even if target is null.
+                this.startDirection = this.Owner.Direction != Vector3.zero ? this.Owner.Direction : Vector3.up;
+            }
+            else
+            {
+                this.startDirection = Vector3.Normalize(this.target.transform.position - this.Owner.transform.position);
+            }
+
             this.startPosition = this.transform.position;
             this.currentDirection = this.startDirection;
         }
@@ -56,7 +64,7 @@
                 foreach (var target in targets)
                 {
                     // TODO: Make friendlies react to being hit.
-                    if (target.tag == "Enemy")
+                    if (this.Owner.Relationships.IsHostile(target.tag))
                     {
                         target.OnHit(this);
                     }
