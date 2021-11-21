@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 1
   loot: {fileID: 0}
+  relationships: {fileID: 11400000, guid: 518db983fc518114899421f1fc0ec833, type: 2}
 --- !u!95 &8686891111388916192
 Animator:
   serializedVersion: 3

@@ -89,6 +89,20 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
+        public override void Kill()
+        {
+            // TODO: Move to something more general, like maybe PlayerRespawnManager?
+            this.SetHealth(0);
+            LevelLoadingManager.Instance.FinishedLoading += this.Instance_FinishedLoading;
+            LevelLoadingManager.Instance.ReloadCurrentScene();
+        }
+
+        private void Instance_FinishedLoading()
+        {
+            LevelLoadingManager.Instance.FinishedLoading -= this.Instance_FinishedLoading;
+            this.SetHealth(100);
+        }
+
         private void ActivateAbility(Bodypart b)
         {
             b.ActivateAbility();

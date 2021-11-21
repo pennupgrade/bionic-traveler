@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts
 {
+    using System;
     using System.Collections;
     using UnityEngine;
     using UnityEngine.SceneManagement;
@@ -21,6 +22,11 @@ namespace BionicTraveler.Scripts
         private GameObject loadingScreen;
 
         private string sceneToLoad;
+
+        /// <summary>
+        /// Called whenever a new level has been loaded in.
+        /// </summary>
+        public event Action FinishedLoading;
 
         /// <summary>
         /// Gets the level loading manager instance.
@@ -49,6 +55,7 @@ namespace BionicTraveler.Scripts
                 LevelLoadingManager.instance = this;
             }
 
+            this.sceneToLoad = SceneManager.GetActiveScene().name;
             this.DesiredSpawnPoint = LevelLoadingManager.DefaultSpawnPoint;
         }
 
@@ -74,6 +81,71 @@ namespace BionicTraveler.Scripts
             Time.timeScale = 0;
             this.loadingScreen.SetActive(true);
             this.StartCoroutine(this.LoadSceneAsync());
+        }
+
+        /// <summary>
+        /// Reloads the currently active scene.
+        /// </summary>
+        public void ReloadCurrentScene()
+        {
+            this.StartCoroutine(this.ReloadCurrentSceneAsync());
+        }
+
+        private IEnumerator ReloadCurrentSceneAsync()
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            var currentSceneName = currentScene.name;
+            var currentPlayer = GameObject.FindGameObjectWithTag("Player");
+
+            this.IsLoading = true;
+            Time.timeScale = 0;
+            this.loadingScreen.SetActive(true);
+
+            // Activate loading screen scene.
+            var loadingScreenSceneName = "LoadingScreen";
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(loadingScreenSceneName, LoadSceneMode.Additive);
+
+            // Wait until the last operation fully loads to return anything.
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            var loadingScreenScene = SceneManager.GetSceneByName(loadingScreenSceneName);
+            SceneManager.MoveGameObjectToScene(currentPlayer, loadingScreenScene);
+            currentPlayer = GameObject.FindGameObjectWithTag("Player");
+            Debug.Log("Player: " + currentPlayer == null);
+
+            // Unload and reload current scene.
+            asyncLoad = SceneManager.UnloadSceneAsync(currentScene);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            asyncLoad = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive);
+
+            // Wait until the last operation fully loads to return anything.
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            var newScene = SceneManager.GetSceneByName(currentSceneName);
+            SceneManager.MoveGameObjectToScene(currentPlayer, newScene);
+
+            // Unload the previous Scene.
+            asyncLoad = SceneManager.UnloadSceneAsync(loadingScreenScene);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+
+            Time.timeScale = 1;
+            this.loadingScreen.SetActive(false);
+            this.IsLoading = false;
+            this.FinishedLoading?.Invoke();
+            Debug.Log("Old level unloaded");
         }
 
         private IEnumerator LoadSceneAsync()
@@ -111,6 +183,7 @@ namespace BionicTraveler.Scripts
             Time.timeScale = 1;
             this.loadingScreen.SetActive(false);
             this.IsLoading = false;
+            this.FinishedLoading?.Invoke();
             Debug.Log("Old level unloaded");
         }
     }

@@ -20,7 +20,7 @@ namespace BionicTraveler.Scripts.Combat
         /// <param name="relationships">Entity's relationships.</param>
         public EnemyScanner(EntityRelationships relationships)
         {
-            this.relationships = relationships;
+            this.relationships = relationships ?? throw new ArgumentNullException(nameof(relationships));
         }
 
         /// <summary>

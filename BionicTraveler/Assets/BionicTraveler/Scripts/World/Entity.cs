@@ -59,6 +59,15 @@
         }
 
         /// <summary>
+        /// Sets this entity's health to <paramref name="health"/>.
+        /// </summary>
+        /// <param name="health">The health.</param>
+        public void SetHealth(int health)
+        {
+            this.health = health;
+        }
+
+        /// <summary>
         /// Sets Direction for this Dynamic Entity.
         /// </summary>
         /// <param name="target">Target world position to look at</param>
