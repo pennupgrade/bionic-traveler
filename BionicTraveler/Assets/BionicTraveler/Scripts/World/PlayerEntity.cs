@@ -87,6 +87,11 @@ namespace BionicTraveler.Scripts.World
             {
                 var item = this.Inventory.DropItem(this.Inventory.Items.First().ItemData);
             }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                EnemyCreator.SpawnEnemy(this.transform.position);
+            }
         }
 
         public override void Kill()
