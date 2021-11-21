@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/houses/HouseScene3_2.unity
     guid: 6add7f37889b5c5438227bf4aad3f32a
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/LoadingScreen.unity
+    guid: 664981801b840ac488f5eb898c2669e8
   m_configObjects: {}
