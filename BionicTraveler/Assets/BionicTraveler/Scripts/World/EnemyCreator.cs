@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using BionicTraveler.Assets.Framework;
+    using Framework;
     using UnityEngine;
     using WeightedDynEntity = Weighted<DynamicEntity>;
 
@@ -26,6 +27,9 @@
         private bool autoSpawn;
 
         [SerializeField]
+        private float spawnDistance;
+
+        [SerializeField]
         private bool allowSpawnWithinCamera;
 
         [SerializeField]
@@ -39,6 +43,7 @@
         private EnemyCreator()
         {
             this.autoSpawn = true;
+            this.spawnDistance = 100;
             this.allowSpawnWithinCamera = false;
             this.spawnProbeIntervalSeconds = 2.5f;
         }
@@ -124,12 +129,16 @@
 
         private void Update()
         {
-            if (this.lastSpawnCheck.HasTimeElapsed(this.spawnProbeIntervalSeconds))
+            if (this.lastSpawnCheck.HasTimeElapsedReset(this.spawnProbeIntervalSeconds))
             {
-                if (this.allowSpawnWithinCamera || !this.IsOnScreen())
+                var distanceToPlayer = GameObject.FindGameObjectWithTag("Player").transform.DistanceTo(this.transform);
+                if (distanceToPlayer < this.spawnDistance)
                 {
-                    this.SpawnNear();
-                    this.lastSpawnCheck = GameTime.Now;
+                    if (this.allowSpawnWithinCamera || !this.IsOnScreen())
+                    {
+                        this.SpawnNear();
+                        this.lastSpawnCheck = GameTime.Now;
+                    }
                 }
             }
         }
@@ -143,7 +152,7 @@
         /// <summary>
         /// supposed to draw a sphere showing the spawn area.
         /// </summary>
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.yellow;

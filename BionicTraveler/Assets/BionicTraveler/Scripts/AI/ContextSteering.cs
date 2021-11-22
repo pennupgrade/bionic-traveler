@@ -133,6 +133,19 @@
             var targetCollider = target.GetComponent<Collider2D>();
             var distanceToTarget = Vector3.Distance(this.ourCollider.bounds.center, targetCollider.bounds.center);
 
+            // Stop chasing. TODO: Make customizable.
+            if (distanceToTarget > 20)
+            {
+                this.StopFollowing();
+                return;
+            }
+
+            if (distanceToTarget > 10)
+            {
+                this.UseNavmeshPathfinding(target);
+                return;
+            }
+
             // Ensure avoidance radius is smaller than target distance so that we can always reach our target.
             this.currentAvoidanceRadius = Math.Max(0, Math.Min(this.avoidanceRadius, distanceToTarget - 0.5f));
 
@@ -158,9 +171,7 @@
             // Let A* take over.
             if (isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
-                this.agent.isStopped = false;
-                this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
-                this.agent.SetDestination(target.position);
+                this.UseNavmeshPathfinding(target);
             }
             else
             {
@@ -176,9 +187,12 @@
                     this.agent.velocity = this.dontMove ? Vector3.zero : this.FixUpVector(velocity);
 
                     var animator = this.GetComponent<Animator>();
-                    var velocityInput = this.agent.velocity;
-                    animator.SetFloat("Horizontal", velocityInput.x);
-                    animator.SetFloat("Vertical", velocityInput.y);
+                    if (animator != null)
+                    {
+                        var velocityInput = this.agent.velocity;
+                        animator.SetFloat("Horizontal", velocityInput.x);
+                        animator.SetFloat("Vertical", velocityInput.y);
+                    }
                 }
                 else
                 {
@@ -191,6 +205,19 @@
                     //animator.SetFloat("Vertical", targetDirection.y);
                 }
             }
+        }
+
+        private void UseNavmeshPathfinding(Transform target)
+        {
+            this.agent.isStopped = false;
+            this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            this.agent.SetDestination(target.position);
+        }
+
+        private void StopFollowing()
+        {
+            this.agent.isStopped = true;
+            this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
         }
 
         private Vector3 FixUpVector(Vector3 vector)

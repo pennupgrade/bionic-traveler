@@ -41,7 +41,7 @@
         /// <summary>
         /// Gets the time this <see cref="GameTime"/> represents.
         /// </summary>
-        public float Time { get; }
+        public float Time { get; private set; }
 
         /// <summary>
         /// Gets the elapsed time.
@@ -62,6 +62,31 @@
             }
 
             return UnityEngine.Time.time - this.Time > timeInSeconds;
+        }
+
+        /// <summary>
+        /// Returns whether the specified time has elapsed. Resets the internal timer afterwards.
+        /// </summary>
+        /// <param name="timeInSeconds">The time in seconds.</param>
+        /// <returns>Whether the time has elapsed.</returns>
+        public bool HasTimeElapsedReset(float timeInSeconds)
+        {
+
+            // Special behavior for our default case.
+            if (this.isDefault)
+            {
+                this.isDefault = false;
+                this.Time = UnityEngine.Time.time;
+                return true;
+            }
+
+            var hasElapsed = UnityEngine.Time.time - this.Time > timeInSeconds;
+            if (hasElapsed)
+            {
+                this.Time = UnityEngine.Time.time;
+            }
+
+            return hasElapsed;
         }
     }
 }

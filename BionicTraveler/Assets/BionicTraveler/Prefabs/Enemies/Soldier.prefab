@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7531016992237546982}
   - component: {fileID: 5286628327211811145}
   - component: {fileID: 1734254569279392859}
+  - component: {fileID: 3956004148705807377}
+  - component: {fileID: 1407158566503739338}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Enemy
@@ -125,3 +127,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3956004148705807377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1730b4215c860854fa6fd38e9e3f38d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanRadius: 5
+  avoidanceRadius: 4
+  currentAvoidanceRadius: 4
+  resolution: 20
+  showDebugLines: 1
+  dontMove: 0
+  detectionRays: []
+  interest: []
+  danger: []
+  avoid: []
+  combinedWeight: []
+--- !u!195 &1407158566503739338
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 120
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
