@@ -66,6 +66,7 @@
 
         [SerializeField]
         private List<float> combinedWeight;
+        private float[] newWeights;
 
         [SerializeField]
         private bool dontMove;
@@ -186,6 +187,7 @@
 
             //Draws the detection rays
             bool anyAvoidance = false;
+            this.newWeights = new float[this.resolution];
             for (int i = 0; i < detectionRays.Count; i++)
             {
                 CalculatePathWeights(detectionRays[i], i, target);
@@ -226,6 +228,7 @@
             //                                avoid[detectionRayIndex]);
         }
 
+
         private void CalculatePathWeightsAvoidance(Vector3 detectionRayPoint, int detectionRayIndex, Transform target)
         {
             int oppositeIndex = (detectionRayIndex + (this.resolution / 2)) % this.resolution;
@@ -234,11 +237,19 @@
                 interest[detectionRayIndex] += -(avoid[oppositeIndex]);
             }
 
-            combinedWeight[detectionRayIndex] = interest[detectionRayIndex];
+            newWeights[detectionRayIndex] = interest[detectionRayIndex];
 
             if (avoid[detectionRayIndex] < 0)
             {
-                combinedWeight[detectionRayIndex] = 0;
+                newWeights[detectionRayIndex] = 0;
+            }
+
+            // Blend new values with old weights.
+            var diff = newWeights[detectionRayIndex] - combinedWeight[detectionRayIndex];
+            combinedWeight[detectionRayIndex] += (diff / 100);
+            if (combinedWeight[detectionRayIndex] < 0.1f)
+            {
+                //combinedWeight[detectionRayIndex] = 0;
             }
 
             //combinedWeight[detectionRayIndex] =
@@ -249,12 +260,14 @@
 
         int bestIndex;
         float bestIndexWeight;
+        Vector3 lastDirection;
+
         private ContextReturnData ChooseBestPoint()
         {
             var chosenDirection = Vector3.zero;
             for (int i = 0; i < this.resolution; i++)
             {
-                chosenDirection += this.detectionRays[i] * combinedWeight[i];
+                chosenDirection += this.detectionRays[i] * Mathf.Clamp01(combinedWeight[i]);
             }
 
             chosenDirection.Normalize();
@@ -263,6 +276,9 @@
                   transform.position,
                   transform.position + (chosenDirection * 3),
                   Color.blue);
+            chosenDirection = Vector3.Lerp(chosenDirection, lastDirection, 0.1f);
+
+            lastDirection = chosenDirection;
 
             return new ContextReturnData(transform.position + chosenDirection, 0, 0);
 
