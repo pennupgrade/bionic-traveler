@@ -654,8 +654,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSet:
-  - {fileID: 1734254569279392855, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
-  - {fileID: 4925333826740707053, guid: edaaedf3d493ca8479a896f7a57a011c, type: 3}
+  - value: {fileID: 5286628327211811145, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
+    weight: 10
+  - value: {fileID: 4925333826740707054, guid: edaaedf3d493ca8479a896f7a57a011c, type: 3}
+    weight: 20
 --- !u!4 &1764693490
 Transform:
   m_ObjectHideFlags: 0

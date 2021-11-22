@@ -33,5 +33,15 @@
         /// Gets the weight for the value
         /// </summary>
         public int Weight => this.weight;
+
+        /// <summary>
+        /// overriding ToString for better logging
+        /// </summary>
+        /// <returns>string.</returns>
+        public override string ToString()
+        {
+            return "{v:" + this.Value + ",w:" + this.Weight + "}";
+        }
     }
+
 }
