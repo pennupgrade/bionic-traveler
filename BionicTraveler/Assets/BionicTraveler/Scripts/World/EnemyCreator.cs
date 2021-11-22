@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using BionicTraveler.Assets.Framework;
     using UnityEngine;
     using WeightedDynEntity = Weighted<DynamicEntity>;
 
@@ -21,13 +22,29 @@
         [SerializeField]
         private int spawnRadius;
 
+        [SerializeField]
+        private bool autoSpawn;
+
+        [SerializeField]
+        private bool allowSpawnWithinCamera;
+
+        [SerializeField]
+        private float spawnProbeIntervalSeconds;
+
         // number of enemies already spawned/currently on scene
         private int numEnemies;
         private int totalWeight = -1;
+        private GameTime lastSpawnCheck;
 
+        private EnemyCreator()
+        {
+            this.autoSpawn = true;
+            this.allowSpawnWithinCamera = false;
+            this.spawnProbeIntervalSeconds = 2.5f;
+        }
 
         /// <summary>
-        /// Spawns
+        /// Spawns all enemis up to the maximum.
         /// </summary>
         public void SpawnAllNear()
         {
@@ -38,7 +55,7 @@
         }
 
         /// <summary>
-        /// Spawn's an enemy near the EnemyCreator, within the radius
+        /// Spawn's an enemy near the EnemyCreator, within the radius.
         /// </summary>
         /// <returns>the created dynamic entity</returns>
         public DynamicEntity SpawnNear()
@@ -47,7 +64,6 @@
             newPosition += (Vector3)(UnityEngine.Random.insideUnitCircle * this.spawnRadius);
             return this.SpawnAt(newPosition);
         }
-
 
         /// <summary>
         /// Spawns a new random enemy at the specified position.
@@ -101,11 +117,33 @@
             throw new InvalidOperationException("Shouldn't reach this!");
         }
 
+        private void Start()
+        {
+            this.lastSpawnCheck = GameTime.Default;
+        }
+
+        private void Update()
+        {
+            if (this.lastSpawnCheck.HasTimeElapsed(this.spawnProbeIntervalSeconds))
+            {
+                if (this.allowSpawnWithinCamera || !this.IsOnScreen())
+                {
+                    this.SpawnNear();
+                    this.lastSpawnCheck = GameTime.Now;
+                }
+            }
+        }
+
+        private bool IsOnScreen()
+        {
+            var screenPos = Camera.main.WorldToViewportPoint(this.gameObject.transform.position);
+            return screenPos.x > 0 && screenPos.x < 1.0 && screenPos.y > 0 && screenPos.y < 1.0;
+        }
 
         /// <summary>
-        /// supposed to draw a sphere showing the spawn area
+        /// supposed to draw a sphere showing the spawn area.
         /// </summary>
-        public void OnDrawGizmos()
+        private void OnDrawGizmos()
         {
             // Draw a yellow sphere at the transform's position
             Gizmos.color = Color.yellow;

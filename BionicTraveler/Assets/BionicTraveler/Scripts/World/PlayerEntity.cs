@@ -87,19 +87,6 @@ namespace BionicTraveler.Scripts.World
             {
                 var item = this.Inventory.DropItem(this.Inventory.Items.First().ItemData);
             }
-
-            // TODO: find a better way to find and trigger enemy creators in scene
-            var e = GameObject.FindObjectOfType<EnemyCreator>();
-
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                e.SpawnNear();
-            }
-
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                e.SpawnAllNear();
-            }
         }
 
         public override void Kill()

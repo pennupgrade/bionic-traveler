@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 1
+  loot: {fileID: 11400000, guid: dc951b9dee7908c4faa111bd70ecc571, type: 2}
+  relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
 --- !u!61 &6996750241559796613
 BoxCollider2D:
   m_ObjectHideFlags: 0

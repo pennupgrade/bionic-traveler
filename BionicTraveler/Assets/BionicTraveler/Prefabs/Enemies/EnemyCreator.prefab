@@ -43,10 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f32e4554274486a0432adce154d1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabSet:
-  - value: {fileID: 5286628327211811145, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
-    weight: 10
-  - value: {fileID: 4925333826740707054, guid: edaaedf3d493ca8479a896f7a57a011c, type: 3}
-    weight: 20
-  maxEnemies: 100
+  prefabSet: []
+  maxEnemies: 5
   spawnRadius: 5
+  autoSpawn: 1
+  spawnProbeIntervalSeconds: 2.5
