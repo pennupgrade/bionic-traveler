@@ -62,7 +62,7 @@
         /// <summary>
         /// Spawn's an enemy near the EnemyCreator, within the radius.
         /// </summary>
-        /// <returns>the created dynamic entity</returns>
+        /// <returns>the created dynamic entity.</returns>
         public DynamicEntity SpawnNear()
         {
             var newPosition = this.transform.position;
@@ -93,10 +93,10 @@
 
         /// <summary>
         /// picks a random enemy from the set.
-        /// the weights determine how likely some enemy is to get picked
+        /// the weights determine how likely some enemy is to get picked.
         /// </summary>
-        /// <returns>the DynamicEntity for the enemy</returns>
-        /// <exception cref="InvalidOperationException">for what's supposed to be unreachable code</exception>
+        /// <returns>the DynamicEntity for the enemy.</returns>
+        /// <exception cref="InvalidOperationException">for what's supposed to be unreachable code.</exception>
         private DynamicEntity PickRandomEnemy()
         {
             if (this.totalWeight <= 0)
