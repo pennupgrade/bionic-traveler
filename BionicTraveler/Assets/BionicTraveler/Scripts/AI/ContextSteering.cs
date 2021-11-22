@@ -1,60 +1,45 @@
 ﻿namespace BionicTraveler.Scripts.AI
 {
-    using System.Linq;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
+    using BionicTraveler.Assets.Framework;
+    using Framework;
     using UnityEngine;
     using UnityEngine.AI;
-    using Framework;
     using UnityEngine.Tilemaps;
-    using BionicTraveler.Assets.Framework;
 
-    public static class CollectionsExtensions
-    {
-        public static List<int> FindAllIndex<T>(this List<T> container, Predicate<T> match)
-        {
-            var items = container.FindAll(match);
-            List<int> indexes = new List<int>();
-            foreach (var item in items)
-            {
-                indexes.Add(container.IndexOf(item));
-            }
-
-            return indexes;
-        }
-    }
-
+    /// <summary>
+    /// Context based steering behavior for enemies. Partially based on
+    /// http://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter18_Context_Steering_Behavior-Driven_Steering_at_the_Macro_Scale.pdf
+    /// https://www.ggdesign.me/goodreads/context-based-steering-4.
+    /// </summary>
     public class ContextSteering : MonoBehaviour
     {
         [Header("Behaviour Setup")]
-        //public SteeringBehaviour steeringBehaviour;
+        [SerializeField]
+        private float scanRadius;
 
-        private float circleRadius;
+        [SerializeField]
         private float avoidanceRadius;
-        private float currentAvoidanceRadius;
-        [Range(2, 30)]
-        public int resolution;
-        private float steeringSmoothingFactor;
-        private float avoidAvoidanceWeight;
-        private float danagerAvoidanceWeight;
 
-        [Header("Mask Filters")]
-        private LayerMask interestLayermask;
-        private LayerMask avoidLayerMask;
-        private LayerMask dangerLayermask;
+        [SerializeField]
+        private float currentAvoidanceRadius;
+
+        [SerializeField]
+        [Range(2, 30)]
+        private int resolution;
+        private float avoidAvoidanceWeight;
+        private float dangerAvoidanceWeight;
 
         [Header("Debug")]
+        [SerializeField]
         private bool showDebugLines;
 
-        //Local Vars
-        private bool isInitialized;
-        private Rigidbody2D myRigidBody;
-        private Collider2D myCollider;
+        [SerializeField]
+        private bool dontMove;
 
-        #region Weight Lists
         [Header("Weight Lists")]
-
         [SerializeField]
         private List<Vector3> detectionRays;
 
@@ -71,95 +56,90 @@
         private List<float> combinedWeight;
         private float[] newWeights;
 
-        [SerializeField]
-        private bool dontMove;
-
+        private bool isInitialized;
+        private NavMeshAgent agent;
+        private Collider2D ourCollider;
         private bool wasTargetObstructedLastTick;
         private GameTime timeTargetUnobstructed;
-        #endregion
+        private Vector3 lastDirection;
 
-        //All set up methods for the class.
-        #region Initialization Methods
         private void Awake()
         {
-            this.circleRadius = 5f; // steeringBehaviour.circleRadius;
+            // TODO: Configure via ScriptableObject?
+            this.scanRadius = 5f;
             this.avoidanceRadius = 4f;
-            this.resolution = 20; // steeringBehaviour.resolution;
-            this.avoidAvoidanceWeight = -0.7f; // steeringBehaviour.avoidAvoidanceWeight;
-            this.danagerAvoidanceWeight = -0.8f; // steeringBehaviour.danagerAvoidanceWeight;
-            //this.interestLayermask = steeringBehaviour.interestLayermask;
-            //this.avoidLayerMask = steeringBehaviour.avoidLayerMask;
-            //this.dangerLayermask = steeringBehaviour.dangerLayermask;
-            this.showDebugLines = true; // steeringBehaviour.showDebugLines;
+            this.resolution = 20;
+            this.avoidAvoidanceWeight = -0.7f;
+            this.dangerAvoidanceWeight = -0.8f;
+            this.showDebugLines = true;
+            this.ourCollider = this.GetComponent<Collider2D>();
 
-            this.myCollider = GetComponent<Collider2D>();
-            this.myRigidBody = GetComponent<Rigidbody2D>();
-
-            SetUpContexts();
+            this.SetUpContexts();
 
             this.timeTargetUnobstructed = GameTime.Default;
+            this.dontMove = false;
             this.isInitialized = true;
         }
 
+        private void Start()
+        {
+            this.agent = this.GetComponent<NavMeshAgent>();
+            this.agent.updateRotation = false;
+            this.agent.updateUpAxis = false;
+        }
+
         /// <summary>
-        /// Set up of internal lists for the contexts and the detection rays
+        /// Set up of internal lists for the contexts and the detection rays.
         /// </summary>
         private void SetUpContexts()
         {
-            detectionRays = new List<Vector3>();
-            interest = new List<float>();
-            danger = new List<float>();
-            avoid = new List<float>();
-            combinedWeight = new List<float>();
+            this.detectionRays = new List<Vector3>();
+            this.interest = new List<float>();
+            this.danger = new List<float>();
+            this.avoid = new List<float>();
+            this.combinedWeight = new List<float>();
 
-            for (int i = 0; i < resolution; i++)
+            for (int i = 0; i < this.resolution; i++)
             {
-                GetDetectionRayPoints(i, i + 1);
+                this.GetDetectionRayPoints(i, i + 1);
             }
         }
 
         /// <summary>
-        /// Initalizes the detection rays and the context lists 
+        /// Initalizes the detection rays and the context lists.
         /// </summary>
         private void GetDetectionRayPoints(int resolutionIndex, int currentDetectionRayCount)
         {
-            //Divide the viewing angles into lines based on the resolution
-            float viewAngle = 360 / resolution;
-            //Store a ref to the view angle of each line
-            Vector3 viewAngleDir;
-            //calculate the direction of the line around the circle
+            // Divide the viewing angles into lines based on the resolution.
+            float viewAngle = 360 / this.resolution;
             float viewAngleUpdated = viewAngle * resolutionIndex;
-            //Calculate the angle of the line around the circle
-            viewAngleDir = DirFromAngle(viewAngleUpdated, true);
-            //Add detection ray point
-            if (detectionRays.Count < currentDetectionRayCount)
+            var viewAngleDir = this.DirFromAngle(viewAngleUpdated, true);
+
+            // Add detection ray point.
+            if (this.detectionRays.Count < currentDetectionRayCount)
             {
-                detectionRays.Add(viewAngleDir);
-                interest.Add(0);
-                danger.Add(0);
-                avoid.Add(0);
-                combinedWeight.Add(0);
+                this.detectionRays.Add(viewAngleDir);
+                this.interest.Add(0);
+                this.danger.Add(0);
+                this.avoid.Add(0);
+                this.combinedWeight.Add(0);
             }
         }
-        #endregion
 
-        /// <summary>
-        /// Can be overridden.  Used as the Conext Behaviours Update function and meant to be 
-        /// called from a central scripts update function
-        /// </summary>
-        public void Update()
+        private void Update()
         {
-            var target = GameObject.FindGameObjectWithTag("Player").transform;
-            var distanceToTarget = this.transform.DistanceTo(target);
-            var agent = this.GetComponent<NavMeshAgent>();
+            var targetObj = GameObject.FindGameObjectWithTag("Player");
+            var target = targetObj.transform;
+            var targetCollider = target.GetComponent<Collider2D>();
+            var distanceToTarget = Vector3.Distance(this.ourCollider.bounds.center, targetCollider.bounds.center);
 
             // Ensure avoidance radius is smaller than target distance so that we can always reach our target.
             this.currentAvoidanceRadius = Math.Max(0, Math.Min(this.avoidanceRadius, distanceToTarget - 0.5f));
 
             // If we have no clear line to our target and are blocked by an environmental collider
-            // defer to pathfinding.
-            var targetDirection = (target.position - this.transform.position).normalized;
-            var directObstacles = this.CreateObjectDetectionRay2D_ALL(true, this.transform, targetDirection, distanceToTarget);
+            // defer to pathfinding. Local pathing does not work well to navigate complex environments.
+            var targetDirection = (targetCollider.bounds.center - this.ourCollider.bounds.center).normalized;
+            var directObstacles = this.ExecuteRaycast(true, this.transform, targetDirection, distanceToTarget);
             var isObstructedByEnvironment = directObstacles.Any(obstable => obstable.collider.GetComponent<TilemapCollider2D>());
 
             if (isObstructedByEnvironment)
@@ -175,464 +155,292 @@
                 }
             }
 
+            // Let A* take over.
             if (isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
-                agent.isStopped = false;
-                agent.SetDestination(target.position);
+                this.agent.isStopped = false;
+                this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+                this.agent.SetDestination(target.position);
             }
             else
             {
+                // Use local pathfinding and manipulate velocity manually.
                 var context = this.Tick(target);
-
-                if (Vector3.Distance(this.transform.position, target.position) > 0.5f)
+                var rayBasedDistance = directObstacles.FirstOrDefault(
+                    obstacle => obstacle.collider.gameObject == targetObj);
+                if (rayBasedDistance.distance > 1.0f)
                 {
-                    //Move
-                    var velocity = (context.bestPoint - this.transform.position).normalized * 2;
-                    agent.velocity = this.dontMove ? Vector3.zero : this.FixUpVector(velocity);
-                    //this.transform.position += (context.bestPoint - this.transform.position).normalized * 4 * Time.deltaTime;
+                    var velocity = (context.BestPoint - this.transform.position).normalized * 2;
+                    this.agent.isStopped = true;
+                    this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+                    this.agent.velocity = this.dontMove ? Vector3.zero : this.FixUpVector(velocity);
 
                     var animator = this.GetComponent<Animator>();
-                    var velocityInput = agent.velocity;
+                    var velocityInput = this.agent.velocity;
                     animator.SetFloat("Horizontal", velocityInput.x);
                     animator.SetFloat("Vertical", velocityInput.y);
-                    //RotateGameObject(contextReturnData.bestPoint, rotationSpeed, rotationOffset);
+                }
+                else
+                {
+                    this.agent.isStopped = true;
+                    this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+                    this.agent.velocity = Vector3.zero;
+
+                    //var animator = this.GetComponent<Animator>();
+                    //animator.SetFloat("Horizontal", targetDirection.x);
+                    //animator.SetFloat("Vertical", targetDirection.y);
                 }
             }
         }
 
         private Vector3 FixUpVector(Vector3 vector)
         {
-            float x = vector.x, y = vector.y, z = vector.z;
-            if (Math.Abs(x) < 0.01f) x = 0.01f;
-            if (Math.Abs(y) < 0.01f) y = 0.01f;
-            if (Math.Abs(z) < 0.01f) z = 0.01f;
-            return new Vector3(x, y, z);
+            static float FixValue(float val) => Math.Abs(val) < 0.01f ? 0.01f : val;
+            return new Vector3(FixValue(vector.x), FixValue(vector.y), FixValue(vector.z));
         }
 
         private ContextReturnData Tick(Transform target)
         {
-            if (!isInitialized)
+            if (!this.isInitialized)
             {
                 Debug.LogError("Context Steering is not initialized.  Initialize context steering before calling the Tick method");
                 return new ContextReturnData(Vector3.zero, -1, 1f);
             }
 
-            //Resizes the lists based on changes to the resolution
-            if (detectionRays.Count < resolution || detectionRays.Count > resolution)
+            // Resizes the lists based on changes to the resolution.
+            if (this.detectionRays.Count < this.resolution || this.detectionRays.Count > this.resolution)
             {
-                SetUpContexts();
+                this.SetUpContexts();
             }
 
-            //Draws the detection rays
-            bool anyAvoidance = false;
+            // First pass, build all the main weights,
+            for (int i = 0; i < this.detectionRays.Count; i++)
+            {
+                this.CalculatePathWeights(this.detectionRays[i], i, target);
+            }
+
+            // Now use the three main layers to build the combined weights.
             this.newWeights = new float[this.resolution];
-            for (int i = 0; i < detectionRays.Count; i++)
+            for (int i = 0; i < this.detectionRays.Count; i++)
             {
-                CalculatePathWeights(detectionRays[i], i, target);
-                if (avoid[i] == -1 || danger[i] == -1)
+                this.CalculatePathWeightsAvoidance(i, target);
+
+                if (this.showDebugLines)
                 {
-                    anyAvoidance = true;
+                    this.DrawSteeringContextDebugLines(this.detectionRays[i], i);
                 }
             }
 
-            for (int i = 0; i < detectionRays.Count; i++)
-            {
-                if (anyAvoidance)
-                {
-                    //combinedWeight[i] = Mathf.Clamp(combinedWeight[i], 0, 0.8f);
-                }
-
-                CalculatePathWeightsAvoidance(detectionRays[i], i, target);
-
-                if (showDebugLines)
-                {
-                    DrawSteeringContextDebugLines(detectionRays[i], i);
-                }
-            }
-
-            return ChooseBestPoint();
+            return this.ChooseBestPoint();
         }
 
-        #region Path Calculation
         private void CalculatePathWeights(Vector3 detectionRayPoint, int detectionRayIndex, Transform target)
         {
-            SetInterest(detectionRayPoint, detectionRayIndex, target);
-            SetDanger(detectionRayPoint, detectionRayIndex);
-            SetAvoid(detectionRayPoint, detectionRayIndex);
-
-            //combinedWeight[detectionRayIndex] =
-            //                                Mathf.Clamp01(interest[detectionRayIndex] +
-            //                                danger[detectionRayIndex] +
-            //                                avoid[detectionRayIndex]);
+            this.SetInterest(detectionRayPoint, detectionRayIndex, target);
+            this.SetDanger(detectionRayIndex);
+            this.SetAvoid(detectionRayIndex);
         }
 
-
-        private void CalculatePathWeightsAvoidance(Vector3 detectionRayPoint, int detectionRayIndex, Transform target)
+        private void CalculatePathWeightsAvoidance(int detectionRayIndex, Transform target)
         {
             int oppositeIndex = (detectionRayIndex + (this.resolution / 2)) % this.resolution;
-            if (avoid[oppositeIndex] < 0)
+            if (this.avoid[oppositeIndex] < 0)
             {
-                interest[detectionRayIndex] += -(avoid[oppositeIndex]);
+                this.interest[detectionRayIndex] += -this.avoid[oppositeIndex];
             }
 
-            newWeights[detectionRayIndex] = interest[detectionRayIndex];
+            this.newWeights[detectionRayIndex] = this.interest[detectionRayIndex];
 
-            if (avoid[detectionRayIndex] < 0)
+            if (this.avoid[detectionRayIndex] < 0)
             {
-                newWeights[detectionRayIndex] = 0;
+                this.newWeights[detectionRayIndex] = 0;
             }
 
-            // Blend new values with old weights.
-            var diff = newWeights[detectionRayIndex] - combinedWeight[detectionRayIndex];
-            combinedWeight[detectionRayIndex] += (diff / 100);
-            if (combinedWeight[detectionRayIndex] < 0.1f)
-            {
-                //combinedWeight[detectionRayIndex] = 0;
-            }
-
-            //combinedWeight[detectionRayIndex] =
-            //                                Mathf.Clamp01(interest[detectionRayIndex] +
-            //                                danger[detectionRayIndex] +
-            //                                avoid[detectionRayIndex]);
+            // Blend new values with old weights to make direction changes less sudden.
+            var diff = this.newWeights[detectionRayIndex] - this.combinedWeight[detectionRayIndex];
+            this.combinedWeight[detectionRayIndex] += diff / 100;
         }
-
-        int bestIndex;
-        float bestIndexWeight;
-        Vector3 lastDirection;
 
         private ContextReturnData ChooseBestPoint()
         {
+            // Sum all vectors by their strength.
             var chosenDirection = Vector3.zero;
             for (int i = 0; i < this.resolution; i++)
             {
-                chosenDirection += this.detectionRays[i] * Mathf.Clamp01(combinedWeight[i]);
+                chosenDirection += this.detectionRays[i] * Mathf.Clamp01(this.combinedWeight[i]);
             }
 
             chosenDirection.Normalize();
 
-            Debug.DrawLine(
-                  transform.position,
-                  transform.position + (chosenDirection * 3),
-                  Color.blue);
-            chosenDirection = Vector3.Lerp(chosenDirection, lastDirection, 0.1f);
+            Debug.DrawLine(this.transform.position, this.transform.position + (chosenDirection * 3), Color.blue);
+            chosenDirection = Vector3.Lerp(chosenDirection, this.lastDirection, 0.1f);
 
-            lastDirection = chosenDirection;
-
-            return new ContextReturnData(transform.position + chosenDirection, 0, 0);
-
-            //Get the index with the best weight
-            bestIndex = combinedWeight.IndexOf(combinedWeight.Max());
-            return new ContextReturnData(WeightDirectionVectorsUsingCombinedWeights(bestIndex), bestIndex, combinedWeight[bestIndex]);
-
-            //Get the index with the best weight
-            bestIndex = combinedWeight.IndexOf(combinedWeight.Max());
-            int leftDirIndex = GetDirToLeft(bestIndex);
-            int rightDirIndex = GetDirToRight(bestIndex);
-            var forwardMovement = (
-                          (detectionRays[bestIndex] * combinedWeight[bestIndex]) +
-                          (detectionRays[leftDirIndex] * combinedWeight[leftDirIndex]) +
-                          (detectionRays[rightDirIndex] * combinedWeight[rightDirIndex])
-                      ).normalized * ScaleFloat(0, 1, 0, circleRadius, combinedWeight[bestIndex]);
-
-            //WeightDirectionVectorsUsingCombinedWeights(bestIndex);
-            var awayIndex = avoid.FindAllIndex(f => f == avoid.Min());
-            var awayMovement = Vector3.zero;
-            foreach (var index in awayIndex)
-            {
-                var v = (detectionRays[index] * avoid[index]);
-                awayMovement += v;
-            }
-
-            var combinedMovement = forwardMovement + (awayMovement * 5);
-            var movementPoint = transform.position + combinedMovement;
-
-            Debug.DrawLine(
-                   transform.position,
-                   transform.position + (awayMovement.normalized * 2),
-                   Color.black);
-
-            var finalMovement = movementPoint;
-
-            if (showDebugLines)
-            {
-                Debug.DrawLine(
-                        transform.position,
-                        finalMovement,
-                        Color.blue);
-            }
-
-            return new ContextReturnData(finalMovement, bestIndex, combinedWeight[bestIndex]);
+            this.lastDirection = chosenDirection;
+            return new ContextReturnData(this.transform.position + chosenDirection, 0, 0);
         }
 
-        Vector3 blendedDir;
-        private Vector3 WeightDirectionVectorsUsingCombinedWeights(int bestCombinedWeightIndex)
-        {
-            int leftDirIndex = GetDirToLeft(bestCombinedWeightIndex);
-            int rightDirIndex = GetDirToRight(bestCombinedWeightIndex);
-
-            blendedDir =
-                  transform.position +
-                  (
-                      (
-                          (detectionRays[bestCombinedWeightIndex] * combinedWeight[bestCombinedWeightIndex]) +
-                          (detectionRays[leftDirIndex] * combinedWeight[leftDirIndex]) +
-                          (detectionRays[rightDirIndex] * combinedWeight[rightDirIndex])
-                      ).normalized * ScaleFloat(0, 1, 0, circleRadius, combinedWeight[bestCombinedWeightIndex])
-                  );
-
-            if (showDebugLines)
-            {
-                Debug.DrawLine(
-                        transform.position,
-                        blendedDir,
-                        Color.blue);
-            }
-
-            return blendedDir;
-        }
-        #endregion
-
-        #region Set the Weights
         private void SetInterest(Vector3 detectionRayPoint, int detectionRayIndex, Transform target)
         {
-            interest[detectionRayIndex] = Mathf.Clamp01(CheckDotProductOfVector(detectionRayPoint, target));
-            //if (interest[detectionRayIndex] <= 0.3f)
-            //{
-            //    interest[detectionRayIndex] = 0.3f;
-            //}
+            this.interest[detectionRayIndex] = Mathf.Clamp01(this.CheckDotProductOfVector(detectionRayPoint, target));
         }
 
-
-        RaycastHit2D[] hitAvoid2D;
-        private void SetAvoid(Vector3 detectionRayPoint, int detectionRayIndex)
+        private void SetAvoid(int detectionRayIndex)
         {
-            hitAvoid2D = CheckPathObstruction(detectionRays[detectionRayIndex]);
-
+            var hitAvoid2D = this.CheckPathObstruction(this.detectionRays[detectionRayIndex]);
             if (hitAvoid2D.Length > 0)
             {
                 foreach (RaycastHit2D hit2D in hitAvoid2D)
                 {
-                    if (hit2D.collider != myCollider)
+                    if (hit2D.collider != this.ourCollider)
                     {
-                        //Debug.Log(hit2D.collider.gameObject.name);
-                        avoid[detectionRayIndex] = -Mathf.Clamp01(currentAvoidanceRadius - hit2D.distance);
-                        if (-hit2D.distance > avoidAvoidanceWeight)
+                        this.avoid[detectionRayIndex] = -Mathf.Clamp01(this.currentAvoidanceRadius - hit2D.distance);
+                        if (-hit2D.distance > this.avoidAvoidanceWeight)
                         {
-                            avoid[detectionRayIndex] = -1;
+                            this.avoid[detectionRayIndex] = -1;
                         }
+
                         break;
                     }
                     else
                     {
-                        avoid[detectionRayIndex] = 0;  //This sets the weight of this list index to 0 if no correct hit was found
+                        this.avoid[detectionRayIndex] = 0;
                     }
                 }
             }
             else
             {
-                avoid[detectionRayIndex] = 0;
+                this.avoid[detectionRayIndex] = 0;
             }
         }
 
-
-        RaycastHit2D[] hitDanager2D;
-        /// <summary>
-        /// Create a raycast to detect the obstructions in the avoid mask
-        /// </summary>
-
-        private void SetDanger(Vector3 detectionRayPoint, int detectionRayIndex)
+        private void SetDanger(int detectionRayIndex)
         {
-            //var obj = GameObject.Find("BFF (2)");
-            //var distance = (obj.transform.DistanceTo(this.transform));
-            //if (distance < this.circleRadius)
-            //{
-            //    danger[detectionRayIndex] = -Mathf.Clamp01(CheckDotProductOfVector(detectionRayPoint, obj.transform));
-            //}
-            //else
-            //{
-            //    danger[detectionRayIndex] = 0;
-            //}
-
-            //return;
-
-            hitDanager2D = CheckPathDanger(detectionRays[detectionRayIndex]);
-
-            if (hitDanager2D.Length > 0)
+            var hitDanger2D = this.CheckPathDanger(this.detectionRays[detectionRayIndex]);
+            if (hitDanger2D.Length > 0)
             {
-                foreach (RaycastHit2D hit2D in hitDanager2D)
+                foreach (RaycastHit2D hit2D in hitDanger2D)
                 {
-                    if (hit2D.collider != myCollider)
+                    if (hit2D.collider != this.ourCollider)
                     {
-                        danger[detectionRayIndex] = -Mathf.Clamp01(currentAvoidanceRadius - hit2D.distance);
-                        if (-hit2D.distance > danagerAvoidanceWeight)
+                        this.danger[detectionRayIndex] = -Mathf.Clamp01(this.currentAvoidanceRadius - hit2D.distance);
+                        if (-hit2D.distance > this.dangerAvoidanceWeight)
                         {
-                            danger[detectionRayIndex] = -1;
+                            this.danger[detectionRayIndex] = -1;
                         }
+
                         break;
                     }
                     else
                     {
-                        danger[detectionRayIndex] = 0;
+                        this.danger[detectionRayIndex] = 0;
                     }
                 }
             }
             else
             {
-                danger[detectionRayIndex] = 0;
+                this.danger[detectionRayIndex] = 0;
             }
         }
 
         /// <summary>
-        /// Create a raycast to detect the obstructions in the avoid mask
+        /// Create a raycast to detect the obstructions in the avoid mask.
         /// </summary>
         private RaycastHit2D[] CheckPathObstruction(Vector3 detectionRayPoint)
         {
-            return CreateObjectDetectionRay2D_ALL(
-                true,
-                transform,
-                detectionRayPoint,
-                circleRadius
-            );
+            return this.ExecuteRaycast(true, this.transform, detectionRayPoint, this.scanRadius);
         }
 
         /// <summary>
-        /// Create a raycast to detect the danagers in the dangers mask
+        /// Create a raycast to detect the danagers in the dangers mask.
         /// </summary>
         private RaycastHit2D[] CheckPathDanger(Vector3 detectionRayPoint)
         {
-            return CreateObjectDetectionRay2D_ALL(
-                false,
-                transform,
-                detectionRayPoint,
-                circleRadius
-            );
+            return this.ExecuteRaycast(false, this.transform, detectionRayPoint, this.scanRadius);
         }
-        #endregion
 
-        #region Helpers
         /// <summary>
-        /// Gets the detection ray index to the right of the best direction ray
+        /// Scale a float within a new range.
         /// </summary>
-        private int GetDirToRight(int index)
+        private float ScaleFloat(float oldMin, float oldMax, float newMin, float newMax, float oldValue)
         {
-            return (index == resolution - 1) ? 0 : index + 1;
+            float oldRange = oldMax - oldMin;
+            float newRange = newMax - newMin;
+            float newValue = (((oldValue - oldMin) * newRange) / oldRange) + newMin;
+            return newValue;
         }
 
         /// <summary>
-        /// Gets the detection ray index to the left of the passed direction ray with index n
-        /// </summary>
-        private int GetDirToLeft(int index)
-        {
-            return ((index - 1) < 0) ? resolution - Mathf.Abs(index - 1) : index - 1;
-        }
-
-        /// <summary>
-        /// Scale a float within a new range
-        /// </summary>
-        private float ScaleFloat(float OldMin, float OldMax, float NewMin, float NewMax, float OldValue)
-        {
-
-            float OldRange = (OldMax - OldMin);
-            float NewRange = (NewMax - NewMin);
-            float NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin;
-
-            return (NewValue);
-        }
-
-        float combinedW;
-
-        /// <summary>
-        /// Used for visualizing the detection rays
+        /// Used for visualizing the detection rays.
         /// </summary>
         private void DrawSteeringContextDebugLines(Vector3 detectionRayPos, int detectionRayIndex)
         {
-            combinedW = combinedWeight[detectionRayIndex];
+            var combinedW = this.combinedWeight[detectionRayIndex];
 
             if (combinedW > 1 * 0.9)
             {
                 Debug.DrawLine(
-                    transform.position,
-                    transform.position + (detectionRayPos.normalized * ScaleFloat(0, 1, 0, circleRadius, combinedW)),
+                    this.transform.position,
+                    this.transform.position + (detectionRayPos.normalized * this.ScaleFloat(0, 1, 0, this.scanRadius, combinedW)),
                     Color.green);
             }
             else if (combinedW > 1 * 0.5)
             {
                 Debug.DrawLine(
-                    transform.position,
-                    transform.position + (detectionRayPos.normalized * ScaleFloat(0, 1, 0, circleRadius, combinedW)),
+                    this.transform.position,
+                    this.transform.position + (detectionRayPos.normalized * this.ScaleFloat(0, 1, 0, this.scanRadius, combinedW)),
                     Color.yellow);
             }
             else if (combinedW > 1 * 0.2)
             {
                 Debug.DrawLine(
-                    transform.position,
-                    transform.position + (detectionRayPos.normalized * ScaleFloat(0, 1, 0, circleRadius, combinedW)),
+                    this.transform.position,
+                    this.transform.position + (detectionRayPos.normalized * this.ScaleFloat(0, 1, 0, this.scanRadius, combinedW)),
                     Color.red);
             }
         }
 
         /// <summary>
-        /// Calculate the direction based on an angle
+        /// Calculate the direction based on an angle.
         /// </summary>
         private Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
         {
             if (!angleIsGlobal)
             {
-                angleInDegrees += -transform.eulerAngles.z;
+                angleInDegrees += -this.transform.eulerAngles.z;
             }
 
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
         }
 
         /// <summary>
-        /// Create a ray according to the directions passed and return the RayCastHit Array of all colliders hit
+        /// Create a ray according to the directions passed and return the RayCastHit Array of all colliders hit.
         /// </summary>
-        private RaycastHit2D[] CreateObjectDetectionRay2D_ALL(bool avoidance, Transform transform, Vector3 dir, float scanDistance)
+        private RaycastHit2D[] ExecuteRaycast(bool avoidance, Transform transform, Vector3 dir, float scanDistance)
         {
-            // TODO: Danger/Avoidance filter.
-            var hits = Physics2D.RaycastAll(transform.position, dir, scanDistance);
-            return hits;
-
-            if (avoidance)
-            {
-                hits = hits.Where(hit => hit.collider != null && hit.collider.gameObject.CompareTag("Enemy")).ToArray();
-            }
-            else
-            {
-
-                hits = hits.Where(hit => hit.collider != null && hit.collider.gameObject.CompareTag("Enemy")).ToArray();
-            }
-
-            return hits;
+            return Physics2D.RaycastAll(transform.position, dir, scanDistance);
         }
 
         /// <summary>
-        /// Get the Dot product of the targetTransform and lines direction 
-        /// Used to weight the interest of a specific direction
+        /// Get the Dot product of the targetTransform and lines direction .
+        /// Used to weight the interest of a specific direction.
         /// </summary>
         private float CheckDotProductOfVector(Vector3 detectionRayPos, Transform target)
         {
-            if (showDebugLines)
-            {
-                //Debug.Log("Target Pos: " + target.position + " Target Transform:        " + target);
-            }
-
             return Vector3.Dot((target.position - this.transform.position).normalized, detectionRayPos.normalized);
         }
-        #endregion
-    }
 
-    public struct ContextReturnData
-    {
-        public Vector3 bestPoint;
-        public int bestPointIndex;
-        public float bestPointWeight;
-
-        public ContextReturnData(Vector3 bestPoint, int bestPointIndex, float bestPointWeight)
+        private struct ContextReturnData
         {
-            this.bestPoint = bestPoint;
-            this.bestPointIndex = bestPointIndex;
-            this.bestPointWeight = bestPointWeight;
+            public Vector3 BestPoint;
+            public int BestPointIndex;
+            public float BestPointWeight;
+
+            public ContextReturnData(Vector3 bestPoint, int bestPointIndex, float bestPointWeight)
+            {
+                this.BestPoint = bestPoint;
+                this.BestPointIndex = bestPointIndex;
+                this.BestPointWeight = bestPointWeight;
+            }
         }
     }
 }
