@@ -7,6 +7,8 @@
     using UnityEngine;
     using UnityEngine.AI;
     using Framework;
+    using UnityEngine.Tilemaps;
+    using BionicTraveler.Assets.Framework;
 
     public static class CollectionsExtensions
     {
@@ -30,6 +32,7 @@
 
         private float circleRadius;
         private float avoidanceRadius;
+        private float currentAvoidanceRadius;
         [Range(2, 30)]
         public int resolution;
         private float steeringSmoothingFactor;
@@ -70,6 +73,9 @@
 
         [SerializeField]
         private bool dontMove;
+
+        private bool wasTargetObstructedLastTick;
+        private GameTime timeTargetUnobstructed;
         #endregion
 
         //All set up methods for the class.
@@ -91,6 +97,7 @@
 
             SetUpContexts();
 
+            this.timeTargetUnobstructed = GameTime.Default;
             this.isInitialized = true;
         }
 
@@ -143,21 +150,53 @@
         public void Update()
         {
             var target = GameObject.FindGameObjectWithTag("Player").transform;
-            var context = this.Tick(target);
+            var distanceToTarget = this.transform.DistanceTo(target);
+            var agent = this.GetComponent<NavMeshAgent>();
 
-            if (Vector3.Distance(this.transform.position, target.position) > 0.5f)
+            // Ensure avoidance radius is smaller than target distance so that we can always reach our target.
+            this.currentAvoidanceRadius = Math.Max(0, Math.Min(this.avoidanceRadius, distanceToTarget - 0.5f));
+
+            // If we have no clear line to our target and are blocked by an environmental collider
+            // defer to pathfinding.
+            var targetDirection = (target.position - this.transform.position).normalized;
+            var directObstacles = this.CreateObjectDetectionRay2D_ALL(true, this.transform, targetDirection, distanceToTarget);
+            var isObstructedByEnvironment = directObstacles.Any(obstable => obstable.collider.GetComponent<TilemapCollider2D>());
+
+            if (isObstructedByEnvironment)
             {
-                //Move
-                var agent = this.GetComponent<NavMeshAgent>();
-                var velocity = (context.bestPoint - this.transform.position).normalized * 2;
-                agent.velocity = this.dontMove ? Vector3.zero : this.FixUpVector(velocity);
-                //this.transform.position += (context.bestPoint - this.transform.position).normalized * 4 * Time.deltaTime;
+                this.wasTargetObstructedLastTick = true;
+            }
+            else
+            {
+                if (this.wasTargetObstructedLastTick)
+                {
+                    this.wasTargetObstructedLastTick = false;
+                    this.timeTargetUnobstructed = GameTime.Now;
+                }
+            }
 
-                var animator = this.GetComponent<Animator>();
-                var velocityInput = agent.velocity;
-                animator.SetFloat("Horizontal", velocityInput.x);
-                animator.SetFloat("Vertical", velocityInput.y);
-                //RotateGameObject(contextReturnData.bestPoint, rotationSpeed, rotationOffset);
+            if (isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.position);
+            }
+            else
+            {
+                var context = this.Tick(target);
+
+                if (Vector3.Distance(this.transform.position, target.position) > 0.5f)
+                {
+                    //Move
+                    var velocity = (context.bestPoint - this.transform.position).normalized * 2;
+                    agent.velocity = this.dontMove ? Vector3.zero : this.FixUpVector(velocity);
+                    //this.transform.position += (context.bestPoint - this.transform.position).normalized * 4 * Time.deltaTime;
+
+                    var animator = this.GetComponent<Animator>();
+                    var velocityInput = agent.velocity;
+                    animator.SetFloat("Horizontal", velocityInput.x);
+                    animator.SetFloat("Vertical", velocityInput.y);
+                    //RotateGameObject(contextReturnData.bestPoint, rotationSpeed, rotationOffset);
+                }
             }
         }
 
@@ -183,7 +222,6 @@
             {
                 SetUpContexts();
             }
-
 
             //Draws the detection rays
             bool anyAvoidance = false;
@@ -377,7 +415,7 @@
                     if (hit2D.collider != myCollider)
                     {
                         //Debug.Log(hit2D.collider.gameObject.name);
-                        avoid[detectionRayIndex] = -Mathf.Clamp01(avoidanceRadius - hit2D.distance);
+                        avoid[detectionRayIndex] = -Mathf.Clamp01(currentAvoidanceRadius - hit2D.distance);
                         if (-hit2D.distance > avoidAvoidanceWeight)
                         {
                             avoid[detectionRayIndex] = -1;
@@ -425,7 +463,7 @@
                 {
                     if (hit2D.collider != myCollider)
                     {
-                        danger[detectionRayIndex] = -Mathf.Clamp01(avoidanceRadius - hit2D.distance);
+                        danger[detectionRayIndex] = -Mathf.Clamp01(currentAvoidanceRadius - hit2D.distance);
                         if (-hit2D.distance > danagerAvoidanceWeight)
                         {
                             danger[detectionRayIndex] = -1;
