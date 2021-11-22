@@ -21679,6 +21679,20 @@ MonoBehaviour:
   avoid: []
   combinedWeight: []
   dontMove: 0
+--- !u!114 &754343330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754343318}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1091cdf2d32d944ad4465ad9e47cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWeaponData: {fileID: 11400000, guid: 78584e3c6c0864e4f9166828055ccff7, type: 2}
+  secondWeaponData: {fileID: 11400000, guid: 78584e3c6c0864e4f9166828055ccff7, type: 2}
 --- !u!1001 &819470508
 PrefabInstance:
   m_ObjectHideFlags: 0

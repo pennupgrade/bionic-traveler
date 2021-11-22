@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerRelationships
   m_EditorClassIdentifier: 
   friends: []
-  enemies: []
+  enemies:
+  - Enemy
