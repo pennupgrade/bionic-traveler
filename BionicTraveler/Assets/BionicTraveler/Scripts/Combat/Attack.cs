@@ -27,7 +27,7 @@ namespace BionicTraveler.Scripts.Combat
         /// <summary>
         /// Gets the owner of the attack.
         /// </summary>
-        protected DynamicEntity Owner { get; private set; }
+        public DynamicEntity Owner { get; private set; }
 
         /// <summary>
         /// Sets the attack data. Should only be used once. Since Unity does not allow constructors

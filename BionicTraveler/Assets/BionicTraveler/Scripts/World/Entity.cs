@@ -2,8 +2,12 @@
 {
     using System;
     using System.Collections;
+    using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Combat;
+    using Framework;
     using UnityEngine;
+    using UnityEngine.AI;
 
     /// <summary>
     /// Describes a base entity in the game world.
@@ -17,6 +21,26 @@
         private float baseSpeed = 1f;
         private Vector3 direction;
 
+        private GameTime timeDied;
+        private bool isDying;
+        private DynamicEntity lastAttacker;
+
+        /// <summary>
+        /// The event handler for a dying entity.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="killer">The killer.</param>
+        public delegate void EntityDeathEventHandler(Entity sender, Entity killer);
+
+        /// <summary>
+        /// Called when the entity started dying.
+        /// </summary>
+        public event EntityDeathEventHandler Dying;
+
+        /// <summary>
+        /// Called when the entity has died.
+        /// </summary>
+        public event EntityDeathEventHandler Died;
 
         /// <summary>
         /// Gets or sets a value indicating whether entity is invincible.
@@ -32,6 +56,21 @@
         /// Gets the health from the entity.
         /// </summary>
         public int Health => this.health;
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is currently dying, i.e. its death animation is playing.
+        /// </summary>
+        public bool IsDying => this.isDying;
+
+        /// <summary>
+        /// Gets a value indicating whether this entity has died, i.e. its death animation has finished.
+        /// </summary>
+        public bool IsDead => this.health == 0 && !this.isDying;
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is dead or dying.
+        /// </summary>
+        public bool IsDeadOrDying => this.IsDying || this.IsDead;
 
         /// <summary>
         /// Gets or sets the direction for SpriteRenderer/FSM.
@@ -125,6 +164,7 @@
             }
 
             Debug.Log($"{this.gameObject.name} just got hit");
+            this.lastAttacker = attack.Owner;
             var damage = attack.AttackData.GetBaseDamage();
             this.LoseHealth(damage);
         }
@@ -165,7 +205,48 @@
         {
             Debug.Log("Implement proper dying");
             this.health = 0;
+            this.timeDied = GameTime.Now;
+
+            // Disable most of our behaviors. TODO: Should this be done in each behavior instead?
+            // TODO: Have entity metadata that specifies whether movement should be disabled while dying or not.
+            this.GetComponent<EnemyCombatBehaviour>()?.Disable();
+            //this.GetComponent<ContextSteering>()?.Disable();
+            //this.GetComponent<NavMeshAgent>()?.Disable();
+
+            var animator = this.GetComponent<Animator>();
+            if (animator != null)
+            {
+                this.isDying = true;
+                animator.Play("Dying");
+                this.Dying?.Invoke(this, this.lastAttacker);
+            }
+            else
+            {
+                this.OnDied();
+            }
+        }
+
+        /// <summary>
+        /// Called when the entity has died.
+        /// </summary>
+        public virtual void OnDied()
+        {
+            this.isDying = false;
+            this.Died?.Invoke(this, this.lastAttacker);
+
+            // TODO: Some Entity metadata that distinguishes between whether we should disappear or have a corpse.
             this.Destroy();
+
+            //var animator = this.GetComponent<Animator>();
+            //animator.Play("Death");
+        }
+
+        /// <summary>
+        /// This function is called by the animator of an entity. Do not rename it or the reference breaks!
+        /// </summary>
+        public void OnDyingAnimationFinished()
+        {
+            this.OnDied();
         }
 
         /// <summary>

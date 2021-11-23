@@ -131,10 +131,10 @@
         }
 
         /// <inheritdoc/>
-        public override void Kill()
+        public override void OnDied()
         {
             var item = this.Inventory.DropAll();
-            base.Kill();
+            base.OnDied();
         }
     }
 }
