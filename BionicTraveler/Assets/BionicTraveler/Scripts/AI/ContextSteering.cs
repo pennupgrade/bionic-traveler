@@ -190,6 +190,7 @@
                     if (animator != null)
                     {
                         var velocityInput = this.agent.velocity;
+                        animator.SetInteger("MovementState", 1);
                         animator.SetFloat("Horizontal", velocityInput.x);
                         animator.SetFloat("Vertical", velocityInput.y);
                     }
@@ -199,6 +200,7 @@
                     this.agent.isStopped = true;
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
                     this.agent.velocity = Vector3.zero;
+                    this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
 
                     //var animator = this.GetComponent<Animator>();
                     //animator.SetFloat("Horizontal", targetDirection.x);
@@ -212,12 +214,22 @@
             this.agent.isStopped = false;
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             this.agent.SetDestination(target.position);
+
+            var animator = this.GetComponent<Animator>();
+            if (animator != null)
+            {
+                var velocityInput = this.agent.velocity;
+                animator.SetInteger("MovementState", 1);
+                animator.SetFloat("Horizontal", velocityInput.x);
+                animator.SetFloat("Vertical", velocityInput.y);
+            }
         }
 
         private void StopFollowing()
         {
             this.agent.isStopped = true;
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+            this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
         }
 
         private Vector3 FixUpVector(Vector3 vector)

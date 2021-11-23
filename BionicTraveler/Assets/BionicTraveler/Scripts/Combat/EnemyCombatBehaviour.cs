@@ -70,16 +70,11 @@ namespace BionicTraveler.Scripts.Combat
         /// </summary>
         /// <param name="weaponData1">The first weapon data.</param>
         /// <param name="weaponData2">The second weapon data.</param>
-        public void InitWeapons(WeaponData weaponData1, WeaponData weaponData2)
+        private void InitWeapons(WeaponData weaponData1, WeaponData weaponData2)
         {
             if (weaponData1 is null)
             {
                 throw new ArgumentNullException(nameof(weaponData1));
-            }
-
-            if (weaponData2 is null)
-            {
-                throw new ArgumentNullException(nameof(weaponData2));
             }
 
             this.firstWeaponData = weaponData1;
@@ -110,7 +105,7 @@ namespace BionicTraveler.Scripts.Combat
                     {
                         this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
                     }
-                    else if (diff < this.secondWeaponData.SecondaryAttackData.Range)
+                    else if (this.secondWeaponData != null && diff < this.secondWeaponData.SecondaryAttackData.Range)
                     {
                         this.weaponBehaviour.SwitchWeaponMode();
                         this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());

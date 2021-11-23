@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1734254569279392859}
   - component: {fileID: 3956004148705807377}
   - component: {fileID: 1407158566503739338}
+  - component: {fileID: 8830854635775452222}
+  - component: {fileID: 1912314158476987477}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Enemy
@@ -172,3 +174,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8830854635775452222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1091cdf2d32d944ad4465ad9e47cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWeaponData: {fileID: 11400000, guid: 279de41824d1ed24086e03ab02a35495, type: 2}
+  secondWeaponData: {fileID: 0}
+--- !u!95 &1912314158476987477
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c614c0193f275d45b97a1c4c7b9e06a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
