@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.World;
     using Framework;
     using UnityEngine;
     using UnityEngine.AI;
@@ -61,6 +62,7 @@
         private Collider2D ourCollider;
         private bool wasTargetObstructedLastTick;
         private GameTime timeTargetUnobstructed;
+        private GameTime lastPathfindingUpdate;
         private Vector3 lastDirection;
 
         private void Awake()
@@ -77,6 +79,7 @@
             this.SetUpContexts();
 
             this.timeTargetUnobstructed = GameTime.Default;
+            this.lastPathfindingUpdate = GameTime.Default;
             this.dontMove = false;
             this.isInitialized = true;
         }
@@ -151,9 +154,12 @@
 
             // If we have no clear line to our target and are blocked by an environmental collider
             // defer to pathfinding. Local pathing does not work well to navigate complex environments.
+            // For now anything we hit that is not a dynamic entity we consider a static obstacles.
+            // A* is better suited to navigate those.
             var targetDirection = (targetCollider.bounds.center - this.ourCollider.bounds.center).normalized;
             var directObstacles = this.ExecuteRaycast(true, this.transform, targetDirection, distanceToTarget);
-            var isObstructedByEnvironment = directObstacles.Any(obstable => obstable.collider.GetComponent<TilemapCollider2D>());
+            bool IsEnvironment(RaycastHit2D hit) => hit.collider.GetComponent<DynamicEntity>() == null;
+            var isObstructedByEnvironment = directObstacles.Any(IsEnvironment);
 
             if (isObstructedByEnvironment)
             {
@@ -213,7 +219,12 @@
         {
             this.agent.isStopped = false;
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
-            this.agent.SetDestination(target.position);
+
+            if (this.lastPathfindingUpdate.HasTimeElapsed(0.2f))
+            {
+                this.agent.SetDestination(target.position);
+                this.lastPathfindingUpdate = GameTime.Now;
+            }
 
             var animator = this.GetComponent<Animator>();
             if (animator != null)
