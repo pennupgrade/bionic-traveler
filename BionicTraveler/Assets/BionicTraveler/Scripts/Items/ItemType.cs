@@ -19,5 +19,10 @@
         /// An equippable item, e.g. a bodypart.
         /// </summary>
         Equippable,
+
+        /// <summary>
+        /// A key that can be picked up and stays with the player permanently.
+        /// </summary>
+        Key,
     }
 }

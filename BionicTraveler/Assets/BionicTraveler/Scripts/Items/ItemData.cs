@@ -1,6 +1,7 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
     using System;
+    using System.Collections.Generic;
     using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
@@ -110,6 +111,11 @@
         /// Gets a value indicating whether this item can be used, that is it is a consumable or equippable.
         /// </summary>
         public bool CanBeInteractedWith => this.type == ItemType.Consumable || this.type == ItemType.Equippable;
+
+        /// <summary>
+        /// Gets the type of the item.
+        /// </summary>
+        public ItemType Type => this.type;
 
         /// <summary>
         /// Creates a new pickup in the game world representing this item.

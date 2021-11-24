@@ -22,7 +22,22 @@ namespace BionicTraveler.Scripts.World
         private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
+
         private int batteryHealth = 50;
+
+        /// <summary>
+        /// Gets the key manager.
+        /// </summary>
+        public KeyManager KeyManager { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerEntity"/> class.
+        /// </summary>
+        public PlayerEntity()
+        {
+            this.KeyManager = new KeyManager();
+        }
+
 
         /// <summary>
         /// Deals an amount of damage to the player (for testing purposes).

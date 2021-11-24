@@ -45,6 +45,12 @@
         public bool AddItem(ItemData item)
         {
             Debug.Log("Inventory received item");
+            if (item.Type == ItemType.Key)
+            {
+                this.AddItem((ItemDataKey)item);
+                return true;
+            }
+
             if (this.items.ContainsKey(item))
             {
                 return this.items[item].Add(1);
@@ -55,6 +61,15 @@
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Adds a new key item.
+        /// </summary>
+        /// <param name="key">The key</param>
+        public void AddItem(ItemDataKey key)
+        {
+            (this.owner as PlayerEntity).KeyManager.AddKey(key);
         }
 
         /// <summary>

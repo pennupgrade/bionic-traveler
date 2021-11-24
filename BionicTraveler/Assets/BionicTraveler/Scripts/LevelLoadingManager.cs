@@ -43,6 +43,11 @@ namespace BionicTraveler.Scripts
         /// </summary>
         public bool IsLoading { get; private set; }
 
+        /// <summary>
+        /// Gets the name of the current scene.
+        /// </summary>
+        public string CurrentSceneName => SceneManager.GetActiveScene().name;
+
         private void Awake()
         {
             if (LevelLoadingManager.instance != null && LevelLoadingManager.instance != this)
