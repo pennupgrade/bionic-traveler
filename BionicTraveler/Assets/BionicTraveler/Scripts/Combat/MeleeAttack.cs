@@ -14,7 +14,6 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
-            // TODO: Improve target detection.
             EnemyScanner scanner = this.Owner.EnemyScanner;
             GameObject[] enemies = scanner.GetEnemies();
             var ourPos = this.gameObject.transform.position;

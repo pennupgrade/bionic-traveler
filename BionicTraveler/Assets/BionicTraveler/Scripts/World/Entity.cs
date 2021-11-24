@@ -3,11 +3,9 @@
     using System;
     using System.Collections;
     using BionicTraveler.Assets.Framework;
-    using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Combat;
     using Framework;
     using UnityEngine;
-    using UnityEngine.AI;
 
     /// <summary>
     /// Describes a base entity in the game world.
@@ -43,6 +41,14 @@
         public event EntityDeathEventHandler Died;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class.
+        /// </summary>
+        public Entity()
+        {
+            this.IsPlayer = this is PlayerEntity;
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether entity is invincible.
         /// </summary>
         public bool IsInvincible { get; set; }
@@ -71,6 +77,11 @@
         /// Gets a value indicating whether this entity is dead or dying.
         /// </summary>
         public bool IsDeadOrDying => this.IsDying || this.IsDead;
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is a player.
+        /// </summary>
+        public bool IsPlayer { get; private set; }
 
         /// <summary>
         /// Gets or sets the direction for SpriteRenderer/FSM.
@@ -156,17 +167,19 @@
         /// OnHit functionality to be implemented in children of Entity.
         /// </summary>
         /// <param name="attack">The attack.</param>
-        public virtual void OnHit(Attack attack)
+        /// <returns>A value indicating whether the hit was processed.</returns>
+        public virtual bool OnHit(Attack attack)
         {
             if (this.IsInvincible)
             {
-                return;
+                return false;
             }
 
             Debug.Log($"{this.gameObject.name} just got hit");
             this.lastAttacker = attack.Owner;
             var damage = attack.AttackData.GetBaseDamage();
             this.LoseHealth(damage);
+            return true;
         }
 
         /// <summary>

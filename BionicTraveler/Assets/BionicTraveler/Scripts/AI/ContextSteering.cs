@@ -146,6 +146,11 @@
 
         private void Update()
         {
+            if (!this.agent.isActiveAndEnabled)
+            {
+                return;
+            }
+
             var targetObj = GameObject.FindGameObjectWithTag("Player");
             var target = targetObj.transform;
             var targetCollider = target.GetComponent<Collider2D>();

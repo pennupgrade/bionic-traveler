@@ -79,8 +79,7 @@
         // Update is called once per frame
         private void Update()
         {
-
-            if (this.player.IsStunned)
+            if (this.player.IsStunned || this.player.IsBeingKnockedBack)
             {
                 return;
             }
@@ -171,9 +170,11 @@
             var currentMovement = this.movement;
             //var isJumping = this.animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump");
 
-            this.rb.MovePosition(this.rb.position + (currentMovement * currentSpeed *
-                this.movementSpeedFrameMult * Time.fixedDeltaTime));
-
+            if (!this.player.IsStunned && !this.player.IsBeingKnockedBack)
+            {
+                this.rb.MovePosition(this.rb.position + (currentMovement * currentSpeed *
+                  this.movementSpeedFrameMult * Time.fixedDeltaTime));
+            }
 
             // Reset once per frame settings.
             //this.movementSpeedFrameMult = 1.0f;

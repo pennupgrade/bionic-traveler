@@ -43,8 +43,10 @@ namespace BionicTraveler.Scripts.World
             Debug.Log(this.Health);
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+            
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
                 interactable => Vector3.Distance(
@@ -92,7 +94,11 @@ namespace BionicTraveler.Scripts.World
         public override void Kill()
         {
             // TODO: Move to something more general, like maybe PlayerRespawnManager?
+            // TODO: Properly reset certain properties such as force.
             this.SetHealth(0);
+            this.IsStunned = false;
+            this.IsBeingKnockedBack = false;
+
             LevelLoadingManager.Instance.FinishedLoading += this.Instance_FinishedLoading;
             LevelLoadingManager.Instance.ReloadCurrentScene();
         }

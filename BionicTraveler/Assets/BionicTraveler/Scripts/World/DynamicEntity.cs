@@ -5,6 +5,7 @@
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Items;
     using UnityEngine;
+    using UnityEngine.AI;
 
     /// <summary>
     /// Class for all entities that can move themselves.
@@ -54,6 +55,11 @@
         /// Gets or sets a value indicating whether entity is stunned.
         /// </summary>
         internal bool IsStunned { get => this.stunned; set => this.stunned = value; }
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is being knocked back.
+        /// </summary>
+        public bool IsBeingKnockedBack { get; protected set; }
 
         /// <summary>
         /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.
@@ -131,10 +137,48 @@
         }
 
         /// <inheritdoc/>
+        public override bool OnHit(Attack attack)
+        {
+            var hit = base.OnHit(attack);
+            if (!hit)
+            {
+                return false;
+            }
+
+            // TODO: Get force data from attack.
+            if (attack is MeleeAttack)
+            {
+                var awayVector = this.GetComponent<Transform>().position - attack.Owner.GetComponent<Transform>().position;
+                this.GetComponent<Rigidbody2D>().isKinematic = false;
+                this.GetComponent<Rigidbody2D>().AddForce(awayVector.normalized * 30, ForceMode2D.Impulse);
+                this.IsBeingKnockedBack = true;
+
+                var navMesh = this.GetComponent<NavMeshAgent>();
+                if (navMesh != null)
+                {
+                    navMesh.enabled = false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <inheritdoc/>
         public override void OnDied()
         {
             var item = this.Inventory.DropAll();
             base.OnDied();
+        }
+
+        protected virtual void Update()
+        {
+            if (this.IsBeingKnockedBack)
+            {
+                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f)
+                {
+                    this.IsBeingKnockedBack = false;
+                }
+            }
         }
     }
 }
