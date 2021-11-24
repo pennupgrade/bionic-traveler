@@ -65,6 +65,13 @@
         private GameTime lastPathfindingUpdate;
         private Vector3 lastDirection;
 
+        // Stuck detection.
+        private bool isAvoidingBadPath;
+        private bool stuckOnX;
+        private bool stuckOnY;
+        private GameTime stuckLastX;
+        private GameTime stuckLastY;
+
         private void Awake()
         {
             // TODO: Configure via ScriptableObject?
@@ -89,6 +96,9 @@
             this.agent = this.GetComponent<NavMeshAgent>();
             this.agent.updateRotation = false;
             this.agent.updateUpAxis = false;
+
+            this.stuckLastX = GameTime.Now;
+            this.stuckLastY = GameTime.Now;
         }
 
         /// <summary>
@@ -215,15 +225,61 @@
             }
         }
 
+        private void StuckCheck(bool isStuck, ref bool stuckState, ref GameTime stuckTime, Func<Vector3> newPosition)
+        {
+            if (!isStuck)
+            {
+                stuckState = false;
+                return;
+            }
+
+            if (!stuckState)
+            {
+                stuckTime = GameTime.Now;
+                stuckState = true;
+            }
+
+            if (stuckTime.HasTimeElapsed(0.1f) && !this.isAvoidingBadPath)
+            {
+                stuckTime = GameTime.Now;
+                this.agent.SetDestination(this.transform.position + newPosition());
+                this.isAvoidingBadPath = true;
+            }
+        }
+
         private void UseNavmeshPathfinding(Transform target)
         {
-            this.agent.isStopped = false;
-            this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
-
-            if (this.lastPathfindingUpdate.HasTimeElapsed(0.2f))
+            if (this.showDebugLines)
             {
+                var path = this.agent.path;
+                if (path != null)
+                {
+                    for (int i = 1; i < path.corners.Length; i++)
+                    {
+                        UI.DrawCircle(path.corners[i], 0.1f, Color.blue);
+                        Debug.DrawLine(path.corners[i - 1], path.corners[i]);
+                    }
+
+                    UI.DrawCircle(this.agent.nextPosition, 0.3f, Color.red);
+                }
+            }
+
+            var desiredVelocity = this.agent.desiredVelocity;
+            var actualVelocity = this.agent.velocity;
+            var stuckOnX = Math.Abs(desiredVelocity.x - actualVelocity.x) > 0.2f && actualVelocity.x == 0;
+            var stuckOnY = Math.Abs(desiredVelocity.y - actualVelocity.y) > 0.2f && actualVelocity.y == 0;
+
+            this.StuckCheck(stuckOnX, ref stuckOnX, ref this.stuckLastX, () => new Vector3(Mathf.Clamp(desiredVelocity.x * -500, -1f, 1f), desiredVelocity.y, desiredVelocity.z));
+            this.StuckCheck(stuckOnY, ref stuckOnY, ref this.stuckLastY, () => new Vector3(desiredVelocity.x, desiredVelocity.y + Mathf.Clamp(desiredVelocity.x * -500, -1f, 1f), desiredVelocity.z));
+
+            var forceRepath = this.isAvoidingBadPath && this.agent.desiredVelocity.magnitude < 0.3f;
+            if (this.lastPathfindingUpdate.HasTimeElapsed(0.5f) || forceRepath)
+            {
+                this.agent.isStopped = false;
+                this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
                 this.agent.SetDestination(target.position);
                 this.lastPathfindingUpdate = GameTime.Now;
+                this.isAvoidingBadPath = false;
             }
 
             var animator = this.GetComponent<Animator>();
