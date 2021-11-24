@@ -72,22 +72,27 @@
         private GameTime stuckLastX;
         private GameTime stuckLastY;
 
-        private void Awake()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContextSteering"/> class.
+        /// </summary>
+        public ContextSteering()
         {
-            // TODO: Configure via ScriptableObject?
             this.scanRadius = 5f;
             this.avoidanceRadius = 4f;
             this.resolution = 20;
             this.avoidAvoidanceWeight = -0.7f;
             this.dangerAvoidanceWeight = -0.8f;
-            this.showDebugLines = true;
+            this.showDebugLines = false;
+            this.dontMove = false;
+        }
+
+        private void Awake()
+        {
+            // TODO: Configure via ScriptableObject?
             this.ourCollider = this.GetComponent<Collider2D>();
-
             this.SetUpContexts();
-
             this.timeTargetUnobstructed = GameTime.Default;
             this.lastPathfindingUpdate = GameTime.Default;
-            this.dontMove = false;
             this.isInitialized = true;
         }
 
@@ -264,6 +269,10 @@
                 }
             }
 
+            // If desired velocity does not match actual velocity, we are either accelerating or stuck.
+            // If our current velocity is zero for a while on one axis, we can assume that we are stuck.
+            // Unity pathfinding gets stuck on NavMesh edges quite a bit so we have to detect it and steer
+            // away from the edges to resume normal walking behavior.
             var desiredVelocity = this.agent.desiredVelocity;
             var actualVelocity = this.agent.velocity;
             var stuckOnX = Math.Abs(desiredVelocity.x - actualVelocity.x) > 0.2f && actualVelocity.x == 0;
@@ -378,7 +387,11 @@
 
             chosenDirection.Normalize();
 
-            Debug.DrawLine(this.transform.position, this.transform.position + (chosenDirection * 3), Color.blue);
+            if (this.showDebugLines)
+            {
+                Debug.DrawLine(this.transform.position, this.transform.position + (chosenDirection * 3), Color.blue);
+            }
+
             chosenDirection = Vector3.Lerp(chosenDirection, this.lastDirection, 0.1f);
 
             this.lastDirection = chosenDirection;
