@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - DialogueRunner
   - TraversableCollider
+  - Attack
   layers:
   - Default
   - TransparentFX

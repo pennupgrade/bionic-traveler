@@ -216,7 +216,6 @@
         /// </summary>
         public virtual void Kill()
         {
-            Debug.Log("Implement proper dying");
             this.health = 0;
             this.timeDied = GameTime.Now;
 
@@ -240,13 +239,20 @@
         }
 
         /// <summary>
+        /// Called when the entity has stopped dying and is transitioning to a death state.
+        /// </summary>
+        public virtual void OnBeforeDied()
+        {
+            this.isDying = false;
+            this.OnDied();
+            this.Died?.Invoke(this, this.lastAttacker);
+        }
+
+        /// <summary>
         /// Called when the entity has died.
         /// </summary>
         public virtual void OnDied()
         {
-            this.isDying = false;
-            this.Died?.Invoke(this, this.lastAttacker);
-
             // TODO: Some Entity metadata that distinguishes between whether we should disappear or have a corpse.
             this.Destroy();
 
@@ -259,7 +265,7 @@
         /// </summary>
         public void OnDyingAnimationFinished()
         {
-            this.OnDied();
+            this.OnBeforeDied();
         }
 
         /// <summary>

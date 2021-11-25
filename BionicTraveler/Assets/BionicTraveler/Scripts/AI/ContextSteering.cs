@@ -176,9 +176,11 @@
             // defer to pathfinding. Local pathing does not work well to navigate complex environments.
             // For now anything we hit that is not a dynamic entity we consider a static obstacles.
             // A* is better suited to navigate those.
+            // Also make sure that attacks do not count as otherwise projectiles make A* kick in.
             var targetDirection = (targetCollider.bounds.center - this.ourCollider.bounds.center).normalized;
             var directObstacles = this.ExecuteRaycast(true, this.transform, targetDirection, distanceToTarget);
-            bool IsEnvironment(RaycastHit2D hit) => hit.collider.GetComponent<DynamicEntity>() == null;
+            bool IsEnvironment(RaycastHit2D hit) => hit.collider.GetComponent<DynamicEntity>() == null
+                && hit.collider.gameObject.tag != "Attack";
             var isObstructedByEnvironment = directObstacles.Any(IsEnvironment);
 
             if (isObstructedByEnvironment)

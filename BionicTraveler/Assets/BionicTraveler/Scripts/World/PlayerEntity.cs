@@ -106,11 +106,18 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
+        /// <inheritdoc/>
         public override void Kill()
         {
             // TODO: Move to something more general, like maybe PlayerRespawnManager?
             // TODO: Properly reset certain properties such as force.
-            this.SetHealth(0);
+            base.Kill();
+            this.IsInvincible = true;
+        }
+
+        /// <inheritdoc/>
+        public override void OnDied()
+        {
             this.IsStunned = false;
             this.IsBeingKnockedBack = false;
 
@@ -122,6 +129,12 @@ namespace BionicTraveler.Scripts.World
         {
             LevelLoadingManager.Instance.FinishedLoading -= this.Instance_FinishedLoading;
             this.SetHealth(100);
+            this.IsInvincible = false;
+
+            // Reset animator state.
+            var animator = this.GetComponent<Animator>();
+            animator.Rebind();
+            animator.Update(0f);
         }
 
         private void ActivateAbility(Bodypart b)
