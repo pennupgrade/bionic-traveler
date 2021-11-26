@@ -48,6 +48,7 @@
             {
                 AttackType.Melee => gameObject.AddComponent<MeleeAttack>(),
                 AttackType.RangedProjectile => gameObject.AddComponent<ProjectileAttack>(),
+                AttackType.ForceField => gameObject.AddComponent<ForceFieldAttack>(),
                 _ => throw new InvalidOperationException($"Invalid type {type}"),
             };
         }

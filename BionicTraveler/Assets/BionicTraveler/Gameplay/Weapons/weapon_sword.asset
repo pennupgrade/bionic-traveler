@@ -15,6 +15,6 @@ MonoBehaviour:
   id: weapon_sword
   displayName: Sword
   sprite: {fileID: 0}
-  primaryAttackData: {fileID: 11400000, guid: b814c8004ff028140a91382d78030052, type: 2}
+  primaryAttackData: {fileID: 11400000, guid: dbbd5bb9c4c642f42bf9d35f1d9d9bbf, type: 2}
   secondaryAttackData: {fileID: 11400000, guid: f5482071c99b8f84ca4ef3012f274f6d, type: 2}
   itemData: {fileID: 0}

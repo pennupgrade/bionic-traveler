@@ -105,18 +105,18 @@
         }
 
         /// <summary>
-        /// Makes DEntity invincible for specified number of milliseconds
+        /// Makes DEntity invincible for specified number of milliseconds.
         /// </summary>
-        /// <param name="ms">Number of milliseconds to remain invincible</param>
+        /// <param name="ms">Number of milliseconds to remain invincible.</param>
         public void IFrame(int ms)
         {
             this.StartCoroutine(this.IFrameHandler(ms));
         }
 
         /// <summary>
-        /// Stagger/Stun the entity for the specified number of milliseconds
+        /// Stagger/Stun the entity for the specified number of milliseconds.
         /// </summary>
-        /// <param name="ms">The number of milliseconds to stun the entity</param>
+        /// <param name="ms">The number of milliseconds to stun the entity.</param>
         public void Stagger(int ms)
         {
             this.StartCoroutine(this.StaggerHandler(ms));
@@ -136,6 +136,23 @@
             this.IsStunned = false;
         }
 
+        /// <summary>
+        /// Applies a force to this dynamic entity.
+        /// </summary>
+        /// <param name="force">The force to be applied.</param>
+        public void ApplyForce(Vector2 force)
+        {
+            this.GetComponent<Rigidbody2D>().isKinematic = false;
+            this.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+            this.IsBeingKnockedBack = true;
+
+            var navMesh = this.GetComponent<NavMeshAgent>();
+            if (navMesh != null)
+            {
+                navMesh.enabled = false;
+            }
+        }
+
         /// <inheritdoc/>
         public override bool OnHit(Attack attack)
         {
@@ -149,15 +166,7 @@
             if (attack is MeleeAttack)
             {
                 var awayVector = this.GetComponent<Transform>().position - attack.Owner.GetComponent<Transform>().position;
-                this.GetComponent<Rigidbody2D>().isKinematic = false;
-                this.GetComponent<Rigidbody2D>().AddForce(awayVector.normalized * 30, ForceMode2D.Impulse);
-                this.IsBeingKnockedBack = true;
-
-                var navMesh = this.GetComponent<NavMeshAgent>();
-                if (navMesh != null)
-                {
-                    navMesh.enabled = false;
-                }
+                this.ApplyForce(awayVector.normalized * 30);
             }
 
             return true;
@@ -174,9 +183,14 @@
         {
             if (this.IsBeingKnockedBack)
             {
-                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f)
+                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f)
                 {
                     this.IsBeingKnockedBack = false;
+                    var navMesh = this.GetComponent<NavMeshAgent>();
+                    if (navMesh != null)
+                    {
+                        navMesh.enabled = true;
+                    }
                 }
             }
         }

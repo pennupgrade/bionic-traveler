@@ -46,6 +46,7 @@
         public Entity()
         {
             this.IsPlayer = this is PlayerEntity;
+            this.IsDynamic = this is DynamicEntity;
         }
 
         /// <summary>
@@ -82,6 +83,11 @@
         /// Gets a value indicating whether this entity is a player.
         /// </summary>
         public bool IsPlayer { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this entity is dynamic.
+        /// </summary>
+        public bool IsDynamic { get; private set; }
 
         /// <summary>
         /// Gets or sets the direction for SpriteRenderer/FSM.

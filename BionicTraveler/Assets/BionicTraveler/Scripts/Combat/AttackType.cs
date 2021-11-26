@@ -15,5 +15,10 @@
         /// the game world.
         /// </summary>
         RangedProjectile,
+
+        /// <summary>
+        /// A force field created around an entity.
+        /// </summary>
+        ForceField,
     }
 }
