@@ -15,6 +15,7 @@ namespace BionicTraveler.Scripts
         private void OnEnable()
         {
             DevConsole.singleton.AddCommand(new ActionCommand(this.PrintKeys));
+            DevConsole.singleton.AddCommand(new ActionCommand<bool>(this.NoTarget));
         }
 
         private void PrintKeys()
@@ -34,6 +35,12 @@ namespace BionicTraveler.Scripts
             {
                 Debug.Log("You have no keys");
             }
+        }
+
+        private void NoTarget(bool value)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerEntity>().IsIgnoredByEveryone = value;
         }
     }
 }

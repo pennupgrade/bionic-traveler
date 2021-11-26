@@ -49,17 +49,23 @@
         /// <summary>
         /// Gets or sets velocity.
         /// </summary>
-        internal Vector3 Velocity { get => this.velocity; set => this.velocity = value; }
+        public Vector3 Velocity { get => this.velocity; set => this.velocity = value; }
 
         /// <summary>
         /// Gets or sets a value indicating whether entity is stunned.
         /// </summary>
-        internal bool IsStunned { get => this.stunned; set => this.stunned = value; }
+        public bool IsStunned { get => this.stunned; set => this.stunned = value; }
 
         /// <summary>
-        /// Gets a value indicating whether this entity is being knocked back.
+        /// Gets or sets a value indicating whether this entity is being knocked back.
         /// </summary>
         public bool IsBeingKnockedBack { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this entity is ignored by other entities.
+        /// For instance, potential enemies will not attack this target.
+        /// </summary>
+        public bool IsIgnoredByEveryone { get; set; }
 
         /// <summary>
         /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.

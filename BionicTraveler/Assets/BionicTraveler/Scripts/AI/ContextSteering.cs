@@ -151,7 +151,13 @@
                 return;
             }
 
+            // TODO: Have main AI class that determines target to follow and attack.
             var targetObj = GameObject.FindGameObjectWithTag("Player");
+            if (targetObj.GetComponent<PlayerEntity>().IsIgnoredByEveryone)
+            {
+                return;
+            }
+
             var target = targetObj.transform;
             var targetCollider = target.GetComponent<Collider2D>();
             var distanceToTarget = Vector3.Distance(this.ourCollider.bounds.center, targetCollider.bounds.center);

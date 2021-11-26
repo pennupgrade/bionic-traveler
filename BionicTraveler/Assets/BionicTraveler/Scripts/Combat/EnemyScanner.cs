@@ -35,7 +35,8 @@ namespace BionicTraveler.Scripts.Combat
                 if (UnityEditorInternal.InternalEditorUtility.tags.Contains(enemy))
                 {
                     enemies.AddRange(GameObject.FindGameObjectsWithTag(enemy).Where(
-                    obj => obj.GetComponent<DynamicEntity>() != null));
+                    obj => obj.GetComponent<DynamicEntity>() != null
+                    && !obj.GetComponent<DynamicEntity>().IsIgnoredByEveryone));
                 }
                 else
                 {
