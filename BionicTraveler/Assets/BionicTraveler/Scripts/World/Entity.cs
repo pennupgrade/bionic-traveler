@@ -22,6 +22,7 @@
         private GameTime timeDied;
         private bool isDying;
         private DynamicEntity lastAttacker;
+        private DynamicEntity killer;
 
         /// <summary>
         /// The event handler for a dying entity.
@@ -29,6 +30,14 @@
         /// <param name="sender">The sender.</param>
         /// <param name="killer">The killer.</param>
         public delegate void EntityDeathEventHandler(Entity sender, Entity killer);
+
+        /// <summary>
+        /// The event handler for a damaged entity.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="attacker">The attacker.</param>
+        /// <param name="fatal">Whether the attack was fatal.</param>
+        public delegate void EntityDamagedEventHandler(Entity sender, Entity attacker, bool fatal);
 
         /// <summary>
         /// Called when the entity started dying.
@@ -39,6 +48,11 @@
         /// Called when the entity has died.
         /// </summary>
         public event EntityDeathEventHandler Died;
+
+        /// <summary>
+        /// Called when the entity got damaged.
+        /// </summary>
+        public event EntityDamagedEventHandler Damaged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
@@ -160,12 +174,18 @@
         /// <param name="amt">The amount of health lost.</param>
         public void LoseHealth(float amt)
         {
+            this.LoseHealth(amt, null);
+        }
+
+        private void LoseHealth(float amt, DynamicEntity source)
+        {
             this.health = (int)Math.Max(this.health - amt, 0f);
             Debug.Log($"{this.gameObject.name}: My health is now {this.health}");
+            this.Damaged?.Invoke(this, source, this.health == 0);
 
             if (this.health == 0)
             {
-                this.Kill();
+                this.Kill(source);
             }
         }
 
@@ -184,7 +204,7 @@
             Debug.Log($"{this.gameObject.name} just got hit");
             this.lastAttacker = attack.Owner;
             var damage = attack.AttackData.GetBaseDamage();
-            this.LoseHealth(damage);
+            this.LoseHealth(damage, attack.Owner);
             return true;
         }
 
@@ -222,8 +242,14 @@
         /// </summary>
         public virtual void Kill()
         {
+            this.Kill(null);
+        }
+
+        private void Kill(DynamicEntity killer)
+        {
             this.health = 0;
             this.timeDied = GameTime.Now;
+            this.killer = killer;
 
             // Disable most of our behaviors. TODO: Should this be done in each behavior instead?
             // TODO: Have entity metadata that specifies whether movement should be disabled while dying or not.
@@ -236,7 +262,7 @@
             {
                 this.isDying = true;
                 animator.Play("Dying");
-                this.Dying?.Invoke(this, this.lastAttacker);
+                this.Dying?.Invoke(this, killer);
             }
             else
             {
@@ -251,7 +277,7 @@
         {
             this.isDying = false;
             this.OnDied();
-            this.Died?.Invoke(this, this.lastAttacker);
+            this.Died?.Invoke(this, this.killer);
         }
 
         /// <summary>

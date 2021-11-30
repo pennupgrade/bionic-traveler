@@ -24,7 +24,16 @@
         /// Dashing state
         /// </summary>
         Dashing = 2,
+
+        /// <summary>
+        /// Player slashing.
+        /// </summary>
         Slashing = 3,
+
+        /// <summary>
+        /// Player being damaged.
+        /// </summary>
+        Hurt = 4,
     }
 
     /// <summary>
@@ -74,6 +83,13 @@
         {
             this.player = this.gameObject.GetComponent<PlayerEntity>();
             this.moveState = MovementState.Idle;
+
+            this.player.Damaged += this.Player_Damaged;
+        }
+
+        private void OnDestroy()
+        {
+            this.player.Damaged -= this.Player_Damaged;
         }
 
         // Update is called once per frame
@@ -138,6 +154,20 @@
 
             this.animator.SetInteger("MovementState", (int)this.moveState);
             //this.animator.SetBool("IsJumping", isJumping);
+        }
+
+        private void Player_Damaged(Entity sender, Entity attacker, bool fatal)
+        {
+            // Do nothing if we are got killed by this hit as the death animation takes over anyway.
+            if (fatal)
+            {
+                return;
+            }
+
+            // Transition to hurt animation. TODO: Play animation more immediately and also figure out if
+            // it can be aborted.
+            this.moveState = MovementState.Hurt;
+            this.animator.SetInteger("MovementState", (int)this.moveState);
         }
 
         private IEnumerator DashController(float seconds)
