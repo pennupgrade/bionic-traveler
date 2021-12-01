@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.World
 {
+    using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Items;
     using Framework;
@@ -24,6 +25,9 @@ namespace BionicTraveler.Scripts.World
 
         private float pickUpRange;
         private bool hasBeenPickedUp;
+        private Vector3 initialPosition;
+        private GameTime creationTime;
+        private float floatingSeed;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="Pickup"/> should be synced with its
@@ -51,6 +55,9 @@ namespace BionicTraveler.Scripts.World
         {
             Debug.Log("calling start for new pickup, " + this.ItemData);
             this.pickUpRange = this.ItemData.PickupRange;
+            this.initialPosition = this.transform.position;
+            this.creationTime = GameTime.Now;
+            this.floatingSeed = Random.Range(0.0f, 1.0f);
         }
 
         /// <summary>
@@ -105,6 +112,16 @@ namespace BionicTraveler.Scripts.World
                 // Maybe use an event system?
                 this.gameObject.SetActive(false);
             }
+        }
+
+        private void FixedUpdate()
+        {
+            // Use sin for non-linear motion, then ensure it is always positive and scale down.
+            var currentTime = this.creationTime.Elapsed + this.floatingSeed;
+            var fraction = Mathf.Sin(currentTime) * Mathf.Sin(currentTime);
+            fraction += 1f;
+            fraction *= 0.8f;
+            this.transform.position = this.initialPosition + new Vector3(0, fraction, 0);
         }
 
         /// <summary>
