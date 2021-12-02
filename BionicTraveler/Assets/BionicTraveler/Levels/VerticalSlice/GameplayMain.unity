@@ -5575,8 +5575,8 @@ MonoBehaviour:
   EffectsVolume: 1
   MusicVolume: 1
   backgroundClips:
-  - {fileID: 8300000, guid: e9208d36fa888f0428d92b22d71044bb, type: 3}
-  - {fileID: 8300000, guid: c9aa91092c43adb45ac910dd63c5e98f, type: 3}
+  - {fileID: 8300000, guid: 5fa801d6270ff44d0a9d067a13a16e79, type: 3}
+  - {fileID: 8300000, guid: ffbec7499e3bb4524a7a57645207ddd4, type: 3}
   mainAudioSource: {fileID: 1511094606}
   backgroundSource: {fileID: 1511094609}
 --- !u!4 &1511094608
