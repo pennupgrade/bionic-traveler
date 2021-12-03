@@ -155,6 +155,7 @@
             var targetObj = GameObject.FindGameObjectWithTag("Player");
             if (targetObj.GetComponent<PlayerEntity>().IsIgnoredByEveryone)
             {
+                this.StopFollowing();
                 return;
             }
 

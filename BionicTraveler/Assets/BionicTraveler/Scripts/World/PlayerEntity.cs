@@ -38,6 +38,23 @@ namespace BionicTraveler.Scripts.World
             this.KeyManager = new KeyManager();
         }
 
+        /// <summary>
+        /// Disables relevant components ex. movement and attacking.
+        /// </summary>
+        public void DisableInput() => this.SetInputState(false);
+
+        /// <summary>
+        /// Enables relevant components ex. movement and attacking.
+        /// </summary>
+        public void EnableInput() => this.SetInputState(true);
+
+        private void SetInputState(bool state)
+        {
+            this.GetComponent<PlayerMovement>().enabled = state;
+            this.GetComponent<CombatBehaviour>().enabled = state;
+            this.GetComponent<BodypartBehaviour>().enabled = state;
+            this.GetComponent<PlayerInteraction>().enabled = state;
+        }
 
         /// <summary>
         /// Deals an amount of damage to the player (for testing purposes).
