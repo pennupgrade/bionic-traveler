@@ -8,14 +8,15 @@ namespace BionicTraveler.Scripts
     /// <summary>
     /// KnightScriptedEvent
     /// A derived class of ScriptedEvent, currently deals with a single Dynamic
-    /// Entity, Knight, however this can be modified to however many Dynamic
-    /// Entities as well as Interactables if we want Dynamic Entities
+    /// Entity, Knight, however this can be modified to however many Interactables if we want Dynamic Entities
     /// Interacting with Interactables.
     /// </summary>
     public class KnightScriptedEvent : ScriptedEvent
     {
         [SerializeField]
         private BionicTraveler.Scripts.World.DynamicEntity knight;
+        [SerializeField]
+        private BionicTraveler.Scripts.World.PlayerEntity player;
 
         /// <summary>
         /// GenerateEvent override
@@ -23,6 +24,10 @@ namespace BionicTraveler.Scripts
         /// <returns>IEnumerator (Coroutine) </returns>
         public override IEnumerator GenerateEvent()
         {
+            //Player stun:
+            //Player movement:
+            //Knight Movement:
+            this.player.IsStunned = true;
             yield return this.MoveTo(this.knight, new Vector3(-750.37f, -17.94f, 0.0f), 0.4f);
             yield return this.MoveTo(this.knight, new Vector3(-750.37f, -16.31f, 0.0f), 0.4f);
             yield return this.MoveTo(this.knight, new Vector3(-751.95f, -16.31f, 0.0f), 0.4f);
@@ -40,7 +45,9 @@ namespace BionicTraveler.Scripts
                 yield return this.MoveTo(this.knight, new Vector3(-757.17f, -15.82f, 0.0f), speed);
                 speed *= 2;
             }
+
             yield return this.MoveTo(this.knight, new Vector3(-757.22f, -19.86f, 0.0f), 0.05f);
+            this.player.IsStunned = false;
         }
     }
 }

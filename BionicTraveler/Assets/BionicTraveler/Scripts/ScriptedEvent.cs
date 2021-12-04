@@ -19,6 +19,7 @@ public abstract class ScriptedEvent : MonoBehaviour
     /// </summary>
     public void PlaySequence()
     {
+        CameraDirector.Play();
         this.StartCoroutine(this.GenerateEvent());
     }
 

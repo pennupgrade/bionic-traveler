@@ -139,26 +139,16 @@
 
             // bool smooth = true;
             int i = 0;
-            Debug.Log("Duration = " + duration);
-            Debug.Log("Beginning MoveTo While loop");
             while ((pos.position - target).magnitude > epsilon)
             {
-                Debug.Log("Frame: " + i);
-                Debug.Log("Elapsed: " + elapsed);
                 i++;
                 float t = elapsed / duration;
-                Debug.Log("t: " + t);
 
                 // if (smooth) { t = t * t * (3f - (2f * t)); }
                 pos.position = Vector3.Lerp(pos.position, target, t);
-                Debug.Log("Position: " + pos.position);
-                Debug.Log("=========================");
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-
-            Debug.Log("Finally finished moveTo inside Entity class, elapsed: " + elapsed);
-
             // pos.position = target;
         }
 

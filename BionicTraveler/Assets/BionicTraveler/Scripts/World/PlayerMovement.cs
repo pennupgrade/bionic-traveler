@@ -54,6 +54,8 @@
 
         private bool dashAvailable = true;
         private bool slashAvailable = true;
+        private bool beenStunned = false;
+        private bool lockInput = false;
 
         [SerializeField]
         [Tooltip("How long the slash is on cooldown before being usable again")]
@@ -79,14 +81,27 @@
         // Update is called once per frame
         private void Update()
         {
-
-            if (this.player.IsStunned)
+            if (this.player.IsStunned && !this.beenStunned)
             {
+                // Freeze movement speed
+                this.movement = Vector2.zero;
+                this.moveState = MovementState.Idle;
+
+                this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
+                this.animator.SetInteger("MovementState", (int)this.moveState);
+                this.beenStunned = true;
+                return;
+            } else if (this.player.IsStunned && this.beenStunned)
+            {
+                this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
+                this.animator.SetInteger("MovementState", (int)this.moveState);
                 return;
             }
+            else
+            {
+                this.beenStunned = false;
+            }
 
-            //Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).ToString());
-            
 
             if (Input.GetButtonDown("Dash"))
             {
@@ -102,7 +117,6 @@
                     Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
                 }
             }
-            
 
             if (this.movement != Vector2.zero)
             {
