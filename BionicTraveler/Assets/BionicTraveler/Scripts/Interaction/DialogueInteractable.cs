@@ -10,9 +10,10 @@ namespace BionicTraveler.Scripts.Interaction
     public abstract class DialogueInteractable : MonoBehaviour, IInteractable
     {
         [SerializeField]
-        private DialogueRunner runner;
+        private YarnProgram dialogue;
 
         [SerializeField]
+        [DialogueNodeSelectorAttribute(nameof(dialogue))]
         private string dialogueStartNode;
 
         [SerializeField]
@@ -23,7 +24,13 @@ namespace BionicTraveler.Scripts.Interaction
         [Tooltip("Whether dialogue state will be saved in save file.")]
         private bool persistState;
 
+        private DialogueRunner runner;
         private bool hasRun;
+
+        /// <summary>
+        /// Gets the associated yarn dialogue.
+        /// </summary>
+        public YarnProgram Dialogue => this.dialogue;
 
         /// <inheritdoc/>
         public virtual void OnInteract(GameObject obj)
@@ -41,17 +48,23 @@ namespace BionicTraveler.Scripts.Interaction
             player.DisableInput();
 
             this.runner = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueRunner>();
+            this.runner.Add(this.dialogue);
             this.runner.StartDialogue(this.dialogueStartNode);
+            this.runner.onDialogueComplete.AddListener(this.DialogueCompletedHandler);
+        }
 
-            this.runner.onDialogueComplete.AddListener(() =>
-            {
-                this.hasRun = true;
+        private void DialogueCompletedHandler()
+        {
+            // We need to clear the runner, otherwise we cannot load the same program again
+            // or other programs with nodes with the same names.
+            this.hasRun = true;
+            this.runner.Clear();
+            this.runner.onDialogueComplete.RemoveListener(this.DialogueCompletedHandler);
+            DialogueStates.Instance.MarkDialogueAsCompleted(this, this.persistState);
 
-                player.IsIgnoredByEveryone = false;
-                player.EnableInput();
-
-                Debug.Log("Has Run state: " + this.hasRun);
-            });
+            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
+            player.IsIgnoredByEveryone = false;
+            player.EnableInput();
         }
     }
 }
