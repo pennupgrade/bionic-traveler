@@ -21301,6 +21301,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8708636735553445588, guid: e9bb727e37ca9544283e4dc8d485bc40, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: ff4bcfb9ebe31db4fa85a67a5f88645b, type: 3}
     - target: {fileID: 8708636735553445589, guid: e9bb727e37ca9544283e4dc8d485bc40, type: 3}
       propertyPath: m_RootOrder
       value: 2
