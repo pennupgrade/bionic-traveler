@@ -50,6 +50,23 @@ namespace BionicTraveler
                     this.openedMenu.Open();
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.K))
+            {
+                if (this.openedMenu)
+                {
+                    this.openedMenu.Close();
+                }
+
+                if (this.openedMenu == MapManager.Instance)
+                {
+                    this.openedMenu = null;
+                }
+                else
+                {
+                    this.openedMenu = MapManager.Instance;
+                    this.openedMenu.Open();
+                }
+            }
         }
     }
 }
