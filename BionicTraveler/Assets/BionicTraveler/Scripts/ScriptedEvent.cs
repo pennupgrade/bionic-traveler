@@ -49,3 +49,15 @@ public abstract class ScriptedEvent : MonoBehaviour
         i.OnInteract(this.gameObject);
     }
 }
+
+// Intro scene: (ALL SCRIPTED)
+/* 0. Invisible barrier around battle scene 
+ * 1. Fade from black
+ * 2. Walk off of space ship
+ * 3. dialogue
+ * 4. Walk around spaceship while dialogue is playing, and then walk through clearing between trees
+ * 5. While walking through clearing, dialogue says one more sentence
+ * 6. Then, camera pan to center bad guy- bad guy idle, not facing down, another dialogue line ending with - to indicate interruption
+ * 7. Then, enemy abrupt turn, alert sound, step down (towards player), play battle theme
+ * 8. Camera pan down, back to player tracking camera
+ * 9. Now, both in view, player in center though, and player regains control

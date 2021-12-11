@@ -24,12 +24,11 @@ namespace BionicTraveler.Scripts
         /// <returns>IEnumerator (Coroutine) </returns>
         public override IEnumerator GenerateEvent()
         {
-            //Player stun:
-            //Player movement:
-            //Knight Movement:
-            this.player.IsStunned = true;
+            //this.player.IsStunned = true;
             yield return this.MoveTo(this.knight, new Vector3(-750.37f, -17.94f, 0.0f), 0.4f);
             yield return this.MoveTo(this.knight, new Vector3(-750.37f, -16.31f, 0.0f), 0.4f);
+            //
+
             yield return this.MoveTo(this.knight, new Vector3(-751.95f, -16.31f, 0.0f), 0.4f);
             yield return this.MoveTo(this.knight, new Vector3(-757.37f, -16.31f, 0.0f), 0.4f);
 
@@ -47,7 +46,7 @@ namespace BionicTraveler.Scripts
             }
 
             yield return this.MoveTo(this.knight, new Vector3(-757.22f, -19.86f, 0.0f), 0.05f);
-            this.player.IsStunned = false;
+            //this.player.IsStunned = false;
         }
     }
 }
