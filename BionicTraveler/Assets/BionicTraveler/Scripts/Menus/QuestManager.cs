@@ -5,6 +5,7 @@ namespace BionicTraveler.Scripts
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using BionicTraveler.Scripts.Audio;
 
     /// <summary>
     /// class that manages all the quests
@@ -23,6 +24,9 @@ namespace BionicTraveler.Scripts
         private Text questDescription;
         [SerializeField]
         private GameObject buttonPrefab;
+
+        [SerializeField]
+        private AudioClip clickSound;
 
         private string questOpened;
 
@@ -81,6 +85,7 @@ namespace BionicTraveler.Scripts
         /// <param name="description">quest's description.</param>
         public void QuestClicked(string questName, string description)
         {
+            AudioManager.Instance.PlayOneShot(clickSound);
             if (this.questOpened == null)
             {
                 this.questDetails.SetActive(true);

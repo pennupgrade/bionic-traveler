@@ -27,8 +27,9 @@ namespace BionicTraveler.Scripts
     /// </summary>
     public class SettingsManager : Menu
     {
+
         [SerializeField]
-        private AudioManager audioManager;
+        private AudioClip clickSound;
 
         private float masterVolume = 0.5f;
         private bool masterOn = true;
@@ -63,51 +64,55 @@ namespace BionicTraveler.Scripts
 
         private void SetDifficulty(int diff)
         {
+            AudioManager.Instance.PlayOneShot(clickSound);
             this.difficulty = diff;
         }
 
         private void SetMaster(float masterSlider)
         {
             this.masterVolume = masterSlider;
-            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
-            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void MuteMaster(bool muteMaster)
         {
+            AudioManager.Instance.PlayOneShot(clickSound);
             this.masterOn = muteMaster;
-            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
-            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void SetBgm(float bgmSlider)
         {
             this.bgmVolume = bgmSlider;
-            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void MuteBgm(bool muteBgm)
         {
+            AudioManager.Instance.PlayOneShot(clickSound);
             this.bgmOn = muteBgm;
-            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void SetSfx(float sfxSlider)
         {
             this.sfxVolume = sfxSlider;
-            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void MuteSfx(bool muteSfx)
         {
+            AudioManager.Instance.PlayOneShot(clickSound);
             this.sfxOn = muteSfx;
-            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         /* Voices not implemented yet, will fill in later

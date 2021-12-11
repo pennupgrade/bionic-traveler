@@ -868,11 +868,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4064188962017a4b8e1ea7115547b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
   questContainer: {fileID: 816881675}
   questDetails: {fileID: 443864640}
   questTitle: {fileID: 2046617829}
   questDescription: {fileID: 930258777}
   buttonPrefab: {fileID: 12625932}
+  clickSound: {fileID: 0}
 --- !u!223 &280462866
 Canvas:
   m_ObjectHideFlags: 0
@@ -6105,7 +6108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1707883985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7175,7 +7178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbcf23aceea3294a81cfb3dc1ddd3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 1511094607}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: b3a22bafc8e2e4f5282621595cb1030b, type: 3}
 --- !u!114 &2064395852
 MonoBehaviour:
   m_ObjectHideFlags: 0
