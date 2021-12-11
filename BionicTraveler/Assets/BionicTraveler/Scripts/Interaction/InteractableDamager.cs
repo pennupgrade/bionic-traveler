@@ -11,7 +11,7 @@ namespace BionicTraveler.Scripts.Interaction
         /// <inheritdoc/>
         public void OnInteract(GameObject obj)
         {
-            obj.GetComponent<PlayerEntity>()?.DamageBattery(1);
+            obj.GetComponent<PlayerEntity>()?.RemoveEnergy(1);
         }
     }
 }

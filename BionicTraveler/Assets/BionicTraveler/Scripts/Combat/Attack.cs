@@ -107,6 +107,7 @@ namespace BionicTraveler.Scripts.Combat
         {
             this.Owner = owner;
             this.isRunning = true;
+            this.Owner.RemoveEnergy(this.AttackData.Cost);
             this.OnAttackStarted();
             this.PlayAttackAudio();
             this.ExecuteAttack();

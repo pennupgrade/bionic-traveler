@@ -22,8 +22,7 @@ namespace BionicTraveler.Scripts.World
         private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
-
-        private int batteryHealth = 50;
+        private bool diedFromLowEnergy;
 
         /// <summary>
         /// Gets the key manager.
@@ -54,25 +53,6 @@ namespace BionicTraveler.Scripts.World
             this.GetComponent<CombatBehaviour>().enabled = state;
             this.GetComponent<BodypartBehaviour>().enabled = state;
             this.GetComponent<PlayerInteraction>().enabled = state;
-        }
-
-        /// <summary>
-        /// Deals an amount of damage to the player (for testing purposes).
-        /// </summary>
-        /// <param name="damage">The amount of damage to deal.</param>
-        public void DamageBattery(int damage)
-        {
-            this.batteryHealth = Mathf.Max(0, this.batteryHealth - damage);
-            Debug.Log(this.Health);
-        }
-
-        /// <summary>
-        /// Heals the player's battery health to full (for testing purposes).
-        /// </summary>
-        public void HealBattery()
-        {
-            this.batteryHealth = 50;
-            Debug.Log(this.Health);
         }
 
         protected override void Update()
@@ -124,6 +104,13 @@ namespace BionicTraveler.Scripts.World
         }
 
         /// <inheritdoc/>
+        public override void OnEnergyDepleted()
+        {
+            this.diedFromLowEnergy = true;
+            this.Kill();
+        }
+
+        /// <inheritdoc/>
         public override void Kill()
         {
             // TODO: Move to something more general, like maybe PlayerRespawnManager?
@@ -139,7 +126,27 @@ namespace BionicTraveler.Scripts.World
             this.IsBeingKnockedBack = false;
 
             LevelLoadingManager.Instance.FinishedLoading += this.Instance_FinishedLoading;
-            LevelLoadingManager.Instance.ReloadCurrentScene();
+
+            if (!this.diedFromLowEnergy)
+            {
+                LevelLoadingManager.Instance.ReloadCurrentScene();
+            }
+            else
+            {
+                // If we died from low energy, we get moved back to our spaceship. If our current
+                // scene does not have one, load last scene that does.
+                // TODO: This really needs a proper refactor to get the last scene with a spaceship and then move us there.
+                var spaceship = GameObject.FindObjectOfType<Spaceship>();
+                if (spaceship != null)
+                {
+                    LevelLoadingManager.Instance.ReloadCurrentScene();
+                }
+                else
+                {
+                    Debug.Log("PlayerEntity::OnDied: Died from low energy, but no spaceship on scene. Loading previous scene");
+                    LevelLoadingManager.Instance.StartLoadLevel("LandscapeScene");
+                }
+            }
         }
 
         private void Instance_FinishedLoading()
@@ -152,6 +159,16 @@ namespace BionicTraveler.Scripts.World
             var animator = this.GetComponent<Animator>();
             animator.Rebind();
             animator.Update(0f);
+
+            // TODO: This really needs a proper refactor to get the last scene with a spaceship and then move us there.
+            if (this.diedFromLowEnergy)
+            {
+                // Probe current scene. Not fast or pretty, but works.
+                var spaceship = GameObject.FindObjectOfType<Spaceship>();
+                this.gameObject.transform.position = spaceship.PlayerExitPoint.transform.position;
+            }
+
+            this.diedFromLowEnergy = false;
         }
 
         private void ActivateAbility(Bodypart b)

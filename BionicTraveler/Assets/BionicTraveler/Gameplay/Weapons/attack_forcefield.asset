@@ -18,7 +18,7 @@ MonoBehaviour:
   range: 3
   cooldown: 0
   freezeDuration: 0
-  cost: 0
+  cost: 50
   reloadTime: 0
   maxAmmo: 0
   clipSize: 0
@@ -26,6 +26,8 @@ MonoBehaviour:
   areaOfEffect: 0
   sprite: {fileID: 0}
   animation: {fileID: 0}
+  animationState: 
+  animationDeterminesHit: 0
   audioClip: {fileID: 0}
   audioClipImpact: {fileID: 0}
   projectileSpeed: 0

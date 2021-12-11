@@ -23,6 +23,8 @@
         [TooltipAttribute("The entity relationships.")]
         private EntityRelationships relationships;
 
+        private float energy;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DynamicEntity"/> class.
         /// </summary>
@@ -68,6 +70,11 @@
         public bool IsIgnoredByEveryone { get; set; }
 
         /// <summary>
+        /// Gets the energy level of the entity which is used for certain special attacks.
+        /// </summary>
+        public float Energy => this.energy;
+
+        /// <summary>
         /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.
         /// </summary>
         /// <param name="position">The position.</param>
@@ -96,6 +103,7 @@
         {
             base.Start();
             this.EnemyScanner = new EnemyScanner(this.relationships);
+            this.RestoreEnergy();
         }
 
         /// <summary>
@@ -159,6 +167,37 @@
             }
         }
 
+        /// <summary>
+        /// Adds the specified amount of energy.
+        /// </summary>
+        /// <param name="amount">The amount of energy.</param>
+        public void AddEnergy(float amount)
+        {
+            // TODO: Cap?
+            this.energy += amount;
+        }
+
+        /// <summary>
+        /// Removes the specified amount of energy.
+        /// </summary>
+        /// <param name="amount">The amount of energy.</param>
+        public void RemoveEnergy(float amount)
+        {
+            this.energy = Mathf.Max(0, this.energy - amount);
+            if (this.energy == 0)
+            {
+                this.OnEnergyDepleted();
+            }
+        }
+
+        /// <summary>
+        /// Restores the energy to the default amount.
+        /// </summary>
+        public void RestoreEnergy()
+        {
+            this.energy = 100;
+        }
+
         /// <inheritdoc/>
         public override bool OnHit(Attack attack)
         {
@@ -183,6 +222,13 @@
         {
             var item = this.Inventory.DropAll();
             base.OnDied();
+        }
+
+        /// <summary>
+        /// Called when this entity's energy levels have reached zero. Does nothing by default.
+        /// </summary>
+        public virtual void OnEnergyDepleted()
+        {
         }
 
         protected virtual void Update()

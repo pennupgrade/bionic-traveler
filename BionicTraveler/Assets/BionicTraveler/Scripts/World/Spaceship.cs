@@ -14,11 +14,20 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         private AudioClip interactionSound;
 
+        [Tooltip("The point where the player is spawned when they exit the ship.")]
+        [SerializeField]
+        private GameObject playerExitPoint;
+
+        /// <summary>
+        /// Gets the point where the player is spawned when they exit the ship.
+        /// </summary>
+        public GameObject PlayerExitPoint => this.playerExitPoint;
+
         /// <inheritdoc/>
         public override void OnInteract(GameObject obj)
         {
             Debug.Log("Interacted with Spaceship, healed Player");
-            obj.GetComponent<PlayerEntity>()?.HealBattery();
+            obj.GetComponent<PlayerEntity>()?.RestoreEnergy();
             AudioManager.Instance.PlayOneShot(this.interactionSound);
             //base.OnInteract(obj);
         }
