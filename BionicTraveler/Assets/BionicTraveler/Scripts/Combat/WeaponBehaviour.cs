@@ -14,6 +14,7 @@ namespace BionicTraveler.Scripts.Combat
         private bool isUsingPrimaryAttack;
         private GameTime lastPrimaryAttackTime;
         private GameTime lastSecondaryAttackTime;
+        private DynamicEntity owner;
 
         /// <summary>
         /// Gets the weapon data used.
@@ -48,6 +49,8 @@ namespace BionicTraveler.Scripts.Combat
         /// <param name="owner">The entity owning the attack.</param>
         public void Fire(DynamicEntity owner)
         {
+            this.owner = owner;
+
             var attackData = this.GetAttackData();
             if (attackData == null)
             {
@@ -62,8 +65,25 @@ namespace BionicTraveler.Scripts.Combat
                     var attack = AttackFactory.CreateAttack(this.gameObject, attackData);
                     attack.StartAttack(owner);
                     this.SetLastAttackTime(GameTime.Now);
+
+                    var animator = owner.GetComponent<Animator>();
+                    var animHash = Animator.StringToHash(attackData.AnimationState);
+                    if (animator != null && animator.HasState(0, animHash))
+                    {
+                        animator.Play(animHash);
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// This function is called by the animator of an entity. Do not rename it or the reference breaks!
+        /// </summary>
+        public void OnAttackAnimationFished()
+        {
+            Debug.Log("OnAttackAnimationFished:: Called!");
+            var animator = this.owner.GetComponent<Animator>();
+            animator.Play("Idle");
         }
 
         /// <summary>

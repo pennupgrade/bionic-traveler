@@ -13,6 +13,7 @@ namespace BionicTraveler.Scripts.Combat
     public abstract class Attack : MonoBehaviour
     {
         private bool isRunning;
+        private bool hasAnimationFiredHit;
 
         /// <summary>
         /// Gets the associated attack data.
@@ -111,29 +112,45 @@ namespace BionicTraveler.Scripts.Combat
             this.ExecuteAttack();
         }
 
+        /// <summary>
+        /// This function is called by the animator of an entity when the attack is supposed to hit. 
+        /// Do not rename it or the reference breaks!
+        /// </summary>
+        public void OnAttackAnimationHit()
+        {
+            Debug.Log("OnAttackAnimationHit:: Called!");
+            this.hasAnimationFiredHit = true;
+        }
+
         private void ExecuteAttack()
         {
-            Debug.Log("Attack::ExecuteAttack: Getting targets");
-            var targets = this.GetTargets();
-            if (targets == null)
+            // Attack targets if we either do not need to wait for an animation or if the animation
+            // has indicated we should hit now.
+            if (!this.AttackData.DoesAnimationDetermineHit || this.hasAnimationFiredHit)
             {
-                throw new InvalidOperationException($"{nameof(this.GetTargets)} must not return null.");
-            }
-
-            Debug.Log($"Attack::ExecuteAttack: We found {targets.Length} targets nearby");
-
-            var validTargets = new List<Entity>();
-            foreach (var target in targets)
-            {
-                if (this.IsValidTarget(target))
+                Debug.Log("Attack::ExecuteAttack: Getting targets");
+                var targets = this.GetTargets();
+                if (targets == null)
                 {
-                    validTargets.Add(target);
+                    throw new InvalidOperationException($"{nameof(this.GetTargets)} must not return null.");
                 }
+
+                Debug.Log($"Attack::ExecuteAttack: We found {targets.Length} targets nearby");
+
+                var validTargets = new List<Entity>();
+                foreach (var target in targets)
+                {
+                    if (this.IsValidTarget(target))
+                    {
+                        validTargets.Add(target);
+                    }
+                }
+
+                Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
+                this.AttackTargets(validTargets.ToArray());
+                Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
             }
 
-            Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
-            this.AttackTargets(validTargets.ToArray());
-            Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
             if (this.HasFinished())
             {
                 Debug.Log($"Attack::ExecuteAttack: Attack has finished");

@@ -65,6 +65,14 @@ namespace BionicTraveler.Scripts.Combat
         private Animation animation;
 
         [SerializeField]
+        [Tooltip("Animation state of the attack.")]
+        private string animationState;
+
+        [SerializeField]
+        [Tooltip("Whether the animation fires an event when enemies should be hit.")]
+        private bool animationDeterminesHit;
+
+        [SerializeField]
         [Tooltip("Audio of the attack.")]
         private AudioClip audioClip;
 
@@ -154,6 +162,16 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets the animation this attack uses.
         /// </summary>
         public Animation Animation => this.animation;
+
+        /// <summary>
+        /// Gets the animation state this attack uses.
+        /// </summary>
+        public string AnimationState => this.animationState;
+
+        /// <summary>
+        /// Gets a value indicating whether the animation fires an event when enemies should be hit.
+        /// </summary>
+        public bool DoesAnimationDetermineHit => this.animationDeterminesHit;
 
         /// <summary>
         /// Gets the audio this attack uses.

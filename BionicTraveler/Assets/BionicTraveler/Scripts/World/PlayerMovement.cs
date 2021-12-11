@@ -34,6 +34,11 @@
         /// Player being damaged.
         /// </summary>
         Hurt = 4,
+
+        /// <summary>
+        /// Attack animation while stationary.
+        /// </summary>
+        AttackStationary = 5,
     }
 
     /// <summary>
