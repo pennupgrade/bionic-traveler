@@ -18,13 +18,16 @@ namespace BionicTraveler.Scripts
         public virtual void Start()
         {
             this.canvas = this.GetComponent<Canvas>();
-            this.Close();
+            if (this.canvas != null)
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
         /// Opens the menu canvas and pauses the game
         /// </summary>
-        public void Open()
+        public virtual void Open()
         {
             this.canvas.enabled = true;
             Time.timeScale = 0;
@@ -33,7 +36,7 @@ namespace BionicTraveler.Scripts
         /// <summary>
         /// Closes the menu canvas and resumes the game
         /// </summary>
-        public void Close()
+        public virtual void Close()
         {
             this.canvas.enabled = false;
             Time.timeScale = 1;
