@@ -1,43 +1,38 @@
-using System.Diagnostics;
-using BionicTraveler.Scripts.Audio;
-using UnityEngine.Audio;
-
 namespace BionicTraveler.Scripts
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
+    using BionicTraveler.Scripts.Audio;
     using UnityEngine;
 
     /// <summary>
     /// Script should be attached to the GameObject 'SettingsMenu'
     /// GameObject 'SettingsMenu' should be dragged in as the SerializedField 'canvas'
-    /// Three AudioMixers can be dragged in, corresponding to bgm, sfx, and voice named bgmMixer, sfxMixer, voiceMixer respectively
-    /// Menu opened with 'Esc'
-    /// Toggle buttons and sliders change the volume on the corresponding AudioMixer from 0dB to -80dB
-    ///     Logarithmic curve
-    ///     100% volume :   0dB
-    ///      50% volume :  -6dB
-    ///       0% volume : -80dB
-    ///     AudioMixer will be -80dB (muted) unless both the master toggle and corresponding toggle are checked
-    /// Drop down box changes int Difficulty, retrieved with GetDifficulty()
-    ///     0 : Peaceful
-    ///     1 : Adventure
-    ///     2 : Hell
     /// </summary>
     public class SettingsManager : Menu
     {
-
         [SerializeField]
         private AudioClip clickSound;
+        [SerializeField]
+        private UnityEngine.UI.Slider masterS;
+        [SerializeField]
+        private UnityEngine.UI.Slider bgmS;
+        [SerializeField]
+        private UnityEngine.UI.Slider sfxS;
+        [SerializeField]
+        private UnityEngine.UI.Toggle masterT;
+        [SerializeField]
+        private UnityEngine.UI.Toggle bgmT;
+        [SerializeField]
+        private UnityEngine.UI.Toggle sfxT;
 
-        private float masterVolume = 0.5f;
+        [SerializeField]
+        private float masterVolume;
+        [SerializeField]
         private bool masterOn = true;
 
-        private float bgmVolume = 0.5f;
+        private float bgmVolume;
         private bool bgmOn = true;
 
-        private float sfxVolume = 0.5f;
+        private float sfxVolume;
         private bool sfxOn = true;
 
         private float voiceVolume;
@@ -74,6 +69,7 @@ namespace BionicTraveler.Scripts
             AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
             AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetFloat("masterVolume", this.masterVolume);
         }
 
         private void MuteMaster(bool muteMaster)
@@ -83,6 +79,7 @@ namespace BionicTraveler.Scripts
             AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
             AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetInt("masterOn", this.BoolToInt(this.masterOn));
         }
 
         private void SetBgm(float bgmSlider)
@@ -90,6 +87,7 @@ namespace BionicTraveler.Scripts
             this.bgmVolume = bgmSlider;
             AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetFloat("bgmVolume", this.bgmVolume);
         }
 
         private void MuteBgm(bool muteBgm)
@@ -98,6 +96,7 @@ namespace BionicTraveler.Scripts
             this.bgmOn = muteBgm;
             AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetInt("bgmOn", this.BoolToInt(this.bgmOn));
         }
 
         private void SetSfx(float sfxSlider)
@@ -105,6 +104,7 @@ namespace BionicTraveler.Scripts
             this.sfxVolume = sfxSlider;
             AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetFloat("sfxVolume", this.sfxVolume);
         }
 
         private void MuteSfx(bool muteSfx)
@@ -113,20 +113,21 @@ namespace BionicTraveler.Scripts
             this.sfxOn = muteSfx;
             AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
             AudioManager.Instance.UpdateVolume();
+            PlayerPrefs.SetInt("sfxOn", this.BoolToInt(this.sfxOn));
         }
 
         private void SetVoice(float voiceSlider)
         {
             this.voiceVolume = voiceSlider;
-            audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void MuteVoice(bool muteVoice)
         {
             this.voiceOn = muteVoice;
-            audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
-            this.audioManager.UpdateVolume();
+            AudioManager.Instance.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
+            AudioManager.Instance.UpdateVolume();
         }
 
         private void Awake()
@@ -139,7 +140,22 @@ namespace BionicTraveler.Scripts
             {
                 Instance = this;
             }
+
+            this.LoadAll();
+
+            AudioManager.Instance.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            AudioManager.Instance.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            AudioManager.Instance.UpdateVolume();
         }
+
+        /*public override void Start()
+        {
+            this.LoadAll();
+
+            this.audioManager.MusicVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.bgmVolume, this.bgmOn);
+            this.audioManager.EffectsVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.sfxVolume, this.sfxOn);
+            this.audioManager.UpdateVolume();
+        }*/
 
         private float ChangeVolume(float masterVal, bool isMaster, float sliderVal, bool isOn)
         {
@@ -151,6 +167,28 @@ namespace BionicTraveler.Scripts
             {
                 return 0f;
             }
+        }
+
+        private int BoolToInt(bool b) => b ? 1 : 0;
+
+        private bool IntToBool(int i) => i != 0;
+
+        private void LoadAll()
+        {
+            this.masterVolume = PlayerPrefs.GetFloat("masterVolume");
+            this.masterS.SetValueWithoutNotify(this.masterVolume);
+            this.masterOn = this.IntToBool(PlayerPrefs.GetInt("masterOn"));
+            this.masterT.SetIsOnWithoutNotify(this.masterOn);
+
+            this.bgmVolume = PlayerPrefs.GetFloat("bgmVolume");
+            this.bgmS.SetValueWithoutNotify(this.bgmVolume);
+            this.bgmOn = this.IntToBool(PlayerPrefs.GetInt("bgmOn"));
+            this.bgmT.SetIsOnWithoutNotify(this.bgmOn);
+
+            this.sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+            this.sfxS.SetValueWithoutNotify(this.sfxVolume);
+            this.sfxOn = this.IntToBool(PlayerPrefs.GetInt("sfxOn"));
+            this.sfxT.SetIsOnWithoutNotify(this.sfxOn);
         }
     }
 }
