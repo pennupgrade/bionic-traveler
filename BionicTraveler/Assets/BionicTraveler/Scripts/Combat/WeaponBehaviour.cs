@@ -86,9 +86,9 @@ namespace BionicTraveler.Scripts.Combat
         /// <summary>
         /// This function is called by the animator of an entity. Do not rename it or the reference breaks!
         /// </summary>
-        public void OnAttackAnimationFished()
+        public void OnAttackAnimationFinished()
         {
-            Debug.Log("OnAttackAnimationFished:: Called!");
+            Debug.Log("OnAttackAnimationFinished:: Called!");
             var animator = this.owner.GetComponent<Animator>();
             animator.Play("Idle");
         }

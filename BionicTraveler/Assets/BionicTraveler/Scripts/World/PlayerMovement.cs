@@ -67,11 +67,6 @@
         private float dashCooldown = 5;
 
         private bool dashAvailable = true;
-        private bool slashAvailable = true;
-
-        [SerializeField]
-        [Tooltip("How long the slash is on cooldown before being usable again")]
-        private float slashCooldown = .5f;
 
         /// <summary>
         /// Gets the current movement state.
@@ -122,7 +117,6 @@
                     Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
                 }
             }
-            
 
             if (this.movement != Vector2.zero)
             {
@@ -134,16 +128,6 @@
             else
             {
                 this.moveState = MovementState.Idle;
-            }
-
-            if (Input.GetButtonDown("Slash1"))
-            {
-                if (slashAvailable)
-                {
-                    //Slashing!
-                    this.StartCoroutine(SlashController(this.slashCooldown));
-                    this.moveState = MovementState.Slashing;
-                }
             }
 
             this.movement.x = Input.GetAxisRaw("Horizontal");
@@ -185,18 +169,6 @@
                 yield return new WaitForEndOfFrame();
             }
             this.dashAvailable = true;
-        }
-
-        private IEnumerator SlashController(float seconds)
-        {
-            this.slashAvailable = false;
-            var elapsed = 0f;
-            while (elapsed < seconds)
-            {
-                elapsed += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-            this.slashAvailable = true;
         }
 
         private void FixedUpdate()
