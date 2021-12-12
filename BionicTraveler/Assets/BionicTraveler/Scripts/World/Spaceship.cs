@@ -31,5 +31,14 @@ namespace BionicTraveler.Scripts
             AudioManager.Instance.PlayOneShot(this.interactionSound);
             //base.OnInteract(obj);
         }
+
+        /// <summary>
+        /// Starts the associated dialogue.
+        /// </summary>
+        /// <param name="interacter">The entity interacting with the spaceship.</param>
+        public void StartDialogue(GameObject interacter)
+        {
+            base.OnInteract(interacter);
+        }
     }
 }

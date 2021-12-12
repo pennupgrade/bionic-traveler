@@ -153,6 +153,7 @@ namespace BionicTraveler.Scripts.World
         {
             LevelLoadingManager.Instance.FinishedLoading -= this.Instance_FinishedLoading;
             this.SetHealth(100);
+            this.RestoreEnergy();
             this.IsInvincible = false;
 
             // Reset animator state.
@@ -166,6 +167,7 @@ namespace BionicTraveler.Scripts.World
                 // Probe current scene. Not fast or pretty, but works.
                 var spaceship = GameObject.FindObjectOfType<Spaceship>();
                 this.gameObject.transform.position = spaceship.PlayerExitPoint.transform.position;
+                spaceship.StartDialogue(this.gameObject);
             }
 
             this.diedFromLowEnergy = false;
