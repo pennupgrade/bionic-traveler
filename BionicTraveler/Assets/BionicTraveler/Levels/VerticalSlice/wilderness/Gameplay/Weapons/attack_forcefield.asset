@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f703dca8571e1a049896eaa27acef399, type: 3}
+  m_Name: attack_forcefield
+  m_EditorClassIdentifier: 
+  displayName: Force Field
+  type: 2
+  damage: 0
+  range: 3
+  cooldown: 0
+  freezeDuration: 0
+  cost: 50
+  reloadTime: 0
+  maxAmmo: 0
+  clipSize: 0
+  fovAngle: 0
+  areaOfEffect: 0
+  sprite: {fileID: 0}
+  animation: {fileID: 0}
+  animationState: 
+  animationDeterminesHit: 0
+  audioClip: {fileID: 0}
+  audioClipImpact: {fileID: 0}
+  projectileSpeed: 0
+  projectileDestroyOnImpact: 0
+  prefab: {fileID: 0}
