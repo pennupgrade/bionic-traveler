@@ -60,7 +60,7 @@ namespace BionicTraveler.Scripts.Combat
             else
             {
                 bool hasCooldownElapsed = this.GetLastAttackTime().HasTimeElapsed(attackData.Cooldown);
-                bool hasEnoughEnergy = attackData.Cost > 0 && owner.Energy >= attackData.Cost;
+                bool hasEnoughEnergy = attackData.Cost == 0 || owner.Energy >= attackData.Cost;
                 if (hasCooldownElapsed && hasEnoughEnergy)
                 {
                     Debug.Log($"WeaponBehavior::Update: Starting new attack {attackData.DisplayName}!");

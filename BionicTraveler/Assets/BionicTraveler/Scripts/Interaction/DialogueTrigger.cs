@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Interaction
 {
+    using BionicTraveler.Scripts.World;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -12,6 +13,10 @@ namespace BionicTraveler.Scripts.Interaction
     {
         [SerializeField]
         private DialogueInteractable interactable;
+
+        [Tooltip("Whether AI can trigger this dialogue.")]
+        [SerializeField]
+        private bool canBeTriggeredByAI;
 
         [SerializeField]
         [Tooltip("List of conditions that need to be true for this trigger to work. Currently based on the name " +
@@ -29,7 +34,15 @@ namespace BionicTraveler.Scripts.Interaction
                 }
             }
 
-            this.interactable.OnInteract(collider.gameObject);
+            var collidedGameobject = collider.gameObject;
+            var entity = collidedGameobject.GetComponent<Entity>();
+            if (entity != null)
+            {
+                if (entity.IsPlayer || (this.canBeTriggeredByAI && entity.IsDynamic))
+                {
+                    this.interactable.OnInteract(collider.gameObject);
+                }
+            }
         }
     }
 }
