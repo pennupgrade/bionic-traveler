@@ -26,6 +26,15 @@ namespace BionicTraveler.Scripts.Combat
         public bool HasBeenDisposed { get; private set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this attack has finished its main firing logic.
+        /// For instance, a sword attack after its animation has completed. This allows other
+        /// attacks to be used again.
+        /// You only need to explicitly set this to true if the attack outlives its animation, for instance
+        /// a projectile being fired and moving in the game world after the firing animation has finished.
+        /// </summary>
+        public bool HasFinishedFiring { get; protected set; }
+
+        /// <summary>
         /// Gets the owner of the attack.
         /// </summary>
         public DynamicEntity Owner { get; private set; }

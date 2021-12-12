@@ -48,6 +48,7 @@
 
             this.startPosition = this.transform.position;
             this.currentDirection = this.startDirection;
+            this.HasFinishedFiring = true;
         }
 
         /// <inheritdoc/>

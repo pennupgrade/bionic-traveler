@@ -30,6 +30,7 @@ namespace BionicTraveler.Scripts.Combat
 
             this.startDirection = this.Owner.Direction;
             this.startPosition = this.transform.position;
+            this.HasFinishedFiring = true;
         }
 
         /// <inheritdoc/>

@@ -51,7 +51,6 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override bool HasFinished()
         {
-            // TODO: Implement battery drain logic.
             return this.attackStart.HasTimeElapsed(5.0f);
         }
 

@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.Combat
     using System.Linq;
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -15,6 +16,7 @@ namespace BionicTraveler.Scripts.Combat
         private GameTime lastPrimaryAttackTime;
         private GameTime lastSecondaryAttackTime;
         private DynamicEntity owner;
+        private Attack lastAttack;
 
         /// <summary>
         /// Gets the weapon data used.
@@ -61,11 +63,14 @@ namespace BionicTraveler.Scripts.Combat
             {
                 bool hasCooldownElapsed = this.GetLastAttackTime().HasTimeElapsed(attackData.Cooldown);
                 bool hasEnoughEnergy = attackData.Cost == 0 || owner.Energy >= attackData.Cost;
-                if (hasCooldownElapsed && hasEnoughEnergy)
+                bool hasLastAttackFinishedFiring = this.lastAttack == null
+                    || (this.lastAttack.HasBeenDisposed || this.lastAttack.HasFinishedFiring);
+
+                if (hasLastAttackFinishedFiring && hasCooldownElapsed && hasEnoughEnergy)
                 {
                     Debug.Log($"WeaponBehavior::Update: Starting new attack {attackData.DisplayName}!");
-                    var attack = AttackFactory.CreateAttack(this.gameObject, attackData);
-                    attack.StartAttack(owner);
+                    this.lastAttack = AttackFactory.CreateAttack(this.gameObject, attackData);
+                    this.lastAttack.StartAttack(owner);
                     this.SetLastAttackTime(GameTime.Now);
 
                     var animator = owner.GetComponent<Animator>();
