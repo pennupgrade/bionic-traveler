@@ -28,6 +28,11 @@ namespace BionicTraveler.Scripts.Audio
         [Range(0.0f, 1.0f)]
         public float MusicVolume = 0.5f;
 
+        [Tooltip("The volume of the dialogue voice.")]
+        [Range(0.0f, 1.0f)]
+        public float VoiceVolume = 0.5f;
+
+
         [SerializeField]
         [Tooltip("The list of possible background songs.")]
         private List<AudioClip> backgroundClips;
@@ -40,6 +45,10 @@ namespace BionicTraveler.Scripts.Audio
         [Tooltip("The background audio source.")]
         private AudioSource backgroundSource;
         private bool hasStarted;
+
+        [SerializeField]
+        [Tooltip("The dialog audio source.")]
+        private AudioSource dialogueSource;
 
         private void Awake()
         {
@@ -55,6 +64,21 @@ namespace BionicTraveler.Scripts.Audio
         }
 
         /// <summary>
+        /// Plays the dialogue clip.
+        /// </summary>
+        public void PlayDialogueSound() {
+            // TODO: Instead of using a static audio clip, set up metadata for a dialgoue interactable to choose between our dialogue sounds
+            dialogueSource.Play();
+        }
+
+        /// <summary>
+        /// Stops the dialogue clip.
+        /// </summary>
+        public void StopDialogueSound() {
+            dialogueSource.Stop();
+        }
+
+        /// <summary>
         /// Plays <see cref="clip"/>. Existing playback will be stopped.
         /// </summary>
         /// <param name="clip">The clip.</param>
@@ -62,6 +86,7 @@ namespace BionicTraveler.Scripts.Audio
         {
             this.mainAudioSource.PlayOneShot(clip, this.EffectsVolume);
         }
+
 
         /// <summary>
         /// Starts the background music playback.
@@ -130,6 +155,7 @@ namespace BionicTraveler.Scripts.Audio
         public void UpdateVolume()
         {
             this.mainAudioSource.volume = this.EffectsVolume;
+            this.dialogueSource.volume = this.VoiceVolume;
             this.backgroundSource.volume = this.MusicVolume;
         }
     }
