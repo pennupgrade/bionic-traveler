@@ -40,8 +40,8 @@ namespace BionicTraveler.Scripts
         private float sfxVolume = 0.5f;
         private bool sfxOn = true;
 
-        /*private float voiceVolume;
-        private bool voiceOn;*/
+        private float voiceVolume;
+        private bool voiceOn;
 
         private int difficulty;
 
@@ -115,19 +115,19 @@ namespace BionicTraveler.Scripts
             AudioManager.Instance.UpdateVolume();
         }
 
-        /* Voices not implemented yet, will fill in later
         private void SetVoice(float voiceSlider)
         {
             this.voiceVolume = voiceSlider;
             audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
+            this.audioManager.UpdateVolume();
         }
 
         private void MuteVoice(bool muteVoice)
         {
             this.voiceOn = muteVoice;
             audioManager.VoiceVolume = this.ChangeVolume(this.masterVolume, this.masterOn, this.voiceVolume, this.voiceOn);
+            this.audioManager.UpdateVolume();
         }
-        */
 
         private void Awake()
         {
