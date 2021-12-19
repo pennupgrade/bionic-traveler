@@ -16,6 +16,8 @@ namespace BionicTraveler.Scripts
         {
             DevConsole.singleton.AddCommand(new ActionCommand(this.PrintKeys));
             DevConsole.singleton.AddCommand(new ActionCommand<bool>(this.NoTarget));
+            DevConsole.singleton.AddCommand(new ActionCommand(this.Die));
+            DevConsole.singleton.AddCommand(new ActionCommand(this.DieLowEnergy));
         }
 
         private void PrintKeys()
@@ -41,6 +43,18 @@ namespace BionicTraveler.Scripts
         {
             var player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<PlayerEntity>().IsIgnoredByEveryone = value;
+        }
+
+        private void Die()
+        {
+            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
+            player.LoseHealth(player.Health);
+        }
+
+        private void DieLowEnergy()
+        {
+            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
+            player.RemoveEnergy(player.Energy);
         }
     }
 }
