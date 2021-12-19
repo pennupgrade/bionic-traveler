@@ -2974,6 +2974,14 @@ MonoBehaviour:
   openSound: {fileID: 8300000, guid: 0e05238902f594c0f975e39bf7f93e30, type: 3}
   closeSound: {fileID: 8300000, guid: 0e05238902f594c0f975e39bf7f93e30, type: 3}
   clickSound: {fileID: 8300000, guid: b3a22bafc8e2e4f5282621595cb1030b, type: 3}
+  masterS: {fileID: 2872445316570844273}
+  bgmS: {fileID: 2872445316219079158}
+  sfxS: {fileID: 2872445315311170365}
+  masterT: {fileID: 2872445315601859656}
+  bgmT: {fileID: 2872445316057185638}
+  sfxT: {fileID: 2872445316709442693}
+  masterVolume: 0.5
+  masterOn: 1
 --- !u!1 &2872445315532664215
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,13 +8095,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad155e612ad2d9e4485a62fad17fa089, type: 3}
---- !u!224 &3648361411238156508 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4447693505039099599, guid: ad155e612ad2d9e4485a62fad17fa089, type: 3}
-  m_PrefabInstance: {fileID: 1087888630845619731}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2858765800514545444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2933132720677148983, guid: ad155e612ad2d9e4485a62fad17fa089, type: 3}
+  m_PrefabInstance: {fileID: 1087888630845619731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3648361411238156508 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4447693505039099599, guid: ad155e612ad2d9e4485a62fad17fa089, type: 3}
   m_PrefabInstance: {fileID: 1087888630845619731}
   m_PrefabAsset: {fileID: 0}

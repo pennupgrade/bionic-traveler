@@ -1,11 +1,9 @@
 namespace BionicTraveler.Scripts
 {
-    using System;
-    using System.Collections;
+    using BionicTraveler.Scripts.Audio;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
-    using BionicTraveler.Scripts.Audio;
 
     /// <summary>
     /// class that manages all the quests

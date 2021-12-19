@@ -1,10 +1,7 @@
 namespace BionicTraveler.Scripts
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
     using BionicTraveler.Scripts.Audio;
+    using UnityEngine;
 
     /// <summary>
     /// Interface that all menus must implement. Contains an open and close method.
@@ -28,21 +25,21 @@ namespace BionicTraveler.Scripts
         }
 
         /// <summary>
-        /// Opens the menu canvas and pauses the game
+        /// Opens the menu canvas and pauses the game.
         /// </summary>
         public virtual void Open()
-        {          
-            AudioManager.Instance.PlayOneShot(openSound);
+        {
+            AudioManager.Instance.PlayOneShot(this.openSound);
             this.canvas.enabled = true;
             Time.timeScale = 0;
         }
 
         /// <summary>
-        /// Closes the menu canvas and resumes the game
+        /// Closes the menu canvas and resumes the game.
         /// </summary>
         public virtual void Close()
-        {           
-            AudioManager.Instance.PlayOneShot(closeSound);
+        {
+            AudioManager.Instance.PlayOneShot(this.closeSound);
             this.canvas.enabled = false;
             Time.timeScale = 1;
         }
