@@ -22,7 +22,7 @@ namespace BionicTraveler.Scripts.World
         private CombatBehaviour SecondaryWeapon;
         //private List<Chip> ActiveChips = new List<Chip>();
 
-        private int batteryHealth = 50;
+        public int batteryHealth = 50;
 
         /// <summary>
         /// Deals an amount of damage to the player (for testing purposes).

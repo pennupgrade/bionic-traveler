@@ -11,6 +11,7 @@
     public abstract class Entity : MonoBehaviour
     {
         private int maxHealth = 100;
+        [SerializeField]
         private int health;
         private bool isVisible;
         [SerializeField]
