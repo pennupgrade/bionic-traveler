@@ -1,7 +1,604 @@
 fileFormatVersion: 2
 guid: ba915b5e9226bd74bad9ade4b08d53b8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8173537548366063959
+    second: WildWorldBridges_0
+  - first:
+      213: 60812601656937187
+    second: WildWorldBridges_1
+  - first:
+      213: -693287559023002464
+    second: WildWorldBridges_2
+  - first:
+      213: 1831065511122297365
+    second: WildWorldBridges_3
+  - first:
+      213: -8965355470728284683
+    second: WildWorldBridges_4
+  - first:
+      213: -5572808006606771821
+    second: WildWorldBridges_5
+  - first:
+      213: 8680571953987910815
+    second: WildWorldBridges_6
+  - first:
+      213: 7404062353605966963
+    second: WildWorldBridges_7
+  - first:
+      213: 5638291959218697640
+    second: WildWorldBridges_8
+  - first:
+      213: 2630316619038831475
+    second: WildWorldBridges_9
+  - first:
+      213: 5639706113770281812
+    second: WildWorldBridges_10
+  - first:
+      213: -7285582553903728584
+    second: WildWorldBridges_11
+  - first:
+      213: -6526810024004663751
+    second: WildWorldBridges_12
+  - first:
+      213: 44331018272247684
+    second: WildWorldBridges_13
+  - first:
+      213: 434115377255292549
+    second: WildWorldBridges_14
+  - first:
+      213: -7695172322492991356
+    second: WildWorldBridges_15
+  - first:
+      213: -863297168821584909
+    second: WildWorldBridges_16
+  - first:
+      213: 2785959981342796383
+    second: WildWorldBridges_17
+  - first:
+      213: -3301951204018257909
+    second: WildWorldBridges_18
+  - first:
+      213: -6275394308003640771
+    second: WildWorldBridges_19
+  - first:
+      213: 2564852890277163386
+    second: WildWorldBridges_20
+  - first:
+      213: -7982942103086943115
+    second: WildWorldBridges_21
+  - first:
+      213: -6675236342327784916
+    second: WildWorldBridges_22
+  - first:
+      213: -7923149640464337715
+    second: WildWorldBridges_23
+  - first:
+      213: -1384534130068469411
+    second: WildWorldBridges_24
+  - first:
+      213: -416007731682874839
+    second: WildWorldBridges_25
+  - first:
+      213: 26370767251777267
+    second: WildWorldBridges_26
+  - first:
+      213: -6573004281569668096
+    second: WildWorldBridges_27
+  - first:
+      213: 7365223964068530517
+    second: WildWorldBridges_28
+  - first:
+      213: 901243683888783982
+    second: WildWorldBridges_29
+  - first:
+      213: 7410665520220779940
+    second: WildWorldBridges_30
+  - first:
+      213: 6563393520654747621
+    second: WildWorldBridges_31
+  - first:
+      213: 851201841246781117
+    second: WildWorldBridges_32
+  - first:
+      213: -2458255212390860744
+    second: WildWorldBridges_33
+  - first:
+      213: 7287330974375906857
+    second: WildWorldBridges_34
+  - first:
+      213: 7510268630849579946
+    second: WildWorldBridges_35
+  - first:
+      213: -5917184504327975122
+    second: WildWorldBridges_36
+  - first:
+      213: -1655129569647989560
+    second: WildWorldBridges_37
+  - first:
+      213: -4983426842430228924
+    second: WildWorldBridges_38
+  - first:
+      213: 3557516923712644891
+    second: WildWorldBridges_39
+  - first:
+      213: -4040152517505023927
+    second: WildWorldBridges_40
+  - first:
+      213: -2776078742268141982
+    second: WildWorldBridges_41
+  - first:
+      213: 7495322749275571227
+    second: WildWorldBridges_42
+  - first:
+      213: 7943523008905293416
+    second: WildWorldBridges_43
+  - first:
+      213: -8430613627964243905
+    second: WildWorldBridges_44
+  - first:
+      213: -4573742696705233980
+    second: WildWorldBridges_45
+  - first:
+      213: 4237658389977293444
+    second: WildWorldBridges_46
+  - first:
+      213: 3751111914871754915
+    second: WildWorldBridges_47
+  - first:
+      213: -5435819832217965549
+    second: WildWorldBridges_48
+  - first:
+      213: -2176145408683313732
+    second: WildWorldBridges_49
+  - first:
+      213: -2502345178683107184
+    second: WildWorldBridges_50
+  - first:
+      213: 3346769756871930728
+    second: WildWorldBridges_51
+  - first:
+      213: -9222913390734271117
+    second: WildWorldBridges_52
+  - first:
+      213: 7774731366576020980
+    second: WildWorldBridges_53
+  - first:
+      213: -8516805342932366234
+    second: WildWorldBridges_54
+  - first:
+      213: -3044678939947203338
+    second: WildWorldBridges_55
+  - first:
+      213: -5872518705600894400
+    second: WildWorldBridges_56
+  - first:
+      213: 6188962816154056321
+    second: WildWorldBridges_57
+  - first:
+      213: 3222321081485682206
+    second: WildWorldBridges_58
+  - first:
+      213: 2839820291808675771
+    second: WildWorldBridges_59
+  - first:
+      213: -8693708391639478131
+    second: WildWorldBridges_60
+  - first:
+      213: -7902251529226768820
+    second: WildWorldBridges_61
+  - first:
+      213: 7157910124047823209
+    second: WildWorldBridges_62
+  - first:
+      213: -1016223503007214915
+    second: WildWorldBridges_63
+  - first:
+      213: 2259863750762382810
+    second: WildWorldBridges_64
+  - first:
+      213: 543592052959565632
+    second: WildWorldBridges_65
+  - first:
+      213: -2034816145753839288
+    second: WildWorldBridges_66
+  - first:
+      213: 3571495343225020000
+    second: WildWorldBridges_67
+  - first:
+      213: -4847310149496965465
+    second: WildWorldBridges_68
+  - first:
+      213: 8633875517996010790
+    second: WildWorldBridges_69
+  - first:
+      213: 3073500775966847276
+    second: WildWorldBridges_70
+  - first:
+      213: -8181945588397693933
+    second: WildWorldBridges_71
+  - first:
+      213: 6979950804722793498
+    second: WildWorldBridges_72
+  - first:
+      213: -5457871974250733467
+    second: WildWorldBridges_73
+  - first:
+      213: -5765074582089796516
+    second: WildWorldBridges_74
+  - first:
+      213: -3906006314936898322
+    second: WildWorldBridges_75
+  - first:
+      213: 4391896927071669006
+    second: WildWorldBridges_76
+  - first:
+      213: -6965066557316227383
+    second: WildWorldBridges_77
+  - first:
+      213: -6054188344481588869
+    second: WildWorldBridges_78
+  - first:
+      213: 8941279696079246712
+    second: WildWorldBridges_79
+  - first:
+      213: 1302878582575887934
+    second: WildWorldBridges_80
+  - first:
+      213: -8921913874744130331
+    second: WildWorldBridges_81
+  - first:
+      213: -3407593848556062091
+    second: WildWorldBridges_82
+  - first:
+      213: 5409029683973762108
+    second: WildWorldBridges_83
+  - first:
+      213: -2355831854974561864
+    second: WildWorldBridges_84
+  - first:
+      213: 4672651966911081085
+    second: WildWorldBridges_85
+  - first:
+      213: -4114730517242893984
+    second: WildWorldBridges_86
+  - first:
+      213: 4397896891516684091
+    second: WildWorldBridges_87
+  - first:
+      213: -8940462239531637241
+    second: WildWorldBridges_88
+  - first:
+      213: 4821011742841937268
+    second: WildWorldBridges_89
+  - first:
+      213: -5897477830258393854
+    second: WildWorldBridges_90
+  - first:
+      213: 1443044849425536291
+    second: WildWorldBridges_91
+  - first:
+      213: 7551461908830967130
+    second: WildWorldBridges_92
+  - first:
+      213: -8965148329009529044
+    second: WildWorldBridges_93
+  - first:
+      213: -4437116311094585059
+    second: WildWorldBridges_94
+  - first:
+      213: 2338644077593918799
+    second: WildWorldBridges_95
+  - first:
+      213: -6435752126519093947
+    second: WildWorldBridges_96
+  - first:
+      213: 2968799935333809680
+    second: WildWorldBridges_97
+  - first:
+      213: 8553802523066711703
+    second: WildWorldBridges_98
+  - first:
+      213: 4157542911999161986
+    second: WildWorldBridges_99
+  - first:
+      213: -8399882715914767096
+    second: WildWorldBridges_100
+  - first:
+      213: 6211841182508119818
+    second: WildWorldBridges_101
+  - first:
+      213: 6995601049982947229
+    second: WildWorldBridges_102
+  - first:
+      213: -1622719152254983539
+    second: WildWorldBridges_103
+  - first:
+      213: -1772426754874373149
+    second: WildWorldBridges_104
+  - first:
+      213: 5475017299958470971
+    second: WildWorldBridges_105
+  - first:
+      213: 8390469670602430997
+    second: WildWorldBridges_106
+  - first:
+      213: -214366480496639142
+    second: WildWorldBridges_107
+  - first:
+      213: 6760699607509193760
+    second: WildWorldBridges_108
+  - first:
+      213: -6719700424695417937
+    second: WildWorldBridges_109
+  - first:
+      213: -8064450669104667070
+    second: WildWorldBridges_110
+  - first:
+      213: 7809273144943048656
+    second: WildWorldBridges_111
+  - first:
+      213: 3421803188153857135
+    second: WildWorldBridges_112
+  - first:
+      213: -2899584459876282951
+    second: WildWorldBridges_113
+  - first:
+      213: -6672698649893966930
+    second: WildWorldBridges_114
+  - first:
+      213: 5165371781714631447
+    second: WildWorldBridges_115
+  - first:
+      213: -8628957487344848327
+    second: WildWorldBridges_116
+  - first:
+      213: 5737776524893566104
+    second: WildWorldBridges_117
+  - first:
+      213: 2121565161208127719
+    second: WildWorldBridges_118
+  - first:
+      213: 408702764940583105
+    second: WildWorldBridges_119
+  - first:
+      213: -8627299374642512183
+    second: WildWorldBridges_120
+  - first:
+      213: -6326189699557414220
+    second: WildWorldBridges_121
+  - first:
+      213: -2256834310011979339
+    second: WildWorldBridges_122
+  - first:
+      213: 7739411568312156043
+    second: WildWorldBridges_123
+  - first:
+      213: -8465402183550457267
+    second: WildWorldBridges_124
+  - first:
+      213: 3747097167089756389
+    second: WildWorldBridges_125
+  - first:
+      213: 1584413426712283239
+    second: WildWorldBridges_126
+  - first:
+      213: -8082585671116873162
+    second: WildWorldBridges_127
+  - first:
+      213: 7996996116167887544
+    second: WildWorldBridges_128
+  - first:
+      213: -8070568462015894652
+    second: WildWorldBridges_129
+  - first:
+      213: 2132947943289381750
+    second: WildWorldBridges_130
+  - first:
+      213: -122331318485348923
+    second: WildWorldBridges_131
+  - first:
+      213: -1270711238584830719
+    second: WildWorldBridges_132
+  - first:
+      213: -589189847556072052
+    second: WildWorldBridges_133
+  - first:
+      213: 7846042776892621832
+    second: WildWorldBridges_134
+  - first:
+      213: 8298261198764084110
+    second: WildWorldBridges_135
+  - first:
+      213: 840383579433363162
+    second: WildWorldBridges_136
+  - first:
+      213: 3978156496141435470
+    second: WildWorldBridges_137
+  - first:
+      213: 4510253543981237331
+    second: WildWorldBridges_138
+  - first:
+      213: 9156060720583995563
+    second: WildWorldBridges_139
+  - first:
+      213: 6695390041254556527
+    second: WildWorldBridges_140
+  - first:
+      213: -4413865748116817283
+    second: WildWorldBridges_141
+  - first:
+      213: -3538951117907061960
+    second: WildWorldBridges_142
+  - first:
+      213: -7270652455306422274
+    second: WildWorldBridges_143
+  - first:
+      213: -5514971667217571842
+    second: WildWorldBridges_144
+  - first:
+      213: -5820552316971924832
+    second: WildWorldBridges_145
+  - first:
+      213: 8498916334307586751
+    second: WildWorldBridges_146
+  - first:
+      213: 7999994669118555153
+    second: WildWorldBridges_147
+  - first:
+      213: 5027180804533794830
+    second: WildWorldBridges_148
+  - first:
+      213: -3166520027182566021
+    second: WildWorldBridges_149
+  - first:
+      213: 5223221943081913921
+    second: WildWorldBridges_150
+  - first:
+      213: 5296007376464522770
+    second: WildWorldBridges_151
+  - first:
+      213: -2462597866624864348
+    second: WildWorldBridges_152
+  - first:
+      213: 2841519325107589942
+    second: WildWorldBridges_153
+  - first:
+      213: 502076690203616754
+    second: WildWorldBridges_154
+  - first:
+      213: -7948905758275518117
+    second: WildWorldBridges_155
+  - first:
+      213: -464351023815143798
+    second: WildWorldBridges_156
+  - first:
+      213: -7680035785643015409
+    second: WildWorldBridges_157
+  - first:
+      213: 151077222611646737
+    second: WildWorldBridges_158
+  - first:
+      213: -4785875081163909354
+    second: WildWorldBridges_159
+  - first:
+      213: 8017261982797875812
+    second: WildWorldBridges_160
+  - first:
+      213: 5281208737792415059
+    second: WildWorldBridges_161
+  - first:
+      213: -123316956739291899
+    second: WildWorldBridges_162
+  - first:
+      213: -1669554325000876905
+    second: WildWorldBridges_163
+  - first:
+      213: 3238734431357392203
+    second: WildWorldBridges_164
+  - first:
+      213: -8130935183728398458
+    second: WildWorldBridges_165
+  - first:
+      213: -6553014910095146661
+    second: WildWorldBridges_166
+  - first:
+      213: -7837462899418759903
+    second: WildWorldBridges_167
+  - first:
+      213: 1759484445088364193
+    second: WildWorldBridges_168
+  - first:
+      213: 5129295371834133472
+    second: WildWorldBridges_169
+  - first:
+      213: 7748895670902493507
+    second: WildWorldBridges_170
+  - first:
+      213: -1479198029175385336
+    second: WildWorldBridges_171
+  - first:
+      213: 384784501416199873
+    second: WildWorldBridges_172
+  - first:
+      213: 6183341976156089442
+    second: WildWorldBridges_173
+  - first:
+      213: -7835405689365606871
+    second: WildWorldBridges_174
+  - first:
+      213: -3403664660444585755
+    second: WildWorldBridges_175
+  - first:
+      213: -6185922744573406883
+    second: WildWorldBridges_176
+  - first:
+      213: 2166455504573422005
+    second: WildWorldBridges_177
+  - first:
+      213: -8741033758059477398
+    second: WildWorldBridges_178
+  - first:
+      213: -4979249969872093756
+    second: WildWorldBridges_179
+  - first:
+      213: -2878516787503538442
+    second: WildWorldBridges_180
+  - first:
+      213: 6796825850523445345
+    second: WildWorldBridges_181
+  - first:
+      213: 4810902652386289741
+    second: WildWorldBridges_182
+  - first:
+      213: 981153820502895117
+    second: WildWorldBridges_183
+  - first:
+      213: -1690838388742273262
+    second: WildWorldBridges_184
+  - first:
+      213: 5298466757318621998
+    second: WildWorldBridges_185
+  - first:
+      213: -4314874497583011677
+    second: WildWorldBridges_186
+  - first:
+      213: -645259023041890556
+    second: WildWorldBridges_187
+  - first:
+      213: -7144669787377422054
+    second: WildWorldBridges_188
+  - first:
+      213: 3184906784968406723
+    second: WildWorldBridges_189
+  - first:
+      213: 944876911098069541
+    second: WildWorldBridges_190
+  - first:
+      213: -5466431950009229676
+    second: WildWorldBridges_191
+  - first:
+      213: -7070979507826927587
+    second: WildWorldBridges_192
+  - first:
+      213: -1344656813080055592
+    second: WildWorldBridges_193
+  - first:
+      213: 6522753176477321645
+    second: WildWorldBridges_194
+  - first:
+      213: -1483798485121397049
+    second: WildWorldBridges_195
+  - first:
+      213: 8951897602966329739
+    second: WildWorldBridges_196
+  - first:
+      213: 4261901811678781703
+    second: WildWorldBridges_197
+  - first:
+      213: -8041304356282249032
+    second: WildWorldBridges_198
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +638,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +686,910 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WildWorldBridges_0
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7592da0581d3e6170800000000000000
+      internalID: 8173537548366063959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ea01af2dbc08d000800000000000000
+      internalID: 60812601656937187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac7c3563a2f066f0800000000000000
+      internalID: -693287559023002464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 512e9e68160496910800000000000000
+      internalID: 1831065511122297365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5b22a23b8a49380800000000000000
+      internalID: -8965355470728284683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39920ccd4a869a2b0800000000000000
+      internalID: -5572808006606771821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cfaa45336977870800000000000000
+      internalID: 8680571953987910815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cb6817b7380c660800000000000000
+      internalID: 7404062353605966963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5fb29f9ac3f3e40800000000000000
+      internalID: 5638291959218697640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373bd9c6703c08420800000000000000
+      internalID: 2630316619038831475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b50ec74d2444e40800000000000000
+      internalID: 5639706113770281812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_11
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838f8c4944964ea90800000000000000
+      internalID: -7285582553903728584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_12
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9364eba1ddc1c65a0800000000000000
+      internalID: -6526810024004663751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_13
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 96
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f06a483de7d9000800000000000000
+      internalID: 44331018272247684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_28
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559cf753c28863660800000000000000
+      internalID: 7365223964068530517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_37
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cce2e7fc6cc709e0800000000000000
+      internalID: -1655129569647989560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_40
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94086b3e0be7ee7c0800000000000000
+      internalID: -4040152517505023927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_48
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cef9da9a61094b0800000000000000
+      internalID: -5435819832217965549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_57
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186b6f804ec93e550800000000000000
+      internalID: 6188962816154056321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_60
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d801f7f674eb95780800000000000000
+      internalID: -8693708391639478131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_68
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a67617e915eabcb0800000000000000
+      internalID: -4847310149496965465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_80
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3676ebfa21c41210800000000000000
+      internalID: 1302878582575887934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_88
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7066ce436f81de380800000000000000
+      internalID: -8940462239531637241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_100
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805f4f2ac2f9d6b80800000000000000
+      internalID: -8399882715914767096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_108
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02455ba2974d2dd50800000000000000
+      internalID: 6760699607509193760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_120
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 40
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cebb7b9deca54880800000000000000
+      internalID: -8627299374642512183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_128
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba8d5609990bfe60800000000000000
+      internalID: 7996996116167887544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_140
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f637aa1d4cdcaec50800000000000000
+      internalID: 6695390041254556527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_148
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0836eb7e4224c540800000000000000
+      internalID: 5027180804533794830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_160
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 24
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a49ebcb49034f60800000000000000
+      internalID: 8017261982797875812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_168
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a63159d7c1fa6810800000000000000
+      internalID: 1759484445088364193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_180
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe5ad89b347d08d0800000000000000
+      internalID: -2878516787503538442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_188
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1137e5bea809dc90800000000000000
+      internalID: -7144669787377422054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_189
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c6f5c8b8df033c20800000000000000
+      internalID: 3184906784968406723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_190
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52208726b80ec1d00800000000000000
+      internalID: 944876911098069541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_191
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e9ad69a155324b0800000000000000
+      internalID: -5466431950009229676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_192
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18d8ede995dedd90800000000000000
+      internalID: -7070979507826927587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_193
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0fd87b0c1d65de0800000000000000
+      internalID: -1344656813080055592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_194
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da94b797479758a50800000000000000
+      internalID: 6522753176477321645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_195
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce8318a32d786be0800000000000000
+      internalID: -1483798485121397049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_196
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b899a72d0778b3c70800000000000000
+      internalID: 8951897602966329739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_197
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70125b00e11552b30800000000000000
+      internalID: 4261901811678781703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WildWorldBridges_198
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0def8ea4c876090800000000000000
+      internalID: -8041304356282249032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
