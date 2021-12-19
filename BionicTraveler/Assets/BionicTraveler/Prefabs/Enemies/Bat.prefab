@@ -146,6 +146,7 @@ MonoBehaviour:
   avoidanceRadius: 4
   currentAvoidanceRadius: 4
   resolution: 20
+  stopWhenDying: 1
   showDebugLines: 1
   dontMove: 0
   detectionRays: []

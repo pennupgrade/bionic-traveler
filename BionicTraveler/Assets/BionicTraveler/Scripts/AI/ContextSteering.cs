@@ -33,6 +33,10 @@
         private float avoidAvoidanceWeight;
         private float dangerAvoidanceWeight;
 
+        // TODO: Should be in something like EntityTemplate.
+        [SerializeField]
+        private bool stopWhenDying;
+
         [Header("Debug")]
         [SerializeField]
         private bool showDebugLines;
@@ -153,7 +157,9 @@
 
             // TODO: Have main AI class that determines target to follow and attack.
             var targetObj = GameObject.FindGameObjectWithTag("Player");
-            if (targetObj.GetComponent<PlayerEntity>().IsIgnoredByEveryone)
+            var stopMovement = targetObj.GetComponent<PlayerEntity>().IsIgnoredByEveryone
+                || (this.GetComponent<Entity>().IsDeadOrDying && this.stopWhenDying);
+            if (stopMovement)
             {
                 this.StopFollowing();
                 return;
