@@ -26,6 +26,14 @@ namespace BionicTraveler.Scripts.Menus
             this.Load();
         }
 
+        private void OnDestroy()
+        {
+            // Always free your events unless you want the GC to keep some partially disposed objects
+            // around (hint: you never really want that).
+            this.saveManager.IsSaving -= this.Save;
+            this.saveManager.IsLoading -= this.Load;
+        }
+
         /// <summary>
         /// Treasure disappears if player collides with it.
         /// </summary>
