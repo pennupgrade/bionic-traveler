@@ -42,28 +42,24 @@ EditorBuildSettings:
     path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/ForestDungeon/ForestDungeonFloor2.unity
     guid: 19add86c645bb4c42a22eec5ec4ae8f0
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/Lake
-      Dungeon Altar Room.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/LakeDungeonAltarRoom.unity
     guid: 3356b02cd1081ba4889d0d22659ca230
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/Lake
-      Dungeon Hallways Denise.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/LakeDungeonHallways.unity
     guid: 89c93057c7f99384781ab2da3525e5c6
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/Lake
-      Dungeon Monster Room.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/LakeDungeonMonsterRoom.unity
     guid: 8330957f4e485d047aa9c8b89f7fd9e3
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/MountainDungeon/MountainDungeonMain.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/LakeDungeonMainRoom.unity
     guid: 798305d2717964716a2b9de0cada8a5a
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Yannis/Bed Chambers.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/BedChambers.unity
     guid: 829697708fa634ad99d0b1854406b247
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Yannis/Boss Room.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/BossRoom.unity
     guid: 217ba4d33200b4ef4a9c0c8438c5e2d5
   - enabled: 1
-    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Yannis/Sacrifice
-      Area.unity
+    path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/SacrificeArea.unity
     guid: 54b2b2010cef64bb2951ab6bf3dfbabf
   m_configObjects: {}
