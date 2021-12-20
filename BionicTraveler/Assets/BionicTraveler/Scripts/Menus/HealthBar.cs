@@ -40,14 +40,16 @@ namespace BionicTraveler.Scripts.Menus
             var fullHearts = health / healthPerHeart;
             var fullHeartSprite = this.healthLevels.Last();
 
-            // Enable everything by default.
+            bool defaultState = health > 0;
+
+            // Enable everything by default if health greater than zero.
             foreach (var image in this.hearts)
             {
-                image.enabled = true;
+                image.enabled = defaultState;
                 image.sprite = fullHeartSprite;
             }
 
-            if (fullHearts < this.hearts.Length)
+            if (fullHearts < this.hearts.Length && health > 0)
             {
                 var partialHeartIndex = fullHearts;
                 var partialHeartHealth = health % healthPerHeart;

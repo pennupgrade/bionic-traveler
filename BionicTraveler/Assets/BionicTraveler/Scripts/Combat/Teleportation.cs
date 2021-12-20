@@ -2,7 +2,6 @@ namespace BionicTraveler.Scripts.Combat
 {
     using System.Linq;
     using BionicTraveler.Scripts.Items;
-    using Framework;
     using UnityEngine;
     using UnityEngine.Tilemaps;
 
@@ -16,19 +15,30 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("The distance the teleport can cover maximally.")]
         private float distance;
 
+        [SerializeField]
+        [Tooltip("The energy the teleport consumes for full distance. If low an energy, a partial teleport" +
+            "is performed.")]
+        private int energyCost;
+
         /// <inheritdoc/>
         public override BodypartSlot Slot => BodypartSlot.RightArm;
 
         /// <inheritdoc/>
         public override void ActivateAbility()
         {
+            // Scale the distance by the energy we have. If we have less than necessary, we move less.
+            var ourPos = this.Owner.gameObject.transform.position;
+            var energyToConsume = Mathf.Min(this.Owner.Energy, this.energyCost);
+            var distanceMultiplier = energyToConsume / this.energyCost;
+            var finalDistance = this.distance * distanceMultiplier;
+
             // Get teleport target position. We do not allow positions behind us.
             // This could happen due to bad raytracing when objects are directly in front of us.
-            var ourPos = this.Owner.gameObject.transform.position;
-            var finalPosition = this.GetTeleportEndPosition(ourPos, this.Owner.Direction, this.distance);
+            var finalPosition = this.GetTeleportEndPosition(ourPos, this.Owner.Direction, finalDistance);
             if (!this.Owner.IsAheadOf(finalPosition))
             {
                 this.Owner.gameObject.transform.position = finalPosition;
+                this.Owner.RemoveEnergy(this.energyCost);
             }
         }
 
@@ -55,7 +65,7 @@ namespace BionicTraveler.Scripts.Combat
                 }
             }
 
-            return startPosition + (this.Owner.Direction * this.distance);
+            return startPosition + (this.Owner.Direction * remainingDistance);
         }
     }
 }

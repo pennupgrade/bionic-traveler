@@ -34,7 +34,12 @@ namespace BionicTraveler.Scripts.Menus
             // TODO: Respect max energy. More granular energy levels, perhaps drive bar from code
             // instead of using static images.
             var energyLevel = this.playerEntity.Energy;
-            var imageIndex = Math.Min(10, Math.Max(0, energyLevel / 10));
+            var imageIndex = Math.Min(10, Math.Max(1, energyLevel / 10));
+            if (energyLevel == 0)
+            {
+                imageIndex = 0;
+            }
+
             this.image.sprite = this.batteryLevels[(int)imageIndex];
         }
     }
