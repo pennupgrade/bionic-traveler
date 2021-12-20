@@ -191,6 +191,16 @@
         }
 
         /// <summary>
+        /// Sets the energy to the specified amount.
+        /// </summary>
+        /// <param name="amount">The amount of energy.</param>
+        public void SetEnergy(float amount)
+        {
+            // TODO: Cap.
+            this.energy = amount;
+        }
+
+        /// <summary>
         /// Restores the energy to the default amount.
         /// </summary>
         public void RestoreEnergy()
