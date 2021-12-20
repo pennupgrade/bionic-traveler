@@ -130,6 +130,12 @@
                 this.moveState = MovementState.Idle;
             }
 
+            if (Debug.isDebugBuild && Input.GetKey(KeyCode.LeftShift))
+            {
+                this.movementSpeedFrameMult = 5;
+                this.moveState = MovementState.Running;
+            }
+
             this.movement.x = Input.GetAxisRaw("Horizontal");
             this.movement.y = Input.GetAxisRaw("Vertical");
 
