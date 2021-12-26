@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 8955869951688386351}
   - component: {fileID: 2039352580332736324}
   - component: {fileID: 487756301059670875}
+  - component: {fileID: -1351428897941687236}
+  - component: {fileID: 9056305168725713087}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -230,3 +232,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1351428897941687236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221845346357989190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44af605157da9a642bedde0263f488b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 30
+--- !u!114 &9056305168725713087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221845346357989190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c437dcc2676c7459fa44ac2969d433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatRange: 25
+  patrolRange: 7
+  flags: 1

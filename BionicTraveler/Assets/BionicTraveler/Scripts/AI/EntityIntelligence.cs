@@ -66,6 +66,10 @@ namespace BionicTraveler.Scripts.AI
         [Tooltip("The entity flags.")]
         private EntityFlags flags;
 
+        [SerializeField]
+        [Tooltip("The default behavior state.")]
+        private EntityGoal defaultState;
+
         private EntityGoal primaryGoal;
 
         private DynamicEntity owner;
@@ -76,26 +80,24 @@ namespace BionicTraveler.Scripts.AI
         private GameTime lastGoalUpdate;
         private Vector3 patrolOrigin;
 
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-        public void Start()
+        private void Awake()
         {
             this.owner = this.GetComponent<DynamicEntity>();
             this.movement = this.GetComponent<EntityMovement>();
             this.combatBehaviour = this.GetComponent<EnemyCombatBehaviour>();
             this.entityScanner = this.GetComponent<EntityScanner>();
+        }
+
+        private void Start()
+        {
             this.lastGoalUpdate = GameTime.Default;
             this.patrolOrigin = this.transform.position;
 
             // Default state is idle.
-            this.TransitionToIdle();
+            this.TransitionToDefaultState();
         }
 
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        public void Update()
+        private void Update()
         {
             if (this.lastGoalUpdate.HasTimeElapsedReset(0.1f))
             {
@@ -121,6 +123,21 @@ namespace BionicTraveler.Scripts.AI
             }
         }
 
+        private void TransitionToDefaultState()
+        {
+            switch (this.defaultState)
+            {
+                case EntityGoal.Idle:
+                    this.TransitionToIdle();
+                    break;
+                case EntityGoal.Patrol:
+                    this.TransitionToPatrol();
+                    break;
+                default:
+                    throw new System.InvalidOperationException("Invalid default state");
+            }
+        }
+
         private void TransitionToIdle()
         {
             // No movement when idle.
@@ -135,8 +152,6 @@ namespace BionicTraveler.Scripts.AI
             {
                 this.CheckForNearbyTargets();
             }
-
-            this.TransitionToPatrol();
         }
 
         private void CheckForNearbyTargets()
@@ -193,7 +208,7 @@ namespace BionicTraveler.Scripts.AI
             if (!this.IsValidTarget(this.combatTarget))
             {
                 this.combatTarget = null;
-                this.TransitionToIdle();
+                this.TransitionToDefaultState();
             }
             else
             {

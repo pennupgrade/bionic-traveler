@@ -104,7 +104,7 @@
         public bool HasReached { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether a slower movement speed is used, i.e. walking.
+        /// Gets or sets a value indicating whether a slower movement speed is used, i.e. walking.
         /// </summary>
         public bool ForceWalking
         {
@@ -158,21 +158,21 @@
         {
             // TODO: Configure via ScriptableObject?
             this.ourCollider = this.GetComponent<Collider2D>();
+            this.agent = this.GetComponent<NavMeshAgent>();
             this.SetUpContexts();
             this.timeTargetUnobstructed = GameTime.Default;
             this.lastPathfindingUpdate = GameTime.Default;
             this.isInitialized = true;
+            this.originalSpeed = this.agent.speed;
         }
 
         private void Start()
         {
-            this.agent = this.GetComponent<NavMeshAgent>();
             this.agent.updateRotation = false;
             this.agent.updateUpAxis = false;
 
             this.stuckLastX = GameTime.Now;
             this.stuckLastY = GameTime.Now;
-            this.originalSpeed = this.agent.speed;
         }
 
         /// <summary>

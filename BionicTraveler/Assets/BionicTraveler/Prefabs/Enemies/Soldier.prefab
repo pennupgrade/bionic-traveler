@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 8830854635775452222}
   - component: {fileID: 1912314158476987477}
   - component: {fileID: 233046090}
+  - component: {fileID: -988808673344280486}
+  - component: {fileID: -6235736727056350412}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Enemy
@@ -146,6 +148,7 @@ MonoBehaviour:
   avoidanceRadius: 4
   currentAvoidanceRadius: 4
   resolution: 20
+  stopWhenDying: 0
   showDebugLines: 1
   dontMove: 0
   detectionRays: []
@@ -229,3 +232,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-988808673344280486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44af605157da9a642bedde0263f488b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 25
+--- !u!114 &-6235736727056350412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734254569279392855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c437dcc2676c7459fa44ac2969d433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatRange: 20
+  patrolRange: 5
+  flags: 1
+  defaultState: 0
