@@ -1,6 +1,7 @@
 namespace BionicTraveler.Scripts.AI
 {
     using System.Collections.Generic;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -15,6 +16,7 @@ namespace BionicTraveler.Scripts.AI
 
         [SerializeField]
         [Tooltip("Tags of hostile entities.")]
+        [UnityTagSelectorAttribute]
         private List<string> enemies;
 
         /// <summary>
