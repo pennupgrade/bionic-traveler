@@ -13,6 +13,7 @@ namespace BionicTraveler.Scripts.Combat
     {
         private WeaponBehaviour weaponBehaviour;
         private List<WeaponBehaviour> dormantWeapons;
+        private Entity target;
 
         [SerializeField]
         [Tooltip("The weapon data to use.")]
@@ -66,6 +67,23 @@ namespace BionicTraveler.Scripts.Combat
         }
 
         /// <summary>
+        /// Sets the current combat target to <see cref="target"/>.
+        /// </summary>
+        /// <param name="target">The target.</param>
+        public void SetTarget(Entity target)
+        {
+            this.target = target;
+        }
+
+        /// <summary>
+        /// Clears the current combat target.
+        /// </summary>
+        public void ClearTarget()
+        {
+            this.target = null;
+        }
+
+        /// <summary>
         /// Initializes the two WeaponData options.
         /// </summary>
         /// <param name="weaponData1">The first weapon data.</param>
@@ -89,14 +107,9 @@ namespace BionicTraveler.Scripts.Combat
         {
             if (this.weaponBehaviour != null)
             {
-                var enemies = this.GetComponent<DynamicEntity>().EnemyScanner.GetEnemies();
-                var sortedEnemies = enemies.OrderBy(enemy => Vector3.Distance(enemy.transform.position, this.transform.position));
-
-                // TODO: Ideally only attack the entity we are following.
-                GameObject closestEnemy = sortedEnemies.FirstOrDefault();
-                if (closestEnemy != null)
+                if (this.target != null)
                 {
-                    var playerPos = closestEnemy.transform.position;
+                    var playerPos = this.target.transform.position;
                     var ourPos = this.transform.position;
                     var diff = Vector3.Distance(playerPos, ourPos);
 

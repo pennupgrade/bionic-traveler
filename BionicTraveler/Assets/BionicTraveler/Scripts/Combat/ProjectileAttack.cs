@@ -71,6 +71,12 @@ namespace BionicTraveler.Scripts.Combat
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            // Ignore triggers.
+            if (collision.isTrigger)
+            {
+                return;
+            }
+
             // Do not collide with owner of projectile unless we have collided with them before.
             // This ensures that projectiles only collide with the owner once they have left the
             // owners collider once.

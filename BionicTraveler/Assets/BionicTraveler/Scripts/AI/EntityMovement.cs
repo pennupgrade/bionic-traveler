@@ -14,8 +14,9 @@
     /// Context based steering behavior for enemies. Partially based on
     /// http://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter18_Context_Steering_Behavior-Driven_Steering_at_the_Macro_Scale.pdf
     /// https://www.ggdesign.me/goodreads/context-based-steering-4.
+    /// Uses NavMesh if stuck or farther away.
     /// </summary>
-    public class ContextSteering : MonoBehaviour
+    public class EntityMovement : MonoBehaviour
     {
         [Header("Behaviour Setup")]
         [SerializeField]
@@ -62,12 +63,19 @@
         private float[] newWeights;
 
         private bool isInitialized;
+        private Vector3 targetPosition;
+        private GameObject targetEntity;
+        private bool hasTarget;
         private NavMeshAgent agent;
         private Collider2D ourCollider;
         private bool wasTargetObstructedLastTick;
         private GameTime timeTargetUnobstructed;
         private GameTime lastPathfindingUpdate;
         private Vector3 lastDirection;
+        private bool usedNavmeshLastTick;
+        private Vector3 targetDirection;
+        private bool forceWalking;
+        private float originalSpeed;
 
         // Stuck detection.
         private bool isAvoidingBadPath;
@@ -77,9 +85,9 @@
         private GameTime stuckLastY;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContextSteering"/> class.
+        /// Initializes a new instance of the <see cref="EntityMovement"/> class.
         /// </summary>
-        public ContextSteering()
+        public EntityMovement()
         {
             this.scanRadius = 5f;
             this.avoidanceRadius = 4f;
@@ -88,6 +96,62 @@
             this.dangerAvoidanceWeight = -0.8f;
             this.showDebugLines = false;
             this.dontMove = false;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the target has been reached.
+        /// </summary>
+        public bool HasReached { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether a slower movement speed is used, i.e. walking.
+        /// </summary>
+        public bool ForceWalking
+        {
+            get => this.forceWalking;
+            set
+            {
+                if (value)
+                {
+                    // TODO: Customize outside of agent.
+                    this.originalSpeed = this.agent.speed;
+                    this.agent.speed = 1.5f;
+                }
+                else
+                {
+                    this.agent.speed = this.originalSpeed;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Sets the target position to move to.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        public void SetTarget(Vector3 position)
+        {
+            this.targetPosition = position;
+            this.targetEntity = null;
+            this.hasTarget = true;
+        }
+
+        /// <summary>
+        /// Sets the target object to move to.
+        /// </summary>
+        /// <param name="target">The object.</param>
+        public void SetTarget(GameObject target)
+        {
+            this.targetEntity = target;
+            this.hasTarget = true;
+        }
+
+        /// <summary>
+        /// Clears the current movement target.
+        /// </summary>
+        public void ClearTarget()
+        {
+            this.hasTarget = false;
         }
 
         private void Awake()
@@ -108,6 +172,7 @@
 
             this.stuckLastX = GameTime.Now;
             this.stuckLastY = GameTime.Now;
+            this.originalSpeed = this.agent.speed;
         }
 
         /// <summary>
@@ -155,30 +220,24 @@
                 return;
             }
 
-            // TODO: Have main AI class that determines target to follow and attack.
-            var targetObj = GameObject.FindGameObjectWithTag("Player");
-            var stopMovement = targetObj.GetComponent<PlayerEntity>().IsIgnoredByEveryone
-                || (this.GetComponent<Entity>().IsDeadOrDying && this.stopWhenDying);
-            if (stopMovement)
+            this.HasReached = false;
+
+            // TODO: Move somewhere else?
+            var stopMovement = this.GetComponent<Entity>().IsDeadOrDying && this.stopWhenDying;
+            if (stopMovement || !this.hasTarget)
             {
                 this.StopFollowing();
                 return;
             }
 
-            var target = targetObj.transform;
-            var targetCollider = target.GetComponent<Collider2D>();
-            var distanceToTarget = Vector3.Distance(this.ourCollider.bounds.center, targetCollider.bounds.center);
-
-            // Stop chasing. TODO: Make customizable.
-            if (distanceToTarget > 20)
-            {
-                this.StopFollowing();
-                return;
-            }
+            // Support both, entity and static spatial targets.
+            var targetPosition = this.targetEntity != null ? this.targetEntity.GetComponent<Collider2D>().bounds.center :
+                this.targetPosition;
+            var distanceToTarget = Vector3.Distance(this.ourCollider.bounds.center, targetPosition);
 
             if (distanceToTarget > 10)
             {
-                this.UseNavmeshPathfinding(target);
+                this.UseNavmeshPathfinding(targetPosition);
                 return;
             }
 
@@ -190,11 +249,12 @@
             // For now anything we hit that is not a dynamic entity we consider a static obstacles.
             // A* is better suited to navigate those.
             // Also make sure that attacks do not count as otherwise projectiles make A* kick in.
-            var targetDirection = (targetCollider.bounds.center - this.ourCollider.bounds.center).normalized;
-            var directObstacles = this.ExecuteRaycast(true, this.transform, targetDirection, distanceToTarget);
+            this.targetDirection = (targetPosition - this.ourCollider.bounds.center).normalized;
+            var directObstacles = this.ExecuteRaycast(true, this.transform, this.targetDirection, distanceToTarget);
             bool IsEnvironment(RaycastHit2D hit) => hit.collider.GetComponent<DynamicEntity>() == null
                 && hit.collider.gameObject.tag != "Attack";
             var isObstructedByEnvironment = directObstacles.Any(IsEnvironment);
+            var isTargetStaticLocation = this.targetEntity == null;
 
             if (isObstructedByEnvironment)
             {
@@ -210,16 +270,29 @@
             }
 
             // Let A* take over.
-            if (isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
+            if (isTargetStaticLocation || isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
-                this.UseNavmeshPathfinding(target);
+                // Stop close to static targets.
+                if (isTargetStaticLocation && distanceToTarget < 1)
+                {
+                    this.agent.isStopped = true;
+                    this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+                    this.agent.velocity = Vector3.zero;
+                    this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+                    this.HasReached = true;
+                }
+                else
+                {
+                    this.UseNavmeshPathfinding(targetPosition);
+                }
             }
             else
             {
                 // Use local pathfinding and manipulate velocity manually.
+                var target = this.targetEntity.transform;
                 var context = this.Tick(target);
                 var rayBasedDistance = directObstacles.FirstOrDefault(
-                    obstacle => obstacle.collider.gameObject == targetObj);
+                    obstacle => obstacle.collider.gameObject == this.targetEntity.gameObject);
                 if (rayBasedDistance.distance > 1.0f)
                 {
                     var velocity = (context.BestPoint - this.transform.position).normalized * 2;
@@ -242,6 +315,7 @@
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
                     this.agent.velocity = Vector3.zero;
                     this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+                    this.HasReached = true;
 
                     //var animator = this.GetComponent<Animator>();
                     //animator.SetFloat("Horizontal", targetDirection.x);
@@ -272,7 +346,7 @@
             }
         }
 
-        private void UseNavmeshPathfinding(Transform target)
+        private void UseNavmeshPathfinding(Vector3 target)
         {
             if (this.showDebugLines)
             {
@@ -287,6 +361,13 @@
 
                     UI.DrawCircle(this.agent.nextPosition, 0.3f, Color.red);
                 }
+            }
+
+            // Reset stuck check if we just started using navmesh.
+            if (!this.usedNavmeshLastTick)
+            {
+                this.stuckLastX = GameTime.Now;
+                this.stuckLastY = GameTime.Now;
             }
 
             // If desired velocity does not match actual velocity, we are either accelerating or stuck.
@@ -306,7 +387,7 @@
             {
                 this.agent.isStopped = false;
                 this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-                this.agent.SetDestination(target.position);
+                this.agent.SetDestination(target);
                 this.lastPathfindingUpdate = GameTime.Now;
                 this.isAvoidingBadPath = false;
             }
@@ -319,6 +400,8 @@
                 animator.SetFloat("Horizontal", velocityInput.x);
                 animator.SetFloat("Vertical", velocityInput.y);
             }
+
+            this.usedNavmeshLastTick = true;
         }
 
         private void StopFollowing()
@@ -326,6 +409,7 @@
             this.agent.isStopped = true;
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+            this.usedNavmeshLastTick = false;
         }
 
         private Vector3 FixUpVector(Vector3 vector)
@@ -348,6 +432,13 @@
                 this.SetUpContexts();
             }
 
+            // If we used the navmesh last tick, reset our last direction to the ideal direction
+            // to avoid jumping between the last weighted direction and our current one.
+            if (this.usedNavmeshLastTick)
+            {
+                this.lastDirection = this.targetDirection;
+            }
+
             // First pass, build all the main weights,
             for (int i = 0; i < this.detectionRays.Count; i++)
             {
@@ -366,6 +457,7 @@
                 }
             }
 
+            this.usedNavmeshLastTick = false;
             return this.ChooseBestPoint();
         }
 
@@ -391,9 +483,17 @@
                 this.newWeights[detectionRayIndex] = 0;
             }
 
-            // Blend new values with old weights to make direction changes less sudden.
-            var diff = this.newWeights[detectionRayIndex] - this.combinedWeight[detectionRayIndex];
-            this.combinedWeight[detectionRayIndex] += diff / 100;
+            // Blend new values with old weights to make direction changes less sudden unless we
+            // just switched from navmesh.
+            if (this.usedNavmeshLastTick)
+            {
+                this.combinedWeight[detectionRayIndex] = this.newWeights[detectionRayIndex];
+            }
+            else
+            {
+                var diff = this.newWeights[detectionRayIndex] - this.combinedWeight[detectionRayIndex];
+                this.combinedWeight[detectionRayIndex] += diff / 100;
+            }
         }
 
         private ContextReturnData ChooseBestPoint()
@@ -556,7 +656,8 @@
         /// </summary>
         private RaycastHit2D[] ExecuteRaycast(bool avoidance, Transform transform, Vector3 dir, float scanDistance)
         {
-            return Physics2D.RaycastAll(transform.position, dir, scanDistance);
+            return Physics2D.RaycastAll(transform.position, dir, scanDistance)
+                .Where(hit => !hit.collider.isTrigger).ToArray();
         }
 
         /// <summary>

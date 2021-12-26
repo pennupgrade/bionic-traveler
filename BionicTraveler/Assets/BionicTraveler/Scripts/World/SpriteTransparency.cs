@@ -15,9 +15,23 @@ namespace BionicTraveler.Scripts.World
         private float animationTime;
         private bool isFadingOut;
 
-        private void OnTriggerEnter2D(Collider2D collider2D) => this.StartAnimation(0.5f, 0.1f, true);
+        private void OnTriggerEnter2D(Collider2D collider2D)
+        {
+            // Ignore triggers.
+            if (!collider2D.isTrigger)
+            {
+                this.StartAnimation(0.5f, 0.1f, true);
+            }
+        }
 
-        private void OnTriggerExit2D(Collider2D collider2D) => this.StartAnimation(1.0f, 0.25f, false);
+        private void OnTriggerExit2D(Collider2D collider2D)
+        {
+            // Ignore triggers.
+            if (!collider2D.isTrigger)
+            {
+                this.StartAnimation(1.0f, 0.25f, false);
+            }
+        }
 
         private void StartAnimation(float targetAlpha, float animationTime, bool isFadingOut)
         {
