@@ -366,7 +366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1127949587956848482, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
       propertyPath: sceneToLoad
-      value: Lake Dungeon Monster Room
+      value: LakeDungeonMonsterRoom
       objectReference: {fileID: 0}
     - target: {fileID: 1127949587956848482, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
       propertyPath: spawnPointOverride
@@ -444,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1127949587956848482, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
       propertyPath: sceneToLoad
-      value: Lake Dungeon Altar Room
+      value: LakeDungeonAltarRoom
       objectReference: {fileID: 0}
     - target: {fileID: 1127949587956848482, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
       propertyPath: spawnPointOverride
