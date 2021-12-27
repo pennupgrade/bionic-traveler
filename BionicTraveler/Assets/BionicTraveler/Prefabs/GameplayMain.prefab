@@ -424,6 +424,7 @@ MonoBehaviour:
   openSound: {fileID: 0}
   closeSound: {fileID: 0}
   itemsParent: {fileID: 1756974252575886877}
+  placeholderSprite: {fileID: 21300000, guid: c81c7598bbd8afd4c9a614f74f4812d9, type: 3}
 --- !u!1 &1756974253891886259
 GameObject:
   m_ObjectHideFlags: 0

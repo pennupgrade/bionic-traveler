@@ -17,10 +17,23 @@ namespace BionicTraveler
         [SerializeField]
         private Transform itemsParent;
 
+        [SerializeField]
+        private Sprite placeholderSprite;
+
         /// <summary>
         /// Gets an instance of the InventoryUI class -> used to make sure that there is the only one instance of MapMenu.
         /// </summary>
         public static InventoryUI Instance { get; private set; }
+
+        /// <summary>
+        /// Gets the associated inventory.
+        /// </summary>
+        public Inventory Inventory => this.inventory;
+
+        /// <summary>
+        /// Gets the placeholder sprite for items.
+        /// </summary>
+        public Sprite PlaceholderSprite => this.placeholderSprite;
 
         /// <inheritdoc/>
         public override void Start()
@@ -33,6 +46,7 @@ namespace BionicTraveler
             this.SetInventoryData(player.GetComponent<DynamicEntity>().Inventory);
 
             this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
+            this.UpdateUI();
         }
 
         /// <summary>
@@ -57,7 +71,7 @@ namespace BionicTraveler
             {
                 if (i < items.Length)
                 {
-                    this.slots[i].SetItem(this.inventory, items[i]);
+                    this.slots[i].SetItem(this, items[i]);
                 }
                 else
                 {

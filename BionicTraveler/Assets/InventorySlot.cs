@@ -10,25 +10,32 @@ namespace BionicTraveler
     public class InventorySlot : MonoBehaviour
     {
         private Inventory inventory;
+        private InventoryUI owner;
         private InventoryItem item;
 
         [SerializeField]
         private Image icon;
         [SerializeField]
         private Button removeButton;
+        [SerializeField]
+        private Text quantityText;
 
         /// <summary>
         /// Sets the item to use for this slot.
         /// </summary>
-        /// <param name="inventory">The inventory.</param>
+        /// <param name="owner">The owning inventory UI.</param>
         /// <param name="item">The item.</param>
-        public void SetItem(Inventory inventory, InventoryItem item)
+        public void SetItem(InventoryUI owner, InventoryItem item)
         {
-            this.inventory = inventory;
+            this.owner = owner;
+            this.inventory = owner.Inventory;
             this.item = item;
-            this.icon.sprite = item.ItemData.InventorySprite;
+            this.icon.sprite = item.ItemData.InventorySprite != null
+                ? item.ItemData.InventorySprite : owner.PlaceholderSprite;
             this.icon.enabled = true;
             this.removeButton.interactable = true;
+            this.quantityText.enabled = true;
+            this.quantityText.text = item.Quantity.ToString();
         }
 
         /// <summary>
@@ -51,6 +58,7 @@ namespace BionicTraveler
             this.icon.sprite = null;
             this.icon.enabled = false;
             this.removeButton.interactable = false;
+            this.quantityText.enabled = false;
         }
 
         /// <summary>
