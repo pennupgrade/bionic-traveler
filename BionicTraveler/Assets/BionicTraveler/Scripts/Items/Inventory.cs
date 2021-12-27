@@ -33,6 +33,18 @@
         }
 
         /// <summary>
+        /// The delegate for inventory changes.
+        /// </summary>
+        /// <param name="sender">The sender, i.e. the inventory.</param>
+        /// <param name="item">The item.</param>
+        public delegate void InventoryChangedEventHandler(Inventory sender, InventoryItem item);
+
+        /// <summary>
+        /// Called whenever the items collection has changed.
+        /// </summary>
+        public event InventoryChangedEventHandler ItemsChanged;
+
+        /// <summary>
         /// Gets a read only copy collection of the inventory items.
         /// </summary>
         public IReadOnlyCollection<InventoryItem> Items => this.items.Values.ToArray();
@@ -53,11 +65,15 @@
 
             if (this.items.ContainsKey(item))
             {
-                return this.items[item].Add(1);
+                if (this.items[item].Add(1))
+                {
+                    this.ItemsChanged?.Invoke(this, this.items[item]);
+                }
             }
             else
             {
                 this.items[item] = new InventoryItem(item);
+                this.ItemsChanged?.Invoke(this, this.items[item]);
             }
 
             return true;
@@ -142,11 +158,14 @@
             // Decrement to drop/consume.
             this.items[item].Remove(1);
 
+            var itemRemoved = this.items[item];
             if (this.items[item].Quantity == 0)
             {
                 // If there's none of that item remaining, remove altogether.
                 this.items.Remove(item);
             }
+
+            this.ItemsChanged?.Invoke(this, itemRemoved);
         }
 
         /// <summary>

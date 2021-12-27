@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: Healing Potion (small)
   description: A small healing potion that heals you a little bit.
   maxNumber: 25
-  inventorySprite: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: 3a78a6b9f3213824aa0cbca669291e1c, type: 3}
   pickupSprite: {fileID: 21300000, guid: 3a78a6b9f3213824aa0cbca669291e1c, type: 3}
   pickupRange: 3
   type: 1

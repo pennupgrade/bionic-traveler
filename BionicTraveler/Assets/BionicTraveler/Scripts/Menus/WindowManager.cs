@@ -1,8 +1,8 @@
-using BionicTraveler.Scripts;
-using UnityEngine;
-
 namespace BionicTraveler
 {
+    using BionicTraveler.Scripts;
+    using UnityEngine;
+
     /// <summary>
     /// Manages the open and close of all menus.
     /// </summary>
@@ -18,10 +18,7 @@ namespace BionicTraveler
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (this.openedMenu)
-                {
-                    this.openedMenu.Close();
-                }
+                this.CloseCurrentMenu();
 
                 if (this.openedMenu == SettingsManager.Instance)
                 {
@@ -35,10 +32,7 @@ namespace BionicTraveler
             }
             else if (Input.GetKeyDown(KeyCode.J))
             {
-                if (this.openedMenu)
-                {
-                    this.openedMenu.Close();
-                }
+                this.CloseCurrentMenu();
 
                 if (this.openedMenu == QuestManager.Instance)
                 {
@@ -52,10 +46,7 @@ namespace BionicTraveler
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
-                if (this.openedMenu)
-                {
-                    this.openedMenu.Close();
-                }
+                this.CloseCurrentMenu();
 
                 if (this.openedMenu == MapManager.Instance)
                 {
@@ -67,6 +58,25 @@ namespace BionicTraveler
                     this.openedMenu.Open();
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.I))
+            {
+                this.CloseCurrentMenu();
+
+                if (this.openedMenu == InventoryUI.Instance)
+                {
+                    this.openedMenu = null;
+                }
+                else
+                {
+                    this.openedMenu = InventoryUI.Instance;
+                    this.openedMenu.Open();
+                }
+            }
+        }
+
+        private void CloseCurrentMenu()
+        {
+            this.openedMenu?.Close();
         }
     }
 }
