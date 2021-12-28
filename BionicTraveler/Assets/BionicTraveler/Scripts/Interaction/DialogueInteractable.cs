@@ -1,9 +1,9 @@
 namespace BionicTraveler.Scripts.Interaction
 {
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
     using Yarn.Unity;
-    using BionicTraveler.Scripts.Audio;
 
     /// <summary>
     /// An object that, when interacted with, will prompt the player with some dialogue.
@@ -49,7 +49,7 @@ namespace BionicTraveler.Scripts.Interaction
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
             player.IsIgnoredByEveryone = true;
             player.DisableInput();
-            
+
             this.ui = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueUI>();
             this.ui.onLineStart.AddListener(this.LineStartListener);
             this.ui.onLineFinishDisplaying.AddListener(this.LineFinishDisplayingListener);
@@ -58,17 +58,15 @@ namespace BionicTraveler.Scripts.Interaction
             this.runner.Add(this.dialogue);
             this.runner.StartDialogue(this.dialogueStartNode);
             this.runner.onDialogueComplete.AddListener(this.DialogueCompletedHandler);
-
-            
-            
-
         }
 
-        private void LineStartListener() {
+        private void LineStartListener()
+        {
             AudioManager.Instance.PlayDialogueSound();
         }
 
-        private void LineFinishDisplayingListener() {
+        private void LineFinishDisplayingListener()
+        {
             AudioManager.Instance.StopDialogueSound();
         }
 
