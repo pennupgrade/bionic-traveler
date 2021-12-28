@@ -25,6 +25,14 @@ namespace BionicTraveler.Scripts.Interaction
         [Tooltip("Whether dialogue state will be saved in save file.")]
         private bool persistState;
 
+        [SerializeField]
+        [Tooltip("Overrides the name of the dialogue's character, if any.")]
+        private string overrideCharacterName;
+
+        [SerializeField]
+        [Tooltip("Disables speech audio.")]
+        private bool disableSpeechAudio;
+
         private DialogueRunner runner;
         private bool hasRun;
 
@@ -34,6 +42,12 @@ namespace BionicTraveler.Scripts.Interaction
         /// Gets the associated yarn dialogue.
         /// </summary>
         public YarnProgram Dialogue => this.dialogue;
+
+        /// <summary>
+        /// Gets the override character name, that is the name used instead of the dialogue's configured
+        /// character name.
+        /// </summary>
+        public string OverrideCharacterName => this.overrideCharacterName;
 
         /// <inheritdoc/>
         public virtual void OnInteract(GameObject obj)
@@ -50,24 +64,32 @@ namespace BionicTraveler.Scripts.Interaction
             player.IsIgnoredByEveryone = true;
             player.DisableInput();
 
-            this.ui = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueUI>();
+            var runnerGameobject = GameObject.FindGameObjectWithTag("DialogueRunner");
+            this.ui = runnerGameobject.GetComponent<DialogueUI>();
             this.ui.onLineStart.AddListener(this.LineStartListener);
             this.ui.onLineFinishDisplaying.AddListener(this.LineFinishDisplayingListener);
 
-            this.runner = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueRunner>();
-            this.runner.Add(this.dialogue);
-            this.runner.StartDialogue(this.dialogueStartNode);
+            var manager = runnerGameobject.GetComponent<DialogueManager>();
+            manager.StartNewDialogue(this, this.dialogue, this.dialogueStartNode);
+
+            this.runner = runnerGameobject.GetComponent<DialogueRunner>();
             this.runner.onDialogueComplete.AddListener(this.DialogueCompletedHandler);
         }
 
         private void LineStartListener()
         {
-            AudioManager.Instance.PlayDialogueSound();
+            if (!this.disableSpeechAudio)
+            {
+                AudioManager.Instance.PlayDialogueSound();
+            }
         }
 
         private void LineFinishDisplayingListener()
         {
-            AudioManager.Instance.StopDialogueSound();
+            if (!this.disableSpeechAudio)
+            {
+                AudioManager.Instance.StopDialogueSound();
+            }
         }
 
         private void DialogueCompletedHandler()
@@ -77,6 +99,8 @@ namespace BionicTraveler.Scripts.Interaction
             this.hasRun = true;
             this.runner.Clear();
             this.runner.onDialogueComplete.RemoveListener(this.DialogueCompletedHandler);
+            this.ui.onLineStart.RemoveListener(this.LineStartListener);
+            this.ui.onLineFinishDisplaying.RemoveListener(this.LineFinishDisplayingListener);
             DialogueStates.Instance.MarkDialogueAsCompleted(this, this.persistState);
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
