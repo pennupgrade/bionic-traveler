@@ -11,17 +11,6 @@ namespace BionicTraveler.Scripts
     /// </summary>
     internal class GameplayMainPersistence
     {
-        private static GameObject prefab;
-
-        /// <summary>
-        /// Sets the prefab to be injected on next scene load.
-        /// </summary>
-        /// <param name="prefab">The prefab.</param>
-        public static void SetInjectForNextScene(GameObject prefab)
-        {
-            GameplayMainPersistence.prefab = prefab;
-        }
-
         /// <summary>
         /// Ensures the prefab is loaded.
         /// </summary>
@@ -49,10 +38,9 @@ namespace BionicTraveler.Scripts
 #if UNITY_EDITOR
             // Only inject when we are being launched from the editor.
             var editorLaunch = UnityEditor.EditorPrefs.GetBool("JustLaunchedFromEditor");
-            if (editorLaunch && !isPreloadScene)
+            if (editorLaunch)
             {
                 Debug.Log("GameplayMainPersistence::OnBeforeSceneLoad: Editor launch detected");
-                GameplayMainPersistence.prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/BionicTraveler/Prefabs/GameplayMain.prefab");
             }
 #endif
 
@@ -61,12 +49,13 @@ namespace BionicTraveler.Scripts
             if (gameObject == null)
             {
                 // Throw if prefab is not valid.
-                if (GameplayMainPersistence.prefab == null)
+                var asset = Resources.Load<GameObject>("GameplayMain");
+                if (asset == null)
                 {
                     throw new InvalidOperationException("No GameplayMain prefab defined to inject!");
                 }
 
-                var obj = GameObject.Instantiate(GameplayMainPersistence.prefab);
+                var obj = GameObject.Instantiate(asset);
                 obj.name = "GameplayMain_Injected";
                 Debug.Log("Added new GameplayMain prefab instance to scene");
             }

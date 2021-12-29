@@ -1,7 +1,6 @@
 namespace BionicTraveler
 {
     using System.Collections;
-    using BionicTraveler.Scripts;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
@@ -14,9 +13,6 @@ namespace BionicTraveler
     public class Preloader : MonoBehaviour
     {
         [SerializeField]
-        private GameObject gameplayMainPrefab;
-
-        [SerializeField]
         private GameObject splashScreen;
 
         [SerializeField]
@@ -26,7 +22,6 @@ namespace BionicTraveler
 
         private void Start()
         {
-            GameplayMainPersistence.SetInjectForNextScene(this.gameplayMainPrefab);
             this.StartCoroutine(this.LoadStartLevel());
             this.StartCoroutine(this.FadeInSplashscreen());
         }
