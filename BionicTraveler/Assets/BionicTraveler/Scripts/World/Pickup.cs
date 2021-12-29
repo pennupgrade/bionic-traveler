@@ -129,6 +129,7 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         private void OnValidate()
         {
+#if UNITY_EDITOR
             if (this.KeepSyncedWithTemplate)
             {
                 // Queue call to call it after all inspectors have updated.
@@ -140,6 +141,7 @@ namespace BionicTraveler.Scripts.World
                     }
                 };
             }
+#endif
         }
     }
 }

@@ -32,7 +32,7 @@ namespace BionicTraveler.Scripts.Combat
             List<GameObject> enemies = new List<GameObject>();
             foreach (string enemy in this.relationships.Enemies)
             {
-                if (UnityEditorInternal.InternalEditorUtility.tags.Contains(enemy))
+                if (this.IsValidTag(enemy))
                 {
                     enemies.AddRange(GameObject.FindGameObjectsWithTag(enemy).Where(
                     obj => obj.GetComponent<DynamicEntity>() != null
@@ -45,6 +45,15 @@ namespace BionicTraveler.Scripts.Combat
             }
 
             return enemies.ToArray();
+        }
+
+        private bool IsValidTag(string tag)
+        {
+#if UNITY_EDITOR
+            return UnityEditorInternal.InternalEditorUtility.tags.Contains(tag);
+#else
+            return true;
+#endif
         }
     }
 }

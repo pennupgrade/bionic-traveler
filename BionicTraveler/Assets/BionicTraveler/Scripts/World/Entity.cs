@@ -309,36 +309,11 @@
         }
 
         /// <summary>
-        /// Hides the entity in the current Scene.
-        /// </summary>
-        public void MakeInvisible()
-        {
-            UnityEditor.SceneVisibilityManager.instance.Hide(this.gameObject, true);
-        }
-
-        /// <summary>
-        /// Shows/Un-hides the entity in the current Scene.
-        /// </summary>
-        public void MakeVisible()
-        {
-            UnityEditor.SceneVisibilityManager.instance.Show(this.gameObject, true);
-        }
-
-        /// <summary>
-        /// Toggles the visibility state of the entity GameObject in the current Scene.
-        /// </summary>
-        public void ToggleVisibility()
-        {
-            UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(this.gameObject, true);
-        }
-
-        /// <summary>
         /// Start is called just before any of the Update methods is called the first time.
         /// </summary>
         protected virtual void Start()
         {
             this.health = this.maxHealth;
-            this.isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(this.gameObject, true);
         }
     }
 }

@@ -7,6 +7,8 @@ namespace BionicTraveler.Scripts
 
     /// <summary>
     /// Manages spawning of the player in a scene.
+    /// This script is executed before all other scripts and also ensures that <see cref="GameplayMainPersistence"/>
+    /// has successfully executed.
     /// </summary>
     public class PlayerSpawnController : MonoBehaviour
     {
@@ -21,6 +23,10 @@ namespace BionicTraveler.Scripts
 
         private void Awake()
         {
+            // In non-editor builds our game prefab might not have been injected yet, so ensure this is the case first.
+            GameplayMainPersistence.EnsureLoaded();
+
+            // With the game prefab loaded, we can now start using it.
             var spawnPoint = this.GetSpawnPoint();
             if (GameObject.FindGameObjectWithTag("Player") != null)
             {

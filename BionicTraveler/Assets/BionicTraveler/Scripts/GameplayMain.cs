@@ -19,7 +19,9 @@ namespace BionicTraveler.Scripts
         private void Awake()
         {
             Debug.Log("GameplayMain::Awake: Hello World");
+#if UNITY_EDITOR
             GameplayMain.WasJustLaunchedFromEditor = EditorPrefs.GetBool("JustLaunchedFromEditor");
+#endif
         }
 
         private void Start()
