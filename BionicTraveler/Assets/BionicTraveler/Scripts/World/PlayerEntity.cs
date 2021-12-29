@@ -81,26 +81,6 @@ namespace BionicTraveler.Scripts.World
                     pickup.PickUp(this);
                 }
             }
-
-            //press key to show inventory data
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                Debug.Log(this.Inventory.ToString());
-            }
-
-            //Drink Health Potion
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                foreach (var item in Inventory.Items)
-                {
-                    this.Inventory.Use(item);
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.O) && this.Inventory.Items.Count > 0)
-            {
-                var item = this.Inventory.DropItem(this.Inventory.Items.First().ItemData);
-            }
         }
 
         /// <inheritdoc/>
