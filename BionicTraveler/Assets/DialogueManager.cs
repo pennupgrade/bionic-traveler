@@ -29,6 +29,7 @@ namespace BionicTraveler
 
             this.ui = GameObject.FindGameObjectWithTag("DialogueRunner").GetComponent<DialogueUI>();
             this.ui.onDialogueStart.AddListener(this.DialogueStartListener);
+            this.ui.onLineStart.AddListener(this.DialogueStartListener);
         }
 
         /// <summary>
@@ -63,6 +64,7 @@ namespace BionicTraveler
         private void OnDestroy()
         {
             this.ui.onDialogueStart.RemoveListener(this.DialogueStartListener);
+            this.ui.onLineStart.RemoveListener(this.DialogueStartListener);
         }
     }
 }
