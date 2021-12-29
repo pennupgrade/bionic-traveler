@@ -3,7 +3,9 @@
     using System.Linq;
     using System.Reflection;
     using BionicTraveler.Scripts.Interaction;
+    #if UNITY_EDITOR
     using UnityEditor;
+    #endif
     using UnityEngine;
 
     /// <summary>
@@ -12,6 +14,7 @@
     [CustomPropertyDrawer(typeof(DialogueNodeSelectorAttribute))]
     public class YarnProgramPropertyDrawer : PropertyDrawer
     {
+#if UNITY_EDITOR
         private bool showField;
 
         /// <inheritdoc/>
@@ -51,5 +54,6 @@
         {
             return this.showField ? EditorGUI.GetPropertyHeight(property) : -EditorGUIUtility.standardVerticalSpacing;
         }
+#endif
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace BionicTraveler.Scripts
 {
     using UnityEngine;
-
     /// <summary>
     /// Main camera controller, makes the camera follow the player.
     /// </summary>

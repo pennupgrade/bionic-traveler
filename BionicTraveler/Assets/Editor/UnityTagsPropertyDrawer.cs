@@ -2,7 +2,9 @@
 {
     using System.Linq;
     using Framework;
+    #if UNITY_EDITOR
     using UnityEditor;
+    #endif
     using UnityEngine;
 
     /// <summary>
@@ -11,6 +13,7 @@
     [CustomPropertyDrawer(typeof(UnityTagSelectorAttribute))]
     public class UnityTagsPropertyDrawer : PropertyDrawer
     {
+#if UNITY_EDITOR
         /// <inheritdoc/>
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -25,5 +28,6 @@
                 property.stringValue = nodes[System.Math.Max(0, currentIndex)];
             }
         }
+#endif
     }
 }

@@ -1,6 +1,8 @@
 namespace BionicTraveler.Scripts
 {
+    #if UNITY_EDITOR
     using UnityEditor;
+    #endif
     using UnityEngine;
 
     /// <summary>
@@ -14,6 +16,7 @@ namespace BionicTraveler.Scripts
         /// <summary>
         /// Gets a value indicating whether the current session was just launched from the editor.
         /// </summary>
+#if UNITY_EDITOR
         public static bool WasJustLaunchedFromEditor { get; private set; }
 
         private void Awake()
@@ -26,5 +29,6 @@ namespace BionicTraveler.Scripts
         {
             GameplayMain.WasJustLaunchedFromEditor = false;
         }
+#endif
     }
 }

@@ -313,7 +313,9 @@
         /// </summary>
         public void MakeInvisible()
         {
+            #if UNITY_EDITOR
             UnityEditor.SceneVisibilityManager.instance.Hide(this.gameObject, true);
+            #endif
         }
 
         /// <summary>
@@ -321,7 +323,9 @@
         /// </summary>
         public void MakeVisible()
         {
+            #if UNITY_EDITOR
             UnityEditor.SceneVisibilityManager.instance.Show(this.gameObject, true);
+            #endif
         }
 
         /// <summary>
@@ -329,7 +333,9 @@
         /// </summary>
         public void ToggleVisibility()
         {
+            #if UNITY_EDITOR
             UnityEditor.SceneVisibilityManager.instance.ToggleVisibility(this.gameObject, true);
+            #endif
         }
 
         /// <summary>
@@ -337,8 +343,10 @@
         /// </summary>
         protected virtual void Start()
         {
+            #if UNITY_EDITOR
             this.health = this.maxHealth;
             this.isVisible = !UnityEditor.SceneVisibilityManager.instance.IsHidden(this.gameObject, true);
+            #endif
         }
     }
 }

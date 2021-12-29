@@ -132,6 +132,7 @@ namespace BionicTraveler.Scripts.World
             if (this.KeepSyncedWithTemplate)
             {
                 // Queue call to call it after all inspectors have updated.
+                #if UNITY_EDITOR
                 UnityEditor.EditorApplication.delayCall += () =>
                 {
                     if (!this.IsDestroyed())
@@ -139,6 +140,7 @@ namespace BionicTraveler.Scripts.World
                         this.InitializeFromTemplate();
                     }
                 };
+                #endif
             }
         }
     }

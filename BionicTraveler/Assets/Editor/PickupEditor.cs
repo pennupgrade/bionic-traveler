@@ -1,7 +1,9 @@
 namespace Editor
 {
     using BionicTraveler.Scripts.World;
+    #if UNITY_EDITOR
     using UnityEditor;
+    #endif
     using UnityEngine;
 
     /// <summary>
@@ -11,6 +13,7 @@ namespace Editor
     [CustomEditor(typeof(Pickup), true)]
     public class PickupEditor : Editor
     {
+#if UNITY_EDITOR
         private bool justOpened;
 
         /// <summary>
@@ -43,5 +46,6 @@ namespace Editor
 
             EditorGUI.EndDisabledGroup();
         }
+#endif
     }
 }

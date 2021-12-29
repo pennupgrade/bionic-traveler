@@ -2,14 +2,16 @@ namespace Editor
 {
     using System;
     using System.IO;
+    #if UNITY_EDITOR
     using UnityEditor;
-
+    #endif
     /// <summary>
     /// Fixes the namespace of newly created C# behavior script files.
     /// From: https://stackoverflow.com/questions/39461801/unity-add-default-namespace-to-script-template/39462269.
     /// </summary>
     public class FixNamespace : AssetModificationProcessor
     {
+#if UNITY_EDITOR
         public static void OnWillCreateAsset(string metaFilePath)
         {
             var fileName = Path.GetFileNameWithoutExtension(metaFilePath);
@@ -53,5 +55,6 @@ namespace Editor
                 AssetDatabase.Refresh();
             }
         }
+#endif
     }
 }

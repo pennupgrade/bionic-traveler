@@ -1,7 +1,9 @@
 namespace BionicTraveler.Scripts
 {
     using System.Linq;
+    #if UNITY_EDITOR
     using UnityEditor;
+    #endif
     using UnityEngine;
 
     /// <summary>
@@ -11,6 +13,7 @@ namespace BionicTraveler.Scripts
     /// </summary>
     internal class GameplayMainPersistence
     {
+#if UNITY_EDITOR
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void OnBeforeSceneLoad()
         {
@@ -32,5 +35,6 @@ namespace BionicTraveler.Scripts
                 }
             }
         }
+#endif
     }
 }

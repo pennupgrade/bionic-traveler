@@ -32,6 +32,7 @@ namespace BionicTraveler.Scripts.Combat
             List<GameObject> enemies = new List<GameObject>();
             foreach (string enemy in this.relationships.Enemies)
             {
+            #if UNITY_EDITOR
                 if (UnityEditorInternal.InternalEditorUtility.tags.Contains(enemy))
                 {
                     enemies.AddRange(GameObject.FindGameObjectsWithTag(enemy).Where(
@@ -42,6 +43,7 @@ namespace BionicTraveler.Scripts.Combat
                 {
                     Debug.LogWarning($"Tag {enemy} does not exist.");
                 }
+            #endif
             }
 
             return enemies.ToArray();
