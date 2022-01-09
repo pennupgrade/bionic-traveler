@@ -18,8 +18,6 @@ namespace BionicTraveler.Scripts.Quests
     [Serializable]
     public class QuestObjective
     {
-        public string BaseTypeString;
-
         public virtual bool IsComplete()
         {
             return true;

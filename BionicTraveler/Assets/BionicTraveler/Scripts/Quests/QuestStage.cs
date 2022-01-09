@@ -70,21 +70,20 @@ namespace BionicTraveler.Scripts.Quests
     /// Please document me.
     /// Explore the Temple in the Wilderness.
     /// </summary>
-    [CreateAssetMenu(fileName = "MyNewQuestStage", menuName = "Quests/QuestStage")]
-    public class QuestStage : ScriptableObject
+    //[CreateAssetMenu(fileName = "MyNewQuestStage", menuName = "Quests/QuestStage")]
+    [Serializable]
+    public class QuestStage
     {
-        [SerializeField]
-        [UnityInheritanceAttribute]
-        private UnityInheritance<QuestObjective> inheritance;
-
         [SerializeField]
         private string description;
 
-        private QuestObjective questObjective;
+        [SerializeField]
+        [UnityInheritanceAttribute]
+        private UnityInheritance<QuestObjective> objective;
 
         public bool IsComplete()
         {
-            return this.questObjective.IsComplete();
+            return this.objective.Instance.IsComplete();
         }
     }
 }
