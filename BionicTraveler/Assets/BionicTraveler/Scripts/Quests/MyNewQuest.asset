@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
   m_Name: MyNewQuest
   m_EditorClassIdentifier: 
-  stages: []
+  stages:
+  - {fileID: 0}

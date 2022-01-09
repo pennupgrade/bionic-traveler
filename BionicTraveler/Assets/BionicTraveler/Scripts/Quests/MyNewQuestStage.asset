@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81891ed69a13fd498f9cebf7ea8a6a9, type: 3}
   m_Name: MyNewQuestStage
   m_EditorClassIdentifier: 
-  objectiveReference:
-    Type: 0
-    QuestObjectiveItem:
-      targetItem: {fileID: 0}
-      itemCount: 0
+  inheritance:
+    Instance:
+      id: 0
   description: 
+  references:
+    version: 1
+    00000000:
+      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      data:
+        BaseTypeString: 2
+        targetItem: {fileID: 0}
+        itemCount: 0
