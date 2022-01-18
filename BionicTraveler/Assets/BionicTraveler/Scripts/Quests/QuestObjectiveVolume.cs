@@ -7,24 +7,21 @@
     using UnityEngine;
 
     /// <summary>
-    /// Quest objective for killing enemies. TODO: Implement main logic, perhaps via tags or entity data.
+    /// Quest objective for reaching a certain volume. TODO: Create Volume and VolumeManager classes to
+    /// allow designers to place volumes in the game map that can then be identified here via name.
     /// </summary>
     [System.Serializable]
-    public class QuestObjectiveKill : QuestObjective
+    public class QuestObjectiveVolume : QuestObjective
     {
         [SerializeField]
-        private string enemyName;
-
-        [SerializeField]
-        private int killCount;
+        private string volumeName;
 
         /// <inheritdoc/>
         public override object Clone()
         {
-            var objective = new QuestObjectiveKill();
+            var objective = new QuestObjectiveVolume();
             objective.CloneBase(objective);
-            objective.enemyName = this.enemyName;
-            objective.killCount = this.killCount;
+            objective.volumeName = this.volumeName;
             return objective;
         }
     }

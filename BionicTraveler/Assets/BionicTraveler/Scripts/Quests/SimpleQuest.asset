@@ -10,40 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
-  m_Name: MyNewQuest
+  m_Name: SimpleQuest
   m_EditorClassIdentifier: 
-  title: First Quest
-  description: Hello World!
+  title: Simple Quest
+  description: Simple Quest with one stage
   stages:
   - description: Gather a healing potion.
     objective:
       typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
       instance:
         id: 0
-  - description: Kill a Soldier.
-    objective:
-      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveKill
-      instance:
-        id: 1
-  - description: Gather a body part.
-    objective:
-      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
-      instance:
-        id: 2
   references:
     version: 1
     00000000:
       type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
         targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
-        itemCount: 1
-    00000001:
-      type: {class: QuestObjectiveKill, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
-      data:
-        enemyName: Soldier
-        killCount: 1
-    00000002:
-      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
-      data:
-        targetItem: {fileID: 11400000, guid: b907d9c32f487d541a537c1680c14ad7, type: 2}
         itemCount: 1

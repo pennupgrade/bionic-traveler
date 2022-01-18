@@ -35,6 +35,7 @@ namespace BionicTraveler.Scripts.World
         public PlayerEntity()
         {
             this.KeyManager = new KeyManager();
+            this.Inventory.ItemsChanged += this.Inventory_ItemsChanged;
         }
 
         /// <summary>
@@ -151,6 +152,18 @@ namespace BionicTraveler.Scripts.World
             }
 
             this.diedFromLowEnergy = false;
+        }
+
+        private void Inventory_ItemsChanged(Inventory sender, InventoryItem item)
+        {
+            // TODO: Improve lookup/make singleton.
+            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
+            questManager.ProcessEvent(new Quests.QuestEventInventory());
+        }
+
+        private void OnDestroy()
+        {
+            this.Inventory.ItemsChanged -= this.Inventory_ItemsChanged;
         }
 
         private void ActivateAbility(Bodypart b)
