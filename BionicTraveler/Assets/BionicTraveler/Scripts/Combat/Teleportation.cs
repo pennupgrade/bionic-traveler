@@ -4,6 +4,8 @@ namespace BionicTraveler.Scripts.Combat
     using BionicTraveler.Scripts.Items;
     using UnityEngine;
     using UnityEngine.Tilemaps;
+    using System.Collections;
+    using BionicTraveler.Scripts.World;
 
     /// <summary>
     /// Implements the player's teleportation ability.
@@ -20,8 +22,36 @@ namespace BionicTraveler.Scripts.Combat
             "is performed.")]
         private int energyCost;
 
+        [SerializeField]
+        private int phase;
+
+        private Vector3 targetPosition;
+
         /// <inheritdoc/>
         public override BodypartSlot Slot => BodypartSlot.RightArm;
+
+        /// <summary>
+        /// Changes the actual position of the owner of this teleport
+        /// body part to the target position. Called dynamically from
+        /// <see cref="BodypartBehaviour"/>.
+        /// </summary>
+        public void MoveEntity() 
+        {
+            this.Owner.gameObject.transform.position = targetPosition;
+        }
+
+        /// <summary>
+        /// Unlocked player control after the animation has 
+        /// finished playing. Called dynamically from
+        /// <see cref="BodypartBehaviour"/>.
+        /// </summary>
+        public void OnAnimationFinished()
+        {
+            if (this.Owner is PlayerEntity playerEntity)
+            {
+                playerEntity.EnableInput();
+            }
+        }
 
         /// <inheritdoc/>
         public override void ActivateAbility()
@@ -29,15 +59,23 @@ namespace BionicTraveler.Scripts.Combat
             // Scale the distance by the energy we have. If we have less than necessary, we move less.
             var ourPos = this.Owner.gameObject.transform.position;
             var energyToConsume = Mathf.Min(this.Owner.Energy, this.energyCost);
-            var distanceMultiplier = energyToConsume / this.energyCost;
+            var distanceMultiplier = (energyToConsume / this.energyCost) * 4;
             var finalDistance = this.distance * distanceMultiplier;
+            var animator = this.Owner.GetComponent<Animator>();
 
             // Get teleport target position. We do not allow positions behind us.
             // This could happen due to bad raytracing when objects are directly in front of us.
             var finalPosition = this.GetTeleportEndPosition(ourPos, this.Owner.Direction, finalDistance);
             if (!this.Owner.IsAheadOf(finalPosition))
             {
-                this.Owner.gameObject.transform.position = finalPosition;
+                // Lock all functionality here.
+                if (this.Owner is PlayerEntity playerEntity)
+                {
+                    playerEntity.DisableInput();
+                }
+
+                animator.Play("Disappear");
+                this.targetPosition = finalPosition;
                 this.Owner.RemoveEnergy(this.energyCost);
             }
         }

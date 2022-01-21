@@ -33,6 +33,7 @@
     {
         private Dictionary<BodypartSlot, Bodypart> bodyparts;
         private Bodypart[] sortedBodyparts;
+        private Bodypart currentBodypart;
 
         // Start is called just before any of the Update methods is called the first time
         private void Start()
@@ -159,6 +160,7 @@
 
             var bodypart = this.sortedBodyparts[(int)priority];
             bodypart?.ActivateAbility();
+            this.currentBodypart = bodypart;
         }
 
         // Update is called every frame, if the MonoBehaviour is enabled
@@ -168,6 +170,19 @@
             {
                 this.ActivateAbility(BodypartPriority.Primary);
             }
+        }
+
+        /// <summary>
+        /// Called by Animation Events that live on the player Animator and uses the
+        /// reflection to redirect the call a method on the active body part with the 
+        /// name that has been passed in as eventName (from the Unity Inspector).
+        /// </summary>
+        /// <param name="eventName">The name of the function to call in the body part.</param>
+        public void InvokeAnimationEvent(string eventName)
+        {
+            var bodypartType = this.currentBodypart.GetType();
+            var method = bodypartType.GetMethod(eventName);
+            method.Invoke(this.currentBodypart, new object[0]);
         }
     }
 }

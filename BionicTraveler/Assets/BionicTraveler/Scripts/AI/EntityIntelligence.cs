@@ -44,6 +44,11 @@ namespace BionicTraveler.Scripts.AI
         /// Whether an entity will not attack an enemy when idling.
         /// </summary>
         DontAttackWhenIdle = 0x2,
+
+        /// <summary>
+        /// Whether an entity will try to avoid player
+        /// </summary>
+        IsRangedAttacker = 0x4
     }
 
     /// <summary>
@@ -209,11 +214,19 @@ namespace BionicTraveler.Scripts.AI
             {
                 this.combatTarget = null;
                 this.TransitionToDefaultState();
-            }
+            } 
             else
             {
+                if (this.flags.HasFlag(EntityFlags.IsRangedAttacker))
+                {
+                this.movement.SetTarget(this.combatTarget.gameObject.transform.position + new Vector3(0,5,0));
+                } 
+                else 
+                {
                 this.movement.SetTarget(this.combatTarget.gameObject);
-                this.combatBehaviour.SetTarget(this.combatTarget);
+                }
+
+                this.combatBehaviour.SetTarget(this.combatTarget);   
             }
         }
 
