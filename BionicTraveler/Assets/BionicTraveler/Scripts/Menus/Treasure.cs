@@ -20,6 +20,7 @@ namespace BionicTraveler.Scripts.Menus
         private void Start()
         {
             this.saveManager = SaveManager.Instance;
+            Debug.Log(SaveManager.Instance);
             this.saveManager.IsSaving += this.Save;
             this.saveManager.IsLoading += this.Load;
             this.rendererComponent = this.GetComponent<Renderer>();
