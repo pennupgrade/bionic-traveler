@@ -20,6 +20,21 @@ MonoBehaviour:
       typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
       instance:
         id: 0
+  - description: Gather a healing potion.
+    objective:
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
+      instance:
+        id: 1
+  - description: Gather a healing potion.
+    objective:
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
+      instance:
+        id: 2
+  - description: Gather a healing potion.
+    objective:
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
+      instance:
+        id: 3
   references:
     version: 1
     00000000:
@@ -27,3 +42,18 @@ MonoBehaviour:
       data:
         targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
         itemCount: 1
+    00000001:
+      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      data:
+        targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
+        itemCount: 2
+    00000002:
+      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      data:
+        targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
+        itemCount: 2
+    00000003:
+      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      data:
+        targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
+        itemCount: 2
