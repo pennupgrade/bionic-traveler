@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 334921641170550858}
   - component: {fileID: 4530118393428030013}
-  - component: {fileID: -9006620647042674196}
   - component: {fileID: 6884578465279974205}
   - component: {fileID: 513838053344853133}
   m_Layer: 0
@@ -85,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9006620647042674196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157240124122716363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  dialogueStartNode: 
-  multipleRuns: 0
-  persistState: 0
 --- !u!61 &6884578465279974205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +126,5 @@ MonoBehaviour:
   dialogueStartNode: blueGuy_start
   multipleRuns: 0
   persistState: 0
+  overrideCharacterName: 
+  disableSpeechAudio: 0

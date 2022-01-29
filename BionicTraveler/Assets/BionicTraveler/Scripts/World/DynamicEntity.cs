@@ -12,6 +12,10 @@
     /// </summary>
     public class DynamicEntity : Entity
     {
+        // TODO: keep a set of possible tasks this DE can do
+
+        private EntityTaskManager taskManager;
+
         private Vector3 velocity;
         private bool stunned;
 
@@ -31,6 +35,7 @@
         public DynamicEntity()
         {
             this.Inventory = new Inventory(this);
+            this.taskManager = new EntityTaskManager(this);
         }
 
         /// <summary>
@@ -73,6 +78,11 @@
         /// Gets the energy level of the entity which is used for certain special attacks.
         /// </summary>
         public float Energy => this.energy;
+
+        /// <summary>
+        /// Gets the task manager.
+        /// </summary>
+        public EntityTaskManager TaskManager => this.taskManager;
 
         /// <summary>
         /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.
@@ -231,6 +241,7 @@
         public override void OnDied()
         {
             var item = this.Inventory.DropAll();
+            this.taskManager.ShutDown();
             base.OnDied();
         }
 
@@ -255,6 +266,9 @@
                     }
                 }
             }
+
+            // process tasks
+            this.taskManager.Process();
         }
     }
 }

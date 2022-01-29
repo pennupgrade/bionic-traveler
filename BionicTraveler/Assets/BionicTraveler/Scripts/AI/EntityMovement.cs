@@ -273,7 +273,7 @@
             if (isTargetStaticLocation || isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
                 // Stop close to static targets.
-                if (isTargetStaticLocation && distanceToTarget < 1)
+                if (isTargetStaticLocation && distanceToTarget < 1.5)
                 {
                     this.agent.isStopped = true;
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
