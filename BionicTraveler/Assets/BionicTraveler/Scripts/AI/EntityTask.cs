@@ -126,6 +126,10 @@ namespace BionicTraveler.Scripts.AI
             if (!this.WasInitialized)
             {
                 this.Initialize();
+                if (!this.IsActive)
+                {
+                    return;
+                }
             }
 
             this.OnProcess();

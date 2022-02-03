@@ -43,6 +43,13 @@ namespace BionicTraveler.Scripts.AI
             {
                 this.entity1.TaskManager.ClearTasks();
             }
+
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                this.entity1.TaskManager.ClearTasks();
+                var dash = new TaskDash(this.entity1);
+                dash.Assign();
+            }
         }
     }
 }
