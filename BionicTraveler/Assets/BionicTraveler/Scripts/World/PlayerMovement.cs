@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using System.Collections.Generic;
+    using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Audio;
     using UnityEngine;
@@ -22,19 +23,9 @@
         Dashing = 2,
 
         /// <summary>
-        /// Player slashing.
-        /// </summary>
-        Slashing = 3,
-
-        /// <summary>
         /// Player being damaged.
         /// </summary>
         Hurt = 4,
-
-        /// <summary>
-        /// Attack animation while stationary.
-        /// </summary>
-        AttackStationary = 5,
     }
 
     /// <summary>
@@ -53,8 +44,7 @@
         [SerializeField]
         [Tooltip("How long the dash is on cooldown before being usable again")]
         private float dashCooldown = 5;
-
-        private bool dashAvailable = true;
+        private GameTime lastDash;
 
         private TaskPlayerMovement mainMovementTask;
         private TaskAnimated specialMovementTask;
@@ -64,6 +54,7 @@
         {
             this.player = this.gameObject.GetComponent<PlayerEntity>();
             this.moveState = MovementState.Default;
+            this.lastDash = GameTime.Default;
             //this.player.Damaged += this.Player_Damaged;
         }
 
@@ -90,19 +81,23 @@
                 return;
             }
 
-            if (Input.GetButtonDown("Dash"))
+            if (Input.GetButtonDown("Dash") && this.lastDash.HasTimeElapsedReset(this.dashCooldown))
             {
                 this.StopAllMovement("About to dash!");
                 this.specialMovementTask = new TaskDash(this.player);
                 this.specialMovementTask.Assign();
+
+                // TODO: Make audio part of task? But then were to define the sound?
+                AudioManager.Instance.PlayOneShot(this.dashSound);
+                this.lastDash = GameTime.Now;
                 this.moveState = MovementState.Dashing;
             }
 
             if (this.moveState == MovementState.Default)
             {
-                // TODO: Abort whatever other task.
                 if (this.mainMovementTask == null || this.mainMovementTask.HasEnded)
                 {
+                    this.StopAllMovement("Default State");
                     this.mainMovementTask = new TaskPlayerMovement(this.player, this.movementSpeed);
                     this.mainMovementTask.Assign();
                 }
@@ -112,23 +107,9 @@
                 if (this.specialMovementTask.HasEnded)
                 {
                     this.moveState = MovementState.Default;
+                    this.specialMovementTask = null;
                 }
             }
-
-            //if (Input.GetButtonDown("Dash"))
-            //{
-            //    if (dashAvailable)
-            //    {
-            //        // Dashing!
-            //        this.movementSpeedFrameMult = 15f;
-            //        AudioManager.Instance.PlayOneShot(this.dashSound);
-            //        this.StartCoroutine(this.DashController(this.dashCooldown));
-            //    }
-            //    else
-            //    {
-            //        Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
-            //    }
-            //}
         }
 
         //private void Player_Damaged(Entity sender, Entity attacker, bool fatal)

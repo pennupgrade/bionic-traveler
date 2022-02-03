@@ -8,7 +8,10 @@
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
-    class TaskPlayerMovement : TaskAnimated
+    /// <summary>
+    /// Manages player movement for idle and running.
+    /// </summary>
+    public class TaskPlayerMovement : TaskAnimated
     {
         private PlayerEntity player;
         private Vector2 movement;

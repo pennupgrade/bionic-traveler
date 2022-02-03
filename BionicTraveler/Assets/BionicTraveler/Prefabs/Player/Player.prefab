@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 7
   dashSound: {fileID: 8300000, guid: 26dcac54458730540aacb389eee72562, type: 3}
-  dashCooldown: 1
+  dashCooldown: 5
 --- !u!114 &8686891111388916205
 MonoBehaviour:
   m_ObjectHideFlags: 0

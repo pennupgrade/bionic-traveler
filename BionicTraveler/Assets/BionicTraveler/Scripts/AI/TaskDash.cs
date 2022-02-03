@@ -9,6 +9,8 @@
     /// </summary>
     public class TaskDash : TaskAnimated
     {
+        private float initialSpeed;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskDash"/> class.
         /// </summary>
@@ -16,6 +18,7 @@
         public TaskDash(DynamicEntity owner)
             : base(owner)
         {
+            this.initialSpeed = 15f;
         }
 
         /// <inheritdoc/>
@@ -30,15 +33,19 @@
         /// <inheritdoc/>
         public override void OnProcess()
         {
-            // TODO: Lerping movement to start fast, slow down.
             if (this.HasCurrentAnimationFinished())
             {
                 this.End("We finished dashing", true);
             }
             else
             {
-                var rb = this.Owner.GetComponent<Rigidbody2D>();
-                rb.MovePosition(rb.position + (this.Owner.Direction.ToVector2() * 15 * Time.fixedDeltaTime));
+                if (this.IsCurrentAnimationPlaying())
+                {
+                    var rb = this.Owner.GetComponent<Rigidbody2D>();
+                    var state = this.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                    var speed = Mathf.Lerp(this.initialSpeed, 0, state);
+                    rb.MovePosition(rb.position + (this.Owner.Direction.ToVector2() * speed * Time.fixedDeltaTime));
+                }
             }
         }
 
