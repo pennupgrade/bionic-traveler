@@ -30,7 +30,7 @@ namespace BionicTraveler.Scripts.AI
             //    this.entity1.TaskManager.Assign(task2);
             //};
 
-            var task = new PatrolTask(this.entity1, PatrolType.Square);
+            var task = new TaskPatrol(this.entity1, PatrolType.Square);
             this.entity1.TaskManager.Assign(task);
         }
 

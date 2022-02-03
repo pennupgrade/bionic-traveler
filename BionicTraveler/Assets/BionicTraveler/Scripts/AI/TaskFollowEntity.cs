@@ -2,21 +2,22 @@ namespace BionicTraveler.Scripts.AI
 {
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
 
     /// <summary>
-    /// Please document me.
+    /// Task to follow a <see cref="DynamicEntity"/>.
     /// </summary>
-    public class FollowEntityTask : EntityTask
+    public class TaskFollowEntity : EntityTask
     {
-
         private Entity targetEntity;
         private GameTime lastPosUpdate;
         private EntityMovement movement;
-        public FollowEntityTask(DynamicEntity owner, Entity entity)
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaskFollowEntity"/> class.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="entity">The entity to follow.</param>
+        public TaskFollowEntity(DynamicEntity owner, Entity entity)
             : base(owner)
         {
             this.targetEntity = entity;
@@ -24,22 +25,24 @@ namespace BionicTraveler.Scripts.AI
             this.movement = this.Owner.GetComponent<EntityMovement>();
         }
 
+        /// <inheritdoc/>
         public override EntityTaskType Type => EntityTaskType.FollowEntity;
 
+        /// <inheritdoc/>
         public override void OnProcess()
         {
             if (this.lastPosUpdate.HasTimeElapsedReset(0.5f))
             {
                 this.movement.SetTarget(this.targetEntity.transform.position);
-
             }
-            
+
             if (this.movement.HasReached)
             {
-                this.End("Target Reached");
+                this.End("Target Reached", true);
             }
         }
 
+        /// <inheritdoc/>
         public override void OnEnd()
         {
             // Removes target from Movement
