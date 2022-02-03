@@ -12,7 +12,10 @@ namespace BionicTraveler.Scripts.AI
         FollowEntity,
         PickUpItem,
         Patrol,
-        FollowWaypoints
+        FollowWaypoints,
+        PlayerMovement,
+        Animated,
+        Dash
     }
 
     /// <summary>
@@ -75,6 +78,15 @@ namespace BionicTraveler.Scripts.AI
         /// Gets a value indicating whether this task is currently active.
         /// </summary>
         public bool IsActive { get; private set; }
+
+        /// <summary>
+        /// Assigns the task to <see cref="owner"/>.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        public void Assign()
+        {
+            this.Owner.TaskManager.Assign(this);
+        }
 
         /// <summary>
         /// Called when this task is being initialized, i.e. the first time its <see cref="Process"/> is about to be called.

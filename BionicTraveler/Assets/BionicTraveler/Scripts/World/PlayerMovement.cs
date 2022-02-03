@@ -2,6 +2,7 @@
 {
     using System.Collections;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Audio;
     using UnityEngine;
 
@@ -11,14 +12,9 @@
     public enum MovementState
     {
         /// <summary>
-        /// Idle state
+        /// Default state
         /// </summary>
-        Idle = 0,
-
-        /// <summary>
-        /// Running state
-        /// </summary>
-        Running = 1,
+        Default = 0,
 
         /// <summary>
         /// Dashing state
@@ -51,15 +47,7 @@
         [SerializeField]
         private float movementSpeed = 3f;
         [SerializeField]
-        private float movementSpeedFrameMult = 1f; // Multiplier per frame.
-        [SerializeField]
-        private Rigidbody2D rb;
-        [SerializeField]
-        private Animator animator;
-        [SerializeField]
         private AudioClip dashSound;
-
-        private Vector2 movement;
         private PlayerEntity player;
 
         [SerializeField]
@@ -68,28 +56,29 @@
 
         private bool dashAvailable = true;
 
-        /// <summary>
-        /// Gets the current movement state.
-        /// </summary>
-        public MovementState CurrentMovementState => this.moveState;
-
-        /// <summary>
-        /// Gets the last movement input.
-        /// </summary>
-        public Vector2 Movement => this.movement;
+        private TaskPlayerMovement mainMovementTask;
+        private TaskAnimated specialMovementTask;
 
         // Start is called before the first frame update
         private void Start()
         {
             this.player = this.gameObject.GetComponent<PlayerEntity>();
-            this.moveState = MovementState.Idle;
-
-            this.player.Damaged += this.Player_Damaged;
+            this.moveState = MovementState.Default;
+            //this.player.Damaged += this.Player_Damaged;
         }
 
         private void OnDestroy()
         {
-            this.player.Damaged -= this.Player_Damaged;
+            //this.player.Damaged -= this.Player_Damaged;
+        }
+
+        private void StopAllMovement(string reason)
+        {
+            this.mainMovementTask?.End(reason, false);
+            this.mainMovementTask = null;
+
+            this.specialMovementTask?.End(reason, false);
+            this.specialMovementTask = null;
         }
 
         // Update is called once per frame
@@ -97,104 +86,63 @@
         {
             if (this.player.IsStunned || this.player.IsBeingKnockedBack)
             {
+                this.StopAllMovement("Stunned or being knocked back");
                 return;
             }
-
-            //Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).ToString());
-            
 
             if (Input.GetButtonDown("Dash"))
             {
-                if (dashAvailable)
+                this.StopAllMovement("About to dash!");
+                this.specialMovementTask = new TaskDash(this.player);
+                this.specialMovementTask.Assign();
+                this.moveState = MovementState.Dashing;
+            }
+
+            if (this.moveState == MovementState.Default)
+            {
+                // TODO: Abort whatever other task.
+                if (this.mainMovementTask == null || this.mainMovementTask.HasEnded)
                 {
-                    // Dashing!
-                    this.movementSpeedFrameMult = 15f;
-                    AudioManager.Instance.PlayOneShot(this.dashSound);
-                    this.StartCoroutine(this.DashController(this.dashCooldown));
+                    this.mainMovementTask = new TaskPlayerMovement(this.player, this.movementSpeed);
+                    this.mainMovementTask.Assign();
                 }
-                else
+            }
+            else if (this.moveState == MovementState.Dashing)
+            {
+                if (this.specialMovementTask.HasEnded)
                 {
-                    Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
+                    this.moveState = MovementState.Default;
                 }
             }
 
-            if (this.movement != Vector2.zero)
-            {
-                this.gameObject.GetComponent<DynamicEntity>()?.SetDirection(this.rb.position + this.movement);
-                this.animator.SetFloat("Horizontal", this.player.Direction.x);
-                this.animator.SetFloat("Vertical", this.player.Direction.y);
-                this.moveState = (this.movementSpeedFrameMult == 1) ? MovementState.Running : MovementState.Dashing;
-            }
-            else
-            {
-                this.moveState = MovementState.Idle;
-            }
-
-            if (Debug.isDebugBuild && Input.GetKey(KeyCode.LeftShift))
-            {
-                this.movementSpeedFrameMult = 5;
-                this.moveState = MovementState.Running;
-            }
-
-            this.movement.x = Input.GetAxisRaw("Horizontal");
-            this.movement.y = Input.GetAxisRaw("Vertical");
-
-            this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
-
-            // Note that due to how the blend tree is set up, idle jump will never be transitioned into from movement, so we can update
-            // jump regardless (might be cleaner to check for idle prior to updating it in code too?).
-            //var isJumping = Input.GetButtonDown("Jump");
-            var isIdle = this.movement == Vector2.zero;
-            //if (isJumping)
-
-            this.animator.SetInteger("MovementState", (int)this.moveState);
-            //this.animator.SetBool("IsJumping", isJumping);
+            //if (Input.GetButtonDown("Dash"))
+            //{
+            //    if (dashAvailable)
+            //    {
+            //        // Dashing!
+            //        this.movementSpeedFrameMult = 15f;
+            //        AudioManager.Instance.PlayOneShot(this.dashSound);
+            //        this.StartCoroutine(this.DashController(this.dashCooldown));
+            //    }
+            //    else
+            //    {
+            //        Debug.Log($"Dash has a {this.dashCooldown} second cooldown!");
+            //    }
+            //}
         }
 
-        private void Player_Damaged(Entity sender, Entity attacker, bool fatal)
-        {
-            // Do nothing if we are got killed by this hit as the death animation takes over anyway.
-            if (fatal)
-            {
-                return;
-            }
+        //private void Player_Damaged(Entity sender, Entity attacker, bool fatal)
+        //{
+        //    // Do nothing if we are got killed by this hit as the death animation takes over anyway.
+        //    if (fatal)
+        //    {
+        //        return;
+        //    }
 
-            // Transition to hurt animation. TODO: Play animation more immediately and also figure out if
-            // it can be aborted.
-            this.moveState = MovementState.Hurt;
-            this.animator.SetInteger("MovementState", (int)this.moveState);
-        }
-
-        private IEnumerator DashController(float seconds)
-        {
-            this.dashAvailable = false;
-            var elapsed = 0f;
-            while (elapsed < seconds)
-            {
-                elapsed += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-            this.dashAvailable = true;
-        }
-
-        private void FixedUpdate()
-        {
-            var currentSpeed = this.movementSpeed;
-            var currentMovement = this.movement;
-            //var isJumping = this.animator.GetCurrentAnimatorStateInfo(0).IsTag("Jump");
-
-            if (!this.player.IsStunned && !this.player.IsBeingKnockedBack)
-            {
-                this.rb.MovePosition(this.rb.position + (currentMovement * currentSpeed *
-                  this.movementSpeedFrameMult * Time.fixedDeltaTime));
-            }
-
-            // Reset once per frame settings.
-            //this.movementSpeedFrameMult = 1.0f;
-            if (!this.animator.GetCurrentAnimatorStateInfo(0).IsName("Dash"))
-            {
-                this.movementSpeedFrameMult = 1f;
-            }
-        }
+        //    // Transition to hurt animation. TODO: Play animation more immediately and also figure out if
+        //    // it can be aborted.
+        //    this.moveState = MovementState.Hurt;
+        //    this.animator.SetInteger("MovementState", (int)this.moveState);
+        //}
     }
 }
