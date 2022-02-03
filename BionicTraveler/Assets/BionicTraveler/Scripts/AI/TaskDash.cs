@@ -27,7 +27,14 @@
         /// <inheritdoc/>
         public override void OnInitialize()
         {
-            this.PlayAnimation("Dashing");
+            if (this.HasAnimation("Dashing"))
+            {
+                this.PlayAnimation("Dashing");
+            }
+            else
+            {
+                this.End("Entity has no dashing animation", false);
+            }
         }
 
         /// <inheritdoc/>

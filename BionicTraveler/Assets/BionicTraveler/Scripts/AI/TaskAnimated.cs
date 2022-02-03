@@ -82,6 +82,17 @@
         }
 
         /// <summary>
+        /// Returns whether <paramref name="name"/> exists as an animation.
+        /// </summary>
+        /// <param name="name">The name of the animation.</param>
+        /// <returns>Whether the animation exists.</returns>
+        public bool HasAnimation(string name)
+        {
+            var animHash = Animator.StringToHash(name);
+            return this.Animator.HasState(0, animHash);
+        }
+
+        /// <summary>
         /// Updates all animator values centrally. Called via <see cref="OnProcess"/> base.
         /// </summary>
         public virtual void UpdateAnimator()
