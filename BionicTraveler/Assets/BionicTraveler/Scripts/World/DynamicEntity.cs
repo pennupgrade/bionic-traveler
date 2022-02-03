@@ -266,8 +266,12 @@
                     }
                 }
             }
+        }
 
-            // process tasks
+        private void FixedUpdate()
+        {
+            // TODO: Might at some point be useful to have physics tasks and normal tasks that are ticked
+            // from FixedUpdate/Update respectively.
             this.taskManager.Process();
         }
     }
