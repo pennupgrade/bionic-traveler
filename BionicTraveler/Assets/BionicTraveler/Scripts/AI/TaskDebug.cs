@@ -47,8 +47,11 @@ namespace BionicTraveler.Scripts.AI
             if (Input.GetKeyDown(KeyCode.U))
             {
                 this.entity1.TaskManager.ClearTasks();
-                var dash = new TaskDash(this.entity1);
-                dash.Assign();
+
+                var sequence = new TaskSequence();
+                var startPos = this.entity1.transform.position;
+                sequence.AddTasks(new TaskFollowEntity(this.entity1, this.entity2), new TaskGoToPoint(this.entity1, startPos));
+                sequence.Execute(this.entity1);
             }
         }
     }

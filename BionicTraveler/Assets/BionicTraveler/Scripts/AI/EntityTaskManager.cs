@@ -1,26 +1,24 @@
 namespace BionicTraveler.Scripts.AI
 {
-    using BionicTraveler.Scripts.World;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
-    /// Entity Task Manager class keeps track of one entity's list
-    /// of tasks
+    /// Stores and processes all tasks for an entity.
     /// </summary>
     public class EntityTaskManager
     {
-        
         private List<EntityTask> tasks;
         private DynamicEntity owner;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="EntityTaskManager"/> class.
         /// </summary>
-        /// <param name="owner"></param>
+        /// <param name="owner">The owner.</param>
         public EntityTaskManager(DynamicEntity owner)
         {
             this.owner = owner;
@@ -28,34 +26,34 @@ namespace BionicTraveler.Scripts.AI
         }
 
         /// <summary>
-        /// Blah
+        /// Assigns <paramref name="task"/> to this task manager.
         /// </summary>
-        /// <param name="task"></param>
+        /// <param name="task">The task to assign.</param>
         public void Assign(EntityTask task)
         {
             this.tasks.Add(task);
         }
 
         /// <summary>
-        /// Returns active tasks
+        /// Returns the active tasks.
         /// </summary>
-        /// <returns>An array of EntityTask </returns>
+        /// <returns>An array of EntityTask.</returns>
         public EntityTask[] GetActiveTasks()
         {
             return this.tasks.Where(task => task.IsActive).ToArray();
         }
 
         /// <summary>
-        /// Return a list of inactive tasks
+        /// Return the inactive tasks.
         /// </summary>
-        /// <returns>An Entity Task Array</returns>
+        /// <returns>An array of EntityTask.</returns>
         public EntityTask[] GetInactiveTasks()
         {
             return this.tasks.Where(task => !task.IsActive).ToArray();
         }
 
         /// <summary>
-        /// Removes all tasks
+        /// Stops all tasks.
         /// </summary>
         public void ClearTasks()
         {
@@ -127,9 +125,7 @@ namespace BionicTraveler.Scripts.AI
         }
 
         /// <summary>
-        /// Main loop process for EntityTaskManager
-        /// Promotes tasks, clears inactive tasks, etc.
-        /// Called each time after EntityTask death/cancellation
+        /// Main loop processing all currently active tasks and removing inactive ones.
         /// </summary>
         public void Process()
         {
@@ -156,6 +152,9 @@ namespace BionicTraveler.Scripts.AI
             // may have new tasks
         }
 
+        /// <summary>
+        /// Shuts down this task manager instance by stopping all tasks.
+        /// </summary>
         public void ShutDown()
         {
             Debug.Log("TaskManager shut down");

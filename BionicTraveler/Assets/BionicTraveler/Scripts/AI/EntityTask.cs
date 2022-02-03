@@ -15,7 +15,8 @@ namespace BionicTraveler.Scripts.AI
         FollowWaypoints,
         PlayerMovement,
         Animated,
-        Dash
+        Dash,
+        ExecuteSequence
     }
 
     /// <summary>
