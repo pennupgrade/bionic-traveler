@@ -1,12 +1,7 @@
 ﻿namespace BionicTraveler.Scripts.AI
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using BionicTraveler.Scripts.World;
-    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -52,7 +47,7 @@
         /// Returns whether the current animation has finished playing. Only works for animations started via
         /// <see cref="this.PlayAnimation"/>.
         /// </summary>
-        /// <returns>Whether animation has finsihed playing.</returns>
+        /// <returns>Whether animation has finished playing.</returns>
         public bool HasCurrentAnimationFinished()
             => this.HasAnimationFinished(this.CurrentAnimation);
 
@@ -60,11 +55,30 @@
         /// Returns whether <paramref name="name"/> has finished playing.
         /// </summary>
         /// <param name="name">The name of the animation.</param>
-        /// <returns>Whether animation has finsihed playing.</returns>
+        /// <returns>Whether animation has finished playing.</returns>
         public bool HasAnimationFinished(string name)
         {
             var state = this.Animator.GetCurrentAnimatorStateInfo(0);
             return state.IsName(name) && state.normalizedTime >= 1;
+        }
+
+        /// <summary>
+        /// Returns whether the current animation is currently playing. Only works for animations started via
+        /// <see cref="this.PlayAnimation"/>.
+        /// </summary>
+        /// <returns>Whether animation is currently playing.</returns>
+        public bool IsCurrentAnimationPlaying()
+            => this.IsAnimationPlaying(this.CurrentAnimation);
+
+        /// <summary>
+        /// Returns whether <paramref name="name"/> is currently playing.
+        /// </summary>
+        /// <param name="name">The name of the animation.</param>
+        /// <returns>Whether animation is currently playing.</returns>
+        public bool IsAnimationPlaying(string name)
+        {
+            var state = this.Animator.GetCurrentAnimatorStateInfo(0);
+            return state.IsName(name) && state.normalizedTime < 1;
         }
 
         /// <summary>
