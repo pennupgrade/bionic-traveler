@@ -72,25 +72,25 @@ namespace BionicTraveler.Scripts.Combat
                     this.lastAttack = AttackFactory.CreateAttack(this.gameObject, attackData);
                     this.lastAttack.StartAttack(owner);
                     this.SetLastAttackTime(GameTime.Now);
-
-                    var animator = owner.GetComponent<Animator>();
-                    var animHash = Animator.StringToHash(attackData.AnimationState);
-                    if (animator != null && animator.HasState(0, animHash))
-                    {
-                        animator.Play(animHash);
-                    }
                 }
             }
         }
 
         /// <summary>
-        /// This function is called by the animator of an entity. Do not rename it or the reference breaks!
+        /// Sets the attack mode of the weapon indicating the attack data to use.
         /// </summary>
-        public void OnAttackAnimationFinished()
+        /// <param name="primary">Whether the primrary or secondary attack data should be used.</param>
+        public void SetWeaponMode(bool primary)
         {
-            Debug.Log("OnAttackAnimationFinished:: Called!");
-            var animator = this.owner.GetComponent<Animator>();
-            animator.Play("Idle");
+            if (!primary && this.WeaponData.SecondaryAttackData == null)
+            {
+                Debug.LogWarning("WeaponBehavior::Update: No secondary attack mode specified");
+                this.isUsingPrimaryAttack = true;
+            }
+            else
+            {
+                this.isUsingPrimaryAttack = primary;
+            }
         }
 
         /// <summary>
@@ -107,6 +107,12 @@ namespace BionicTraveler.Scripts.Combat
                 Debug.LogWarning("WeaponBehavior::Update: No secondary attack mode specified");
             }
         }
+
+        /// <summary>
+        /// Gets the next attack data being used.
+        /// </summary>
+        /// <returns>The attack data.</returns>
+        public AttackData GetNextAttackData() => this.GetAttackData();
 
         private void Start()
         {

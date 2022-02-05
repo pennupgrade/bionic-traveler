@@ -130,6 +130,12 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
+        public override void ResetAnimationState()
+        {
+            var playerMovement = this.GetComponent<PlayerMovement>();
+            playerMovement.ResetAnimationState();
+        }
+
         private void Instance_FinishedLoading()
         {
             LevelLoadingManager.Instance.FinishedLoading -= this.Instance_FinishedLoading;

@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.AI
 {
+    using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.World;
     using System;
     using System.Collections;
@@ -30,8 +31,8 @@ namespace BionicTraveler.Scripts.AI
             //    this.entity1.TaskManager.Assign(task2);
             //};
 
-            var task = new TaskPatrol(this.entity1, PatrolType.Square);
-            this.entity1.TaskManager.Assign(task);
+            //var task = new TaskPatrol(this.entity1, PatrolType.Square);
+            //this.entity1.TaskManager.Assign(task);
         }
 
         /// <summary>
@@ -41,7 +42,13 @@ namespace BionicTraveler.Scripts.AI
         {
             if (Input.GetKeyDown(KeyCode.O))
             {
-                this.entity1.TaskManager.ClearTasks();
+                var player = GameObject.FindGameObjectWithTag("Player");
+                var playerEntity = player.GetComponent<PlayerEntity>();
+                var combatBehavior = player.GetComponent<CombatBehaviour>();
+                var taskAttack = new TaskAttack(playerEntity, combatBehavior.weaponBehaviour, true);
+                taskAttack.Assign();
+
+                //this.entity1.TaskManager.ClearTasks();
             }
 
             if (Input.GetKeyDown(KeyCode.U))

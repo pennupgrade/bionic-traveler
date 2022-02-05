@@ -104,5 +104,12 @@
         {
             this.UpdateAnimator();
         }
+
+        /// <inheritdoc/>
+        public override void OnEnd()
+        {
+            base.OnEnd();
+            this.Owner.ResetAnimationState();
+        }
     }
 }

@@ -252,6 +252,11 @@
         {
         }
 
+        public virtual void ResetAnimationState()
+        {
+
+        }
+
         protected virtual void Update()
         {
             if (this.IsBeingKnockedBack)
