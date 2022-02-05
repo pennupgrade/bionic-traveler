@@ -5,6 +5,7 @@
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Audio;
+    using BionicTraveler.Scripts.Combat;
     using UnityEngine;
 
     /// <summary>
@@ -49,6 +50,12 @@
         private TaskPlayerMovement mainMovementTask;
         private TaskAnimated specialMovementTask;
 
+        public void ResetAnimationState()
+        {
+            this.StopAllMovement("ResetAnimationState");
+            this.moveState = MovementState.Default;
+        }
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -88,9 +95,20 @@
                 this.specialMovementTask.Assign();
 
                 // TODO: Make audio part of task? But then were to define the sound?
+                // New thought: Have Tunable system for structures. Tunables are ScriptableObjects
+                // that can be queried by structures, perhaps via a central TunableManager?
                 AudioManager.Instance.PlayOneShot(this.dashSound);
                 this.lastDash = GameTime.Now;
                 this.moveState = MovementState.Dashing;
+            }
+
+            // TODO: Manage cooldowns - should be managed elsewhere, though.
+            if (Input.GetButtonDown("Slash1"))
+            {
+                this.StopAllMovement("About to attack!");
+                var combatBehavior = this.player.GetComponent<CombatBehaviour>();
+                this.specialMovementTask = new TaskAttack(this.player, combatBehavior.weaponBehaviour, true);
+                this.specialMovementTask.Assign();
             }
 
             if (this.moveState == MovementState.Default)

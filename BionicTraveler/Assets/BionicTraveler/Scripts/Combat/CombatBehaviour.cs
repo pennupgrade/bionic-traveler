@@ -11,7 +11,7 @@ namespace BionicTraveler.Scripts.Combat
     /// </summary>
     public class CombatBehaviour : MonoBehaviour
     {
-        private WeaponBehaviour weaponBehaviour;
+        public WeaponBehaviour weaponBehaviour;
         private List<WeaponBehaviour> dormantWeapons;
 
         [SerializeField]
@@ -98,26 +98,26 @@ namespace BionicTraveler.Scripts.Combat
         {
             if (this.weaponBehaviour != null)
             {
-                if (Input.GetButtonDown("Slash1"))
-                {
-                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
-                }
+                //if (Input.GetButtonDown("Slash1"))
+                //{
+                //    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
+                //}
 
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    // TODO: Make pretty.
-                    this.weaponBehaviour.SwitchWeaponMode();
-                    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
-                    this.weaponBehaviour.SwitchWeaponMode();
-                }
+                //if (Input.GetKeyDown(KeyCode.Q))
+                //{
+                //    // TODO: Make pretty.
+                //    this.weaponBehaviour.SwitchWeaponMode();
+                //    this.weaponBehaviour.Fire(this.GetComponent<DynamicEntity>());
+                //    this.weaponBehaviour.SwitchWeaponMode();
+                //}
 
-                if (Input.GetKeyDown(KeyCode.M))
-                {
-                    // Switch WeaponData being used
-                    this.SetWeapon(this.usingFirstWeaponData ? this.firstWeaponData : this.secondWeaponData);
-                    this.usingFirstWeaponData = !this.usingFirstWeaponData;
-                    Debug.Log($"usingFirstWeaponData: {this.usingFirstWeaponData}");
-                }
+                //if (Input.GetKeyDown(KeyCode.M))
+                //{
+                //    // Switch WeaponData being used
+                //    this.SetWeapon(this.usingFirstWeaponData ? this.firstWeaponData : this.secondWeaponData);
+                //    this.usingFirstWeaponData = !this.usingFirstWeaponData;
+                //    Debug.Log($"usingFirstWeaponData: {this.usingFirstWeaponData}");
+                //}
             }
 
             // Destroy weapon behaviors that have no attacks left on scene.

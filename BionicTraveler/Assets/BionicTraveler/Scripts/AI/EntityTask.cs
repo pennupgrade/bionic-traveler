@@ -16,7 +16,8 @@ namespace BionicTraveler.Scripts.AI
         PlayerMovement,
         Animated,
         Dash,
-        ExecuteSequence
+        ExecuteSequence,
+        Attack
     }
 
     /// <summary>
@@ -150,6 +151,11 @@ namespace BionicTraveler.Scripts.AI
         /// <param name="successful">Whether the task was successful.</param>
         public void End(string reason, bool successful)
         {
+            if (!this.IsActive)
+            {
+                return;
+            }
+
             Debug.Log(reason);
             this.End(successful);
         }
