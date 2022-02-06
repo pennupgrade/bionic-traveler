@@ -57,7 +57,7 @@ namespace BionicTraveler.Scripts.AI
         /// </summary>
         public void ClearTasks()
         {
-            foreach (EntityTask task in this.tasks)
+            foreach (EntityTask task in this.tasks.ToArray())
             {
                 task.End("ClearTasks()", false);
             }

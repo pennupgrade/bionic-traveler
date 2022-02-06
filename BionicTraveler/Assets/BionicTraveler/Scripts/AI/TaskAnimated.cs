@@ -2,6 +2,7 @@
 {
     using System;
     using BionicTraveler.Scripts.World;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -58,8 +59,7 @@
         /// <returns>Whether animation has finished playing.</returns>
         public bool HasAnimationFinished(string name)
         {
-            var state = this.Animator.GetCurrentAnimatorStateInfo(0);
-            return state.IsName(name) && state.normalizedTime >= 1;
+            return this.Animator.HasAnimationFinished(name);
         }
 
         /// <summary>
@@ -77,8 +77,7 @@
         /// <returns>Whether animation is currently playing.</returns>
         public bool IsAnimationPlaying(string name)
         {
-            var state = this.Animator.GetCurrentAnimatorStateInfo(0);
-            return state.IsName(name) && state.normalizedTime < 1;
+            return this.Animator.IsAnimationPlaying(name);
         }
 
         /// <summary>
@@ -88,8 +87,7 @@
         /// <returns>Whether the animation exists.</returns>
         public bool HasAnimation(string name)
         {
-            var animHash = Animator.StringToHash(name);
-            return this.Animator.HasState(0, animHash);
+            return this.Animator.HasAnimation(name);
         }
 
         /// <summary>

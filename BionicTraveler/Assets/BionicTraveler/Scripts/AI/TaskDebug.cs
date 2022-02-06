@@ -44,8 +44,7 @@ namespace BionicTraveler.Scripts.AI
             {
                 var player = GameObject.FindGameObjectWithTag("Player");
                 var playerEntity = player.GetComponent<PlayerEntity>();
-                var combatBehavior = player.GetComponent<CombatBehaviour>();
-                var taskAttack = new TaskAttack(playerEntity, combatBehavior.weaponBehaviour, true);
+                var taskAttack = new TaskAttack(playerEntity, true);
                 taskAttack.Assign();
 
                 //this.entity1.TaskManager.ClearTasks();

@@ -26,7 +26,7 @@ MonoBehaviour:
   areaOfEffect: 0
   sprite: {fileID: 0}
   animation: {fileID: 0}
-  animationState: Attack_Melee_Sword
+  animationState: Attack
   animationDeterminesHit: 0
   audioClip: {fileID: 0}
   audioClipImpact: {fileID: 0}
