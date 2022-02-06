@@ -26,8 +26,8 @@
         public override void Equip(DynamicEntity entity)
         {
             // Get from entity gameobject.
-            CombatBehaviour combatBehavior = null;
-            combatBehavior.SetWeapon(this.weaponData);
+            //CombatBehaviour combatBehavior = null;
+            //combatBehavior.SetWeapon(this.weaponData);
             throw new System.NotImplementedException();
         }
 
@@ -39,8 +39,8 @@
             Inventory inventory = null;
             inventory.AddItem(itemData);
 
-            CombatBehaviour combatBehavior = null;
-            combatBehavior.RemoveWeapon();
+            //CombatBehaviour combatBehavior = null;
+            //combatBehavior.RemoveWeapon();
 
             throw new System.NotImplementedException();
         }

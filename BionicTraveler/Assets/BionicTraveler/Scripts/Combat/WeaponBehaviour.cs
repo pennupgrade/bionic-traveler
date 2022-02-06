@@ -4,7 +4,6 @@ namespace BionicTraveler.Scripts.Combat
     using System.Linq;
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
-    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -17,11 +16,17 @@ namespace BionicTraveler.Scripts.Combat
         private GameTime lastSecondaryAttackTime;
         private DynamicEntity owner;
         private Attack lastAttack;
+        private bool isAttacking;
 
         /// <summary>
         /// Gets the weapon data used.
         /// </summary>
         public WeaponData WeaponData { get; private set; }
+
+        /// <summary>
+        /// Gets the world object.
+        /// </summary>
+        public GameObject WorldObject { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether all attacks owned by this object have been disposed.
@@ -46,12 +51,22 @@ namespace BionicTraveler.Scripts.Combat
         }
 
         /// <summary>
+        /// Sets the world object representing this behaviour.
+        /// </summary>
+        /// <param name="gameObject">The world object.</param>
+        public void SetWorldObject(GameObject gameObject)
+        {
+            this.WorldObject = gameObject;
+        }
+
+        /// <summary>
         /// Fires the weapon.
         /// </summary>
         /// <param name="owner">The entity owning the attack.</param>
         public void Fire(DynamicEntity owner)
         {
             this.owner = owner;
+            this.isAttacking = true;
 
             var attackData = this.GetAttackData();
             if (attackData == null)
@@ -74,6 +89,17 @@ namespace BionicTraveler.Scripts.Combat
                     this.SetLastAttackTime(GameTime.Now);
                 }
             }
+        }
+
+        /// <summary>
+        /// Marks the attack as stopped and resets the weapon to its idle state.
+        /// </summary>
+        public void StoppedAttack()
+        {
+            this.isAttacking = false;
+
+            // Reset weapon to its idle animation - usually just one static frame.
+            this.GetComponent<Animator>().Play("Idle");
         }
 
         /// <summary>
@@ -125,6 +151,17 @@ namespace BionicTraveler.Scripts.Combat
             this.isUsingPrimaryAttack = true;
             this.lastPrimaryAttackTime = GameTime.Default;
             this.lastSecondaryAttackTime = GameTime.Default;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.isTrigger || !this.isAttacking)
+            {
+                return;
+            }
+
+            var entity = collision.gameObject.GetComponent<Entity>();
+            entity?.Kill();
         }
 
         private void OnDestroy()

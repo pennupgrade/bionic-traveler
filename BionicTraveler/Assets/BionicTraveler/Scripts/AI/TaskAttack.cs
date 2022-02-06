@@ -2,26 +2,32 @@
 {
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.World;
+    using Framework;
     using UnityEngine;
 
-    class TaskAttack : TaskAnimated
+    /// <summary>
+    /// Performs a single attack from an entity.
+    /// </summary>
+    public class TaskAttack : TaskAnimated
     {
         private readonly WeaponBehaviour weaponBehavior;
         private readonly bool isPrimaryWeaponMode;
         private bool hasFired;
         private bool skipAnimation;
+        private Animator weaponAnimator;
+        private AttackData attackData;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskAttack"/> class.
         /// </summary>
-        /// <param name="owner"></param>
-        /// <param name="weaponBehavior"></param>
-        /// <param name="primary"></param>
-        public TaskAttack(DynamicEntity owner, WeaponBehaviour weaponBehavior, bool primary)
+        /// <param name="owner">The owner.</param>
+        /// <param name="primary">Whether the primary or secondary attack should be used.</param>
+        public TaskAttack(DynamicEntity owner, bool primary)
             : base(owner)
         {
-            this.weaponBehavior = weaponBehavior;
             this.isPrimaryWeaponMode = primary;
+            this.weaponBehavior = this.Owner.WeaponsInventory.equippedWeaponBehavior;
+            this.Owner.WeaponsInventory.DisplayCurrentWeapon();
         }
 
         /// <inheritdoc/>
@@ -33,10 +39,12 @@
             if (!this.hasFired)
             {
                 this.weaponBehavior.SetWeaponMode(this.isPrimaryWeaponMode);
-                var attackData = this.weaponBehavior.GetNextAttackData();
-                if (this.HasAnimation(attackData.AnimationState))
+                this.weaponAnimator = this.weaponBehavior.WorldObject.GetComponent<Animator>();
+
+                this.attackData = this.weaponBehavior.GetNextAttackData();
+                if (this.weaponAnimator.HasAnimation(this.attackData.AnimationState))
                 {
-                    this.PlayAnimation(attackData.AnimationState);
+                    this.weaponAnimator.Play(this.attackData.AnimationState);
                 }
                 else
                 {
@@ -49,11 +57,18 @@
             }
             else
             {
-                if (this.skipAnimation || this.HasCurrentAnimationFinished())
+                if (this.skipAnimation || this.weaponAnimator.HasAnimationFinished(this.attackData.AnimationState))
                 {
                     this.End("Attack animation has finished", true);
                 }
             }
+        }
+
+        /// <inheritdoc/>
+        public override void OnEnd()
+        {
+            base.OnEnd();
+            this.weaponBehavior?.StoppedAttack();
         }
     }
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   id: weapon_stick
   displayName: Stick
   sprite: {fileID: 0}
-  primaryAttackData: {fileID: 0}
+  worldObjectPrefab: {fileID: 2177739623315908797, guid: 5ca94ef51b521a14e862c57a537059ce, type: 3}
+  primaryAttackData: {fileID: 11400000, guid: f5482071c99b8f84ca4ef3012f274f6d, type: 2}
   secondaryAttackData: {fileID: 0}
   itemData: {fileID: 0}

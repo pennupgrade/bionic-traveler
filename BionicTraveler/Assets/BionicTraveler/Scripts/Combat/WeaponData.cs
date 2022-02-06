@@ -22,6 +22,10 @@
         private Sprite sprite;
 
         [SerializeField]
+        [Tooltip("The object prefab that represents this weapon in the game world.")]
+        private GameObject worldObjectPrefab;
+
+        [SerializeField]
         [Tooltip("The primary attack of the weapon.")]
         private AttackData primaryAttackData;
 
@@ -47,6 +51,11 @@
         /// Gets the weapon's sprite.
         /// </summary>
         public Sprite Sprite => this.sprite;
+
+        /// <summary>
+        /// Gets the world object prefab this weapon uses.
+        /// </summary>
+        public GameObject WorldObjectPrefab => this.worldObjectPrefab;
 
         /// <summary>
         /// Gets the primary attack data used by the weapon.

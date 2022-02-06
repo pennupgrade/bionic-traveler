@@ -18,6 +18,8 @@
         /// </summary>
         Default = 0,
 
+        Attacking = 1,
+
         /// <summary>
         /// Dashing state
         /// </summary>
@@ -106,9 +108,15 @@
             if (Input.GetButtonDown("Slash1"))
             {
                 this.StopAllMovement("About to attack!");
-                var combatBehavior = this.player.GetComponent<CombatBehaviour>();
-                this.specialMovementTask = new TaskAttack(this.player, combatBehavior.weaponBehaviour, true);
+                this.specialMovementTask = new TaskAttack(this.player, true);
                 this.specialMovementTask.Assign();
+                this.moveState = MovementState.Attacking;
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                this.StopAllMovement("Switching weapon!");
+                this.player.WeaponsInventory.ToggleWeaponVisibility();
             }
 
             if (this.moveState == MovementState.Default)
@@ -121,6 +129,14 @@
                 }
             }
             else if (this.moveState == MovementState.Dashing)
+            {
+                if (this.specialMovementTask.HasEnded)
+                {
+                    this.moveState = MovementState.Default;
+                    this.specialMovementTask = null;
+                }
+            }
+            else if (this.moveState == MovementState.Attacking)
             {
                 if (this.specialMovementTask.HasEnded)
                 {

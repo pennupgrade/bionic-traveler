@@ -36,12 +36,15 @@
         {
             this.Inventory = new Inventory(this);
             this.taskManager = new EntityTaskManager(this);
+            this.WeaponsInventory = new WeaponsInventory(this);
         }
 
         /// <summary>
         /// Gets the inventory.
         /// </summary>
         public Inventory Inventory { get; }
+
+        public WeaponsInventory WeaponsInventory { get; private set; }
 
         /// <summary>
         /// Gets the Enemy Scanner.

@@ -12,15 +12,11 @@ namespace BionicTraveler.Scripts.World
     /// </summary>
     public class PlayerEntity : DynamicEntity
     {
+        private PlayerMovement movement;
         /// <summary>
         /// Gets or sets the Player interaction range.
         /// </summary>
         public float InteractionRange { get; set; } = 1;
-
-        // TODO: Uncomment these after merging Combat classes
-        private CombatBehaviour PrimaryWeapon;
-        private CombatBehaviour SecondaryWeapon;
-        //private List<Chip> ActiveChips = new List<Chip>();
 
         private bool diedFromLowEnergy;
 
@@ -29,6 +25,13 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         public KeyManager KeyManager { get; private set; }
 
+        public WeaponData DefaultWeapon;
+
+        /// <summary>
+        /// Gets the player movement component.
+        /// </summary>
+        public PlayerMovement Movement => this.movement;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PlayerEntity"/> class.
         /// </summary>
@@ -36,6 +39,12 @@ namespace BionicTraveler.Scripts.World
         {
             this.KeyManager = new KeyManager();
             this.Inventory.ItemsChanged += this.Inventory_ItemsChanged;
+        }
+
+        private void Awake()
+        {
+            this.movement = this.GetComponent<PlayerMovement>();
+            this.WeaponsInventory.AddWeapon(this.DefaultWeapon);
         }
 
         /// <summary>
@@ -51,7 +60,6 @@ namespace BionicTraveler.Scripts.World
         private void SetInputState(bool state)
         {
             this.GetComponent<PlayerMovement>().enabled = state;
-            this.GetComponent<CombatBehaviour>().enabled = state;
             this.GetComponent<BodypartBehaviour>().enabled = state;
             this.GetComponent<PlayerInteraction>().enabled = state;
         }
