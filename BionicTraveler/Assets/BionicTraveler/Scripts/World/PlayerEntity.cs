@@ -25,8 +25,6 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         public KeyManager KeyManager { get; private set; }
 
-        public WeaponData DefaultWeapon;
-
         /// <summary>
         /// Gets the player movement component.
         /// </summary>
@@ -41,10 +39,11 @@ namespace BionicTraveler.Scripts.World
             this.Inventory.ItemsChanged += this.Inventory_ItemsChanged;
         }
 
-        private void Awake()
+        /// <inheritdoc/>
+        protected override void Awake()
         {
+            base.Awake();
             this.movement = this.GetComponent<PlayerMovement>();
-            this.WeaponsInventory.AddWeapon(this.DefaultWeapon);
         }
 
         /// <summary>

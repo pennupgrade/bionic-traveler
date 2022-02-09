@@ -28,6 +28,7 @@ namespace BionicTraveler.Scripts.AI
         /// <inheritdoc/>
         public override void OnInitialize()
         {
+            this.movement.StopDistance = 1.0f;
             this.movement.SetTarget(this.targetPos);
         }
 

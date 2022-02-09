@@ -31,7 +31,13 @@ namespace BionicTraveler.Scripts.AI
         /// <param name="task">The task to assign.</param>
         public void Assign(EntityTask task)
         {
+            if (task.IsActive || task.HasEnded)
+            {
+                throw new InvalidOperationException("Cannot assign active or ended task.");
+            }
+
             this.tasks.Add(task);
+            task.Initialize();
         }
 
         /// <summary>
@@ -71,19 +77,7 @@ namespace BionicTraveler.Scripts.AI
         /// <param name="type">Type of the Task</param>
         public void ClearTask(EntityTaskType type)
         {
-            // If task is being executed currently, wait for it to end.
-            foreach (EntityTask task in this.tasks)
-            {
-                if (task.GetType().Equals(type))
-                {
-                    // Is it possible to remove a task from list w/o ending it?
-                    this.tasks.Remove(task);
-                    return;
-                }
-            }
-
-            // If task does not exist, throw exception?
-            throw new Exception("Task type does not exist");
+            this.tasks.RemoveAll(task => task.Type == type);
         }
 
         /// <summary>

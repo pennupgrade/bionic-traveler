@@ -411,7 +411,7 @@ MonoBehaviour:
   baseSpeed: 1
   loot: {fileID: 0}
   relationships: {fileID: 11400000, guid: 518db983fc518114899421f1fc0ec833, type: 2}
-  DefaultWeapon: {fileID: 11400000, guid: 91df6f43eb015eb478df4ba6952c1428, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: 91df6f43eb015eb478df4ba6952c1428, type: 2}
 --- !u!95 &8686891111388916192
 Animator:
   serializedVersion: 3
