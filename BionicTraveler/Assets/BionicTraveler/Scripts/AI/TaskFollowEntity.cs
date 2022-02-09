@@ -18,11 +18,23 @@ namespace BionicTraveler.Scripts.AI
         /// <param name="owner">The owner.</param>
         /// <param name="entity">The entity to follow.</param>
         public TaskFollowEntity(DynamicEntity owner, Entity entity)
+            : this(owner, entity, 1.0f)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaskFollowEntity"/> class.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="entity">The entity to follow.</param>
+        /// <param name="distance">The distance to maintain.</param>
+        public TaskFollowEntity(DynamicEntity owner, Entity entity, float distance)
             : base(owner)
         {
             this.targetEntity = entity;
             this.lastPosUpdate = GameTime.Default;
             this.movement = this.Owner.GetComponent<EntityMovement>();
+            this.movement.StopDistance = distance;
         }
 
         /// <inheritdoc/>
@@ -45,7 +57,7 @@ namespace BionicTraveler.Scripts.AI
         /// <inheritdoc/>
         public override void OnEnd()
         {
-            // Removes target from Movement
+            // Remove target from movement.
             this.movement.ClearTarget();
         }
     }

@@ -125,6 +125,8 @@
             }
         }
 
+        public float StopDistance { get; set; } = 1.0f;
+
         /// <summary>
         /// Sets the target position to move to.
         /// </summary>
@@ -272,8 +274,8 @@
             // Let A* take over.
             if (isTargetStaticLocation || isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
-                // Stop close to static targets.
-                if (isTargetStaticLocation && distanceToTarget < 1.5)
+                // Stop close to static targets. We use a slightly larger distance here to allow slowing down.
+                if (isTargetStaticLocation && distanceToTarget < this.StopDistance + 0.5f)
                 {
                     this.agent.isStopped = true;
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
@@ -293,7 +295,7 @@
                 var context = this.Tick(target);
                 var rayBasedDistance = directObstacles.FirstOrDefault(
                     obstacle => obstacle.collider.gameObject == this.targetEntity.gameObject);
-                if (rayBasedDistance.distance > 1.0f)
+                if (rayBasedDistance.distance > this.StopDistance)
                 {
                     var velocity = (context.BestPoint - this.transform.position).normalized * 2;
                     this.agent.isStopped = true;

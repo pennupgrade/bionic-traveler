@@ -17,7 +17,8 @@ namespace BionicTraveler.Scripts.AI
         Animated,
         Dash,
         ExecuteSequence,
-        Attack
+        Attack,
+        Combat
     }
 
     /// <summary>
@@ -91,7 +92,7 @@ namespace BionicTraveler.Scripts.AI
         }
 
         /// <summary>
-        /// Called when this task is being initialized, i.e. the first time its <see cref="Process"/> is about to be called.
+        /// Called when this task is being initialized, i.e. when it just got assigned and the first time its <see cref="Process"/> is about to be called.
         /// Guaranteed to only be called once.
         /// </summary>
         public virtual void OnInitialize()
@@ -122,16 +123,6 @@ namespace BionicTraveler.Scripts.AI
             {
                 this.End("Owner died", false);
                 return;
-            }
-
-            // If was not initialized, then initialize.
-            if (!this.WasInitialized)
-            {
-                this.Initialize();
-                if (!this.IsActive)
-                {
-                    return;
-                }
             }
 
             this.OnProcess();

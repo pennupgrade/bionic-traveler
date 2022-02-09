@@ -27,6 +27,10 @@
         [TooltipAttribute("The entity relationships.")]
         private EntityRelationships relationships;
 
+        [SerializeField]
+        [TooltipAttribute("The default weapon to assign.")]
+        public WeaponData defaultWeapon;
+
         private float energy;
 
         /// <summary>
@@ -98,8 +102,13 @@
             return Vector3.Dot(this.Direction, dir) < 0;
         }
 
-        private void Awake()
+        /// <summary>
+        /// Called when script instance is being loaded.
+        /// </summary>
+        protected virtual void Awake()
         {
+            this.WeaponsInventory.AddWeapon(this.defaultWeapon);
+
             if (this.loot != null)
             {
                 foreach (var item in this.loot.Items)
