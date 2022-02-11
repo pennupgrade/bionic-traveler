@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: e9208d36fa888f0428d92b22d71044bb, type: 3}
   loopPoint: 19.2
+  loopStart: 0
+  scenes:
+  - EnemyMovementTest

@@ -6,6 +6,7 @@ namespace BionicTraveler.Scripts.Audio
     using System.Collections.Generic;
     using Framework;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Represents background audio.
@@ -35,10 +36,9 @@ namespace BionicTraveler.Scripts.Audio
         [Range(0.0f, 1.0f)]
         public float VoiceVolume = 0.5f;
 
-
         [SerializeField]
         [Tooltip("The list of possible background songs.")]
-        private List<AudioClip> backgroundClips;
+        private List<BackgroundClip> backgroundClips;
 
         [SerializeField]
         [Tooltip("The main audio source.")]
@@ -47,7 +47,13 @@ namespace BionicTraveler.Scripts.Audio
         [SerializeField]
         [Tooltip("The background audio source.")]
         private AudioSource backgroundSource;
-        private bool hasStarted;
+
+        [SerializeField]
+        [Tooltip("The upcoming background audio source. (used to crossfade between songs and stuff)")]
+        private AudioSource upcomingBackgroundSource;
+
+        private BackgroundClip currentBackgroundClip;
+        private BackgroundClip upcomingBackgroundClip;
 
         [SerializeField]
         [Tooltip("The dialog audio source.")]
@@ -96,20 +102,45 @@ namespace BionicTraveler.Scripts.Audio
         /// </summary>
         public void StartBackgroundMusic()
         {
-            this.PlayRandomBackgroundClip();
-        }
+            string scene = SceneManager.GetActiveScene().name;
+            Debug.Log(scene);
 
-        private void PlayRandomBackgroundClip()
-        {
-            this.backgroundSource.clip = this.GetRandomBackgroundClip();
+            foreach (BackgroundClip s in backgroundClips)
+            {
+                if (s.Scenes.Contains(scene))
+                {
+                    upcomingBackgroundClip = s;
+                    currentBackgroundClip = upcomingBackgroundClip;
+
+                    backgroundSource.clip = currentBackgroundClip.Clip;
+                    backgroundSource.Play();
+                }
+            }
+            
+          }
+
+        private void PlayUpcomingBackgroundClip() {
+            
+            // exchange which of the audio sources is the main
+            AudioSource temp = this.backgroundSource;
+            this.backgroundSource = this.upcomingBackgroundSource;
+            this.upcomingBackgroundSource = temp;
+
+            // exchange the metadata object
+            this.currentBackgroundClip = this.upcomingBackgroundClip;
+
+            // actually play the clip
+            this.backgroundSource.clip = this.currentBackgroundClip.Clip;
+
+            if(currentBackgroundClip == upcomingBackgroundClip)
+            {
+                this.backgroundSource.time = upcomingBackgroundClip.LoopStart;
+            }
+
             this.backgroundSource.Play();
-            this.hasStarted = true;
-            Debug.Log($"Playing next background clip {this.backgroundSource.clip.name}");
-        }
 
-        private AudioClip GetRandomBackgroundClip()
-        {
-            return this.backgroundClips.GetRandomItem();
+            Debug.Log($"Playing next background clip {this.backgroundSource.clip.name}");
+
         }
 
         /// <summary>
@@ -146,9 +177,12 @@ namespace BionicTraveler.Scripts.Audio
         public void Update()
         {
             // Audio stops when we are not focused, which would then trigger a new song whenever we tab out.
-            if (this.hasStarted && Application.isFocused && !this.backgroundSource.isPlaying)
+            if (Application.isFocused && !this.backgroundSource.isPlaying)
             {
-                this.PlayRandomBackgroundClip();
+                this.backgroundSource.Play();
+            }
+            if(this.backgroundSource.time >= this.currentBackgroundClip.LoopPoint) {
+                this.PlayUpcomingBackgroundClip();
             }
         }
 
@@ -160,6 +194,7 @@ namespace BionicTraveler.Scripts.Audio
             this.mainAudioSource.volume = this.EffectsVolume;
             this.dialogueSource.volume = this.VoiceVolume;
             this.backgroundSource.volume = this.MusicVolume;
+            this.upcomingBackgroundSource.volume = this.MusicVolume;
         }
     }
 }

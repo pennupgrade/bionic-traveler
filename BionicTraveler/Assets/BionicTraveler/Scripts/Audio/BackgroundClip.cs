@@ -1,6 +1,7 @@
 namespace BionicTraveler.Scripts.Audio
 {
     using UnityEngine;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Describes a background music clip and its relevant metadata.
@@ -15,7 +16,15 @@ namespace BionicTraveler.Scripts.Audio
 
         [SerializeField]
         [Tooltip("The timestamp in seconds when the clip should loop.")]
-        public float loopPoint; 
+        private float loopPoint;
+
+        [SerializeField]
+        [Tooltip("The timestamp in seconds where the clip should loop to.")]
+        private float loopStart;
+
+        [SerializeField]
+        [Tooltip("The scene which this background clip should play in.")]
+        private List<string> scenes;
 
         /// <summary>
         /// Gets the audio clip.
@@ -26,5 +35,16 @@ namespace BionicTraveler.Scripts.Audio
         /// Gets the loop point.
         /// </summary>
         public float LoopPoint => this.loopPoint;
+
+        /// <summary>
+        /// Gets the loop start.
+        /// </summary>
+        public float LoopStart => this.loopStart;
+
+        /// <summary>
+        /// Gets the scene.
+        /// </summary>
+        public List<string> Scenes => this.scenes;
+
     }
 }
