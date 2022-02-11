@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: ffbec7499e3bb4524a7a57645207ddd4, type: 3}
   loopPoint: 24
+  loopStart: 0
+  scenes:
+  - TempleFloor1
+  - TempleFloor2
+  - TempleFloor3

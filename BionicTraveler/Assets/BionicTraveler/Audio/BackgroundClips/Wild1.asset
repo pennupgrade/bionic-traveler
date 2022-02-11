@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 5fa801d6270ff44d0a9d067a13a16e79, type: 3}
   loopPoint: 42.667
+  loopStart: 0
+  scenes:
+  - LandscapeScene
