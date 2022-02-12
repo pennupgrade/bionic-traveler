@@ -19,7 +19,8 @@ namespace BionicTraveler.Scripts.AI
         ExecuteSequence,
         Attack,
         Combat,
-        Projectile
+        Projectile,
+        Die
     }
 
     /// <summary>
