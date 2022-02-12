@@ -18,7 +18,8 @@ namespace BionicTraveler.Scripts.AI
         Dash,
         ExecuteSequence,
         Attack,
-        Combat
+        Combat,
+        Projectile
     }
 
     /// <summary>

@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier
       objectReference: {fileID: 0}
+    - target: {fileID: 5286628327211811145, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 91df6f43eb015eb478df4ba6952c1428, type: 2}
     - target: {fileID: 8719936989367339246, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -200,6 +204,23 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d5e44a7683ea85042aa71cf90675fc04, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
+--- !u!1 &107769570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1734254569279392855, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
+  m_PrefabInstance: {fileID: 107769569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &107769571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107769570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2015403f0751e144ab87fe7ed1e355a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &356707683
 PrefabInstance:
   m_ObjectHideFlags: 0
