@@ -102,7 +102,7 @@ namespace BionicTraveler.Scripts.AI
             {
                 case FSMSubState.Enter:
                     this.explosionAttack = null;
-                    var followTask = new TaskFollowEntity(this.Owner, this.entityTarget);
+                    var followTask = new TaskMoveToEntity(this.Owner, this.entityTarget);
                     followTask.Assign();
 
                     this.combatStart = GameTime.Now;

@@ -99,13 +99,18 @@
 
     public abstract class EntityBehavior : MonoBehaviour
     {
-        private Entity combatTarget;
+        [NonSerialized]
         private Vector3 startPosition;
+        [NonSerialized]
         private IFSM fsm;
 
+        [field: NonSerialized]
         protected EntityScanner EntityScanner { get; private set; }
+        [field: NonSerialized]
         protected DynamicEntity Owner { get; private set; }
+        [field: NonSerialized]
         protected EntityIntelligence Intelligence { get; private set; }
+        protected Vector3 StartPosition => this.startPosition;
 
         private void Awake()
         {
@@ -130,6 +135,12 @@
 
     public class DefaultEntityBehavior : EntityBehavior
     {
+        [SerializeField]
+        [Tooltip("The entity flags.")]
+        private EntityFlags flags;
+
+        private Entity combatTarget;
+
         /// <summary>
         /// Describes an entity's main goal.
         /// </summary>
@@ -167,19 +178,9 @@
             /// Whether an entity will not attack an enemy when idling.
             /// </summary>
             DontAttackWhenIdle = 0x2,
-
-            /// <summary>
-            /// Whether an entity will try to avoid player
-            /// </summary>
-            IsRangedAttacker = 0x4
         }
 
-        [SerializeField]
-        [Tooltip("The entity flags.")]
-        private EntityFlags flags;
-
-        private Entity combatTarget;
-
+        /// <inheritdoc/>
         public override IFSM CreateFSM()
         {
             var fsm = new FSM<EntityGoal>();

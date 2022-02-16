@@ -90,6 +90,12 @@
                 return;
             }
 
+            if (this.player.IsDeadOrDying)
+            {
+                this.StopAllMovement("Player is dying");
+                return;
+            }
+
             if (Input.GetButtonDown("Dash") && this.lastDash.HasTimeElapsedReset(this.dashCooldown))
             {
                 this.StopAllMovement("About to dash!");

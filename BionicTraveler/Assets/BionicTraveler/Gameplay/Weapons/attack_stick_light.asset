@@ -16,6 +16,8 @@ MonoBehaviour:
   type: 0
   damage: 20
   range: 2
+  minimumAggressiveRange: 0.1
+  maximumAggressiveRange: 2
   cooldown: 1
   freezeDuration: 0
   cost: 0

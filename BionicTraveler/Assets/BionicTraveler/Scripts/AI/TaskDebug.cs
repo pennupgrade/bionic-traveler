@@ -56,7 +56,7 @@ namespace BionicTraveler.Scripts.AI
 
                 var sequence = new TaskSequence();
                 var startPos = this.entity1.transform.position;
-                sequence.AddTasks(new TaskFollowEntity(this.entity1, this.entity2), new TaskGoToPoint(this.entity1, startPos));
+                sequence.AddTasks(new TaskMoveToEntity(this.entity1, this.entity2), new TaskGoToPoint(this.entity1, startPos));
                 sequence.Execute(this.entity1);
             }
         }

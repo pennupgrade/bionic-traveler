@@ -9,7 +9,7 @@ namespace BionicTraveler.Scripts.AI
     public enum EntityTaskType
     {
         GoToPoint,
-        FollowEntity,
+        MoveToEntity,
         PickUpItem,
         Patrol,
         FollowWaypoints,
@@ -20,7 +20,8 @@ namespace BionicTraveler.Scripts.AI
         Attack,
         Combat,
         Projectile,
-        Die
+        Die,
+        MoveFromEntity
     }
 
     /// <summary>
@@ -85,6 +86,11 @@ namespace BionicTraveler.Scripts.AI
         public bool IsActive { get; private set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this task can run even after an enttiy has died.
+        /// </summary>
+        public bool PersistAfterDeath { get; protected set; }
+
+        /// <summary>
         /// Assigns the task to <see cref="owner"/>.
         /// </summary>
         /// <param name="owner">The owner.</param>
@@ -121,7 +127,7 @@ namespace BionicTraveler.Scripts.AI
         /// </summary>
         public void Process()
         {
-            if (this.Owner.IsDead)
+            if (this.Owner.IsDeadOrDying && !this.PersistAfterDeath)
             {
                 this.End("Owner died", false);
                 return;

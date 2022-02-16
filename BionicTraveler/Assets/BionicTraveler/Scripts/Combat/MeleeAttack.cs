@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Combat
 {
+    using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
@@ -10,17 +11,28 @@ namespace BionicTraveler.Scripts.Combat
     public class MeleeAttack : Attack
     {
         private bool hasAttacked;
+        private List<Entity> processedEntities;
+
+        /// <inheritdoc/>
+        public override void OnAttackStarted()
+        {
+            base.OnAttackStarted();
+
+            this.processedEntities = new List<Entity>();
+        }
 
         /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
-            EnemyScanner scanner = this.Owner.EnemyScanner;
-            GameObject[] enemies = scanner.GetEnemies();
-            var ourPos = this.gameObject.transform.position;
-            var enemiesInRange = enemies.Where(enemy => Vector3.Distance(enemy.transform.position, ourPos)
-                                                < this.AttackData.Range);
+            // Manually trace collisions as our attack moves quite fast and might skip colliders otherwise.
+            var colls = new List<Collider2D>();
+            Physics2D.GetContacts(this.GetComponent<Collider2D>(), colls);
+            var hitEntities = colls.Select(coll => coll.GetComponent<Entity>())
+                .Where(entity => entity != null && !this.processedEntities.Contains(entity))
+                .Distinct().ToArray();
 
-            return enemiesInRange.Select(enemy => (Entity)enemy.GetComponent<DynamicEntity>()).ToArray();
+            this.processedEntities.AddRange(hitEntities);
+            return hitEntities;
         }
 
         /// <inheritdoc/>
@@ -30,7 +42,11 @@ namespace BionicTraveler.Scripts.Combat
             {
                 target.OnHit(this);
             }
+        }
 
+        /// <inheritdoc/>
+        public override void StopAttack()
+        {
             this.hasAttacked = true;
         }
 

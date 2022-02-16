@@ -71,17 +71,12 @@ namespace BionicTraveler.Scripts.Combat
             var attackData = this.GetAttackData();
             if (attackData == null)
             {
-                Debug.LogWarning($"WeaponBehavior::Update: No weapon data specified for " +
+                Debug.LogWarning($"WeaponBehavior::Fire: No weapon data specified for " +
                     $"{this.WeaponData.Id}, primary: {this.isUsingPrimaryAttack}");
             }
             else
             {
-                bool hasCooldownElapsed = this.GetLastAttackTime().HasTimeElapsed(attackData.Cooldown);
-                bool hasEnoughEnergy = attackData.Cost == 0 || owner.Energy >= attackData.Cost;
-                bool hasLastAttackFinishedFiring = this.lastAttack == null
-                    || (this.lastAttack.HasBeenDisposed || this.lastAttack.HasFinishedFiring);
-
-                if (hasLastAttackFinishedFiring && hasCooldownElapsed && hasEnoughEnergy)
+                if (this.IsReady(owner))
                 {
                     Debug.Log($"WeaponBehavior::Update: Starting new attack {attackData.DisplayName}!");
                     this.lastAttack = AttackFactory.CreateAttack(this.gameObject, attackData);
@@ -92,10 +87,33 @@ namespace BionicTraveler.Scripts.Combat
         }
 
         /// <summary>
+        /// Checks whether the current attack can be executed based on <see cref="owner"/>.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <returns>Whether the attack can be executed.</returns>
+        public bool IsReady(DynamicEntity owner)
+        {
+            var attackData = this.GetAttackData();
+            if (attackData == null)
+            {
+                Debug.LogWarning($"WeaponBehavior::IsReady: No weapon data specified for " +
+                    $"{this.WeaponData.Id}, primary: {this.isUsingPrimaryAttack}");
+                return false;
+            }
+
+            bool hasCooldownElapsed = this.GetLastAttackTime().HasTimeElapsed(attackData.Cooldown);
+            bool hasEnoughEnergy = attackData.Cost == 0 || owner.Energy >= attackData.Cost;
+            bool hasLastAttackFinishedFiring = this.lastAttack == null
+                || (this.lastAttack.HasBeenDisposed || this.lastAttack.HasFinishedFiring);
+            return hasLastAttackFinishedFiring && hasCooldownElapsed && hasEnoughEnergy;
+        }
+
+        /// <summary>
         /// Marks the attack as stopped and resets the weapon to its idle state.
         /// </summary>
         public void StoppedAttack()
         {
+            this.lastAttack?.StopAttack();
             this.isAttacking = false;
 
             // Reset weapon to its idle animation - usually just one static frame.
@@ -151,17 +169,6 @@ namespace BionicTraveler.Scripts.Combat
             this.isUsingPrimaryAttack = true;
             this.lastPrimaryAttackTime = GameTime.Default;
             this.lastSecondaryAttackTime = GameTime.Default;
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.isTrigger || !this.isAttacking)
-            {
-                return;
-            }
-
-            var entity = collision.gameObject.GetComponent<Entity>();
-            entity?.Kill();
         }
 
         private void OnDestroy()

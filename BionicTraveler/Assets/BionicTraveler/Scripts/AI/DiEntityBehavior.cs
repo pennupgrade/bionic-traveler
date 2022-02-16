@@ -6,7 +6,6 @@ namespace BionicTraveler.Scripts.AI
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
-    using BionicTraveler.Assets.Framework;
 
     /// <summary>
     /// Please document me.
@@ -28,17 +27,6 @@ namespace BionicTraveler.Scripts.AI
         private GameTime combatStart;
         private GameTime dashStart;
 
-        protected EntityScanner EntityScanner { get; private set; }
-        protected DynamicEntity Owner { get; private set; }
-        protected EntityIntelligence Intelligence { get; private set; }
-
-        private void Awake()
-        {
-            this.Owner = this.GetComponent<DynamicEntity>();
-            this.EntityScanner = this.GetComponent<EntityScanner>();
-            this.Intelligence = this.GetComponent<EntityIntelligence>();
-            this.startPosition = this.Owner.transform.position;
-        }
         public override IFSM CreateFSM()
         {
             var fsm = new FSM<DiEntityGoal>();
