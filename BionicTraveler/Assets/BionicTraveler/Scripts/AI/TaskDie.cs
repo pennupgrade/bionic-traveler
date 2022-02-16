@@ -10,12 +10,13 @@
     public class TaskDie : TaskAnimated
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskDash"/> class.
+        /// Initializes a new instance of the <see cref="TaskDie"/> class.
         /// </summary>
         /// <param name="owner">The owner.</param>
         public TaskDie(DynamicEntity owner)
             : base(owner)
         {
+            this.PersistAfterDeath = true;
         }
 
         /// <inheritdoc/>
@@ -26,6 +27,7 @@
         {
             if (this.HasAnimation("Dying"))
             {
+                this.Owner.Kill();
                 this.PlayAnimation("Dying");
             }
             else
@@ -45,7 +47,6 @@
             {
                 if (this.IsCurrentAnimationPlaying())
                 {
-                    
                 }
             }
         }

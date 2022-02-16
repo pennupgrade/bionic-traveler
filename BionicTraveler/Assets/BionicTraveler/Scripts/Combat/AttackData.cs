@@ -25,6 +25,14 @@ namespace BionicTraveler.Scripts.Combat
         private float range;
 
         [SerializeField]
+        [Tooltip("Minimum distance this attack requires from its target in order to be executed.")]
+        private float minimumAggressiveRange;
+
+        [SerializeField]
+        [Tooltip("Maximum distance this attack requires from its target in order to be executed.")]
+        private float maximumAggressiveRange;
+
+        [SerializeField]
         [Tooltip("Duration between each activation of weapon.")]
         private float cooldown;
 
@@ -112,6 +120,16 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets the range of this attack. Targets outside the range cannot be hit.
         /// </summary>
         public float Range => this.range;
+
+        /// <summary>
+        /// Gets the minimum distance this attack requires from its target in order to be executed.
+        /// </summary>
+        public float MinimumAggressiveRange => this.minimumAggressiveRange;
+
+        /// <summary>
+        /// Gets the maximum distance this attack requires from its target in order to be executed.
+        /// </summary>
+        public float MaximumAggressiveRange => this.maximumAggressiveRange;
 
         /// <summary>
         /// Gets the cooldown in seconds between using this attack again.

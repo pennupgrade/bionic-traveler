@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6235736727056350412, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: combatRange
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -6235736727056350412, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: defaultState
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -988808673344280486, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: detectionRange
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1734254569279392855, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: m_Name
@@ -160,11 +160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8719936989367339246, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -295.66
+      value: -299.82
       objectReference: {fileID: 0}
     - target: {fileID: 8719936989367339246, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.9
+      value: -23.97
       objectReference: {fileID: 0}
     - target: {fileID: 8719936989367339246, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: m_LocalPosition.z
@@ -218,9 +218,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 104768675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1f94e9d7c47d644aca855d30d23e59, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f2a623361a5b514fb9184ed86a38c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flags: 1
 --- !u!1001 &107769569
 PrefabInstance:
   m_ObjectHideFlags: 0

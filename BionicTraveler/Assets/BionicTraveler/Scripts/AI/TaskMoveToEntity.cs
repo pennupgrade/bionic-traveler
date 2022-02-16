@@ -4,31 +4,31 @@ namespace BionicTraveler.Scripts.AI
     using BionicTraveler.Scripts.World;
 
     /// <summary>
-    /// Task to follow a <see cref="DynamicEntity"/>.
+    /// Task to move to a <see cref="DynamicEntity"/>.
     /// </summary>
-    public class TaskFollowEntity : EntityTask
+    public class TaskMoveToEntity : EntityTask
     {
         private Entity targetEntity;
         private GameTime lastPosUpdate;
         private EntityMovement movement;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskFollowEntity"/> class.
+        /// Initializes a new instance of the <see cref="TaskMoveToEntity"/> class.
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <param name="entity">The entity to follow.</param>
-        public TaskFollowEntity(DynamicEntity owner, Entity entity)
+        public TaskMoveToEntity(DynamicEntity owner, Entity entity)
             : this(owner, entity, 1.0f)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskFollowEntity"/> class.
+        /// Initializes a new instance of the <see cref="TaskMoveToEntity"/> class.
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <param name="entity">The entity to follow.</param>
         /// <param name="distance">The distance to maintain.</param>
-        public TaskFollowEntity(DynamicEntity owner, Entity entity, float distance)
+        public TaskMoveToEntity(DynamicEntity owner, Entity entity, float distance)
             : base(owner)
         {
             this.targetEntity = entity;
@@ -38,7 +38,7 @@ namespace BionicTraveler.Scripts.AI
         }
 
         /// <inheritdoc/>
-        public override EntityTaskType Type => EntityTaskType.FollowEntity;
+        public override EntityTaskType Type => EntityTaskType.MoveToEntity;
 
         /// <inheritdoc/>
         public override void OnProcess()

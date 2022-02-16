@@ -123,6 +123,13 @@ namespace BionicTraveler.Scripts.Combat
         }
 
         /// <summary>
+        /// Stops the attack.
+        /// </summary>
+        public virtual void StopAttack()
+        {
+        }
+
+        /// <summary>
         /// This function is called by the animator of an entity when the attack is supposed to hit. 
         /// Do not rename it or the reference breaks!
         /// </summary>
