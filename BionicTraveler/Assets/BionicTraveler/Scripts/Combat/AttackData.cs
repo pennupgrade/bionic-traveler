@@ -73,8 +73,12 @@ namespace BionicTraveler.Scripts.Combat
         private Animation animation;
 
         [SerializeField]
-        [Tooltip("Animation state of the attack.")]
+        [Tooltip("Animation state of the attack. This is the default. When Animation State Left is also provided, this becomes the right direction animation.")]
         private string animationState;
+
+        [SerializeField]
+        [Tooltip("Animation state of the attack when facing leftwards.")]
+        private string animationStateLeft;
 
         [SerializeField]
         [Tooltip("Whether the animation fires an event when enemies should be hit.")]
@@ -182,9 +186,14 @@ namespace BionicTraveler.Scripts.Combat
         public Animation Animation => this.animation;
 
         /// <summary>
-        /// Gets the animation state this attack uses.
+        /// Gets the animation state this attack uses. When <see cref="AnimationStateLeft"/> is also provided, this becomes the right direction animation.
         /// </summary>
         public string AnimationState => this.animationState;
+
+        /// <summary>
+        /// Gets the animation state this attack uses when the owner is facing leftwards.
+        /// </summary>
+        public string AnimationStateLeft => this.animationStateLeft;
 
         /// <summary>
         /// Gets a value indicating whether the animation fires an event when enemies should be hit.

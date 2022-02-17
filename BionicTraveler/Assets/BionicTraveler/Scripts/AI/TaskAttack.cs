@@ -16,6 +16,7 @@
         private bool skipAnimation;
         private Animator weaponAnimator;
         private AttackData attackData;
+        private string currentAnimation;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TaskAttack"/> class.
@@ -42,13 +43,24 @@
                 this.weaponAnimator = this.weaponBehavior.WorldObject.GetComponent<Animator>();
 
                 this.attackData = this.weaponBehavior.GetNextAttackData();
-                if (this.weaponAnimator.HasAnimation(this.attackData.AnimationState))
+                var animationToUse = this.attackData.AnimationState;
+                bool hasTwoAnimations = !string.IsNullOrEmpty(this.attackData.AnimationStateLeft);
+                if (hasTwoAnimations)
                 {
-                    this.weaponAnimator.Play(this.attackData.AnimationState);
+                    if (this.Owner.IsFacingLeft())
+                    {
+                        animationToUse = this.attackData.AnimationStateLeft;
+                    }
+                }
+
+                if (this.weaponAnimator.HasAnimation(animationToUse))
+                {
+                    this.currentAnimation = animationToUse;
+                    this.weaponAnimator.Play(this.currentAnimation);
                 }
                 else
                 {
-                    Debug.LogWarning($"{this.weaponBehavior.WeaponData.Id} has no animation!");
+                    Debug.LogWarning($"{this.weaponBehavior.WeaponData.Id} has no animation {animationToUse}!");
                     this.skipAnimation = true;
                 }
 
@@ -57,7 +69,7 @@
             }
             else
             {
-                if (this.skipAnimation || this.weaponAnimator.HasAnimationFinished(this.attackData.AnimationState))
+                if (this.skipAnimation || this.weaponAnimator.HasAnimationFinished(this.currentAnimation))
                 {
                     this.End("Attack animation has finished", true);
                 }

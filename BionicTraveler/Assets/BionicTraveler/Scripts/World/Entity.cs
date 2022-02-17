@@ -138,6 +138,15 @@
         }
 
         /// <summary>
+        /// Gets whether this entity is currently facing left (globally speaking), i.e. its <see cref="Direction"/>'s Vector x-component is negative.
+        /// </summary>
+        /// <returns>Whether entity is facing left.</returns>
+        public bool IsFacingLeft()
+        {
+            return this.direction.x < 0.0f;
+        }
+
+        /// <summary>
         /// Sets Direction for this Dynamic Entity.
         /// </summary>
         /// <param name="target">Target world position to look at</param>

@@ -77,6 +77,7 @@
                     if (this.weaponBehavior.IsReady(this.Owner))
                     {
                         this.taskMovement?.End("We can attack now", false);
+                        this.Owner.SetDirection(this.target.transform.position);
                         this.taskAttack = new TaskAttack(this.Owner, true);
                         this.taskAttack.Assign();
                     }

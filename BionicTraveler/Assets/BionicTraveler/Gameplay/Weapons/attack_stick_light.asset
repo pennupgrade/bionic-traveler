@@ -29,6 +29,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   animation: {fileID: 0}
   animationState: Attack
+  animationStateLeft: AttackLeft
   animationDeterminesHit: 0
   audioClip: {fileID: 0}
   audioClipImpact: {fileID: 0}
