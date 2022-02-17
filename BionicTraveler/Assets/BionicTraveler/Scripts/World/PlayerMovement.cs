@@ -110,13 +110,29 @@
                 this.moveState = MovementState.Dashing;
             }
 
-            // TODO: Manage cooldowns - should be managed elsewhere, though.
             if (Input.GetButtonDown("Slash1"))
             {
-                this.StopAllMovement("About to attack!");
-                this.specialMovementTask = new TaskAttack(this.player, true);
-                this.specialMovementTask.Assign();
-                this.moveState = MovementState.Attacking;
+                this.player.WeaponsInventory.DisplayCurrentWeapon();
+                if (this.player.WeaponsInventory.equippedWeaponBehavior.IsReady(this.player))
+                {
+                    this.StopAllMovement("About to attack!");
+                    this.specialMovementTask = new TaskAttack(this.player, true);
+                    this.specialMovementTask.Assign();
+                    this.moveState = MovementState.Attacking;
+                }
+            }
+
+            // Secondary attack.
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                this.player.WeaponsInventory.DisplayCurrentWeapon();
+                if (this.player.WeaponsInventory.equippedWeaponBehavior.IsReady(this.player))
+                {
+                    this.StopAllMovement("About to attack!");
+                    this.specialMovementTask = new TaskAttack(this.player, false);
+                    this.specialMovementTask.Assign();
+                    this.moveState = MovementState.Attacking;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.B))

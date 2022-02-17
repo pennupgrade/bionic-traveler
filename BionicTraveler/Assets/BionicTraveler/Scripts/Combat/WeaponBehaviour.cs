@@ -48,6 +48,10 @@ namespace BionicTraveler.Scripts.Combat
             }
 
             this.WeaponData = weaponData ?? throw new ArgumentNullException(nameof(weaponData));
+
+            this.isUsingPrimaryAttack = true;
+            this.lastPrimaryAttackTime = GameTime.Default;
+            this.lastSecondaryAttackTime = GameTime.Default;
         }
 
         /// <summary>
@@ -165,10 +169,6 @@ namespace BionicTraveler.Scripts.Combat
                 throw new InvalidOperationException($"Weapon behavior requires {nameof(this.WeaponData)} " +
                     $"to be specified. Call {nameof(this.SetData)} after behavior creation.");
             }
-
-            this.isUsingPrimaryAttack = true;
-            this.lastPrimaryAttackTime = GameTime.Default;
-            this.lastSecondaryAttackTime = GameTime.Default;
         }
 
         private void OnDestroy()
