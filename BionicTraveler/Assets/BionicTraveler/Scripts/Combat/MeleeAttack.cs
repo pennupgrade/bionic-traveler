@@ -27,7 +27,8 @@ namespace BionicTraveler.Scripts.Combat
             // Manually trace collisions as our attack moves quite fast and might skip colliders otherwise.
             var colls = new List<Collider2D>();
             Physics2D.GetContacts(this.GetComponent<Collider2D>(), colls);
-            var hitEntities = colls.Select(coll => coll.GetComponent<Entity>())
+            var nonTriggerColls = colls.Where(coll => !coll.isTrigger).ToArray();
+            var hitEntities = nonTriggerColls.Select(coll => coll.GetComponent<Entity>())
                 .Where(entity => entity != null && !this.processedEntities.Contains(entity))
                 .Distinct().ToArray();
 

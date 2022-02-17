@@ -181,8 +181,14 @@ namespace BionicTraveler.Scripts.Audio
             {
                 this.backgroundSource.Play();
             }
-            if(this.backgroundSource.time >= this.currentBackgroundClip.LoopPoint) {
-                this.PlayUpcomingBackgroundClip();
+
+            // Ensure we do not crash if nothing is playing right now.
+            if (this.currentBackgroundClip != null)
+            {
+                if (this.backgroundSource.time >= this.currentBackgroundClip.LoopPoint)
+                {
+                    this.PlayUpcomingBackgroundClip();
+                }
             }
         }
 
