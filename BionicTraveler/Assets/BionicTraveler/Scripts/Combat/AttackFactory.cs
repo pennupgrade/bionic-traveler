@@ -1,6 +1,7 @@
 ﻿namespace BionicTraveler.Scripts.Combat
 {
     using System;
+    using BionicTraveler.Scripts.AI.MechaDog;
     using UnityEngine;
 
     /// <summary>
@@ -49,6 +50,7 @@
                 AttackType.Melee => gameObject.AddComponent<MeleeAttack>(),
                 AttackType.RangedProjectile => gameObject.AddComponent<ProjectileAttack>(),
                 AttackType.ForceField => gameObject.AddComponent<ForceFieldAttack>(),
+                AttackType.Blinding => gameObject.AddComponent<BlindingAttack>(),
                 _ => throw new InvalidOperationException($"Invalid type {type}"),
             };
         }

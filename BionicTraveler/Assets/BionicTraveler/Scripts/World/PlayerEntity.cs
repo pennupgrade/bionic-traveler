@@ -1,11 +1,15 @@
 namespace BionicTraveler.Scripts.World
 {
+    using System.Collections.Generic;
     using System.Linq;
+    using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
+    using UnityEngine.UI;
+    using static UnityEngine.Rendering.DebugUI;
 
     /// <summary>
     /// Player Entity class.
@@ -19,6 +23,9 @@ namespace BionicTraveler.Scripts.World
         public float InteractionRange { get; set; } = 1;
 
         private bool diedFromLowEnergy;
+
+        [SerializeField]
+        private GameObject blinded;
 
         /// <summary>
         /// Gets the key manager.
@@ -66,6 +73,11 @@ namespace BionicTraveler.Scripts.World
         protected override void Update()
         {
             base.Update();
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                this.Blind();
+            }
             
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
@@ -182,6 +194,24 @@ namespace BionicTraveler.Scripts.World
         private void ActivateAbility(Bodypart b)
         {
             b.ActivateAbility();
+        }
+
+        private GameTime blindStart = null;
+        private GameObject blindObject;
+
+        public void Blind()
+        {
+            if (blindStart == null)
+            {
+                blindStart = GameTime.Now;
+                blindObject = GameObject.Instantiate(blinded);
+                blindObject.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+            }
+            else if (blindStart.HasTimeElapsed(3f))
+            {
+                GameObject.Destroy(blindObject);
+            }
+
         }
     }
 }

@@ -18,6 +18,7 @@ namespace BionicTraveler.Scripts.AI
         private CircleCollider2D rangeCollider;
         private List<Entity> entitiesInRange;
 
+
         /// <summary>
         /// Start is called before the first frame update.
         /// </summary>
@@ -71,6 +72,11 @@ namespace BionicTraveler.Scripts.AI
             // Draw a yellow sphere at the transform's position.
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(this.transform.position, this.detectionRange);
+        }
+
+        public int getDetectionRange()
+        {
+            return this.detectionRange;
         }
     }
 }

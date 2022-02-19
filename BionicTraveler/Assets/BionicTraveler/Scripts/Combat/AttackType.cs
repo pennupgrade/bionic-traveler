@@ -20,5 +20,10 @@
         /// A force field created around an entity.
         /// </summary>
         ForceField,
+
+        /// <summary>
+        /// An attack that blinds the player.
+        /// </summary>
+        Blinding,
     }
 }
