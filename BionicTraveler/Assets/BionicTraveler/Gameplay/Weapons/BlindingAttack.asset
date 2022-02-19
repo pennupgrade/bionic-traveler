@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f703dca8571e1a049896eaa27acef399, type: 3}
+  m_Name: BlindingAttack
+  m_EditorClassIdentifier: 
+  displayName: Blinding Attack
+  type: 3
+  damage: 0
+  range: 30
+  minimumAggressiveRange: 1
+  maximumAggressiveRange: 30
+  cooldown: 2
+  freezeDuration: 0
+  cost: 0
+  reloadTime: 0
+  maxAmmo: 0
+  clipSize: 0
+  fovAngle: 0
+  areaOfEffect: 0
+  sprite: {fileID: 0}
+  animation: {fileID: 0}
+  animationState: 
+  animationStateLeft: 
+  animationDeterminesHit: 0
+  audioClip: {fileID: 0}
+  audioClipImpact: {fileID: 0}
+  projectileSpeed: 15
+  projectileDestroyOnImpact: 0
+  prefab: {fileID: 8875054185416205972, guid: 507cc8d067e0845c6885e3cb2b6f19f3, type: 3}

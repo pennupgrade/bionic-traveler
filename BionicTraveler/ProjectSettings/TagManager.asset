@@ -9,6 +9,8 @@ TagManager:
   - DialogueRunner
   - TraversableCollider
   - Attack
+  - BlindPanel
+  - Canvas
   layers:
   - Default
   - TransparentFX
