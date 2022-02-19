@@ -112,7 +112,7 @@
         protected EntityIntelligence Intelligence { get; private set; }
         protected Vector3 StartPosition => this.startPosition;
 
-        private void Awake()
+        public virtual void Awake()
         {
             this.Owner = this.GetComponent<DynamicEntity>();
             this.EntityScanner = this.GetComponent<EntityScanner>();

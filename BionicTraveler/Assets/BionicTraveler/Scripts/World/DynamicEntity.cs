@@ -31,6 +31,10 @@
         [TooltipAttribute("The default weapon to assign.")]
         public WeaponData defaultWeapon;
 
+        [SerializeField]
+        [TooltipAttribute("The entity relationships.")]
+        private bool immovable;
+
         private float energy;
 
         /// <summary>
@@ -240,7 +244,7 @@
             }
 
             // TODO: Get force data from attack.
-            if (attack is MeleeAttack)
+            if (attack is MeleeAttack && !this.immovable)
             {
                 var awayVector = this.GetComponent<Transform>().position - attack.Owner.GetComponent<Transform>().position;
                 this.ApplyForce(awayVector.normalized * 30);
