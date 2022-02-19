@@ -21,7 +21,8 @@ namespace BionicTraveler.Scripts.AI
         Combat,
         Projectile,
         Die,
-        MoveFromEntity
+        MoveFromEntity,
+        Teleport
     }
 
     /// <summary>
