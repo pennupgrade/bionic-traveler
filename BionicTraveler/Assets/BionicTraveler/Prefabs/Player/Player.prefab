@@ -412,7 +412,9 @@ MonoBehaviour:
   loot: {fileID: 0}
   relationships: {fileID: 11400000, guid: 518db983fc518114899421f1fc0ec833, type: 2}
   defaultWeapon: {fileID: 11400000, guid: 91df6f43eb015eb478df4ba6952c1428, type: 2}
-  immovable: 0
+  cannotBeKnockedBack: 0
+  dontUpdateAnimatorForMovement: 0
+  blinded: {fileID: 5251341807680866553, guid: f52d7954ac8304377a1871827af4e35a, type: 3}
 --- !u!95 &8686891111388916192
 Animator:
   serializedVersion: 3
