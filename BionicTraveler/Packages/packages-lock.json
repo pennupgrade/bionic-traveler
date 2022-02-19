@@ -7,12 +7,6 @@
       "dependencies": {},
       "hash": "c33b59c6aae478e257c6dd43564f7f6a230a2652"
     },
-    "com.stylecop.analyzer": {
-      "version": "file:Unity-StyleCop",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.unity.2d.animation": {
       "version": "5.0.9",
       "depth": 0,
