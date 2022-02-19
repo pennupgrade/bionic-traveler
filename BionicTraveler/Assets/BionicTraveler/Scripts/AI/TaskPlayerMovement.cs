@@ -69,6 +69,11 @@
             base.OnProcess();
         }
 
+        public void UpdateSpeed(float newSpeed)
+        {
+            this.movementSpeed = newSpeed;
+        }
+
         /// <inheritdoc/>
         public override void UpdateAnimator()
         {

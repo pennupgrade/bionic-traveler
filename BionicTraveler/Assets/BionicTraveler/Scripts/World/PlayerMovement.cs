@@ -168,6 +168,31 @@
             }
         }
 
+        // Called by any classes outside of player to make the player slow down
+        // TODO: FIX SPEED
+        public void SlowDown()
+        {
+            Debug.Log("Slow!");
+            this.movementSpeed -= 4f;
+            var task = this.player.TaskManager.FindTaskByType(EntityTaskType.PlayerMovement) as TaskPlayerMovement;
+            if (task != null)
+            {
+                task.UpdateSpeed(this.movementSpeed);
+            }
+        }
+
+        // Always called after SlowDown has been initially called.
+        public void RestoreSpeed()
+        {
+            Debug.Log("Restore");
+            this.movementSpeed += 4f;
+            var task = this.player.TaskManager.FindTaskByType(EntityTaskType.PlayerMovement) as TaskPlayerMovement;
+            if (task != null)
+            {
+                task.UpdateSpeed(this.movementSpeed);
+            }
+        }
+
         //private void Player_Damaged(Entity sender, Entity attacker, bool fatal)
         //{
         //    // Do nothing if we are got killed by this hit as the death animation takes over anyway.
