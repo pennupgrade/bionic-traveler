@@ -88,5 +88,16 @@
 
             return hasElapsed;
         }
+
+        /// <summary>
+        /// Gets the normalized range (0.0 - 1.0f) of time elapsed.
+        /// </summary>
+        /// <param name="timeInSeconds">The time elapsed in seconds.</param>
+        /// <returns>Normalized time range.</returns>
+        public float GetElapsedNormalized(float timeInSeconds)
+        {
+            var elapsed = this.Elapsed;
+            return elapsed / timeInSeconds;
+        }
     }
 }

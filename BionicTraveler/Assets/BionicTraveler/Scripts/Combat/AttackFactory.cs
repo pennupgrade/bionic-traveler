@@ -10,6 +10,30 @@
     public class AttackFactory
     {
         /// <summary>
+        /// Creates a new <see cref="Attack"/> in the game world based on the specified data.
+        /// Only use this overload for attacks that have their own prefab instance.
+        /// </summary>
+        /// <param name="data">The attack data.</param>
+        /// <returns>The new attack component.</returns>
+        public static Attack CreateAttack(AttackData data)
+        {
+            if (data is null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            if (data.Prefab == null)
+            {
+                throw new ArgumentException("Attacks without a prefab need a GameObject to live on. Use CreateAttack(GameObject, AttackData) instead.");
+            }
+
+            var attackPrefab = GameObject.Instantiate(data.Prefab);
+            attackPrefab.name = $"{data.name}";
+            attackPrefab.SetData(data);
+            return attackPrefab;
+        }
+
+        /// <summary>
         /// Creates a new <see cref="Attack"/> based on the specified data and attaches it to <paramref name="gameObject"/>.
         /// </summary>
         /// <param name="gameObject">The game object receiving the new component.</param>
@@ -31,10 +55,7 @@
             if (data.Prefab != null)
             {
                 Debug.Log("Using attack prefab");
-                var attackPrefab = GameObject.Instantiate(data.Prefab);
-                attackPrefab.name = $"{data.name}";
-                attackPrefab.SetData(data);
-                return attackPrefab;
+                return CreateAttack(data);
             }
 
             var attack = CreateAttack(gameObject, data.Type);

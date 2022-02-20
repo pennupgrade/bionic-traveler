@@ -124590,6 +124590,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6841483250990189475, guid: 403d0b1161b9d6c4d8d278c3e443c662, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 09a3b337279c63046af8a9902da9262e, type: 2}
     - target: {fileID: 7975669112723718660, guid: 403d0b1161b9d6c4d8d278c3e443c662, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -31,6 +31,15 @@ namespace BionicTraveler.Scripts.Combat
             this.colliding = new List<Entity>();
         }
 
+        /// <summary>
+        /// Sets the target of the attack which will be its origin.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        public void SetOrigin(Vector3 position)
+        {
+            this.transform.position = position;
+        }
+
         /// <inheritdoc/>
         public override void AttackTargets(Entity[] targets)
         {
@@ -57,7 +66,6 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override void Dispose()
         {
-            Destroy(this.gameObject);
         }
 
         /// <inheritdoc/>

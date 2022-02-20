@@ -29,6 +29,11 @@ namespace BionicTraveler.Scripts.Combat
         public GameObject WorldObject { get; private set; }
 
         /// <summary>
+        /// Gets a value indicating whether this weapon is unarmed (no weapon).
+        /// </summary>
+        public bool IsUnarmed => this.WeaponData.Id == "weapon_unarmed";
+
+        /// <summary>
         /// Gets a value indicating whether all attacks owned by this object have been disposed.
         /// TODO: Fix for prefabs.
         /// </summary>

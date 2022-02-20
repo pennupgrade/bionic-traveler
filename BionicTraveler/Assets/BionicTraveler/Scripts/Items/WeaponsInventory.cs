@@ -24,6 +24,11 @@
 
         public bool IsWeaponVisible => this.weaponWorldObject.activeSelf;
 
+        /// <summary>
+        /// Gets a value indicating whether the currently equipped weapon is unarmed.
+        /// </summary>
+        public bool IsUnarmed => this.equippedWeaponBehavior.IsUnarmed;
+
         public void AddWeapon(WeaponData weaponData)
         {
             this.WeaponData = weaponData;
