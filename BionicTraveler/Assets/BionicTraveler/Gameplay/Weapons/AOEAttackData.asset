@@ -35,4 +35,4 @@ MonoBehaviour:
   audioClipImpact: {fileID: 0}
   projectileSpeed: 0
   projectileDestroyOnImpact: 1
-  prefab: {fileID: 0}
+  prefab: {fileID: -8801388062665321307, guid: 6a9aec31edd6cf24dbcdfa1b79e3de85, type: 3}
