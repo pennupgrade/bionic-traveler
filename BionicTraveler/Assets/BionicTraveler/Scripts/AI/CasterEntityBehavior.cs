@@ -179,8 +179,8 @@
                     this.Owner.gameObject.GetComponent<Animator>().Play("Casting");
 
                     GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
-                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().SetTargetPosition(this.combatTarget.transform);
-                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().SetOwner(this.Owner);
+                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().SetTargetPosition(this.combatTarget.transform);
+                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().SetOwner(this.Owner);
                     this.activeAttacks.Add(spawnedAttack);
 
                     var moveTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
