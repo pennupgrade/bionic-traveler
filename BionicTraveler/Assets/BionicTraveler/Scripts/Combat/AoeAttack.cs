@@ -1,17 +1,14 @@
-namespace BionicTraveler.Prefabs.Caster
+namespace BionicTraveler.Scripts.Combat
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using UnityEngine;
-    using BionicTraveler.Scripts.Combat;
-    using BionicTraveler.Scripts.World;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.World;
+    using UnityEngine;
 
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class AOEAttackScript : Attack
+    public class AoeAttack : Attack
     {
         private bool hasFinished;
         private Entity hitEntity;
@@ -24,11 +21,19 @@ namespace BionicTraveler.Prefabs.Caster
         [SerializeField]
         private float activeHitboxTime;
 
-        List<Entity> colliding = new List<Entity>();
+        private List<Entity> colliding;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AoeAttack"/> class.
+        /// </summary>
+        public AoeAttack()
+        {
+            this.colliding = new List<Entity>();
+        }
+
+        /// <inheritdoc/>
         public override void AttackTargets(Entity[] targets)
         {
-            
             if (targets.Length > 0)
             {
                 foreach (var target in targets)
@@ -36,48 +41,43 @@ namespace BionicTraveler.Prefabs.Caster
                     // TODO: Make friendlies react to being hit.
                     if (target.tag == "Player")
                     {
-                        
                         target.OnHit(this);
                     }
                 }
 
                 this.hasFinished = true;
             }
-            
-            if (this.spawnTime != null && this.spawnTime.HasTimeElapsed(activeHitboxTime))
+
+            if (this.spawnTime != null && this.spawnTime.HasTimeElapsed(this.activeHitboxTime))
             {
                 this.hasFinished = true;
             }
         }
 
+        /// <inheritdoc/>
         public override void Dispose()
         {
             Destroy(this.gameObject);
         }
 
+        /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
-            return colliding.ToArray();
-            //return this.hitEntity != null ? new Entity[] { this.hitEntity } : new Entity[0];
+            return this.colliding.ToArray();
         }
 
+        /// <inheritdoc/>
         public override bool HasFinished()
         {
             return this.hasFinished;
         }
 
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
-
             // Do not collide with owner of projectile unless we have collided with them before.
             // This ensures that projectiles only collide with the owner once they have left the
             // owners collider once.
-
             var entity = collision.GetComponent<Entity>();
-
-            
-
 
             // We hit something that is not an entity, just remove us.
             if (entity == null)
@@ -88,33 +88,23 @@ namespace BionicTraveler.Prefabs.Caster
             else
             {
                 this.colliding.Add(entity);
-                //this.hitEntity = entity;
-                Debug.Log("entity should be set to something");
-                Debug.Log(colliding.Count);
             }
-            
-        }
-
-        public override void OnAttackStarted()
-        {
-            // override default behavior and do nothing
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-
             var entity = collision.GetComponent<Entity>();
-            
             if (entity == this.Owner)
             {
                 this.hasCollidedWithOwner = true;
                 return;
             }
         }
-        public void Start()
-        {
-            spawnTime = GameTime.Now;
-        }
 
+        private void Start()
+        {
+            this.spawnTime = GameTime.Now;
+            this.colliding = new List<Entity>();
+        }
     }
 }

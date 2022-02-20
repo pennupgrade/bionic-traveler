@@ -1,27 +1,23 @@
 namespace BionicTraveler.Scripts.Combat
 {
-    using BionicTraveler.Scripts.World;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
     using BionicTraveler.Assets.Framework;
-    using BionicTraveler.Prefabs.Caster;
+    using BionicTraveler.Scripts.World;
+    using Framework;
+    using UnityEngine;
 
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class AOEAttackIndicatorScript : MonoBehaviour
+    public class AoeAttackIndicatorScript : MonoBehaviour
     {
         private GameTime spawnedTime;
         private Transform tgtTransform;
 
         [SerializeField]
-        private GameObject AOEAttack;
+        private GameObject aoeAttack;
 
         [SerializeField]
-        private AttackData AOEAttackData;
-
+        private AttackData aoeAttackData;
 
         [SerializeField]
         private float trackTime;
@@ -29,14 +25,28 @@ namespace BionicTraveler.Scripts.Combat
         [SerializeField]
         private float triggerTime;
 
-        private DynamicEntity Owner;
+        private DynamicEntity owner;
 
         private Vector3 initialScale;
+        private GameObject currentAttack;
 
-
-        public void setOwner(DynamicEntity o)
+        public void SetOwner(DynamicEntity o)
         {
-            this.Owner = o;
+            this.owner = o;
+            this.owner.Died += Owner_Died;
+        }
+
+        private void Owner_Died(Entity sender, Entity killer)
+        {
+            Destroy(this);
+        }
+
+        private void OnDestroy()
+        {
+            if (this.currentAttack != null && !this.currentAttack.IsDestroyed())
+            {
+                Destroy(this.currentAttack);
+            }
         }
 
         public void Start()
@@ -51,36 +61,33 @@ namespace BionicTraveler.Scripts.Combat
         /// </summary>
         public void Update()
         {
-            
-            if (!this.spawnedTime.HasTimeElapsed(trackTime))
+            if (!this.spawnedTime.HasTimeElapsed(this.trackTime))
             {
-                this.gameObject.transform.position = tgtTransform.position;
+                this.gameObject.transform.position = this.tgtTransform.position;
 
                 this.gameObject.transform.localScale = Vector3.Lerp(
                     this.gameObject.transform.localScale,
                     this.initialScale,
-                    0.04f
-                );
+                    0.04f);
             }
-            if (this.spawnedTime.HasTimeElapsed(triggerTime))
+
+            if (this.spawnedTime.HasTimeElapsed(this.triggerTime) && this.currentAttack == null)
             {
-                Triggered();
+                this.Triggered();
             }
         }
 
-        public void setTgtPos(Transform tgt)
+        public void SetTargetPosition(Transform tgt)
         {
             this.tgtTransform = tgt;
         }
 
         public void Triggered()
         {
-            Debug.Log("Triggered");
             Destroy(this.gameObject);
-            GameObject attack = GameObject.Instantiate(AOEAttack, this.gameObject.transform.position, Quaternion.identity);
-            attack.GetComponent<AOEAttackScript>().SetData(AOEAttackData);
-            attack.GetComponent<AOEAttackScript>().StartAttack(Owner);
+            this.currentAttack = GameObject.Instantiate(this.aoeAttack, this.gameObject.transform.position, Quaternion.identity);
+            this.currentAttack.GetComponent<AoeAttack>().SetData(this.aoeAttackData);
+            this.currentAttack.GetComponent<AoeAttack>().StartAttack(this.owner);
         }
-
     }
 }
