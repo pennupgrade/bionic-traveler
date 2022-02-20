@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8801388062665321307}
   - component: {fileID: -1937907879409042836}
   m_Layer: 0
-  m_Name: AOEAttack
+  m_Name: AoeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

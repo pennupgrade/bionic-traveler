@@ -1,13 +1,12 @@
 ﻿namespace BionicTraveler.Scripts.AI
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
-    using BionicTraveler.Scripts.World;
-    using UnityEngine;
     using BionicTraveler.Scripts.Combat;
-
+    using BionicTraveler.Scripts.World;
+    using Framework;
+    using UnityEngine;
 
     public class CasterEntityBehavior : EntityBehavior
     {
@@ -17,9 +16,18 @@
         private GameTime castTime;
 
         [SerializeField]
-        private GameObject AOE;
+        private GameObject aoe;
 
         private Entity combatTarget;
+        private List<GameObject> activeAttacks;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CasterEntityBehavior"/> class.
+        /// </summary>
+        public CasterEntityBehavior()
+        {
+            this.activeAttacks = new List<GameObject>();
+        }
 
         /// <summary>
         /// Describes an entity's main goal.
@@ -76,7 +84,6 @@
             switch (subState)
             {
                 case FSMSubState.Enter:
-                    Debug.Log("Idle - Enter");
                     this.Owner.TaskManager.ClearTasks();
                     break;
                 case FSMSubState.Remain:
@@ -88,15 +95,8 @@
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.U))
-                    {
-                        this.combatTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
-                        sender.AdvanceTo(EntityGoal.Combat);
-                    }
-
                     break;
                 case FSMSubState.Leave:
-                    Debug.Log("Idle - Leave");
                     break;
             }
         }
@@ -149,7 +149,6 @@
             switch (subState)
             {
                 case FSMSubState.Enter:
-                    Debug.Log("Patrol - Enter");
                     this.Owner.TaskManager.ClearTasks();
 
                     var teleportTask = new TaskTeleportAway(this.Owner);
@@ -158,18 +157,13 @@
 
                     break;
                 case FSMSubState.Remain:
-                    
-                    Debug.Log("Patrol - Remain");
-                    
-
                     if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Teleport))
                     {
                         sender.AdvanceTo(EntityGoal.Idle);
-                    } 
+                    }
 
                     break;
                 case FSMSubState.Leave:
-                    Debug.Log("Patrol - Leave");
                     break;
             }
         }
@@ -181,38 +175,37 @@
                 case FSMSubState.Enter:
                     this.Owner.TaskManager.ClearTasks();
                     this.castTime = GameTime.Now;
-                    //var combatTask = new TaskCombat(this.Owner, this.combatTarget);
-                    //combatTask.Assign();
 
-                    Owner.gameObject.GetComponent<Animator>().Play("Casting");
+                    this.Owner.gameObject.GetComponent<Animator>().Play("Casting");
 
-                    GameObject spawnedAttack = GameObject.Instantiate(AOE, combatTarget.transform.position, Quaternion.identity);
-                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().setTgtPos(combatTarget.transform);
-                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().setOwner(this.Owner);
-                    
-                    var moveTask = new TaskMoveToEntity(this.Owner, combatTarget);
+                    GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
+                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().SetTargetPosition(this.combatTarget.transform);
+                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().SetOwner(this.Owner);
+                    this.activeAttacks.Add(spawnedAttack);
+
+                    var moveTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
                     moveTask.Assign();
-
-                    Debug.Log("Combat - Enter");
                     break;
                 case FSMSubState.Remain:
-                    
-                
-
-                    if (castTime.HasTimeElapsed(1.5f))
+                    if (this.castTime.HasTimeElapsed(1.5f))
                     {
                         sender.AdvanceTo(EntityGoal.Patrol);
-                        
                     }
-                    
-
-
-                    Debug.Log("Combat - Remain");
 
                     break;
                 case FSMSubState.Leave:
-                    Debug.Log("Combat - Leave");
                     break;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var attack in this.activeAttacks)
+            {
+                if (!attack.IsDestroyed())
+                {
+                    Destroy(attack);
+                }
             }
         }
     }

@@ -124578,6 +124578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 273725318535590965, guid: 403d0b1161b9d6c4d8d278c3e443c662, type: 3}
+      propertyPath: aoe
+      value: 
+      objectReference: {fileID: 8837091373638637389, guid: 39e340f1a031f164aa1ce6ed385c0c74, type: 3}
     - target: {fileID: 1134198914594588349, guid: 403d0b1161b9d6c4d8d278c3e443c662, type: 3}
       propertyPath: m_Name
       value: Caster 1

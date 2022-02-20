@@ -44,23 +44,30 @@
 
                 this.attackData = this.weaponBehavior.GetNextAttackData();
                 var animationToUse = this.attackData.AnimationState;
-                bool hasTwoAnimations = !string.IsNullOrEmpty(this.attackData.AnimationStateLeft);
-                if (hasTwoAnimations)
+                if (!string.IsNullOrWhiteSpace(animationToUse))
                 {
-                    if (this.Owner.IsFacingLeft())
+                    bool hasTwoAnimations = !string.IsNullOrEmpty(this.attackData.AnimationStateLeft);
+                    if (hasTwoAnimations)
                     {
-                        animationToUse = this.attackData.AnimationStateLeft;
+                        if (this.Owner.IsFacingLeft())
+                        {
+                            animationToUse = this.attackData.AnimationStateLeft;
+                        }
                     }
-                }
 
-                if (this.weaponAnimator.HasAnimation(animationToUse))
-                {
-                    this.currentAnimation = animationToUse;
-                    this.weaponAnimator.Play(this.currentAnimation);
+                    if (this.weaponAnimator.HasAnimation(animationToUse))
+                    {
+                        this.currentAnimation = animationToUse;
+                        this.weaponAnimator.Play(this.currentAnimation);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"{this.weaponBehavior.WeaponData.Id} has no animation {animationToUse}!");
+                        this.skipAnimation = true;
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning($"{this.weaponBehavior.WeaponData.Id} has no animation {animationToUse}!");
                     this.skipAnimation = true;
                 }
 
