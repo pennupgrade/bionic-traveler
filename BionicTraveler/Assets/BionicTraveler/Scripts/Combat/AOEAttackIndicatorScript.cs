@@ -2,7 +2,6 @@ namespace BionicTraveler.Scripts.Combat
 {
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
-    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -12,9 +11,6 @@ namespace BionicTraveler.Scripts.Combat
     {
         private GameTime spawnedTime;
         private Transform tgtTransform;
-
-        [SerializeField]
-        private GameObject aoeAttack;
 
         [SerializeField]
         private AttackData aoeAttackData;
@@ -28,25 +24,18 @@ namespace BionicTraveler.Scripts.Combat
         private DynamicEntity owner;
 
         private Vector3 initialScale;
-        private GameObject currentAttack;
+        private Attack currentAttack;
 
-        public void SetOwner(DynamicEntity o)
+        public void Initialize(DynamicEntity owner, Transform target)
         {
-            this.owner = o;
-            this.owner.Died += Owner_Died;
+            this.owner = owner;
+            this.owner.Died += this.Owner_Died;
+            this.tgtTransform = target;
         }
 
         private void Owner_Died(Entity sender, Entity killer)
         {
             Destroy(this);
-        }
-
-        private void OnDestroy()
-        {
-            if (this.currentAttack != null && !this.currentAttack.IsDestroyed())
-            {
-                Destroy(this.currentAttack);
-            }
         }
 
         public void Start()
@@ -63,12 +52,13 @@ namespace BionicTraveler.Scripts.Combat
         {
             if (!this.spawnedTime.HasTimeElapsed(this.trackTime))
             {
+                this.GetComponent<SpriteRenderer>().enabled = true;
                 this.gameObject.transform.position = this.tgtTransform.position;
 
                 this.gameObject.transform.localScale = Vector3.Lerp(
-                    this.gameObject.transform.localScale,
+                    Vector3.zero,
                     this.initialScale,
-                    0.04f);
+                    this.spawnedTime.GetElapsedNormalized(this.trackTime));
             }
 
             if (this.spawnedTime.HasTimeElapsed(this.triggerTime) && this.currentAttack == null)
@@ -77,17 +67,14 @@ namespace BionicTraveler.Scripts.Combat
             }
         }
 
-        public void SetTargetPosition(Transform tgt)
-        {
-            this.tgtTransform = tgt;
-        }
-
         public void Triggered()
         {
+            var attack = AttackFactory.CreateAttack(this.aoeAttackData) as AoeAttack;
+            this.currentAttack = attack;
+            this.currentAttack.StartAttack(this.owner);
+            attack.SetOrigin(this.gameObject.transform.position);
+
             Destroy(this.gameObject);
-            this.currentAttack = GameObject.Instantiate(this.aoeAttack, this.gameObject.transform.position, Quaternion.identity);
-            this.currentAttack.GetComponent<AoeAttack>().SetData(this.aoeAttackData);
-            this.currentAttack.GetComponent<AoeAttack>().StartAttack(this.owner);
         }
     }
 }

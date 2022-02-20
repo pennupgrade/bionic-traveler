@@ -152,7 +152,6 @@
                     this.Owner.TaskManager.ClearTasks();
 
                     var teleportTask = new TaskTeleportAway(this.Owner);
-                    this.Owner.TaskManager.ClearTasks();
                     teleportTask.Assign();
 
                     break;
@@ -179,8 +178,7 @@
                     this.Owner.gameObject.GetComponent<Animator>().Play("Casting");
 
                     GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
-                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().SetTargetPosition(this.combatTarget.transform);
-                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().SetOwner(this.Owner);
+                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().Initialize(this.Owner, this.combatTarget.transform);
                     this.activeAttacks.Add(spawnedAttack);
 
                     var moveTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
