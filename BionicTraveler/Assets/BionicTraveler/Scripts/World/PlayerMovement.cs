@@ -39,8 +39,6 @@
         private MovementState moveState;
 
         [SerializeField]
-        private float movementSpeed = 3f;
-        [SerializeField]
         private AudioClip dashSound;
         private PlayerEntity player;
 
@@ -146,7 +144,7 @@
                 if (this.mainMovementTask == null || this.mainMovementTask.HasEnded)
                 {
                     this.StopAllMovement("Default State");
-                    this.mainMovementTask = new TaskPlayerMovement(this.player, this.movementSpeed);
+                    this.mainMovementTask = new TaskPlayerMovement(this.player);
                     this.mainMovementTask.Assign();
                 }
             }
@@ -165,31 +163,6 @@
                     this.moveState = MovementState.Default;
                     this.specialMovementTask = null;
                 }
-            }
-        }
-
-        // Called by any classes outside of player to make the player slow down
-        // TODO: FIX SPEED
-        public void SlowDown()
-        {
-            Debug.Log("Slow!");
-            this.movementSpeed -= 4f;
-            var task = this.player.TaskManager.FindTaskByType(EntityTaskType.PlayerMovement) as TaskPlayerMovement;
-            if (task != null)
-            {
-                task.UpdateSpeed(this.movementSpeed);
-            }
-        }
-
-        // Always called after SlowDown has been initially called.
-        public void RestoreSpeed()
-        {
-            Debug.Log("Restore");
-            this.movementSpeed += 4f;
-            var task = this.player.TaskManager.FindTaskByType(EntityTaskType.PlayerMovement) as TaskPlayerMovement;
-            if (task != null)
-            {
-                task.UpdateSpeed(this.movementSpeed);
             }
         }
 

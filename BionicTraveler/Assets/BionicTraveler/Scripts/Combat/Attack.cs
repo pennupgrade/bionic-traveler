@@ -145,14 +145,14 @@ namespace BionicTraveler.Scripts.Combat
             // has indicated we should hit now.
             if (!this.AttackData.DoesAnimationDetermineHit || this.hasAnimationFiredHit)
             {
-                Debug.Log("Attack::ExecuteAttack: Getting targets");
+                // Debug.Log("Attack::ExecuteAttack: Getting targets");
                 var targets = this.GetTargets();
                 if (targets == null)
                 {
                     throw new InvalidOperationException($"{nameof(this.GetTargets)} must not return null.");
                 }
 
-                Debug.Log($"Attack::ExecuteAttack: We found {targets.Length} targets nearby");
+                // Debug.Log($"Attack::ExecuteAttack: We found {targets.Length} targets nearby");
 
                 var validTargets = new List<Entity>();
                 foreach (var target in targets)
@@ -163,14 +163,14 @@ namespace BionicTraveler.Scripts.Combat
                     }
                 }
 
-                Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
+                // Debug.Log($"Attack::ExecuteAttack: {validTargets.Count} are valid targets");
                 this.AttackTargets(validTargets.ToArray());
-                Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
+                // Debug.Log($"Attack::ExecuteAttack: Attacked all target(s)");
             }
 
             if (this.HasFinished())
             {
-                Debug.Log($"Attack::ExecuteAttack: Attack has finished");
+                // Debug.Log($"Attack::ExecuteAttack: Attack has finished");
                 this.Dispose();
                 this.isRunning = false;
                 this.HasBeenDisposed = true;

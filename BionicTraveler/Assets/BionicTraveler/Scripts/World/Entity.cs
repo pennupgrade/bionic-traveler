@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.Combat;
     using Framework;
@@ -12,17 +14,21 @@
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
+        [SerializeField]
+        private float baseMovementSpeed = 1f;
+
         private int maxHealth = 100;
         private int health;
         private bool isVisible;
-        [SerializeField]
-        private float baseSpeed = 1f;
-        private Vector3 direction;
 
+        private Vector3 direction;
         private GameTime timeDied;
         private bool isDying;
         private DynamicEntity lastAttacker;
         private DynamicEntity killer;
+
+        private List<IMovementModifier> movementModifiers;
+        private Collider2D mainCollider;
 
         /// <summary>
         /// The event handler for a dying entity.
@@ -61,6 +67,7 @@
         {
             this.IsPlayer = this is PlayerEntity;
             this.IsDynamic = this is DynamicEntity;
+            this.movementModifiers = new List<IMovementModifier>();
         }
 
         /// <summary>
@@ -102,6 +109,16 @@
         /// Gets a value indicating whether this entity is dynamic.
         /// </summary>
         public bool IsDynamic { get; private set; }
+
+        /// <summary>
+        /// Gets the base movement speed of this entity.
+        /// </summary>
+        public float BaseMovementSpeed => this.baseMovementSpeed;
+
+        /// <summary>
+        /// Gets the current movement speed base on <see cref="BaseMovementSpeed"/> and any potential effects.
+        /// </summary>
+        public float MovementSpeed { get; private set; }
 
         /// <summary>
         /// Gets or sets the direction for SpriteRenderer/FSM.
@@ -218,35 +235,6 @@
         }
 
         /// <summary>
-        /// Move the entity to some specified destination.
-        /// </summary>
-        /// <param name="dest">The Transform of the destination to move to.</param>
-        /// <param name="smooth">Whether to use a SmoothStep function for the movement; default false.</param>
-        public void MoveTo(Vector3 dest, bool smooth = false)
-        {
-            StartCoroutine(Movement(dest, smooth));
-        }
-
-        private IEnumerator Movement(Vector3 target, bool smooth)
-        {
-            Transform pos = gameObject.transform;
-            float duration = (pos.position - target).magnitude / baseSpeed;
-            float elapsed = 0f;
-            float t = elapsed / duration;
-            if (smooth) { t = t * t * (3f - 2f * t); }
-
-            while (elapsed < duration)
-            {
-                pos.position = Vector3.Lerp(pos.position, target, t);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            pos.position = target;
-
-        }
-
-        /// <summary>
         /// Sets the entity's health to 0 and kills it.
         /// </summary>
         public virtual void Kill()
@@ -323,6 +311,42 @@
         protected virtual void Start()
         {
             this.health = this.maxHealth;
+            this.mainCollider = this.GetComponents<Collider2D>().FirstOrDefault(collider => !collider.isTrigger);
+        }
+
+        /// <summary>
+        /// Update is called every frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        protected virtual void Update()
+        {
+        }
+
+        /// <summary>
+        /// Update is called every fixed frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        protected virtual void FixedUpdate()
+        {
+            var stackModifiers = this.movementModifiers.Where(modifier => modifier.CanStack());
+            var nonStackModifiers = this.movementModifiers.Where(modifier => !modifier.CanStack()).GroupBy(m => m.GetType());
+            var distinctNonStack = nonStackModifiers.Select(g => g.First());
+            var modifiers = stackModifiers.ToList();
+            modifiers.AddRange(distinctNonStack);
+
+            var speedMult = modifiers.Aggregate(1f, (x, y) => x * y.GetSpeedMultiplier(this));
+            this.MovementSpeed = this.baseMovementSpeed * speedMult;
+            this.movementModifiers.Clear();
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.IsTouching(this.mainCollider))
+            {
+                var movementModifier = collision.GetComponent<IMovementModifier>();
+                if (movementModifier != null && !this.movementModifiers.Contains(movementModifier))
+                {
+                    this.movementModifiers.Add(movementModifier);
+                }
+            }
         }
     }
 }

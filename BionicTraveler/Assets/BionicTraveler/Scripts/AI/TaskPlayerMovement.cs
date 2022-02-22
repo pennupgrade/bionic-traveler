@@ -12,7 +12,6 @@
         private Vector2 movement;
         private Rigidbody2D rb;
         private bool isIdle;
-        private float movementSpeed;
         private float movementSpeedFrameMult;
 
         /// <summary>
@@ -20,12 +19,11 @@
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <param name="movementSpeed">The base movement speed.</param>
-        public TaskPlayerMovement(PlayerEntity owner, float movementSpeed)
+        public TaskPlayerMovement(PlayerEntity owner)
             : base(owner)
         {
             this.player = owner;
             this.rb = this.player.GetComponent<Rigidbody2D>();
-            this.movementSpeed = movementSpeed;
         }
 
         /// <inheritdoc/>
@@ -63,15 +61,10 @@
             this.movement.y = Input.GetAxis("Vertical");
 
             // Do actual movement.
-            this.rb.MovePosition(this.rb.position + (this.movement * this.movementSpeed *
+            this.rb.MovePosition(this.rb.position + (this.movement * this.Owner.MovementSpeed *
                  this.movementSpeedFrameMult * Time.fixedDeltaTime));
 
             base.OnProcess();
-        }
-
-        public void UpdateSpeed(float newSpeed)
-        {
-            this.movementSpeed = newSpeed;
         }
 
         /// <inheritdoc/>

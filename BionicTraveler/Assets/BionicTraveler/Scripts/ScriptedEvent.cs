@@ -42,7 +42,7 @@ public abstract class ScriptedEvent : MonoBehaviour
     private void MoveTo(Entity e, Vector3 dest, bool waitForArrival,
         float threshold)
     {
-        e.MoveTo(dest);
+        //e.MoveTo(dest);
         if (waitForArrival)
         {
             WaitForArrival(e, dest, threshold);

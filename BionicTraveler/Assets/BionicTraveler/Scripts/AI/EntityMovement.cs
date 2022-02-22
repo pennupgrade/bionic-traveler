@@ -76,6 +76,8 @@
         private Vector3 targetDirection;
         private bool forceWalking;
         private float originalSpeed;
+        private Entity owner;
+        private bool startedMovement;
 
         // Stuck detection.
         private bool isAvoidingBadPath;
@@ -136,6 +138,7 @@
             this.targetPosition = position;
             this.targetEntity = null;
             this.hasTarget = true;
+            this.startedMovement = true;
         }
 
         /// <summary>
@@ -146,6 +149,7 @@
         {
             this.targetEntity = target;
             this.hasTarget = true;
+            this.startedMovement = true;
         }
 
         /// <summary>
@@ -165,6 +169,8 @@
             this.timeTargetUnobstructed = GameTime.Default;
             this.lastPathfindingUpdate = GameTime.Default;
             this.isInitialized = true;
+            this.owner = this.GetComponent<Entity>();
+            this.agent.speed = this.owner.BaseMovementSpeed;
             this.originalSpeed = this.agent.speed;
         }
 
@@ -228,9 +234,16 @@
             var stopMovement = this.GetComponent<Entity>().IsDeadOrDying && this.stopWhenDying;
             if (stopMovement || !this.hasTarget)
             {
-                this.StopFollowing();
+                if (this.startedMovement)
+                {
+                    this.StopFollowing();
+                }
+
                 return;
             }
+
+            // Update speed each tick.
+            this.agent.speed = this.owner.MovementSpeed;
 
             // Support both, entity and static spatial targets.
             var targetPosition = this.targetEntity != null ? this.targetEntity.GetComponent<Collider2D>().bounds.center :
@@ -412,6 +425,7 @@
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
             this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
             this.usedNavmeshLastTick = false;
+            this.startedMovement = false;
         }
 
         private Vector3 FixUpVector(Vector3 vector)

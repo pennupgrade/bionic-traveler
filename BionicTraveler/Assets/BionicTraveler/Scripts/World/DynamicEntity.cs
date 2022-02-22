@@ -12,8 +12,6 @@
     /// </summary>
     public class DynamicEntity : Entity
     {
-        // TODO: keep a set of possible tasks this DE can do
-
         private EntityTaskManager taskManager;
 
         private Vector3 velocity;
@@ -32,8 +30,8 @@
         public WeaponData defaultWeapon;
 
         [SerializeField]
-        [TooltipAttribute("The entity relationships.")]
-        private bool immovable;
+        [TooltipAttribute("Whether the entity cannot be knocked back by attacks.")]
+        private bool cannotBeKnockedBack;
 
         private float energy;
 
@@ -52,6 +50,9 @@
         /// </summary>
         public Inventory Inventory { get; }
 
+        /// <summary>
+        /// Gets the weapon inventory.
+        /// </summary>
         public WeaponsInventory WeaponsInventory { get; private set; }
 
         /// <summary>
@@ -133,50 +134,6 @@
         }
 
         /// <summary>
-        /// Function for moving a dynamic entity to a target position.
-        /// </summary>
-        /// <param name="target">Target world position to move to.</param>
-        public void MoveTo(Vector3 target, bool smooth = false)
-        {
-            this.SetDirection(target);
-
-            base.MoveTo(target, smooth);
-
-        }
-
-        /// <summary>
-        /// Makes DEntity invincible for specified number of milliseconds.
-        /// </summary>
-        /// <param name="ms">Number of milliseconds to remain invincible.</param>
-        public void IFrame(int ms)
-        {
-            this.StartCoroutine(this.IFrameHandler(ms));
-        }
-
-        /// <summary>
-        /// Stagger/Stun the entity for the specified number of milliseconds.
-        /// </summary>
-        /// <param name="ms">The number of milliseconds to stun the entity.</param>
-        public void Stagger(int ms)
-        {
-            this.StartCoroutine(this.StaggerHandler(ms));
-        }
-
-        private IEnumerator IFrameHandler(int ms)
-        {
-            this.IsInvincible = true;
-            yield return new WaitForSeconds(ms / 1000f);
-            this.IsInvincible = false;
-        }
-
-        private IEnumerator StaggerHandler(int ms)
-        {
-            this.IsStunned = true;
-            yield return new WaitForSeconds(ms / 1000f);
-            this.IsStunned = false;
-        }
-
-        /// <summary>
         /// Applies a force to this dynamic entity.
         /// </summary>
         /// <param name="force">The force to be applied.</param>
@@ -244,7 +201,7 @@
             }
 
             // TODO: Get force data from attack.
-            if (attack is MeleeAttack && !this.immovable)
+            if (attack is MeleeAttack && !this.cannotBeKnockedBack)
             {
                 var awayVector = this.GetComponent<Transform>().position - attack.Owner.GetComponent<Transform>().position;
                 this.ApplyForce(awayVector.normalized * 30);
@@ -273,8 +230,11 @@
 
         }
 
-        protected virtual void Update()
+        /// <inheritdoc/>
+        protected override void Update()
         {
+            base.Update();
+
             if (this.IsBeingKnockedBack)
             {
                 if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f)
@@ -289,8 +249,11 @@
             }
         }
 
-        private void FixedUpdate()
+        /// <inheritdoc/>
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
+
             // TODO: Might at some point be useful to have physics tasks and normal tasks that are ticked
             // from FixedUpdate/Update respectively.
             this.taskManager.Process();
