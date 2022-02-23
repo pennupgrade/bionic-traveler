@@ -48,7 +48,7 @@ namespace BionicTraveler.Scripts.AI
         private void OnTriggerEnter2D(Collider2D collision)
         {
             var entity = collision.GetComponent<Entity>();
-            if (entity != null)
+            if (entity != null && this.entitiesInRange != null)
             {
                 this.entitiesInRange.Add(entity);
             }
@@ -57,7 +57,7 @@ namespace BionicTraveler.Scripts.AI
         private void OnTriggerExit2D(Collider2D collision)
         {
             var entity = collision.GetComponent<Entity>();
-            if (entity != null)
+            if (entity != null && this.entitiesInRange != null)
             {
                 this.entitiesInRange.Remove(entity);
             }
