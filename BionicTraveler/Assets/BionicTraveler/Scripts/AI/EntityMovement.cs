@@ -78,6 +78,7 @@
         private float originalSpeed;
         private Entity owner;
         private bool startedMovement;
+        private bool dontUpdateAnimator;
 
         // Stuck detection.
         private bool isAvoidingBadPath;
@@ -172,6 +173,7 @@
             this.owner = this.GetComponent<Entity>();
             this.agent.speed = this.owner.BaseMovementSpeed;
             this.originalSpeed = this.agent.speed;
+            this.dontUpdateAnimator = (this.owner as DynamicEntity).DontUpdateAnimatorForMovement;
         }
 
         private void Start()
@@ -293,8 +295,12 @@
                     this.agent.isStopped = true;
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
                     this.agent.velocity = Vector3.zero;
-                    this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
                     this.HasReached = true;
+
+                    if (!this.dontUpdateAnimator)
+                    {
+                        this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+                    }
                 }
                 else
                 {
@@ -319,9 +325,12 @@
                     if (animator != null)
                     {
                         var velocityInput = this.agent.velocity;
-                        animator.SetInteger("MovementState", 1);
-                        animator.SetFloat("Horizontal", velocityInput.x);
-                        animator.SetFloat("Vertical", velocityInput.y);
+                        if (!this.dontUpdateAnimator)
+                        {
+                            animator.SetInteger("MovementState", 1);
+                            animator.SetFloat("Horizontal", velocityInput.x);
+                            animator.SetFloat("Vertical", velocityInput.y);
+                        }
                     }
                 }
                 else
@@ -329,8 +338,12 @@
                     this.agent.isStopped = true;
                     this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
                     this.agent.velocity = Vector3.zero;
-                    this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
                     this.HasReached = true;
+
+                    if (!this.dontUpdateAnimator)
+                    {
+                        this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+                    }
 
                     //var animator = this.GetComponent<Animator>();
                     //animator.SetFloat("Horizontal", targetDirection.x);
@@ -411,9 +424,12 @@
             if (animator != null)
             {
                 var velocityInput = this.agent.velocity;
-                animator.SetInteger("MovementState", 1);
-                animator.SetFloat("Horizontal", velocityInput.x);
-                animator.SetFloat("Vertical", velocityInput.y);
+                if (!this.dontUpdateAnimator)
+                {
+                    animator.SetInteger("MovementState", 1);
+                    animator.SetFloat("Horizontal", velocityInput.x);
+                    animator.SetFloat("Vertical", velocityInput.y);
+                }
             }
 
             this.usedNavmeshLastTick = true;
@@ -423,9 +439,12 @@
         {
             this.agent.isStopped = true;
             this.agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
-            this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
             this.usedNavmeshLastTick = false;
             this.startedMovement = false;
+            if (!this.dontUpdateAnimator)
+            {
+                this.GetComponent<Animator>()?.SetInteger("MovementState", 0);
+            }
         }
 
         private Vector3 FixUpVector(Vector3 vector)

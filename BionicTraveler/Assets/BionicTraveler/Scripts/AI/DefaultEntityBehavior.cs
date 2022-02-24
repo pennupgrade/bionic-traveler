@@ -294,13 +294,13 @@
                     var combatTask = new TaskCombat(this.Owner, this.combatTarget);
                     combatTask.Assign();
 
-                    Debug.Log("Combat - Enter");
+                    //Debug.Log("Combat - Enter");
                     break;
                 case FSMSubState.Remain:
-                    Debug.Log("Combat - Remain");
+                    //Debug.Log("Combat - Remain");
                     break;
                 case FSMSubState.Leave:
-                    Debug.Log("Combat - Leave");
+                    //Debug.Log("Combat - Leave");
                     break;
             }
         }

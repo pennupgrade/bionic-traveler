@@ -126,7 +126,11 @@ namespace BionicTraveler.Scripts.Combat
             this.isAttacking = false;
 
             // Reset weapon to its idle animation - usually just one static frame.
-            this.GetComponent<Animator>().Play("Idle");
+            var animator = this.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.Play("Idle");
+            }
         }
 
         /// <summary>

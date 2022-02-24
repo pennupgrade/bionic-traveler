@@ -27,11 +27,15 @@
 
         [SerializeField]
         [TooltipAttribute("The default weapon to assign.")]
-        public WeaponData defaultWeapon;
+        private WeaponData defaultWeapon;
 
         [SerializeField]
         [TooltipAttribute("Whether the entity cannot be knocked back by attacks.")]
         private bool cannotBeKnockedBack;
+
+        [SerializeField]
+        [TooltipAttribute("Whether the entity has no distinct directional movement animations and needs no animator update for movement.")]
+        private bool dontUpdateAnimatorForMovement;
 
         private float energy;
 
@@ -95,6 +99,11 @@
         /// Gets the task manager.
         /// </summary>
         public EntityTaskManager TaskManager => this.taskManager;
+
+        /// <summary>
+        /// Gets a value indicating whether this entity has no directional movement animations and thus does not require movement animator updates.
+        /// </summary>
+        public bool DontUpdateAnimatorForMovement => this.dontUpdateAnimatorForMovement;
 
         /// <summary>
         /// Returns a value indicating whether this entity is ahead of <paramref name="position"/> based on its <see cref="this.Direction"/>.
@@ -201,7 +210,7 @@
             }
 
             // TODO: Get force data from attack.
-            if (attack is MeleeAttack && !this.cannotBeKnockedBack)
+            if (attack is MeleeAttack && !this.cannotBeKnockedBack && !attack.AttackData.DisableMeleeKnockback)
             {
                 var awayVector = this.GetComponent<Transform>().position - attack.Owner.GetComponent<Transform>().position;
                 this.ApplyForce(awayVector.normalized * 30);

@@ -105,6 +105,10 @@ namespace BionicTraveler.Scripts.Combat
         [Tooltip("The attack prefab, if any.")]
         private Attack prefab;
 
+        [SerializeField]
+        [Tooltip("Whether melee knowback is disabled.")]
+        private bool disableMeleeKnowback;
+
         /// <summary>
         /// Gets the display name of the attack.
         /// </summary>
@@ -224,6 +228,11 @@ namespace BionicTraveler.Scripts.Combat
         /// Gets the prefab, if any.
         /// </summary>
         public Attack Prefab => this.prefab;
+
+        /// <summary>
+        /// Gets a value indicating whether melee knockback is disabled.
+        /// </summary>
+        public bool DisableMeleeKnockback => this.disableMeleeKnowback;
 
         /// <summary>
         /// Calculates the attack's base damage. Currently just returns <see cref="this.Damage"/>.

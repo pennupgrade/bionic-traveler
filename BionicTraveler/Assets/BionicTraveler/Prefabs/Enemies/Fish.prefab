@@ -106,8 +106,9 @@ MonoBehaviour:
   baseMovementSpeed: 1
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
-  defaultWeapon: {fileID: 11400000, guid: 91df6f43eb015eb478df4ba6952c1428, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: e4b788d04da081e4296bfc12e30d38e3, type: 2}
   cannotBeKnockedBack: 0
+  dontUpdateAnimatorForMovement: 1
 --- !u!61 &5687904464648532475
 BoxCollider2D:
   m_ObjectHideFlags: 0
