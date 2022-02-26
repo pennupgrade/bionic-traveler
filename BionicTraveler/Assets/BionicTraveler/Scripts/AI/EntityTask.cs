@@ -22,7 +22,8 @@ namespace BionicTraveler.Scripts.AI
         Projectile,
         Die,
         MoveFromEntity,
-        Teleport
+        Teleport,
+        WatchdogCharge
     }
 
     /// <summary>
