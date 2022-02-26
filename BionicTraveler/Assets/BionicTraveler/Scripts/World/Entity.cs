@@ -339,6 +339,12 @@
 
         private void OnTriggerStay2D(Collider2D collision)
         {
+            // If we have no main collider, we cannot do anything.
+            if (this.mainCollider == null)
+            {
+                return;
+            }
+
             if (collision.IsTouching(this.mainCollider))
             {
                 var movementModifier = collision.GetComponent<IMovementModifier>();
