@@ -222,7 +222,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                         }
                     }
                     // If in range to blind, try to blind
-                    else if (dist < this.EntityScanner.getDetectionRange())
+                    else if (dist < this.EntityScanner.DetectionRange)
                     {
                         if (this.blindTime == null || this.blindTime.HasTimeElapsed(this.blindingCooldown))
                         {
@@ -253,15 +253,13 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                         }
                     }
 
-                    var dir = this.GetComponent<NavMeshAgent>().velocity.normalized;
-                    anim.SetFloat("Horizontal", dir.x);
+                    //var dir = this.GetComponent<NavMeshAgent>().velocity.normalized;
+                    //anim.SetFloat("Horizontal", dir.x);
 
-                    anim.SetFloat("Vertical", dir.y);
+                    //anim.SetFloat("Vertical", dir.y);
 
-                    anim.SetFloat("Velocity", dir.magnitude);
-
-                    Debug.Log("Set Floats!");
-
+                    //anim.SetFloat("Speed", dir.magnitude);
+                    Debug.Log(this.GetComponent<NavMeshAgent>().velocity);
                     break;
                 case FSMSubState.Leave:
                     Debug.Log("Leaving Combat!");
@@ -284,8 +282,8 @@ namespace BionicTraveler.Scripts.AI.MechaDog
             if (this.EntityScanner != null)
             {
                 var nearbyTargets = this.EntityScanner.GetAllDynamicInRange();
-                var target = nearbyTargets.FirstOrDefault();
-                if (target != null && this.IsValidTarget(target))
+                var target = nearbyTargets.FirstOrDefault(target => this.IsValidTarget(target));
+                if (target != null)
                 {
                     this.entityTarget = target;
                     return true;
