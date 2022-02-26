@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c20e92c1ec6e4482eb77c308263ad, type: 3}
   m_Name: dog_attack
   m_EditorClassIdentifier: 
-  id: 
-  displayName: 
+  id: attack_dog
+  displayName: Dog
   sprite: {fileID: 0}
-  worldObjectPrefab: {fileID: 2177739623315908797, guid: 5ca94ef51b521a14e862c57a537059ce, type: 3}
+  worldObjectPrefab: {fileID: 1604656251885511008, guid: a096041ca8866c2468754e94240bbbf8, type: 3}
   primaryAttackData: {fileID: 11400000, guid: c4dac7faf15124e1290718a4b71c7b0a, type: 2}
   secondaryAttackData: {fileID: 0}
   itemData: {fileID: 0}

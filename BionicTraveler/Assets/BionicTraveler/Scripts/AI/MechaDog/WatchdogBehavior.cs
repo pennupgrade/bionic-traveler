@@ -40,7 +40,6 @@ namespace BionicTraveler.Scripts.AI.MechaDog
         [Tooltip("Cooldown for the watchdog's blinding attack")]
         private float blindingCooldown = 5f;
 
-
         [SerializeField]
         [Tooltip("Range of the Watchdog's melee attack")]
         private float meleeMax = 10f;
@@ -51,7 +50,6 @@ namespace BionicTraveler.Scripts.AI.MechaDog
 
         private EntityTask combatTask = null;
 
-
         private Vector3 homePos;
         private GameTime blindTime;
         private GameTime taskEnded;
@@ -59,13 +57,11 @@ namespace BionicTraveler.Scripts.AI.MechaDog
         [SerializeField]
         private GameObject charge;
 
-
-
-        public void Start()
+        private void Start()
         {
-            homePos = this.transform.position;
-            rb = this.GetComponent<Rigidbody2D>();
-            anim = this.GetComponent<Animator>();
+            this.homePos = this.transform.position;
+            this.rb = this.GetComponent<Rigidbody2D>();
+            this.anim = this.GetComponent<Animator>();
         }
 
 
@@ -76,6 +72,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
             Combat
         }
 
+        /// <inheritdoc/>
         public override IFSM CreateFSM()
         {
             var fsm = new FSM<WatchdogStates>();
@@ -107,10 +104,11 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                         sender.AdvanceTo(WatchdogStates.Combat);
                     }
 
-                    if (this.idleStart.HasTimeElapsed(idleTime))
+                    if (this.idleStart.HasTimeElapsed(this.idleTime))
                     {
                         sender.AdvanceTo(WatchdogStates.Patrol);
-                    } 
+                    }
+
                     break;
 
                 case FSMSubState.Leave:
@@ -124,34 +122,22 @@ namespace BionicTraveler.Scripts.AI.MechaDog
             switch (subState)
             {
                 case FSMSubState.Enter:
-                    this.rb.MovePosition(homePos);
-
-
-                    var homeTask = new TaskGoToPoint(this.Owner, homePos);
-
                     Debug.Log("Patrol - Enter");
                     this.Owner.TaskManager.ClearTasks();
 
                     // TODO: Support walking/speed.
+                    var homeTask = new TaskGoToPoint(this.Owner, this.homePos);
                     var patrolTask = new TaskPatrol(this.Owner, PatrolType.Square);
-
                     var seq = new TaskSequence(homeTask, patrolTask);
-
                     var exec = new TaskExecuteSequence(this.Owner, seq);
-
                     exec.Assign();
 
                     // Set patrolStart.
                     this.patrolStart = GameTime.Now;
-
-
                     break;
 
                 case FSMSubState.Remain:
                     Debug.Log("Patrol - Remain");
-
-
-
                     if (this.NearTargets())
                     {
                         sender.AdvanceTo(WatchdogStates.Combat);
@@ -162,22 +148,10 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                         sender.AdvanceTo(WatchdogStates.Idle);
                     }
 
-                    var dir = this.GetComponent<NavMeshAgent>().velocity.normalized;
-
-                    Debug.Log(dir);
-                    anim.SetFloat("Horizontal", dir.x);
-
-                    anim.SetFloat("Vertical", dir.y);
-
-                    anim.SetFloat("Velocity", dir.magnitude);
-
-                    Debug.Log("Set Floats!");
-
                     break;
 
                 case FSMSubState.Leave:
                     Debug.Log("Patrol - Leave");
-
                     break;
             }
         }
@@ -188,92 +162,62 @@ namespace BionicTraveler.Scripts.AI.MechaDog
             {
                 case FSMSubState.Enter:
                     this.Owner.TaskManager.ClearTasks();
+                    this.taskEnded = GameTime.Now;
 
-                    taskEnded = GameTime.Now;
-                    
                     // Set combatStart.
                     this.combatStart = GameTime.Now;
-
-                    Debug.Log("Combat - Enter");
-
                     this.combatTask = null;
-
-                    anim.SetInteger("inCombat", 1);
+                    this.anim.SetInteger("inCombat", 1);
                     break;
                 case FSMSubState.Remain:
-                    //if ((this.combatTask != null && this.combatTask.Type != EntityTaskType.WatchdogCharge && this.combatTask.IsActive) || !taskEnded.HasTimeElapsed(1f))
-                    //{
-                        
-                    //    this.combatStart = GameTime.Now;
-                    //    break;
-                    //}
-
-                    float dist = this.transform.DistanceTo(entityTarget.transform);
+                    float dist = this.transform.DistanceTo(this.entityTarget.transform);
 
                     // If in range to charge, then charge
                     if (dist < this.meleeMax)
                     {
-                        if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.WatchdogCharge) && taskEnded.HasTimeElapsed(1f))
+                        if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.WatchdogCharge) && this.taskEnded.HasTimeElapsed(1f))
                         {
                             this.Owner.TaskManager.ClearTasks();
-                            this.combatTask = new TaskWatchdogCharge(this.Owner, this.entityTarget, charge);
-                            this.combatTask.Ended += CombatTask_Ended;
+                            this.combatTask = new TaskWatchdogCharge(this.Owner, this.entityTarget, this.charge);
+                            this.combatTask.Ended += this.CombatTask_Ended;
                             this.combatTask.Assign();
                         }
                     }
+
                     // If in range to blind, try to blind
-                    else if (dist < this.EntityScanner.getDetectionRange())
+                    else if (dist < this.EntityScanner.DetectionRange)
                     {
                         if (this.blindTime == null || this.blindTime.HasTimeElapsed(this.blindingCooldown))
                         {
-                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Combat) && taskEnded.HasTimeElapsed(1f))
+                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Combat) && this.taskEnded.HasTimeElapsed(1f))
                             {
                                 this.Owner.TaskManager.ClearTasks();
                                 this.combatTask = new TaskCombat(this.Owner, this.entityTarget);
-                                this.combatTask.Ended += CombatTask_Ended;
+                                this.combatTask.Ended += this.CombatTask_Ended;
                                 this.combatTask.Assign();
                                 this.blindTime = GameTime.Now;
                             }
                         }
-                        else // If blinding is on cooldown, then move towards the player
-                        {
-                            //if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.MoveToEntity))
-                            //{
-                            //    this.Owner.TaskManager.ClearTasks();
-                            //    this.combatTask = new TaskMoveToEntity(this.Owner, this.entityTarget, this.meleeMax);
-                            //    this.combatTask.Assign();
-                            //}
-                        }
                     }
                     else
-                    {   
-                        if (this.combatStart.HasTimeElapsed(alertTime))
+                    {
+                        if (this.combatStart.HasTimeElapsed(this.alertTime))
                         {
                             sender.AdvanceTo(WatchdogStates.Patrol);
                         }
                     }
 
-                    var dir = this.GetComponent<NavMeshAgent>().velocity.normalized;
-                    anim.SetFloat("Horizontal", dir.x);
-
-                    anim.SetFloat("Vertical", dir.y);
-
-                    anim.SetFloat("Velocity", dir.magnitude);
-
-                    Debug.Log("Set Floats!");
-
                     break;
                 case FSMSubState.Leave:
                     Debug.Log("Leaving Combat!");
-                    anim.SetInteger("inCombat", 0);
-
+                    this.anim.SetInteger("inCombat", 0);
                     break;
             }
         }
 
         private void CombatTask_Ended(EntityTask task, bool successful)
         {
-            taskEnded = GameTime.Now;
+            this.taskEnded = GameTime.Now;
         }
 
         private bool NearTargets()
@@ -284,8 +228,8 @@ namespace BionicTraveler.Scripts.AI.MechaDog
             if (this.EntityScanner != null)
             {
                 var nearbyTargets = this.EntityScanner.GetAllDynamicInRange();
-                var target = nearbyTargets.FirstOrDefault();
-                if (target != null && this.IsValidTarget(target))
+                var target = nearbyTargets.FirstOrDefault(target => this.IsValidTarget(target));
+                if (target != null)
                 {
                     this.entityTarget = target;
                     return true;

@@ -36,20 +36,23 @@ namespace BionicTraveler.Scripts.AI.MechaDog
         {
             if (this.HasAnimation("Dashing"))
             {
+                this.direction = (this.target.transform.position - this.Owner.transform.position).normalized;
+                this.Animator.SetFloat("Horizontal", this.direction.x);
+                this.Animator.SetFloat("Vertical", this.direction.y);
+                this.Animator.SetFloat("Speed", this.direction.magnitude);
+
                 this.PlayAnimation("Dashing");
             }
             else
             {
                 this.End("Entity has no dashing animation", false);
             }
+
         }
 
         /// <inheritdoc/>
         public override void OnProcess()
         {
-
-            this.direction = (this.target.transform.position - this.Owner.transform.position).normalized;
-
             if (this.HasCurrentAnimationFinished())
             {
                 this.End("Charge complete!", true);
