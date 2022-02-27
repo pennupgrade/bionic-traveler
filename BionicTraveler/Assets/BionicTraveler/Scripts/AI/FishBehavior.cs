@@ -5,17 +5,22 @@
     using Framework;
     using UnityEngine;
 
-    class FishBehavior : EntityBehavior
+    /// <summary>
+    /// The fish spawned by a box behavior.
+    /// </summary>
+    public class FishBehavior : EntityBehavior
     {
         private Entity combatTarget;
+        private GameObject boxBase;
 
+        /// <summary>
+        /// The goals for the fish.
+        /// </summary>
         public enum FishEntityGoal
         {
             Combat,
             Flee
         }
-
-        private GameObject boxBase;
 
         /// <summary>
         /// Sets the box that created this fish.

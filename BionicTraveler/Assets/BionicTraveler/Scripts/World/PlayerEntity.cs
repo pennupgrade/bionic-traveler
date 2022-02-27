@@ -1,6 +1,5 @@
 namespace BionicTraveler.Scripts.World
 {
-    using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.Combat;
@@ -8,8 +7,6 @@ namespace BionicTraveler.Scripts.World
     using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
-    using UnityEngine.UI;
-    using static UnityEngine.Rendering.DebugUI;
 
     /// <summary>
     /// Player Entity class.
@@ -17,15 +14,18 @@ namespace BionicTraveler.Scripts.World
     public class PlayerEntity : DynamicEntity
     {
         private PlayerMovement movement;
-        /// <summary>
-        /// Gets or sets the Player interaction range.
-        /// </summary>
-        public float InteractionRange { get; set; } = 1;
-
         private bool diedFromLowEnergy;
 
         [SerializeField]
         private GameObject blinded;
+
+        private GameTime blindStart;
+        private GameObject blindObject;
+
+        /// <summary>
+        /// Gets or sets the Player interaction range.
+        /// </summary>
+        public float InteractionRange { get; set; } = 1;
 
         /// <summary>
         /// Gets the key manager.
@@ -70,6 +70,7 @@ namespace BionicTraveler.Scripts.World
             this.GetComponent<PlayerInteraction>().enabled = state;
         }
 
+        /// <inheritdoc/>
         protected override void Update()
         {
             base.Update();
@@ -149,10 +150,28 @@ namespace BionicTraveler.Scripts.World
             }
         }
 
+        /// <inheritdoc/>
         public override void ResetAnimationState()
         {
             var playerMovement = this.GetComponent<PlayerMovement>();
             playerMovement.ResetAnimationState();
+        }
+
+        /// <summary>
+        /// Blinds the player.
+        /// </summary>
+        public void Blind()
+        {
+            if (this.blindStart == null)
+            {
+                this.blindStart = GameTime.Now;
+                this.blindObject = GameObject.Instantiate(this.blinded);
+                this.blindObject.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+            }
+            else if (this.blindStart.HasTimeElapsed(3f))
+            {
+                GameObject.Destroy(this.blindObject);
+            }
         }
 
         private void Instance_FinishedLoading()
@@ -189,29 +208,6 @@ namespace BionicTraveler.Scripts.World
         private void OnDestroy()
         {
             this.Inventory.ItemsChanged -= this.Inventory_ItemsChanged;
-        }
-
-        private void ActivateAbility(Bodypart b)
-        {
-            b.ActivateAbility();
-        }
-
-        private GameTime blindStart = null;
-        private GameObject blindObject;
-
-        public void Blind()
-        {
-            if (blindStart == null)
-            {
-                blindStart = GameTime.Now;
-                blindObject = GameObject.Instantiate(blinded);
-                blindObject.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
-            }
-            else if (blindStart.HasTimeElapsed(3f))
-            {
-                GameObject.Destroy(blindObject);
-            }
-
         }
     }
 }
