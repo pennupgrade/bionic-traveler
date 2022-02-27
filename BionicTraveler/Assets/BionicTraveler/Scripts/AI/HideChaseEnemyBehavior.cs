@@ -32,6 +32,8 @@ namespace BionicTraveler.Scripts.AI
         [SerializeField]
         private AttackData attackData;
 
+        private bool hasSpawned;
+
         public override void Awake()
         {
             base.Awake();
@@ -52,6 +54,11 @@ namespace BionicTraveler.Scripts.AI
             return fsm;
         }
 
+        public void SetFishReturned()
+        {
+            this.hasSpawned = false;
+        }
+
         /// <summary>
         /// Stay in hide mode until player is detected within radius.
         /// </summary>
@@ -65,11 +72,14 @@ namespace BionicTraveler.Scripts.AI
 
                     break;
                 case FSMSubState.Remain:
-                    // Stays in state until targe entered range.
-                    // Scans for target
-                    if (this.CheckForNearbyTargets())
+                    if (!this.hasSpawned)
                     {
-                        sender.AdvanceTo(HideChaseEntityGoal.Chase);
+                        // Stays in state until targe entered range.
+                        // Scans for target
+                        if (this.CheckForNearbyTargets())
+                        {
+                            sender.AdvanceTo(HideChaseEntityGoal.Chase);
+                        }
                     }
 
                     break;
@@ -91,13 +101,16 @@ namespace BionicTraveler.Scripts.AI
 
                     break;
                 case FSMSubState.Remain:
-
-                    if (this.GetComponent<Animator>().IsAnimationPlaying("Leave"))
+                    if (!this.GetComponent<Animator>().IsAnimationPlaying("Leave") && !this.hasSpawned)
                     {
                         this.GetComponent<Animator>().Play("Idle");
 
                         // Spawn the fish.
-                        var fish = Instantiate(this.fishPrefab, this.transform.position, this.transform.rotation);
+                        var spawnPos = this.transform.position + Vector3.up;
+                        var fish = Instantiate(this.fishPrefab, spawnPos, this.transform.rotation);
+                        fish.GetComponent<FishBehavior>().SetBoxBase(this.gameObject);
+                        this.hasSpawned = true;
+                        sender.AdvanceTo(HideChaseEntityGoal.Hide);
                     }
 
                     if (this.trapStart.HasTimeElapsed(10f))
