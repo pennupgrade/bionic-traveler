@@ -15,6 +15,7 @@ MonoBehaviour:
   id: weapon_sword_soldier
   displayName: Sword (Soldier)
   sprite: {fileID: 0}
+  worldObjectPrefab: {fileID: 2177739623315908797, guid: 5ca94ef51b521a14e862c57a537059ce, type: 3}
   primaryAttackData: {fileID: 11400000, guid: b814c8004ff028140a91382d78030052, type: 2}
   secondaryAttackData: {fileID: 0}
   itemData: {fileID: 0}
