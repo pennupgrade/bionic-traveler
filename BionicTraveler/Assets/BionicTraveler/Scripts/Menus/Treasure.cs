@@ -1,3 +1,5 @@
+using BionicTraveler.Scripts.World;
+
 namespace BionicTraveler.Scripts.Menus
 {
     using System;
@@ -12,6 +14,8 @@ namespace BionicTraveler.Scripts.Menus
     {
         private Renderer rendererComponent;
         private SaveManager saveManager;
+        private bool isOnTreasure;
+        private DynamicEntity dynamicEntity;
 
         /// <summary>
         /// Sets instance of SaveManager and adds the Treasure.cs's save and load functions
@@ -23,6 +27,7 @@ namespace BionicTraveler.Scripts.Menus
             this.saveManager.IsSaving += this.Save;
             this.saveManager.IsLoading += this.Load;
             this.rendererComponent = this.GetComponent<Renderer>();
+            this.dynamicEntity = this.GetComponent<DynamicEntity>();
             this.Load();
         }
 
@@ -35,13 +40,37 @@ namespace BionicTraveler.Scripts.Menus
         }
 
         /// <summary>
-        /// Treasure disappears if player collides with it.
+        /// When player collides with treasure, change bool status.
         /// </summary>
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
-                this.rendererComponent.enabled = false;
+                this.isOnTreasure = true;
+                // this.rendererComponent.enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// When player exits treasure, change bool status.
+        /// </summary>
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                this.isOnTreasure = false;
+            }
+        }
+
+        /// <summary>
+        /// If player is on treasure and then presses L, treasure will be taken.
+        /// </summary>
+        private void Update()
+        {
+            if (this.isOnTreasure && Input.GetKeyDown(KeyCode.L))
+            {
+                WindowManager.Instance.ToggleMenu(InventoryUI.Instance, this.dynamicEntity);
+                // WindowManager.Instance.ToggleMenu(InventoryUI.Instance);
             }
         }
 

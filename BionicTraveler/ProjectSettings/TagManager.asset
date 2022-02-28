@@ -10,6 +10,7 @@ TagManager:
   - TraversableCollider
   - Attack
   - BlindPanel
+	Chest
   - Canvas
   layers:
   - Default

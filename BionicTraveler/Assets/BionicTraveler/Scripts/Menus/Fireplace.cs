@@ -18,7 +18,8 @@ namespace BionicTraveler.Scripts.Menus
         /// <summary>
         /// When player collides with fireplace, change bool status.
         /// </summary>
-        private void OnTriggerEnter2D(Collider2D other) {
+        private void OnTriggerEnter2D(Collider2D other)
+        {
             if (other.CompareTag("Player"))
             {
                 this.isOnFireplace = true;
@@ -28,7 +29,7 @@ namespace BionicTraveler.Scripts.Menus
         /// <summary>
         /// When player collides with fireplace, change bool status.
         /// </summary>
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
@@ -43,14 +44,7 @@ namespace BionicTraveler.Scripts.Menus
         {
             if (this.isOnFireplace && Input.GetKeyDown(KeyCode.L))
             {
-                if (!SaveManager.Instance.GetIsOpened())
-                {
-                    SaveManager.Instance.Open();
-                }
-                else
-                {
-                    SaveManager.Instance.Close();
-                }
+                WindowManager.Instance.ToggleMenu(SaveManager.Instance);
             }
         }
     }
