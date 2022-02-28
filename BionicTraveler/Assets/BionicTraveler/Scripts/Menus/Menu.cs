@@ -35,6 +35,18 @@ namespace BionicTraveler.Scripts
         }
 
         /// <summary>
+        /// Opens the menu canvas and pauses the game, with additional parameters. Needs to be overriden for use.
+        /// </summary>
+        /// <param name="args">Extra args for opening.</param>
+        public virtual void Open(Object args)
+        {
+            if (!args)
+            {
+                this.Open();
+            }
+        }
+
+        /// <summary>
         /// Closes the menu canvas and resumes the game.
         /// </summary>
         public virtual void Close()

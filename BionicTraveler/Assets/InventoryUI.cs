@@ -44,7 +44,6 @@ namespace BionicTraveler
             // owners/inventories.
             var player = GameObject.FindGameObjectWithTag("Player");
             this.SetInventoryData(player.GetComponent<DynamicEntity>().Inventory);
-
             this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
             this.UpdateUI();
         }
@@ -61,6 +60,22 @@ namespace BionicTraveler
 
         private void Inventory_ItemsChanged(Inventory sender, InventoryItem item)
         {
+            this.UpdateUI();
+        }
+
+        public override void Open(Object dynamicEntity)
+        {
+            this.SetInventoryData(((DynamicEntity)dynamicEntity).Inventory);
+            this.UpdateUI();
+            this.Open();
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            var player = GameObject.FindGameObjectWithTag("Player");
+            this.SetInventoryData(player.GetComponent<DynamicEntity>().Inventory);
+            this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
             this.UpdateUI();
         }
 

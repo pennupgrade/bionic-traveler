@@ -9,6 +9,7 @@ TagManager:
   - DialogueRunner
   - TraversableCollider
   - Attack
+  - Chest
   layers:
   - Default
   - TransparentFX

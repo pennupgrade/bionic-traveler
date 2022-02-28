@@ -1,6 +1,6 @@
-namespace BionicTraveler
+namespace BionicTraveler.Scripts.Menus
 {
-    using BionicTraveler.Scripts;
+    // using BionicTraveler.Scripts;
     using UnityEngine;
 
     /// <summary>
@@ -9,6 +9,12 @@ namespace BionicTraveler
     public class WindowManager : MonoBehaviour
     {
         private Menu openedMenu;
+        private Object args;
+
+        /// <summary>
+        /// Gets the singleton instance of WindowManager.
+        /// </summary>
+        public static WindowManager Instance { get; private set; }
 
         /// <summary>
         /// Update is called once per frame and checks if any menu open buttons have been called.
@@ -18,57 +24,46 @@ namespace BionicTraveler
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                this.CloseCurrentMenu();
-
-                if (this.openedMenu == SettingsManager.Instance)
-                {
-                    this.openedMenu = null;
-                }
-                else
-                {
-                    this.openedMenu = SettingsManager.Instance;
-                    this.openedMenu.Open();
-                }
+                this.ToggleMenu(SettingsManager.Instance);
             }
             else if (Input.GetKeyDown(KeyCode.J))
             {
-                this.CloseCurrentMenu();
-
-                if (this.openedMenu == QuestManager.Instance)
-                {
-                    this.openedMenu = null;
-                }
-                else
-                {
-                    this.openedMenu = QuestManager.Instance;
-                    this.openedMenu.Open();
-                }
+                this.ToggleMenu(QuestManager.Instance);
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
-                this.CloseCurrentMenu();
-
-                if (this.openedMenu == MapManager.Instance)
-                {
-                    this.openedMenu = null;
-                }
-                else
-                {
-                    this.openedMenu = MapManager.Instance;
-                    this.openedMenu.Open();
-                }
+                this.ToggleMenu(MapManager.Instance);
             }
             else if (Input.GetKeyDown(KeyCode.I))
             {
-                this.CloseCurrentMenu();
+                this.ToggleMenu(InventoryUI.Instance);
+            }
+        }
 
-                if (this.openedMenu == InventoryUI.Instance)
+        /// <summary>
+        /// Called upon pressing a keyboard button related to a menu to toggle the visibility of the menu.
+        /// </summary>
+        /// <param name="menuInstance">The menu to toggle.</param>
+        /// <param name="options">Additional parameters to pass in.</param>
+        public void ToggleMenu(Menu menuInstance, Object options = null)
+        {
+            this.CloseCurrentMenu();
+        
+            if (this.openedMenu == menuInstance && options == this.args)
+            {
+                this.openedMenu = null;
+                this.args = null;
+            }
+            else
+            {
+                this.openedMenu = menuInstance;
+                this.args = options;
+                if (options)
                 {
-                    this.openedMenu = null;
+                    this.openedMenu.Open(options);
                 }
                 else
                 {
-                    this.openedMenu = InventoryUI.Instance;
                     this.openedMenu.Open();
                 }
             }
@@ -77,6 +72,18 @@ namespace BionicTraveler
         private void CloseCurrentMenu()
         {
             this.openedMenu?.Close();
+        }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
         }
     }
 }
