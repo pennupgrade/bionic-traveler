@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 
   displayName: 
   sprite: {fileID: 0}
-  worldObjectPrefab: {fileID: 1604656251885511008, guid: a096041ca8866c2468754e94240bbbf8, type: 3}
+  worldObjectPrefab: {fileID: 8998601328581160847, guid: e37d065d7e36d864c9ebeeb820acab55, type: 3}
   primaryAttackData: {fileID: 11400000, guid: cc81e7a4df1a626468026bcc3234cf46, type: 2}
   secondaryAttackData: {fileID: 0}
   itemData: {fileID: 0}
