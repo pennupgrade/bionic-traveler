@@ -121,6 +121,16 @@
         /// </summary>
         protected virtual void Awake()
         {
+            if (this.defaultWeapon == null)
+            {
+                this.defaultWeapon = GameConfigManager.CurrentConfig.DefaultUnarmedWeapon;
+            }
+
+            if (this.relationships == null)
+            {
+                this.relationships = GameConfigManager.CurrentConfig.DefaultEntityRelations;
+            }
+
             this.WeaponsInventory.AddWeapon(this.defaultWeapon);
 
             if (this.loot != null)
