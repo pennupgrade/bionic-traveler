@@ -42,7 +42,7 @@ namespace BionicTraveler.Scripts.Menus
         /// </summary>
         private void Update()
         {
-            if (this.isOnFireplace && Input.GetKeyDown(KeyCode.L))
+            if (this.isOnFireplace && Input.GetButtonDown("Save Game"))
             {
                 WindowManager.Instance.ToggleMenu(SaveManager.Instance);
             }

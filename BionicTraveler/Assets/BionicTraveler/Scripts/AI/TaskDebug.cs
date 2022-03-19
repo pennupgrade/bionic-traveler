@@ -40,7 +40,7 @@ namespace BionicTraveler.Scripts.AI
         /// </summary>
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (Input.GetButtonDown("[Debug] Assign Attack"))
             {
                 var player = GameObject.FindGameObjectWithTag("Player");
                 var playerEntity = player.GetComponent<PlayerEntity>();
@@ -50,7 +50,7 @@ namespace BionicTraveler.Scripts.AI
                 //this.entity1.TaskManager.ClearTasks();
             }
 
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetButtonDown("[Debug] Assign Move"))
             {
                 this.entity1.TaskManager.ClearTasks();
 

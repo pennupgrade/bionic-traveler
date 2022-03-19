@@ -21,19 +21,19 @@ namespace BionicTraveler.Scripts.Menus
         /// </summary>
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetButtonDown("Open Settings"))
             {
                 this.ToggleMenu(SettingsManager.Instance);
             }
-            else if (Input.GetKeyDown(KeyCode.J))
+            else if (Input.GetButtonDown("Open Quests"))
             {
                 this.ToggleMenu(QuestManager.Instance);
             }
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (Input.GetButtonDown("Open Map"))
             {
                 this.ToggleMenu(MapManager.Instance);
             }
-            else if (Input.GetKeyDown(KeyCode.I))
+            else if (Input.GetButtonDown("Open Inventory"))
             {
                 InventoryUI.Instance.SetUsePlayerInventory();
                 this.ToggleMenu(InventoryUI.Instance);

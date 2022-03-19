@@ -166,7 +166,7 @@
         // Update is called every frame, if the MonoBehaviour is enabled
         private void Update()
         {
-            if (Input.GetButtonDown("ActivatePrimaryBodypartAbility"))
+            if (Input.GetButtonDown("Bodypart Primary"))
             {
                 this.ActivateAbility(BodypartPriority.Primary);
             }
