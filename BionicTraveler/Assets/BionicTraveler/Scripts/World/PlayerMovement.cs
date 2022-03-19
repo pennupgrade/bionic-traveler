@@ -49,11 +49,31 @@
 
         private TaskPlayerMovement mainMovementTask;
         private TaskAnimated specialMovementTask;
+        private bool isDisabled;
 
         public void ResetAnimationState()
         {
             this.StopAllMovement("ResetAnimationState");
             this.moveState = MovementState.Default;
+        }
+
+        /// <summary>
+        /// Forcefully resets the animator to its idle state.
+        /// </summary>
+        public void ForceIdleAnimation()
+        {
+            var animator = this.GetComponent<Animator>();
+            animator.SetFloat("Horizontal", this.player.Direction.x);
+            animator.SetFloat("Vertical", this.player.Direction.y);
+            animator.SetFloat("Speed", 0);
+            animator.SetInteger("MovementState", 0);
+        }
+
+        public void DisableMovement(bool disable)
+        {
+            this.StopAllMovement("DisableMovement");
+            this.ForceIdleAnimation();
+            this.isDisabled = disable;
         }
 
         // Start is called before the first frame update
@@ -82,6 +102,11 @@
         // Update is called once per frame
         private void Update()
         {
+            if (this.isDisabled)
+            {
+                return;
+            }
+
             if (this.player.IsStunned || this.player.IsBeingKnockedBack)
             {
                 this.StopAllMovement("Stunned or being knocked back");

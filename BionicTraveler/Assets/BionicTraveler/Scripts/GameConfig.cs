@@ -5,12 +5,9 @@
     using UnityEngine;
 
     /// <summary>
-    /// Describes a weapon that can be used in the game.
-    /// </summary>
-    [CreateAssetMenu(fileName = "MyNewGameConig", menuName = "GameConfig")]
-    /// <summary>
     /// Describes default game config settings that apply to all entities that have no overriding settings.
     /// </summary>
+    [CreateAssetMenu(fileName = "MyNewGameConig", menuName = "GameConfig")]
     public class GameConfig : ScriptableObject
     {
         [SerializeField]

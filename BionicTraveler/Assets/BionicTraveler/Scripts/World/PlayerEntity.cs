@@ -65,7 +65,7 @@ namespace BionicTraveler.Scripts.World
 
         private void SetInputState(bool state)
         {
-            this.GetComponent<PlayerMovement>().enabled = state;
+            this.GetComponent<PlayerMovement>().DisableMovement(!state);
             this.GetComponent<BodypartBehaviour>().enabled = state;
             this.GetComponent<PlayerInteraction>().enabled = state;
         }
