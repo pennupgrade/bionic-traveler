@@ -136,7 +136,6 @@
                         {
                             if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Die))
                             {
-
                                 var dieTask = new TaskDie(this.Owner);
                                 dieTask.Assign();
                             }
