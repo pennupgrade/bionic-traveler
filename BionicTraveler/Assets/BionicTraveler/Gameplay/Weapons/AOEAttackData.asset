@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f703dca8571e1a049896eaa27acef399, type: 3}
-  m_Name: AoeAttackData
+  m_Name: AOEAttackData
   m_EditorClassIdentifier: 
   displayName: AOEAttack
   type: 1
@@ -36,3 +36,4 @@ MonoBehaviour:
   projectileSpeed: 0
   projectileDestroyOnImpact: 1
   prefab: {fileID: -8801388062665321307, guid: 6a9aec31edd6cf24dbcdfa1b79e3de85, type: 3}
+  disableMeleeKnowback: 0

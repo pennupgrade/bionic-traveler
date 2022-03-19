@@ -43,4 +43,15 @@
         /// <inheritdoc/>
         public override QuestEventType Type => QuestEventType.InventoryChanged;
     }
+
+    /// <summary>
+    /// Event related to inventory changes.
+    /// </summary>
+    public class QuestEventEnemyKilled : QuestEvent
+    {
+        /// <inheritdoc/>
+        /// 
+        public string targetKilled;
+        public override QuestEventType Type => QuestEventType.EnemyKilled;
+    }
 }

@@ -22,6 +22,9 @@
         private LootTable loot;
 
         [SerializeField]
+        private string name;
+
+        [SerializeField]
         [TooltipAttribute("The entity relationships.")]
         private EntityRelationships relationships;
 
@@ -231,6 +234,11 @@
         {
             var item = this.Inventory.DropAll();
             this.taskManager.ShutDown();
+            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
+
+            var killQuest = new Quests.QuestEventEnemyKilled();
+            killQuest.targetKilled = name;
+            questManager.ProcessEvent(killQuest);
             base.OnDied();
         }
 

@@ -96,9 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28e73d6181564947b67bde56d90d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 1
+  baseMovementSpeed: 1
   loot: {fileID: 11400000, guid: dc951b9dee7908c4faa111bd70ecc571, type: 2}
+  name: WildKnight
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
+  defaultWeapon: {fileID: 0}
+  cannotBeKnockedBack: 0
+  dontUpdateAnimatorForMovement: 0
 --- !u!61 &6996750241559796613
 BoxCollider2D:
   m_ObjectHideFlags: 0
