@@ -9,7 +9,7 @@ namespace BionicTraveler
     /// </summary>
     public class InventorySlot : MonoBehaviour
     {
-        private Inventory inventory;
+        private BasicInventory inventory;
         private InventoryUI owner;
         private InventoryItem item;
 
@@ -33,7 +33,7 @@ namespace BionicTraveler
             this.icon.sprite = item.ItemData.InventorySprite != null
                 ? item.ItemData.InventorySprite : owner.PlaceholderSprite;
             this.icon.enabled = true;
-            this.removeButton.interactable = true;
+            this.removeButton.interactable = this.inventory.SupportsDropping;
             this.quantityText.enabled = true;
             this.quantityText.text = item.Quantity.ToString();
         }
@@ -43,7 +43,7 @@ namespace BionicTraveler
         /// </summary>
         public void UseItem()
         {
-            if (this.item != null)
+            if (this.item != null && this.inventory.SupportsUsage)
             {
                 this.inventory.Use(this.item);
             }

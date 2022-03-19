@@ -9,7 +9,6 @@ namespace BionicTraveler.Scripts.Menus
     public class WindowManager : MonoBehaviour
     {
         private Menu openedMenu;
-        private Object args;
 
         /// <summary>
         /// Gets the singleton instance of WindowManager.
@@ -36,6 +35,7 @@ namespace BionicTraveler.Scripts.Menus
             }
             else if (Input.GetKeyDown(KeyCode.I))
             {
+                InventoryUI.Instance.SetUsePlayerInventory();
                 this.ToggleMenu(InventoryUI.Instance);
             }
         }
@@ -44,28 +44,18 @@ namespace BionicTraveler.Scripts.Menus
         /// Called upon pressing a keyboard button related to a menu to toggle the visibility of the menu.
         /// </summary>
         /// <param name="menuInstance">The menu to toggle.</param>
-        /// <param name="options">Additional parameters to pass in.</param>
-        public void ToggleMenu(Menu menuInstance, Object options = null)
+        public void ToggleMenu(Menu menuInstance)
         {
             this.CloseCurrentMenu();
-        
-            if (this.openedMenu == menuInstance && options == this.args)
+
+            if (this.openedMenu == menuInstance)
             {
                 this.openedMenu = null;
-                this.args = null;
             }
             else
             {
                 this.openedMenu = menuInstance;
-                this.args = options;
-                if (options)
-                {
-                    this.openedMenu.Open(options);
-                }
-                else
-                {
-                    this.openedMenu.Open();
-                }
+                this.openedMenu.Open();
             }
         }
 

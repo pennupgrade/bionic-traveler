@@ -11,7 +11,7 @@ namespace BionicTraveler
     /// </summary>
     public class InventoryUI : Menu
     {
-        private Inventory inventory;
+        private BasicInventory inventory;
         private InventorySlot[] slots;
 
         [SerializeField]
@@ -28,7 +28,7 @@ namespace BionicTraveler
         /// <summary>
         /// Gets the associated inventory.
         /// </summary>
-        public Inventory Inventory => this.inventory;
+        public BasicInventory Inventory => this.inventory;
 
         /// <summary>
         /// Gets the placeholder sprite for items.
@@ -40,42 +40,38 @@ namespace BionicTraveler
         {
             base.Start();
 
-            // TODO: Refactor to be hooked up elsewhere for the player so we can support multiple
-            // owners/inventories.
+            this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
+            this.SetUsePlayerInventory();
+        }
+
+        /// <summary>
+        /// Sets the inventory data to use the player's current inventory.
+        /// </summary>
+        public void SetUsePlayerInventory()
+        {
             var player = GameObject.FindGameObjectWithTag("Player");
             this.SetInventoryData(player.GetComponent<DynamicEntity>().Inventory);
-            this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
-            this.UpdateUI();
         }
 
         /// <summary>
         /// Sets the inventory data to use.
         /// </summary>
         /// <param name="inventory">The inventory.</param>
-        public void SetInventoryData(Inventory inventory)
+        public void SetInventoryData(BasicInventory inventory)
         {
+            if (this.inventory != null)
+            {
+                this.inventory.ItemsChanged -= this.Inventory_ItemsChanged;
+                this.inventory = null;
+            }
+
             this.inventory = inventory;
             this.inventory.ItemsChanged += this.Inventory_ItemsChanged;
-        }
-
-        private void Inventory_ItemsChanged(Inventory sender, InventoryItem item)
-        {
             this.UpdateUI();
         }
 
-        public override void Open(Object dynamicEntity)
+        private void Inventory_ItemsChanged(BasicInventory sender, InventoryItem item)
         {
-            this.SetInventoryData(((DynamicEntity)dynamicEntity).Inventory);
-            this.UpdateUI();
-            this.Open();
-        }
-
-        public override void Close()
-        {
-            base.Close();
-            var player = GameObject.FindGameObjectWithTag("Player");
-            this.SetInventoryData(player.GetComponent<DynamicEntity>().Inventory);
-            this.slots = this.itemsParent.GetComponentsInChildren<InventorySlot>();
             this.UpdateUI();
         }
 

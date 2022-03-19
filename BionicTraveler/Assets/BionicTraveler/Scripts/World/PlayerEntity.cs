@@ -198,7 +198,7 @@ namespace BionicTraveler.Scripts.World
             this.diedFromLowEnergy = false;
         }
 
-        private void Inventory_ItemsChanged(Inventory sender, InventoryItem item)
+        private void Inventory_ItemsChanged(BasicInventory sender, InventoryItem item)
         {
             // TODO: Improve lookup/make singleton.
             var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();

@@ -1,10 +1,11 @@
-using BionicTraveler.Scripts.World;
 
 namespace BionicTraveler.Scripts.Menus
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.Items;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -15,7 +16,10 @@ namespace BionicTraveler.Scripts.Menus
         private Renderer rendererComponent;
         private SaveManager saveManager;
         private bool isOnTreasure;
-        private DynamicEntity dynamicEntity;
+
+        [SerializeField]
+        private LootTable lootTable;
+        private ObjectInventory inventory;
 
         /// <summary>
         /// Sets instance of SaveManager and adds the Treasure.cs's save and load functions
@@ -27,7 +31,8 @@ namespace BionicTraveler.Scripts.Menus
             this.saveManager.IsSaving += this.Save;
             this.saveManager.IsLoading += this.Load;
             this.rendererComponent = this.GetComponent<Renderer>();
-            this.dynamicEntity = this.GetComponent<DynamicEntity>();
+            this.inventory = new ObjectInventory();
+            this.inventory.AddFromLootTable(this.lootTable);
             this.Load();
         }
 
@@ -69,8 +74,8 @@ namespace BionicTraveler.Scripts.Menus
         {
             if (this.isOnTreasure && Input.GetKeyDown(KeyCode.L))
             {
-                WindowManager.Instance.ToggleMenu(InventoryUI.Instance, this.dynamicEntity);
-                // WindowManager.Instance.ToggleMenu(InventoryUI.Instance);
+                InventoryUI.Instance.SetInventoryData(this.inventory);
+                WindowManager.Instance.ToggleMenu(InventoryUI.Instance);
             }
         }
 

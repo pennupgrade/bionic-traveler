@@ -135,10 +135,7 @@
 
             if (this.loot != null)
             {
-                foreach (var item in this.loot.Items)
-                {
-                    this.Inventory.AddItem(item);
-                }
+                this.Inventory.AddFromLootTable(this.loot);
             }
         }
 
