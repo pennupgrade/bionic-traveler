@@ -208,12 +208,6 @@
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.U))
-                    {
-                        this.combatTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
-                        sender.AdvanceTo(EntityGoal.Combat);
-                    }
-
                     break;
                 case FSMSubState.Leave:
                     Debug.Log("Idle - Leave");

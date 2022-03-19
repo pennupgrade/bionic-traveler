@@ -51,7 +51,7 @@
                 this.isIdle = true;
             }
 
-            if (Debug.isDebugBuild && Input.GetKey(KeyCode.LeftShift))
+            if (Debug.isDebugBuild && Input.GetButton("[Debug] Move Quickly"))
             {
                 this.movementSpeedFrameMult = 5;
                 this.isIdle = false;

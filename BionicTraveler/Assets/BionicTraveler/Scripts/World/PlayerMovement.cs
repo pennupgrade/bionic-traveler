@@ -133,7 +133,7 @@
                 this.moveState = MovementState.Dashing;
             }
 
-            if (Input.GetButtonDown("Slash1") && !this.player.WeaponsInventory.IsUnarmed)
+            if (Input.GetButtonDown("Attack 1") && !this.player.WeaponsInventory.IsUnarmed)
             {
                 this.player.WeaponsInventory.DisplayCurrentWeapon();
                 if (this.player.WeaponsInventory.equippedWeaponBehavior.IsReady(this.player))
@@ -146,7 +146,7 @@
             }
 
             // Secondary attack.
-            if (Input.GetKeyDown(KeyCode.Q) && !this.player.WeaponsInventory.IsUnarmed)
+            if (Input.GetButtonDown("Attack2") && !this.player.WeaponsInventory.IsUnarmed)
             {
                 this.player.WeaponsInventory.DisplayCurrentWeapon();
                 if (this.player.WeaponsInventory.equippedWeaponBehavior.IsReady(this.player))
@@ -158,7 +158,7 @@
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Input.GetButtonDown("Switch Weapon"))
             {
                 this.StopAllMovement("Switching weapon!");
                 this.player.WeaponsInventory.ToggleWeaponVisibility();
