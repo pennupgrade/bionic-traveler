@@ -1,4 +1,4 @@
-namespace BionicTraveler.Scripts.Interaction
+ namespace BionicTraveler.Scripts.Interaction
 {
     /// <summary>
     /// An interactable NPC with some dialogue. Will display a character portrait next to the dialogue.

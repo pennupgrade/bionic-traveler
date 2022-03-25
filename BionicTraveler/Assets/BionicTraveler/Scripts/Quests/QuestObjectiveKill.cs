@@ -36,7 +36,6 @@
         /// <param name="questEventInventory">The event.</param>
         public void ProcessEvent(QuestEventEnemyKilled questEventKilled)
         {
-            Debug.Log("WOW IT WORKS PLS: " +questEventKilled.targetKilled);
             if (this.enemyName == questEventKilled.targetKilled)
             {
                 this.KilledEnough();

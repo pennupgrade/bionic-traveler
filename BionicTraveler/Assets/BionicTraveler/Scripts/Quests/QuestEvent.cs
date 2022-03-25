@@ -14,6 +14,11 @@
         /// The player's inventory has changed.
         /// </summary>
         InventoryChanged,
+
+        /// <summary>
+        /// The player's inventory has changed.
+        /// </summary>
+        SpokenWith,
     }
 
     /// <summary>
@@ -45,7 +50,7 @@
     }
 
     /// <summary>
-    /// Event related to inventory changes.
+    /// Event related to killing an enemy changes.
     /// </summary>
     public class QuestEventEnemyKilled : QuestEvent
     {
@@ -53,5 +58,16 @@
         /// 
         public string targetKilled;
         public override QuestEventType Type => QuestEventType.EnemyKilled;
+    }
+
+    /// <summary>
+    /// Event related to inventory changes.
+    /// </summary>
+    public class QuestEventSpokenTo : QuestEvent
+    {
+        /// <inheritdoc/>
+        /// 
+        public string personSpokenTo;
+        public override QuestEventType Type => QuestEventType.SpokenWith;
     }
 }

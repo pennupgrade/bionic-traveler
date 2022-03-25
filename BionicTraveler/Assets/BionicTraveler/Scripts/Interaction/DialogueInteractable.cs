@@ -59,6 +59,11 @@ namespace BionicTraveler.Scripts.Interaction
             }
 
             Debug.Log("NPC has been interacted by " + obj.name);
+            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
+
+            var speakWithQuest = new Quests.QuestEventSpokenTo();
+            speakWithQuest.personSpokenTo = overrideCharacterName;
+            questManager.ProcessEvent(speakWithQuest);
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
             player.IsIgnoredByEveryone = true;
