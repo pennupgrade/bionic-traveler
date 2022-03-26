@@ -35,7 +35,7 @@ namespace BionicTraveler.Scripts
             this.justSpawnedPlayer = true;
             this.player = player;
             this.player.GetComponent<PlayerEntity>().SetDirection(this.player.transform.position + Vector3.down);
-            StartCoroutine(Transition(Vector3.down, 4.01f));
+            StartCoroutine(Transition(Vector3.down, 2.01f));
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -72,7 +72,7 @@ namespace BionicTraveler.Scripts
             while (i < dist)
             {
                 i += Time.deltaTime;
-                t.position += dir * Time.deltaTime;
+                t.position += 2 * Time.deltaTime * dir;
                 yield return null;
             }
             
