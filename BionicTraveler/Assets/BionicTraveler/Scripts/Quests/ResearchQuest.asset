@@ -25,5 +25,6 @@ MonoBehaviour:
     00000000:
       type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
+        notifPrefab: {fileID: 0}
         targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
         itemCount: 1
