@@ -24,8 +24,8 @@ namespace BionicTraveler.Scripts.AI
         MoveFromEntity,
         Teleport,
         WatchdogCharge,
-        PlayAnimation
-    }
+        PlayAnimation,
+        Spawn    }
 
     /// <summary>
     /// Abstract base class for tasks that can be assigned to entities.
@@ -158,7 +158,6 @@ namespace BionicTraveler.Scripts.AI
                 return;
             }
 
-            Debug.Log(reason);
             this.End(successful);
         }
 
