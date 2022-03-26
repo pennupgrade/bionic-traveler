@@ -40,7 +40,7 @@ namespace BionicTraveler.Scripts
             var editorLaunch = UnityEditor.EditorPrefs.GetBool("JustLaunchedFromEditor");
             if (editorLaunch)
             {
-                Debug.Log("GameplayMainPersistence::OnBeforeSceneLoad: Editor launch detected");
+                //Debug.Log("GameplayMainPersistence::OnBeforeSceneLoad: Editor launch detected");
             }
 #endif
 
@@ -57,11 +57,11 @@ namespace BionicTraveler.Scripts
 
                 var obj = GameObject.Instantiate(asset);
                 obj.name = "GameplayMain_Injected";
-                Debug.Log("Added new GameplayMain prefab instance to scene");
+                //Debug.Log("Added new GameplayMain prefab instance to scene");
             }
             else
             {
-                Debug.Log("GameplayMain already exists on scene");
+                //Debug.Log("GameplayMain already exists on scene");
             }
         }
     }

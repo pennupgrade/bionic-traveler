@@ -49,7 +49,7 @@ namespace BionicTraveler.Scripts
                 this.player = Instantiate(this.playerPrefab);
                 this.player.name = "Player_Spawned";
                 this.player.transform.position = spawnPoint.transform.position;
-                Debug.Log("PlayerSpawnController::Awake: Initialized new player");
+                //Debug.Log("PlayerSpawnController::Awake: Initialized new player");
             }
 
             // If our spawn point is also a transition, tell it we just spawned there to prevent the

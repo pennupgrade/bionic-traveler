@@ -1,34 +1,31 @@
-﻿namespace BionicTraveler.Scripts.AI
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using BionicTraveler.Assets.Framework;
-    using BionicTraveler.Scripts.Combat;
-    using BionicTraveler.Scripts.World;
-    using Framework;
-    using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using BionicTraveler.Assets.Framework;
+using BionicTraveler.Scripts.AI;
+using BionicTraveler.Scripts.Combat;
+using BionicTraveler.Scripts.World;
+using Framework;
+using UnityEngine;
 
-    public class CasterEntityBehavior : EntityBehavior
+namespace BionicTraveler
+{
+    public class FamiliarEntityBehavior : EntityBehavior
     {
         [SerializeField]
         [Tooltip("The entity flags.")]
         private EntityFlags flags;
         private GameTime castTime;
 
-        [SerializeField]
-        private GameObject aoe;
 
         private Entity combatTarget;
-        private List<GameObject> activeAttacks;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CasterEntityBehavior"/> class.
-        /// </summary>
-        public CasterEntityBehavior() : base()
-        {
-            
-            this.activeAttacks = new List<GameObject>();
-        }
+        [SerializeField]
+        private GameObject bomberPrefab;
+
+        [SerializeField]
+        private float spawnInterval;
+
 
         /// <summary>
         /// Describes an entity's main goal.
@@ -93,7 +90,6 @@
                         if (this.CheckForNearbyTargets())
                         {
                             sender.AdvanceTo(EntityGoal.Combat);
-                            Debug.Log(this.combatTarget.GetComponent<Entity>().GetType());
                         }
                     }
 
@@ -122,7 +118,7 @@
                         }
                     }
                 }
-                
+               
             }
 
             return false;
@@ -178,19 +174,22 @@
             {
                 case FSMSubState.Enter:
                     this.Owner.TaskManager.ClearTasks();
-                    this.castTime = GameTime.Now;
+                    
 
-                    this.Owner.gameObject.GetComponent<Animator>().Play("Casting");
+                    this.Owner.gameObject.GetComponent<Animator>().Play("Casting"); // TODO: Replace with familiar anims once they exist
 
-                    GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
-                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().Initialize(this.Owner, this.combatTarget.transform);
-                    this.activeAttacks.Add(spawnedAttack);
+                    if (castTime == null || castTime.HasTimeElapsed(1f))
+                    {
+                        var spawnTask = new TaskSpawnGameObject(this.Owner, new List<GameObject> { bomberPrefab }, this.Pick);
+                        spawnTask.Assign();
+                        this.castTime = GameTime.Now;
+                    }
 
                     var moveTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
                     moveTask.Assign();
                     break;
                 case FSMSubState.Remain:
-                    if (this.castTime.HasTimeElapsed(1.5f))
+                    if (this.castTime.HasTimeElapsed(spawnInterval))
                     {
                         sender.AdvanceTo(EntityGoal.Patrol);
                     }
@@ -201,15 +200,10 @@
             }
         }
 
-        private void OnDestroy()
+        private GameObject Pick(List<GameObject> list)
         {
-            foreach (var attack in this.activeAttacks)
-            {
-                if (!attack.IsDestroyed())
-                {
-                    Destroy(attack);
-                }
-            }
+            return list.ToArray()[0];
         }
+
     }
 }

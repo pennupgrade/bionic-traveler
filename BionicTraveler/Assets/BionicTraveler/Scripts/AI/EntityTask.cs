@@ -23,7 +23,8 @@ namespace BionicTraveler.Scripts.AI
         Die,
         MoveFromEntity,
         Teleport,
-        WatchdogCharge
+        WatchdogCharge,
+        Spawn
     }
 
     /// <summary>
@@ -157,7 +158,6 @@ namespace BionicTraveler.Scripts.AI
                 return;
             }
 
-            Debug.Log(reason);
             this.End(successful);
         }
 

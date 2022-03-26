@@ -103,7 +103,7 @@ namespace BionicTraveler.Scripts.Audio
         public void StartBackgroundMusic()
         {
             string scene = SceneManager.GetActiveScene().name;
-            Debug.Log(scene);
+            //Debug.Log(scene);
 
             foreach (BackgroundClip s in backgroundClips)
             {

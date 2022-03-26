@@ -59,7 +59,7 @@
         ///<returns>True if the item was added to the inventory, false otherwise.</returns>
         public bool AddItem(ItemData item)
         {
-            Debug.Log("Inventory received item");
+            //Debug.Log("Inventory received item");
             if (item.Type == ItemType.Key)
             {
                 this.AddItem((ItemDataKey)item);
