@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
-  m_Name: SimpleQuest
+  m_Name: VFQuest
   m_EditorClassIdentifier: 
   title: Simple Quest
   description: Simple Quest with one stage

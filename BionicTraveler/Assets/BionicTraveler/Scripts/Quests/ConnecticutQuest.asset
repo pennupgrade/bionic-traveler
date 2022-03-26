@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
-  m_Name: SimpleQuest
+  m_Name: ConnecticutQuest
   m_EditorClassIdentifier: 
   title: Simple Quest
   description: Simple Quest with one stage
   stages:
-  - description: Kill da bat
+  - description: Speak to BFF
     objective:
-      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveKill
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveSpeakWith
       instance:
         id: 0
   references:
     version: 1
     00000000:
-      type: {class: QuestObjectiveKill, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      type: {class: QuestObjectiveSpeakWith, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
-        enemyName: Bat
-        killCount: 1
+        targetEntityName: BFF
