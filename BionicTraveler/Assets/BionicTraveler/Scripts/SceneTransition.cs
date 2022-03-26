@@ -1,3 +1,10 @@
+using System.Collections;
+using System.Numerics;
+using BionicTraveler.Scripts.World;
+using UnityEngine.Diagnostics;
+using UnityEngine.UIElements;
+using UnityEngine.XR;
+
 namespace BionicTraveler.Scripts
 {
     using Framework;
@@ -27,6 +34,8 @@ namespace BionicTraveler.Scripts
         {
             this.justSpawnedPlayer = true;
             this.player = player;
+            this.player.GetComponent<PlayerEntity>().SetDirection(this.player.transform.position + Vector3.down);
+            StartCoroutine(Transition(Vector3.down, 4.01f));
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -51,6 +60,23 @@ namespace BionicTraveler.Scripts
                     this.justSpawnedPlayer = false;
                 }
             }
+        }
+
+        // Slowly slides the player in an input direction for an input distance
+        private IEnumerator Transition(Vector3 dir, float dist)
+        {
+            Transform t = this.player.transform;
+            float i = 0f;
+            this.player.GetComponent<PlayerEntity>().DisableInput();
+            
+            while (i < dist)
+            {
+                i += Time.deltaTime;
+                t.position += dir * Time.deltaTime;
+                yield return null;
+            }
+            
+            this.player.GetComponent<PlayerEntity>().EnableInput();
         }
     }
 }
