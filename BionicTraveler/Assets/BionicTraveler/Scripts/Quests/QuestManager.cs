@@ -21,9 +21,6 @@ namespace BionicTraveler.Scripts.Quests
         [SerializeField]
         private Quest quest3;
 
-        public GameObject 
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestManager"/> class.
         /// </summary>
