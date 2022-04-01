@@ -49,6 +49,11 @@ namespace BionicTraveler.Scripts.Interaction
         /// </summary>
         public string OverrideCharacterName => this.overrideCharacterName;
 
+        /// <summary>
+        /// Gets a value indicating whether or not the dialogue is finished running.
+        /// </summary>
+        public bool HasRun => this.hasRun;
+
         /// <inheritdoc/>
         public virtual void OnInteract(GameObject obj)
         {

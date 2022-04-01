@@ -42,5 +42,22 @@
             var state = animator.GetCurrentAnimatorStateInfo(0);
             return state.IsName(name) && state.normalizedTime < 1;
         }
+
+        /// <summary>
+        /// Gets the normalized progress of <paramref name="name"/>.
+        /// </summary>
+        /// <param name="animator">The animator.</param>
+        /// <param name="name">The name of the animation.</param>
+        /// <returns>Whether animation has finished playing.</returns>
+        public static float GetAnimationProgress(this Animator animator, string name)
+        {
+            var state = animator.GetCurrentAnimatorStateInfo(0);
+            if (state.IsName(name))
+            {
+                return state.normalizedTime;
+            }
+
+            return -1.0f;
+        }
     }
 }
