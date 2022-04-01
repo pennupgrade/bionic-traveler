@@ -1,13 +1,14 @@
-﻿namespace BionicTraveler.Scripts.AI
+namespace BionicTraveler.Scripts.AI
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
-    public class BomberEntityBehavior : EntityBehavior
+    public class BearBehavior : EntityBehavior
     {
         [SerializeField]
         [Tooltip("The entity flags.")]
@@ -30,7 +31,7 @@
             /// <summary>
             /// The entity patrols.
             /// </summary>
-            Patrol,
+            Dying,
 
             /// <summary>
             /// The entity fights.
@@ -62,7 +63,7 @@
             var fsm = new FSM<EntityGoal>();
             fsm.SetDefaultState(EntityGoal.Idle);
             fsm.RegisterCallback(EntityGoal.Idle, this.IdleState);
-            fsm.RegisterCallback(EntityGoal.Patrol, this.PatrolState);
+            fsm.RegisterCallback(EntityGoal.Dying, this.DyingState);
             fsm.RegisterCallback(EntityGoal.Combat, this.CombatState);
             return fsm;
         }
@@ -84,10 +85,10 @@
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.U))
+                    if (this.Owner.IsDying)
                     {
-                        this.combatTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
-                        sender.AdvanceTo(EntityGoal.Combat);
+                        Debug.Log("BEAR IS DYING REEEE");
+                        sender.AdvanceTo(EntityGoal.Dying);
                     }
 
                     break;
@@ -97,19 +98,27 @@
             }
         }
 
-        private void PatrolState(FSM<EntityGoal> sender, EntityGoal currentState, FSMSubState subState)
+        private void DyingState(FSM<EntityGoal> sender, EntityGoal currentState, FSMSubState subState)
         {
+            var playerObj = GameObject.FindGameObjectWithTag("Player");
+            var interactableComp = this.GetComponent<DialogueInteractable>();
             switch (subState)
             {
                 case FSMSubState.Enter:
-                    Debug.Log("Patrol - Enter");
+                    Debug.Log("Dying - Enter");
                     this.Owner.TaskManager.ClearTasks();
+                    interactableComp.OnInteract(playerObj);
+                    //this.Owner.OnDied();
+
 
                     // TODO: Support walking/speed.
-                    var patrolTask = new TaskPatrol(this.Owner, PatrolType.Square);
-                    patrolTask.Assign();
                     break;
                 case FSMSubState.Remain:
+                    if (interactableComp.HasRun)
+                    {
+                        //this.Owner.Kill();
+                        this.Owner.OnDied();
+                    }
                     Debug.Log("Patrol - Remain");
                     break;
                 case FSMSubState.Leave:
@@ -129,50 +138,38 @@
                     Debug.Log("Combat - Enter");
                     break;
                 case FSMSubState.Remain:
-                    Debug.Log("Combat - Remain");
-                    if (this.explosionAttack != null)
+                    if (this.Owner.IsDying)
                     {
-                        if (this.explosionAttack.HasEnded)
-                        {
-                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Die))
-                            {
+                        Debug.Log("BEAR IS DYING REEEE");
+                        sender.AdvanceTo(EntityGoal.Dying);
 
-                                var dieTask = new TaskDie(this.Owner);
-                                dieTask.Assign();
-                                //var animTask = new TaskPlayAnimation(this.Owner, "DieAnim");
-                                //this.Owner.OnDied();
-                            }
-                        }
+                    }
+                    if (!followTask.IsActive)
+                    {
+                        this.followTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
+                        followTask.Assign();
                     }
                     else
                     {
-                        if (!followTask.IsActive)
-                        {
-                            this.followTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
-                            followTask.Assign();
-                        } else
-                        {
-                            
-                            Vector3 ownerPos = this.Owner.transform.position;
-                            Vector3 tgtPos = this.combatTarget.transform.position;
-                            var distanceToTarget = Vector3.Magnitude(tgtPos - ownerPos);
+                        Vector3 ownerPos = this.Owner.transform.position;
+                        Vector3 tgtPos = this.combatTarget.transform.position;
+                        var distanceToTarget = Vector3.Magnitude(tgtPos - ownerPos);
 
-                            if (distanceToTarget > 10f)
+                        if (distanceToTarget > 10f)
+                        {
+                            followTask.End("Out of Range", true);
+                            sender.AdvanceTo(EntityGoal.Idle);
+                        }
+                        if (distanceToTarget < 2f)
+                        {
+                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Attack))
                             {
-                                followTask.End("Out of Range", true);
-                                sender.AdvanceTo(EntityGoal.Idle);
-                            }
-                            if (distanceToTarget < 2f)
-                            {
-                                if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Attack))
-                                {
-                                    var attackTask = new TaskAttack(this.Owner, true);
-                                    attackTask.Assign();
-                                    this.explosionAttack = attackTask;
-                                }
+                                var attackTask = new TaskAttack(this.Owner, true);
+                                attackTask.Assign();
+                                this.explosionAttack = attackTask;
                             }
                         }
-                    }
+                    }      
                     break;
                 case FSMSubState.Leave:
                     Debug.Log("Combat - Leave");

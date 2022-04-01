@@ -77,7 +77,7 @@ namespace BionicTraveler.Scripts.Quests
         public void SetAsComplete()
         {
             // Generates a child for QuestNotification that is textmeshpro
-            GameObject main = GameObject.Find("GameplayMain");
+            /*GameObject main = GameObject.Find("GameplayMain");
             GameObject windowManage = main.transform.Find("WindowManager").gameObject;
 
             GameObject notif = Resources.Load("Prefabs/UI/QuestNotification") as GameObject;
@@ -88,7 +88,7 @@ namespace BionicTraveler.Scripts.Quests
             if (invoke)
             {
                 this.CompleteStateChanged?.Invoke(this, true);
-            }
+            }*/
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void SetAsIncomplete()
         {
-            GameObject windowManage = GameObject.Find("WindowManager");
+            /*GameObject windowManage = GameObject.Find("WindowManager");
             //Canvas windowManage = main.transform.Find("WindowManager").gameObject.GetComponent<Canvas>();
 
             var newNotif = GameObject.Instantiate(this.notifPrefab, windowManage.transform.position, Quaternion.identity);
@@ -117,7 +117,7 @@ namespace BionicTraveler.Scripts.Quests
             if (invoke)
             {
                 this.CompleteStateChanged?.Invoke(this, false);
-            }
+            }*/
         }
 
         /// <summary>

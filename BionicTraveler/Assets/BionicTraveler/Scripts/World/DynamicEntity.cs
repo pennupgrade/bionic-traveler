@@ -233,12 +233,13 @@
         public override void OnDied()
         {
             var item = this.Inventory.DropAll();
-            this.taskManager.ShutDown();
             var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
 
             var killQuest = new Quests.QuestEventEnemyKilled();
             killQuest.targetKilled = name;
             questManager.ProcessEvent(killQuest);
+
+            this.taskManager.ShutDown();
             base.OnDied();
         }
 

@@ -15,14 +15,16 @@ MonoBehaviour:
   title: Simple Quest
   description: Simple Quest with one stage
   stages:
-  - description: Speak to BFF
+  - description: Kill Bear
     objective:
-      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveSpeakWith
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveKill
       instance:
         id: 0
   references:
     version: 1
     00000000:
-      type: {class: QuestObjectiveSpeakWith, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      type: {class: QuestObjectiveKill, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
-        targetEntityName: BFF
+        notifPrefab: {fileID: 0}
+        enemyName: Bear
+        killCount: 1
