@@ -278,3 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flags: 1
   aoe: {fileID: 8837091373638637389, guid: 39e340f1a031f164aa1ce6ed385c0c74, type: 3}
+  teleportInSound: {fileID: 8300000, guid: 4f551661a08a7492ea82a289f7cac4c9, type: 3}
+  teleportOutSound: {fileID: 8300000, guid: 07351720eb16f44c6b3e4328cff1e548, type: 3}
+  casterAttackSound: {fileID: 8300000, guid: 6d1dffa72d0e94a7d8ed2708b2f9d7c8, type: 3}
+  deathSound: {fileID: 8300000, guid: daa42355df1ff44d2a5e2e35e0ab17ab, type: 3}

@@ -261,5 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c95744c66d53d0469abe842a65d2e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openSound: {fileID: 8300000, guid: d5607c9152d894dac8a6990ce464ba59, type: 3}
+  closeSound: {fileID: 8300000, guid: b1259137c59e74a118a57ad3f6c87a10, type: 3}
+  shootSound: {fileID: 8300000, guid: a1815f52c40f94fe7940ad793450361c, type: 3}
+  deathSound: {fileID: 8300000, guid: 5998e2258c7614d26a4efa4adcee5f87, type: 3}
   stickyTrapPod: {fileID: 8291050540564826038, guid: 75d2370b2df06dd44af080903e5e2b2e, type: 3}
   attackData: {fileID: 11400000, guid: 14df66402efe51141a42aa1b912e0ea6, type: 2}

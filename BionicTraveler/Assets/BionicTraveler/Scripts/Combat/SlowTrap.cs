@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts.Combat
 {
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -8,10 +9,19 @@ namespace BionicTraveler.Scripts.Combat
     /// </summary>
     public class SlowTrap : MonoBehaviour, IMovementModifier
     {
+
+        [SerializeField]
+        private AudioClip impactSound;
+
         /// <inheritdoc/>
         public float GetSpeedMultiplier(Entity entity)
         {
             return 0.3f;
+        }
+
+        public void Start()
+        {
+            AudioManager.Instance.PlayOneShot(impactSound);
         }
 
         /// <inheritdoc/>
