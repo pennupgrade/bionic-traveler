@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using BionicTraveler.Scripts.Interaction;
+    using BionicTraveler.Scripts.Quests;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -138,8 +139,7 @@
         {
             if (fatal)
             {
-                var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-                questManager.ProcessEvent(new Quests.QuestEventEnemyKilled(this.name));
+                QuestManager.Instance.ProcessEvent(new Quests.QuestEventEnemyKilled(this.name));
 
                 // Restore health and stop fighting.
                 sender.SetHealth(100);

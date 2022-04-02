@@ -20,7 +20,7 @@
 
         private void OnQuestFinished(Quest quest)
         {
-            if (quest.getTitle() == "BearQuest")
+            if (quest.Title == "BearQuest")
             {
                 this.bearDialogue.OnInteract(this.GetPlayer());
             }

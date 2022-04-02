@@ -27,7 +27,7 @@ namespace BionicTraveler.Scripts.Menus
             }
             else if (Input.GetButtonDown("Open Quests"))
             {
-                this.ToggleMenu(QuestManager.Instance);
+                this.ToggleMenu(QuestManagerUI.Instance);
             }
             else if (Input.GetButtonDown("Open Map"))
             {

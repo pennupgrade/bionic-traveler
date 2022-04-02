@@ -1,7 +1,7 @@
 namespace BionicTraveler.Scripts
 {
-    using BionicTraveler.Scripts.Audio;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.Audio;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -10,7 +10,7 @@ namespace BionicTraveler.Scripts
     /// stores a container for all the quests, the description box of the quest, the title of the description box,
     /// and the button template that gets copied everytime you create a quest.
     /// </summary>
-    public class QuestManager : Menu
+    public class QuestManagerUI : Menu
     {
         [SerializeField]
         private GameObject questContainer;
@@ -34,7 +34,7 @@ namespace BionicTraveler.Scripts
         /// <summary>
         /// Gets an instance of the QuestManager class -> used to make sure that there is the only one instance of QuestManager.
         /// </summary>
-        public static QuestManager Instance { get; private set; }
+        public static QuestManagerUI Instance { get; private set; }
 
         /// <summary>
         /// Adds a quest using inputted questName and description

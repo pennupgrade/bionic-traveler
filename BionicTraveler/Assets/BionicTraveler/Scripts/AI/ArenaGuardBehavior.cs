@@ -2,6 +2,7 @@ namespace BionicTraveler.Scripts.AI
 {
     using System.Linq;
     using BionicTraveler.Scripts.Interaction;
+    using BionicTraveler.Scripts.Quests;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -42,10 +43,8 @@ namespace BionicTraveler.Scripts.AI
                     break;
 
                 case FSMSubState.Remain:
-                    
                     if (this.IsPlayerClose())
                     {
-                        
                         sender.AdvanceTo(GuardState.Confronting);
                     }
                     break;
@@ -113,24 +112,15 @@ namespace BionicTraveler.Scripts.AI
         {
             if (this.EntityScanner != null)
             {
-                
                 var nearbyTargets = this.EntityScanner.GetAllDynamicInRange();
                 var target = nearbyTargets.FirstOrDefault(target => target.IsPlayer);
                 if (target != null)
                 {
-                    var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-                    //Debug.Log("PlayerClose Targetnot Null Running");
-                    foreach (var q in questManager.getCompletedQuests())
+                    if (QuestManager.Instance.HasCompletedQuest(this.clearCondition))
                     {
-                        
-                        
-                        if (q.getTitle().Equals(clearCondition))
-                        {
-                            
-                           return false;
-                        }
+                        return false;
                     }
-                    //Debug.Log("STOP");
+
                     return true;
                 }
             }

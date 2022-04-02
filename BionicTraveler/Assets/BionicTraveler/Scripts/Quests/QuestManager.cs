@@ -1,8 +1,7 @@
 namespace BionicTraveler.Scripts.Quests
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     /// <summary>
@@ -10,9 +9,7 @@ namespace BionicTraveler.Scripts.Quests
     /// </summary>
     public class QuestManager : MonoBehaviour
     {
-        public delegate void QuestFinishedEventHandler(Quest quest);
-
-        public event QuestFinishedEventHandler OnQuestFinished;
+        private static QuestManager instance;
 
         private List<Quest> currentQuests;
         private List<Quest> completedQuests;
@@ -30,14 +27,33 @@ namespace BionicTraveler.Scripts.Quests
             this.completedQuests = new List<Quest>();
         }
 
-        public List<Quest> getCompletedQuests()
-        {
-            return this.completedQuests;
-        }
+        /// <summary>
+        /// Delegate to inform about quest progress.
+        /// </summary>
+        /// <param name="quest">The quest</param>
+        public delegate void QuestProgressChangedEventHandler(Quest quest);
 
-        public List<Quest> getCurrentQuests()
+        /// <summary>
+        /// Event to inform about when a quest has been completed.
+        /// </summary>
+        public event QuestProgressChangedEventHandler OnQuestFinished;
+
+        /// <summary>
+        /// Gets the audio manager instance.
+        /// </summary>
+        public static QuestManager Instance => QuestManager.instance;
+
+        private void Awake()
         {
-            return this.currentQuests;
+            if (QuestManager.instance != null && QuestManager.instance != this)
+            {
+                Destroy(this);
+                throw new System.Exception("An instance of this singleton already exists.");
+            }
+            else
+            {
+                QuestManager.instance = this;
+            }
         }
 
         /// <summary>
@@ -58,7 +74,6 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void Start()
         {
-            Debug.Log("Quests Have started");
             if (Debug.isDebugBuild)
             {
                 foreach (Quest q in this.quests)
@@ -67,6 +82,14 @@ namespace BionicTraveler.Scripts.Quests
                 }
             }
         }
+
+        /// <summary>
+        /// Checks if the quest is completed.
+        /// </summary>
+        /// <param name="name">The name of the quest.</param>
+        /// <returns>Whether the quest has been completed.</returns>
+        public bool HasCompletedQuest(string name)
+            => this.completedQuests.Any(quest => quest.Title == name);
 
         private void AddQuest(Quest quest)
         {

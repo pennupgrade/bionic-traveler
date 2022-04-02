@@ -92,7 +92,7 @@ namespace BionicTraveler.Scripts
         public void SetIsCompleted(bool completed)
         {
             this.isCompleted = completed;
-            QuestManager.Instance.CompleteQuest(this.questName);
+            QuestManagerUI.Instance.CompleteQuest(this.questName);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace BionicTraveler.Scripts
         /// </summary>
         public void OnClick()
         {
-            QuestManager.Instance.QuestClicked(this.name, this.description);
+            QuestManagerUI.Instance.QuestClicked(this.name, this.description);
             this.clickedCount += 1;
             if (this.clickedCount == 5)
             {

@@ -1,7 +1,6 @@
 namespace BionicTraveler.Scripts.Quests
 {
     using System;
-    using TMPro;
     using UnityEngine;
 
     /// <summary>
@@ -46,8 +45,6 @@ namespace BionicTraveler.Scripts.Quests
         // Since this is a ScriptableObject, all state is serialized by default. We disable this for the
         // following properties so they get reset on each start.
 
-        public GameObject notifPrefab;
-
         /// <summary>
         /// Gets a value indicating whether this objective is complete.
         /// </summary>
@@ -76,13 +73,6 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void SetAsComplete()
         {
-            // Generates a child for QuestNotification that is textmeshpro
-            /*GameObject main = GameObject.Find("GameplayMain");
-            GameObject windowManage = main.transform.Find("WindowManager").gameObject;
-
-            GameObject notif = Resources.Load("Prefabs/UI/QuestNotification") as GameObject;
-            notif.GetComponent<TextMeshPro>().text = "goodbye world";*/
-
             bool invoke = this.IsComplete != true;
             this.IsComplete = true;
             if (invoke)
@@ -96,22 +86,6 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void SetAsIncomplete()
         {
-            /*GameObject windowManage = GameObject.Find("WindowManager");
-            //Canvas windowManage = main.transform.Find("WindowManager").gameObject.GetComponent<Canvas>();
-
-            var newNotif = GameObject.Instantiate(this.notifPrefab, windowManage.transform.position, Quaternion.identity);
-            
-            if (windowManage)
-            {
-                Debug.Log("found windowManage");
-            }
-            if (newNotif)
-            {
-                Debug.Log("found notif");
-            }
-            //notif.GetComponent<TextMeshPro>().text = "hello world";
-            newNotif.transform.parent = windowManage.transform;*/
-
             bool invoke = this.IsComplete != false;
             this.IsComplete = false;
             if (invoke)

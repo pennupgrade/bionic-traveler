@@ -77,9 +77,20 @@
     /// </summary>
     public class QuestEventSpokenTo : QuestEvent
     {
-        /// <inheritdoc/>
-        /// 
-        public string personSpokenTo;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestEventSpokenTo"/> class.
+        /// </summary>
+        /// <param name="npcName">The name of the NPC.</param>
+        public QuestEventSpokenTo(string npcName)
+        {
+            this.NpcName = npcName;
+        }
+
         public override QuestEventType Type => QuestEventType.SpokenWith;
+
+        /// <summary>
+        /// Gets the name of the NPC that was spoken to.
+        /// </summary>
+        public string NpcName { get; }
     }
 }
