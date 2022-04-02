@@ -174,5 +174,10 @@
 
             return !string.IsNullOrWhiteSpace(result) ? result : "Inventory is empty";
         }
+
+        public void Clear()
+        {
+            this.items.Clear();
+        }
     }
 }

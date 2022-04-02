@@ -47,6 +47,14 @@
             //this.equippedWeaponBehavior = null;
         }
 
+        public void Destroy()
+        {
+            GameObject.Destroy(this.weaponWorldObject);
+            this.equippedWeapon = null;
+            this.weaponWorldObject = null;
+            this.equippedWeaponBehavior = null;
+        }
+
         public void ToggleWeaponVisibility()
         {
             if (!this.IsWeaponVisible)

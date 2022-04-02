@@ -1,11 +1,16 @@
 ﻿namespace BionicTraveler.Scripts.Items
 {
     using UnityEngine;
+    using System;
+    using System.Runtime.Serialization;
+    using System.Reflection;
+    using UnityEditor;
 
     /// <summary>
     /// An item inside an inventory.
     /// </summary>
-    public class InventoryItem
+    [Serializable]
+    public class InventoryItem : ISerializable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InventoryItem"/> class.
@@ -20,11 +25,12 @@
         /// <summary>
         /// Gets the item data.
         /// </summary>
-        public ItemData ItemData { get; }
+        public ItemData ItemData { get; set; }
 
         /// <summary>
         /// Gets the quantity of the item.
         /// </summary>
+        [SerializeField]
         public int Quantity { get; private set; }
 
         /// <summary>
@@ -58,6 +64,21 @@
                 Debug.LogWarning($"InventoryItem::Remove: Attempt to remove more items of type ${this.ItemData.Id} than in inventory.");
                 this.Quantity = 0;
             }
+        }
+
+        // Implement this method to serialize data. The method is called on serialization.
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("ItemData", AssetDatabase.GetAssetPath(ItemData), typeof(string));
+            info.AddValue("quantity", Quantity);
+        }
+
+        // The special constructor is used to deserialize values.
+        // In this case, it recreate the original ScriptableObject.
+        public InventoryItem(SerializationInfo info, StreamingContext context)
+        {
+            Quantity = (int) info.GetValue("quantity", typeof(int));
+            ItemData = (ItemData) AssetDatabase.LoadAssetAtPath((string)info.GetValue("ItemData", typeof(string)), typeof(ItemData));
         }
     }
 }
