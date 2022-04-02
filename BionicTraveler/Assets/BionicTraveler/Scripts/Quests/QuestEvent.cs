@@ -54,10 +54,22 @@
     /// </summary>
     public class QuestEventEnemyKilled : QuestEvent
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestEventEnemyKilled"/> class.
+        /// </summary>
+        /// <param name="enemyName">The name of the enemy.</param>
+        public QuestEventEnemyKilled(string enemyName)
+        {
+            this.EnemyName = enemyName;
+        }
+
         /// <inheritdoc/>
-        /// 
-        public string targetKilled;
         public override QuestEventType Type => QuestEventType.EnemyKilled;
+
+        /// <summary>
+        /// Gets the name of the enemy that was killed.
+        /// </summary>
+        public string EnemyName { get; }
     }
 
     /// <summary>

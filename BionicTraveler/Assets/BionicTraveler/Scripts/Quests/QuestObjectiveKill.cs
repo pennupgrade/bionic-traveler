@@ -33,22 +33,23 @@
         /// Calls are made from <see cref="QuestStage.ProcessEvent(QuestEvent)"/> through double
         /// dispatching to select the correct overload.
         /// </summary>
-        /// <param name="questEventInventory">The event.</param>
+        /// <param name="questEventKilled">The event.</param>
         public void ProcessEvent(QuestEventEnemyKilled questEventKilled)
         {
-            if (this.enemyName == questEventKilled.targetKilled)
+            if (this.enemyName == questEventKilled.EnemyName)
             {
-                this.KilledEnough();
-            } else
+                this.CheckHasKilledEnough();
+            }
+            else
             {
                 Debug.Log("killed wrong type of enemy");
             }
         }
 
-        private void KilledEnough()
+        private void CheckHasKilledEnough()
         {
-            killCount--;
-            if (killCount < 1)
+            this.killCount--;
+            if (this.killCount < 1)
             {
                 Debug.Log("killed enough of the enemy");
                 this.SetAsComplete();

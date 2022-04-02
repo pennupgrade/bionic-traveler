@@ -235,8 +235,7 @@
             var item = this.Inventory.DropAll();
             var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
 
-            var killQuest = new Quests.QuestEventEnemyKilled();
-            killQuest.targetKilled = name;
+            var killQuest = new Quests.QuestEventEnemyKilled(this.name);
             questManager.ProcessEvent(killQuest);
 
             this.taskManager.ShutDown();
