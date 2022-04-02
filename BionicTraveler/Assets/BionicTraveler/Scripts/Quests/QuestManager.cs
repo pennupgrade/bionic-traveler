@@ -10,16 +10,13 @@ namespace BionicTraveler.Scripts.Quests
     /// </summary>
     public class QuestManager : MonoBehaviour
     {
+        public delegate void QuestFinishedEventHandler(Quest quest);
+
+        public event QuestFinishedEventHandler OnQuestFinished;
+
         private List<Quest> currentQuests;
         private List<Quest> completedQuests;
         private Quest activeQuest;
-
-        /*[SerializeField]
-        private Quest quest1;
-        [SerializeField]
-        private Quest quest2;
-        [SerializeField]
-        private Quest quest3;*/
 
         [SerializeField]
         private List<Quest> quests;
@@ -64,18 +61,17 @@ namespace BionicTraveler.Scripts.Quests
             Debug.Log("Quests Have started");
             if (Debug.isDebugBuild)
             {
-                foreach (Quest q in quests) {
+                foreach (Quest q in this.quests)
+                {
                     this.AddQuest(q);
                 }
-                //this.AddQuest(this.quest1);
-                //this.AddQuest(this.quest2);
-                //this.AddQuest(this.quest3);
             }
         }
 
         private void AddQuest(Quest quest)
         {
             quest.Initialize(this);
+            quest.StateChanged += this.Quest_StateChanged;
             this.currentQuests.Add(quest);
 
             // First quest, active by default.
@@ -93,26 +89,31 @@ namespace BionicTraveler.Scripts.Quests
             }
 
             this.activeQuest = quest;
-            this.activeQuest.StateChanged += this.ActiveQuest_StateChanged;
             this.activeQuest.SetAsActiveQuest(true);
             Debug.Log("New active quest set!");
         }
 
-        private void ActiveQuest_StateChanged(Quest sender, QuestState newState)
+        private void Quest_StateChanged(Quest sender, QuestState newState)
         {
             Debug.Log("Our active quest changed its state to " + newState);
             if (newState == QuestState.Finished)
             {
-                this.ArchiveActiveQuest(sender);
+                this.OnQuestFinished?.Invoke(sender);
+                this.ArchiveQuest(sender);
             }
         }
 
-        private void ArchiveActiveQuest(Quest quest)
+        private void ArchiveQuest(Quest quest)
         {
-            Debug.Log("Action quest has finished, archiving");
+            Debug.Log("Quest has finished, archiving");
+            quest.StateChanged -= this.Quest_StateChanged;
             this.currentQuests.Remove(quest);
             this.completedQuests.Add(quest);
-            this.activeQuest = null;
+
+            if (this.activeQuest == quest)
+            {
+                this.activeQuest = null;
+            }
         }
     }
 }

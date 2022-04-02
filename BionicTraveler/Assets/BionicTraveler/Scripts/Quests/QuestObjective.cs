@@ -81,15 +81,14 @@ namespace BionicTraveler.Scripts.Quests
             GameObject windowManage = main.transform.Find("WindowManager").gameObject;
 
             GameObject notif = Resources.Load("Prefabs/UI/QuestNotification") as GameObject;
-            notif.GetComponent<TextMeshPro>().text = "goodbye world";
+            notif.GetComponent<TextMeshPro>().text = "goodbye world";*/
 
             bool invoke = this.IsComplete != true;
             this.IsComplete = true;
             if (invoke)
             {
                 this.CompleteStateChanged?.Invoke(this, true);
-            }*/
-            IsComplete = true;
+            }
         }
 
         /// <summary>
@@ -111,14 +110,14 @@ namespace BionicTraveler.Scripts.Quests
                 Debug.Log("found notif");
             }
             //notif.GetComponent<TextMeshPro>().text = "hello world";
-            newNotif.transform.parent = windowManage.transform;
+            newNotif.transform.parent = windowManage.transform;*/
 
             bool invoke = this.IsComplete != false;
             this.IsComplete = false;
             if (invoke)
             {
                 this.CompleteStateChanged?.Invoke(this, false);
-            }*/
+            }
         }
 
         /// <summary>

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
-  m_Name: SimpleQuest
+  m_Name: BearQuest
   m_EditorClassIdentifier: 
-  title: Simple Quest
+  title: BearQuest
   description: Simple Quest with one stage
   stages:
-  - description: Kill da bat
+  - description: Kill the bear.
     objective:
       typeName: BionicTraveler.Scripts.Quests.QuestObjectiveKill
       instance:
@@ -25,5 +25,6 @@ MonoBehaviour:
     00000000:
       type: {class: QuestObjectiveKill, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
-        enemyName: Bat
+        notifPrefab: {fileID: 0}
+        enemyName: Bear
         killCount: 1

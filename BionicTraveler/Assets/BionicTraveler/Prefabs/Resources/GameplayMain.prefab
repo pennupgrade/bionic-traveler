@@ -9640,6 +9640,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 2858765800514545444}
+--- !u!114 &3063530213700171668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293177730601307588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483f95a8d7c35324b890ddedad7e92c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bearDialogue: {fileID: 4041880690306281160}
+--- !u!114 &4041880690306281160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6293177730601307588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f66edc6b5851e94a85f547763df1052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
+  dialogueStartNode: greenGuy_start
+  multipleRuns: 0
+  persistState: 0
+  overrideCharacterName: 
+  disableSpeechAudio: 0
 --- !u!1 &6764816071129467028
 GameObject:
   m_ObjectHideFlags: 0
@@ -10176,7 +10207,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f0d1ef43071f8074fab1f3a4253aed73, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[0]
@@ -10185,7 +10216,7 @@ PrefabInstance:
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 219682216c04d60428b0f7b3ea354035, type: 2}
+      objectReference: {fileID: 11400000, guid: bc34054cb2189da4bb6b0c0932759782, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[2]
       value: 
@@ -10243,6 +10274,11 @@ PrefabInstance:
 --- !u!4 &6293177730601307590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6818921655187003255, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
+  m_PrefabInstance: {fileID: 717328892024593073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6293177730601307588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6818921655187003253, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
   m_PrefabInstance: {fileID: 717328892024593073}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1087888630845619731

@@ -1,10 +1,6 @@
 namespace BionicTraveler.Scripts.AI
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using BionicTraveler.Assets.Framework;
-    using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -85,7 +81,7 @@ namespace BionicTraveler.Scripts.AI
                         }
                     }
 
-                    if (this.Owner.IsDying)
+                    if (this.Owner.IsDeadOrDying)
                     {
                         Debug.Log("BEAR IS DYING REEEE");
                         sender.AdvanceTo(EntityGoal.Dying);
@@ -101,24 +97,13 @@ namespace BionicTraveler.Scripts.AI
         private void DyingState(FSM<EntityGoal> sender, EntityGoal currentState, FSMSubState subState)
         {
             var playerObj = GameObject.FindGameObjectWithTag("Player");
-            var interactableComp = this.GetComponent<DialogueInteractable>();
             switch (subState)
             {
                 case FSMSubState.Enter:
                     Debug.Log("Dying - Enter");
                     this.Owner.TaskManager.ClearTasks();
-                    interactableComp.OnInteract(playerObj);
-                    //this.Owner.OnDied();
-
-
-                    // TODO: Support walking/speed.
                     break;
                 case FSMSubState.Remain:
-                    if (interactableComp.HasRun)
-                    {
-                        //this.Owner.Kill();
-                        this.Owner.OnDied();
-                    }
                     Debug.Log("Patrol - Remain");
                     break;
                 case FSMSubState.Leave:

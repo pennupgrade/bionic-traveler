@@ -119,12 +119,10 @@ namespace BionicTraveler.Scripts.Quests
             //Debug.Log("Quest::ProcessEvent is being run");
             this.activeStage.ProcessEvent(questEvent);
 
-            Objective_CompleteStateChanged(activeStage.Objective, true);
-
-            //if (this.activeStage.IsComplete)
-            //{
-            //    Debug.Log(this.title + " is finished");
-            //}
+            if (this.activeStage.IsComplete)
+            {
+                Debug.Log(this.title + " is finished");
+            }
         }
 
         private bool ProceedToNextStage()
