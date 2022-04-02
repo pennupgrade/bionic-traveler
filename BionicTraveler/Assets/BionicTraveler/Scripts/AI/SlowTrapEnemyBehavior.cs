@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.AI
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
@@ -26,21 +27,40 @@ namespace BionicTraveler.Scripts.AI
         private GameTime lastShot;
         private GameTime trapStart;
 
+        [SerializeField]
+        private AudioClip openSound;
+
+        [SerializeField]
+        private AudioClip closeSound;
+
+        [SerializeField]
+        private AudioClip shootSound;
+
+        [SerializeField]
+        private AudioClip deathSound;
+
         public GameObject stickyTrapPod;
 
         [SerializeField]
         private AttackData attackData;
 
+        public void PlayDeathSound(Entity sender, Entity killer)
+        {
+            AudioManager.Instance.PlayOneShot(deathSound);
+            this.Owner.Dying -= this.PlayDeathSound;
+        }
+
         public override void Awake()
         {
             base.Awake();
+
+            this.Owner.Dying += this.PlayDeathSound;
 
             this.minX = this.StartPosition.x + 5f;
             this.maxX = this.StartPosition.x - 5f;
             this.minY = this.StartPosition.y + 5f;
             this.maxY = this.StartPosition.y - 5f;
         }
-
         /// <inheritdoc/>
         public override IFSM CreateFSM()
         {
@@ -68,6 +88,7 @@ namespace BionicTraveler.Scripts.AI
                     // Scans for target
                     if (this.CheckForNearbyTargets())
                     {
+                        AudioManager.Instance.PlayOneShot(openSound);
                         sender.AdvanceTo(SlowTrapEntityGoal.Trap);
                     }
 
@@ -85,6 +106,7 @@ namespace BionicTraveler.Scripts.AI
                     this.Owner.TaskManager.ClearTasks();
 
                     this.GetComponent<Animator>().Play("Attack");
+                    
                     this.Shoot();
                     this.trapStart = GameTime.Now;
 
@@ -93,6 +115,7 @@ namespace BionicTraveler.Scripts.AI
 
                     if (this.trapStart.HasTimeElapsed(10f))
                     {
+                        AudioManager.Instance.PlayOneShot(closeSound);
                         sender.AdvanceTo(SlowTrapEntityGoal.Hide);
                     }
 
@@ -109,6 +132,7 @@ namespace BionicTraveler.Scripts.AI
 
         private void Shoot()
         {
+            AudioManager.Instance.PlayOneShot(shootSound);
             Vector3 targetPos = this.entityTarget.transform.position;
             Vector3 direction = (targetPos - this.transform.position).normalized;
 

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.World;
     using Framework;
@@ -20,6 +21,18 @@
 
         private Entity combatTarget;
         private List<GameObject> activeAttacks;
+
+        [SerializeField]
+        private AudioClip teleportInSound;
+
+        [SerializeField]
+        private AudioClip teleportOutSound;
+
+        [SerializeField]
+        private AudioClip casterAttackSound;
+
+        [SerializeField]
+        private AudioClip deathSound;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CasterEntityBehavior"/> class.
@@ -79,6 +92,18 @@
             return fsm;
         }
 
+        public void PlayDeathSound(Entity sender, Entity killer)
+        {
+            AudioManager.Instance.PlayOneShot(deathSound);
+            this.Owner.Dying -= this.PlayDeathSound;
+        }
+
+        public override void Awake()
+        {
+            base.Awake();
+            this.Owner.Dying += this.PlayDeathSound;
+        }
+
         private void IdleState(FSM<EntityGoal> sender, EntityGoal currentState, FSMSubState subState)
         {
             switch (subState)
@@ -130,17 +155,17 @@
             {
                 return false;
             }
-
+            Debug.Log("didn't ignore");
             if (!this.Owner.Relationships.IsHostile(target.tag))
             {
                 return false;
             }
-
+            Debug.Log("is hostile");
             if (Vector3.Distance(this.transform.position, target.transform.position) > this.Intelligence.CombatRange)
             {
                 return false;
             }
-
+            Debug.Log("within range");
             return true;
         }
 
@@ -154,10 +179,13 @@
                     var teleportTask = new TaskTeleportAway(this.Owner);
                     teleportTask.Assign();
 
+                    AudioManager.Instance.PlayOneShot(teleportOutSound);
+
                     break;
                 case FSMSubState.Remain:
                     if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Teleport))
                     {
+                        AudioManager.Instance.PlayOneShot(teleportInSound);
                         sender.AdvanceTo(EntityGoal.Idle);
                     }
 
@@ -176,6 +204,8 @@
                     this.castTime = GameTime.Now;
 
                     this.Owner.gameObject.GetComponent<Animator>().Play("Casting");
+
+                    AudioManager.Instance.PlayOneShot(casterAttackSound);
 
                     GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
                     spawnedAttack.GetComponent<AoeAttackIndicatorScript>().Initialize(this.Owner, this.combatTarget.transform);
