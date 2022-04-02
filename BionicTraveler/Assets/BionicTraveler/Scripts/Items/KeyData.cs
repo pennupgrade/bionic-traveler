@@ -1,8 +1,11 @@
-﻿namespace BionicTraveler.Scripts.Items
+﻿using System;
+
+namespace BionicTraveler.Scripts.Items
 {
     /// <summary>
     /// Describes keys linked to levels (scenes).
     /// </summary>
+    [Serializable]
     public class KeyData
     {
         /// <summary>

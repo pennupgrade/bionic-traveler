@@ -9,6 +9,7 @@ namespace BionicTraveler.Scripts
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Used to run subscribed functions when a function in this class will run,
@@ -99,10 +100,24 @@ namespace BionicTraveler.Scripts
         {
             this.IsSaving?.Invoke();
             this.SetSaveTime(slot);
+
+            Scene scene = SceneManager.GetActiveScene();
+            Save("ActiveScene", scene.name);
+
+            Debug.Log(scene.name);
+
             BinaryFormatter bf = new BinaryFormatter();
             FileStream stream = new FileStream(this.GetSavePath(slot), FileMode.Create);
             bf.Serialize(stream, this.store);
             stream.Close();
+
+
+        }
+
+        private void OnSceneLoaded()
+        {
+            this.IsLoading?.Invoke();
+            LevelLoadingManager.Instance.FinishedLoading -= this.OnSceneLoaded;
         }
 
         /// <summary>
@@ -117,7 +132,19 @@ namespace BionicTraveler.Scripts
                 FileStream stream = new FileStream(this.GetSavePath(slot), FileMode.Open);
                 this.store = bf.Deserialize(stream) as Dictionary<string, object>;
                 stream.Close();
-                this.IsLoading?.Invoke();
+
+                string loadedSceneName = (string)Load("ActiveScene");
+                Scene activeScene = SceneManager.GetActiveScene();
+                LevelLoadingManager.Instance.FinishedLoading += this.OnSceneLoaded;
+                if (loadedSceneName == activeScene.name)
+                {
+                    LevelLoadingManager.Instance.ReloadCurrentScene();
+                }
+                else
+                {
+                    LevelLoadingManager.Instance.StartLoadLevel(loadedSceneName, LevelLoadingManager.DefaultSpawnPoint);
+                }
+
                 this.Close();
             }
             else

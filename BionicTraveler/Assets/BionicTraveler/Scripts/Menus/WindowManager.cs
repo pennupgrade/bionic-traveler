@@ -38,6 +38,18 @@ namespace BionicTraveler.Scripts.Menus
                 InventoryUI.Instance.SetUsePlayerInventory();
                 this.ToggleMenu(InventoryUI.Instance);
             }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                this.CloseCurrentMenu();
+                Debug.Log("saved game");
+                SaveManager.Instance.SaveGame(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                this.CloseCurrentMenu();
+                Debug.Log("loaded game");
+                SaveManager.Instance.LoadGame(1);
+            }
         }
 
         /// <summary>

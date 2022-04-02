@@ -31,12 +31,20 @@
     {
         private List<KeyData> keyData;
 
+        public List<KeyData> KeyData { get { return keyData; } }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyManager"/> class.
         /// </summary>
         public KeyManager()
         {
             this.keyData = new List<KeyData>();
+        }
+
+        public KeyManager(List<KeyData> data)
+        {
+            this.keyData = data;
         }
 
         /// <summary>

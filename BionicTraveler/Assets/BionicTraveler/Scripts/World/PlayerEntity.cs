@@ -1,12 +1,15 @@
 namespace BionicTraveler.Scripts.World
 {
     using System.Linq;
+    using BionicTraveler.Scripts.Items;
+    using System.Collections.Generic;
+
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Interaction;
-    using BionicTraveler.Scripts.Items;
     using Framework;
     using UnityEngine;
+    using UnityEditor;
 
     /// <summary>
     /// Player Entity class.
@@ -70,7 +73,64 @@ namespace BionicTraveler.Scripts.World
             this.GetComponent<PlayerInteraction>().enabled = state;
         }
 
-        /// <inheritdoc/>
+        protected override void Start()
+        {
+            base.Start();
+            SaveManager.Instance.IsSaving += this.Save;
+            SaveManager.Instance.IsLoading += this.Load;
+        }
+
+        private void Save()
+        {
+
+            SaveManager.Instance.Save("PlayerPositionX", this.transform.position.x);
+            SaveManager.Instance.Save("PlayerPositionY", this.transform.position.y);
+            SaveManager.Instance.Save("PlayerPositionY", this.transform.position.y);
+            SaveManager.Instance.Save("PlayerEnergy", this.Energy);
+            SaveManager.Instance.Save("PlayerHealth", this.Health);
+            SaveManager.Instance.Save("PlayerInventory", this.Inventory.Items);
+            SaveManager.Instance.Save("PlayerWeaponData", AssetDatabase.GetAssetPath(this.WeaponsInventory.WeaponData));
+
+
+            SaveManager.Instance.Save("PlayerKeyData", this.KeyManager.KeyData);
+
+            // TODO: make chips serializable once active chips are implemented
+            //SaveManager.Instance.Save("ActiveChips", ActiveChips);
+
+        }
+
+        private void Load()
+        {
+            
+            this.transform.position = new Vector3((float)SaveManager.Instance.Load("PlayerPositionX"), (float)SaveManager.Instance.Load("PlayerPositionY"), 0);
+            this.SetHealth((int) SaveManager.Instance.Load("PlayerHealth"));
+            this.SetEnergy((float)SaveManager.Instance.Load("PlayerEnergy"));
+
+            this.Inventory.Clear();
+            IReadOnlyCollection<InventoryItem> items = (IReadOnlyCollection <InventoryItem>) SaveManager.Instance.Load("PlayerInventory");
+            if (items != null)
+                foreach (var item in items)
+                {
+                    for (var i = 0; i < item.Quantity; i++)
+                        this.Inventory.AddItem(item.ItemData);
+                }
+            
+            WeaponData weaponData = (WeaponData)AssetDatabase.LoadAssetAtPath((string)SaveManager.Instance.Load("PlayerWeaponData"), typeof(WeaponData));
+            this.WeaponsInventory.Destroy();
+            this.WeaponsInventory.AddWeapon(weaponData);
+            this.KeyManager = new KeyManager((List<KeyData>)SaveManager.Instance.Load("PlayerKeyData"));
+            //ActiveChips = (List<Chip>) SaveManager.Instance.Load("ActiveChips");
+        }
+
+        public void Destroy()
+        {
+            base.Destroy();
+            // Always free your events unless you want the GC to keep some partially disposed objects
+            // around (hint: you never really want that).
+            SaveManager.Instance.IsSaving -= this.Save;
+            SaveManager.Instance.IsLoading -= this.Load;
+        }
+
         protected override void Update()
         {
             base.Update();
