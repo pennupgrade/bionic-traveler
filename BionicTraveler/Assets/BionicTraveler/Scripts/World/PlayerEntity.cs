@@ -38,6 +38,17 @@ namespace BionicTraveler.Scripts.World
         public PlayerMovement Movement => this.movement;
 
         /// <summary>
+        /// Gets a value indicating whether the player is currently being controlled.
+        /// Returns false if input is disabled.
+        /// </summary>
+        public bool HasControl { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the player is currently in a dialogue.
+        /// </summary>
+        public bool IsInDialogue { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PlayerEntity"/> class.
         /// </summary>
         public PlayerEntity()
@@ -51,6 +62,7 @@ namespace BionicTraveler.Scripts.World
         {
             base.Awake();
             this.movement = this.GetComponent<PlayerMovement>();
+            this.HasControl = true;
         }
 
         /// <summary>
@@ -68,6 +80,7 @@ namespace BionicTraveler.Scripts.World
             this.GetComponent<PlayerMovement>().DisableMovement(!state);
             this.GetComponent<BodypartBehaviour>().enabled = state;
             this.GetComponent<PlayerInteraction>().enabled = state;
+            this.HasControl = state;
         }
 
         /// <inheritdoc/>

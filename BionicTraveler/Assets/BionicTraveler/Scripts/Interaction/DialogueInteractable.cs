@@ -72,6 +72,7 @@ namespace BionicTraveler.Scripts.Interaction
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
             player.IsIgnoredByEveryone = true;
+            player.IsInDialogue = true;
             player.DisableInput();
 
             var runnerGameobject = GameObject.FindGameObjectWithTag("DialogueRunner");
@@ -115,6 +116,7 @@ namespace BionicTraveler.Scripts.Interaction
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
             player.IsIgnoredByEveryone = false;
+            player.IsInDialogue = false;
             player.EnableInput();
         }
     }

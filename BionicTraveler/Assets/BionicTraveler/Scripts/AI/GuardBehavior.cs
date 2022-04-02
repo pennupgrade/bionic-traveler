@@ -1,4 +1,4 @@
-namespace BionicTraveler.Scripts.AI
+﻿namespace BionicTraveler.Scripts.AI
 {
     using System.Linq;
     using BionicTraveler.Scripts.Interaction;
@@ -11,6 +11,9 @@ namespace BionicTraveler.Scripts.AI
     public class GuardBehavior : EntityBehavior
     {
         private TaskPlayAnimation animTask;
+        private TaskExecuteSequence guardAnimSequence;
+        private bool hasStartedDialogue;
+        private bool shouldPushPlayer;
 
         public enum GuardState
         {
@@ -46,7 +49,7 @@ namespace BionicTraveler.Scripts.AI
                     break;
 
                 case FSMSubState.Leave:
-                    
+
                     break;
             }
         }
@@ -58,18 +61,44 @@ namespace BionicTraveler.Scripts.AI
                 case FSMSubState.Enter:
                     Debug.Log("Player Detected - confonting now");
                     this.animTask = new TaskPlayAnimation(this.Owner, "GuardSpearCross");
-                    this.animTask.Assign();
+                    var taskSequence = new TaskSequence(
+                        this.animTask,
+                        new TaskPlayAnimation(this.Owner, "GuardSpearUncross"));
+                    this.guardAnimSequence = new TaskExecuteSequence(this.Owner, taskSequence);
+                    this.guardAnimSequence.Assign();
+
+                    this.hasStartedDialogue = false;
+                    this.shouldPushPlayer = false;
                     break;
 
                 case FSMSubState.Remain:
+                    var playerObj = GameObject.FindGameObjectWithTag("Player");
+                    var player = playerObj.GetComponent<PlayerEntity>();
                     if (this.animTask.Progress > 0.5f)
                     {
-                        var playerObj = GameObject.FindGameObjectWithTag("Player");
-                        var player = playerObj.GetComponent<PlayerEntity>();
+                        this.shouldPushPlayer = true;
+                    }
 
-                        player.ApplyForce(Vector2.down * 10);
-                        sender.AdvanceTo(GuardState.Dialogue);
+                    if (this.shouldPushPlayer)
+                    {
+                        // Try to start the dialogue if we have not started it yet and player has control,
+                        // i.e. is not busy in another dialogue.
+                        if (!this.hasStartedDialogue && player.HasControl)
+                        {
+                            var interactableComp = this.GetComponent<DialogueInteractable>();
+                            interactableComp.OnInteract(playerObj);
+                            this.hasStartedDialogue = true;
+                        }
 
+                        // Move them until player is out of radius.
+                        if (this.IsPlayerClose())
+                        {
+                            player.ApplyForce(Vector2.down * 10);
+                        }
+                        else
+                        {
+                            sender.AdvanceTo(GuardState.Dialogue);
+                        }
                     }
                     break;
 
@@ -86,13 +115,11 @@ namespace BionicTraveler.Scripts.AI
             switch (subState)
             {
                 case FSMSubState.Enter:
-                    interactableComp.OnInteract(playerObj);
-                    this.animTask = new TaskPlayAnimation(this.Owner, "GuardSpearUncross");
-                    this.animTask.Assign();
                     break;
 
                 case FSMSubState.Remain:
-                    if (interactableComp.HasRun)
+                    // If our dialogue has been completed or it was never started, go back to idle.
+                    if (interactableComp.HasRun || !this.hasStartedDialogue)
                     {
                         sender.AdvanceTo(GuardState.Idle);
                     }
