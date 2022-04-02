@@ -14,12 +14,15 @@ namespace BionicTraveler.Scripts.Quests
         private List<Quest> completedQuests;
         private Quest activeQuest;
 
-        [SerializeField]
+        /*[SerializeField]
         private Quest quest1;
         [SerializeField]
         private Quest quest2;
         [SerializeField]
-        private Quest quest3;
+        private Quest quest3;*/
+
+        [SerializeField]
+        private List<Quest> quests;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestManager"/> class.
@@ -28,6 +31,16 @@ namespace BionicTraveler.Scripts.Quests
         {
             this.currentQuests = new List<Quest>();
             this.completedQuests = new List<Quest>();
+        }
+
+        public List<Quest> getCompletedQuests()
+        {
+            return this.completedQuests;
+        }
+
+        public List<Quest> getCurrentQuests()
+        {
+            return this.currentQuests;
         }
 
         /// <summary>
@@ -51,9 +64,12 @@ namespace BionicTraveler.Scripts.Quests
             Debug.Log("Quests Have started");
             if (Debug.isDebugBuild)
             {
-                this.AddQuest(this.quest1);
-                this.AddQuest(this.quest2);
-                this.AddQuest(this.quest3);
+                foreach (Quest q in quests) {
+                    this.AddQuest(q);
+                }
+                //this.AddQuest(this.quest1);
+                //this.AddQuest(this.quest2);
+                //this.AddQuest(this.quest3);
             }
         }
 

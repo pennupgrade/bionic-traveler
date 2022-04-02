@@ -11,6 +11,7 @@ TagManager:
   - Attack
   - BlindPanel
   - Canvas
+  - MainQuestManager
   layers:
   - Default
   - TransparentFX

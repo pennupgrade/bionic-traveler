@@ -89,6 +89,7 @@ namespace BionicTraveler.Scripts.Quests
             {
                 this.CompleteStateChanged?.Invoke(this, true);
             }*/
+            IsComplete = true;
         }
 
         /// <summary>

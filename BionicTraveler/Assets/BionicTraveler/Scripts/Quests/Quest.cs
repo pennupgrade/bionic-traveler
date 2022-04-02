@@ -56,6 +56,13 @@ namespace BionicTraveler.Scripts.Quests
         [System.NonSerialized]
         private QuestState state;
 
+        private QuestManager owner;
+
+        public string getTitle()
+        {
+            return this.title;
+        }
+
         /// <summary>
         /// Delegate for changes in a <see cref="Quest"/>'s state.
         /// </summary>
@@ -84,6 +91,7 @@ namespace BionicTraveler.Scripts.Quests
                 throw new InvalidOperationException("Quest has no stages.");
             }
 
+            this.owner = GameObject.FindObjectOfType<QuestManager>();
             this.activeStageIndex = -1;
             this.ProceedToNextStage();
         }
@@ -108,17 +116,28 @@ namespace BionicTraveler.Scripts.Quests
         /// <param name="questEvent">The event.</param>
         public void ProcessEvent(QuestEvent questEvent)
         {
+            //Debug.Log("Quest::ProcessEvent is being run");
             this.activeStage.ProcessEvent(questEvent);
+
+            Objective_CompleteStateChanged(activeStage.Objective, true);
+
+            //if (this.activeStage.IsComplete)
+            //{
+            //    Debug.Log(this.title + " is finished");
+            //}
         }
 
         private bool ProceedToNextStage()
         {
+            Debug.Log("Proceed to next stage is finished");
+
             if (this.activeStage != null)
             {
                 this.activeStage.Objective.CompleteStateChanged -= this.Objective_CompleteStateChanged;
             }
 
             this.activeStageIndex++;
+
             if (this.activeStageIndex < this.stages.Count)
             {
                 this.activeStage = this.stages[this.activeStageIndex];
@@ -137,6 +156,7 @@ namespace BionicTraveler.Scripts.Quests
             // No more stages, finish quest.
             if (!this.ProceedToNextStage())
             {
+                Debug.Log("Quest Actually Complete");
                 this.IsComplete = true;
                 this.SetState(QuestState.Finished);
             }
