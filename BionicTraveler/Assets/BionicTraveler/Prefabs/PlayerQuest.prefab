@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ac954e6394b5ce42bff840b0443e6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugQuest: {fileID: 11400000, guid: bc34054cb2189da4bb6b0c0932759782, type: 2}
+  quest1: {fileID: 0}
+  quest2: {fileID: 0}
+  quest3: {fileID: 0}
