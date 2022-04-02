@@ -53,7 +53,7 @@
                     break;
 
                 case FSMSubState.Remain:
-                    if (this.IsPlayerClose())
+                    if (!this.hasFought && this.IsPlayerClose())
                     {
                         sender.AdvanceTo(FamiliarState.Dialogue);
                     }

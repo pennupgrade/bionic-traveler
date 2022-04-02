@@ -109,7 +109,7 @@
             if (this.EntityScanner != null)
             {
                 var nearbyTargets = this.EntityScanner.GetAllDynamicInRange();
-                var target = nearbyTargets.FirstOrDefault();
+                var target = nearbyTargets.FirstOrDefault(target => this.IsValidTarget(target));
                 if (target != null && this.IsValidTarget(target))
                 {
                     if (this.flags.HasFlag(EntityFlags.AttackOnSight))
