@@ -9653,6 +9653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bearDialogue: {fileID: 4041880690306281160}
+  questName: Kill The Scourge
 --- !u!114 &4041880690306281160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10207,20 +10208,20 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f0d1ef43071f8074fab1f3a4253aed73, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 219682216c04d60428b0f7b3ea354035, type: 2}
+      objectReference: {fileID: 11400000, guid: e1deaa205c31a684db9c33315996ec22, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: bc34054cb2189da4bb6b0c0932759782, type: 2}
+      objectReference: {fileID: 11400000, guid: 219682216c04d60428b0f7b3ea354035, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 219682216c04d60428b0f7b3ea354035, type: 2}
+      objectReference: {fileID: 11400000, guid: 6812725e3112ad44392e3e151d7f8e8a, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[3]
       value: 

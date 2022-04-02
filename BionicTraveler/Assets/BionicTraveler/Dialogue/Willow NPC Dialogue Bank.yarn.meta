@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: b4026371347976243a17ad2d782ac183
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Willow NPC Dialogue Bank-1-0
+  - Willow NPC Dialogue Bank-2-1
+  - Willow NPC Dialogue Bank-3-2
+  - Willow NPC Dialogue Bank-4-3
+  - Willow NPC Dialogue Bank-5-4
+  - Willow NPC Dialogue Bank-6-5
+  - Willow NPC Dialogue Bank-7-6
+  - Willow NPC Dialogue Bank-8-7
+  - Willow NPC Dialogue Bank-9-8
+  - Willow NPC Dialogue Bank-10-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

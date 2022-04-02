@@ -12,6 +12,9 @@
         [SerializeField]
         private DialogueInteractable bearDialogue;
 
+        [SerializeField]
+        private string questName;
+
         private void Start()
         {
             var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
@@ -20,7 +23,7 @@
 
         private void OnQuestFinished(Quest quest)
         {
-            if (quest.Title == "BearQuest")
+            if (quest.Title == questName)
             {
                 this.bearDialogue.OnInteract(this.GetPlayer());
             }

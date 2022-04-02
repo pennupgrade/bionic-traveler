@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
+  m_Name: Enter Valenfeld
+  m_EditorClassIdentifier: 
+  title: Enter Valenfeld
+  description: Talk To the Sage
+  stages:
+  - description: Interact with the sage
+    objective:
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveSpeakWith
+      instance:
+        id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: QuestObjectiveSpeakWith, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      data:
+        targetEntityName: Sage

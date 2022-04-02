@@ -1,32 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &565860492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034929423486848371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b642a954bb415149b0110699ddc831d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flags: 1
---- !u!114 &273725319293159456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8034929423486848371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e5e210cad0bd9c4b98be37bd434568b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flags: 1
-  aoe: {fileID: 0}
 --- !u!114 &263318209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +31,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flags: 0
+--- !u!114 &565860492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034929423486848371}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b642a954bb415149b0110699ddc831d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
+--- !u!114 &273725319293159456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034929423486848371}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5e210cad0bd9c4b98be37bd434568b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1
+  aoe: {fileID: 0}
+  teleportInSound: {fileID: 0}
+  teleportOutSound: {fileID: 0}
+  casterAttackSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!1001 &8615530032950640932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,6 +105,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3156fdac73bd831429954af8ed061aed, type: 2}
+    - target: {fileID: 5286628327211811145, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
+      propertyPath: name
+      value: Bear
+      objectReference: {fileID: 0}
     - target: {fileID: 5286628327211811145, guid: 5340fb27273f91b4a8092b89dfb5bead, type: 3}
       propertyPath: defaultWeapon
       value: 

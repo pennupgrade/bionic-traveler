@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be81f8093b88db4aa29a5101af9dade, type: 3}
-  m_Name: TalkToSage
+  m_Name: Find The Valenfeld
   m_EditorClassIdentifier: 
-  title: PickUpItemQuest
-  description: Talk To the Sage
+  title: Finding The Valenfeld
+  description: Reach the entrace of Valenfeld
   stages:
-  - description: Interact with the sage
+  - description: Speak with the familiar
     objective:
-      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveItem
+      typeName: BionicTraveler.Scripts.Quests.QuestObjectiveSpeakWith
       instance:
         id: 0
   references:
     version: 1
     00000000:
-      type: {class: QuestObjectiveItem, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
+      type: {class: QuestObjectiveSpeakWith, ns: BionicTraveler.Scripts.Quests, asm: Assembly-CSharp}
       data:
         notifPrefab: {fileID: 0}
-        targetItem: {fileID: 11400000, guid: 3fad69b58de00de44ae7662fc065ab80, type: 2}
-        itemCount: 1
+        targetEntityName: Familiar

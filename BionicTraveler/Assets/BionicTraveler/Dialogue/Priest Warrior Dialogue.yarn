@@ -1,0 +1,35 @@
+title: Start
+tags: 
+colorID: 0
+position: -280,-263
+---
+// programming team should replace the following if statements with equivalents in the code
+
+<<if has("Talisman") is false>>
+    [[1]]
+    [[2]]
+<<else>>
+    [[3]]
+<<endif>>
+===
+title: 1
+tags: 
+colorID: 0
+position: 458,-528
+---
+Priest Warrior: Weak. I sense weakness. Strong monster behind me. If you go, surely die. You shall not pass.
+===
+title: 2
+tags: 
+colorID: 0
+position: 462,-321
+---
+Priest Warrior: You shall not pass!
+===
+title: 3
+tags: 
+colorID: 0
+position: 469,-92
+---
+Priest Warrior: …The Chosen One… Please, free us from the Scourge!
+===
