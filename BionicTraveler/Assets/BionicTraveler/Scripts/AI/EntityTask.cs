@@ -25,7 +25,8 @@ namespace BionicTraveler.Scripts.AI
         Teleport,
         WatchdogCharge,
         PlayAnimation,
-        Spawn    }
+        Spawn
+    }
 
     /// <summary>
     /// Abstract base class for tasks that can be assigned to entities.

@@ -121,6 +121,11 @@
         public float MovementSpeed { get; private set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this entity should skip its death animation.
+        /// </summary>
+        public bool SkipDeathAnimation { get; set; }
+
+        /// <summary>
         /// Gets or sets the direction for SpriteRenderer/FSM.
         /// </summary>
         internal Vector3 Direction
@@ -255,7 +260,7 @@
             //this.GetComponent<NavMeshAgent>()?.Disable();
 
             var animator = this.GetComponent<Animator>();
-            if (animator != null)
+            if (!this.SkipDeathAnimation && animator != null)
             {
                 this.isDying = true;
                 animator.Play("Dying");

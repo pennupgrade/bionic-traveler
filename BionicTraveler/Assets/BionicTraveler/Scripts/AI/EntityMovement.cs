@@ -289,7 +289,8 @@
             // Let A* take over.
             if (isTargetStaticLocation || isObstructedByEnvironment || !this.timeTargetUnobstructed.HasTimeElapsed(1))
             {
-                bool hasNavmeshReached = this.agent.remainingDistance < this.StopDistance + 0.5f;
+                bool hasNavmeshReached = this.agent.hasPath && !this.agent.isStopped &&
+                    this.agent.remainingDistance < this.StopDistance + 0.5f;
 
                 // Stop close to static targets. We use a slightly larger distance here to allow slowing down.
                 if ((isTargetStaticLocation && distanceToTarget < this.StopDistance + 0.5f)

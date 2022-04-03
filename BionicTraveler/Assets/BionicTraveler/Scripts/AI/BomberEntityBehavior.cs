@@ -14,7 +14,7 @@
         private EntityFlags flags;
 
         private Entity combatTarget;
-        private TaskAttack explosionAttack;
+        private TaskPlayAnimation explosionAnim;
         private TaskMoveToEntity followTask;
 
         /// <summary>
@@ -84,12 +84,6 @@
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.U))
-                    {
-                        this.combatTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
-                        sender.AdvanceTo(EntityGoal.Combat);
-                    }
-
                     break;
                 case FSMSubState.Leave:
                     Debug.Log("Idle - Leave");
@@ -125,50 +119,51 @@
                 case FSMSubState.Enter:
                     this.Owner.TaskManager.ClearTasks();
                     this.followTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
-                    followTask.Assign();
+                    this.followTask.Assign();
                     Debug.Log("Combat - Enter");
                     break;
                 case FSMSubState.Remain:
                     Debug.Log("Combat - Remain");
-                    if (this.explosionAttack != null)
+                    if (this.explosionAnim != null)
                     {
-                        if (this.explosionAttack.HasEnded)
+                        if (this.explosionAnim.Progress > 0.7f)
                         {
-                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Die))
+                            // Check if TaskAttack is not running.
+                            if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Attack))
                             {
-
-                                var dieTask = new TaskDie(this.Owner);
-                                dieTask.Assign();
-                                //var animTask = new TaskPlayAnimation(this.Owner, "DieAnim");
-                                //this.Owner.OnDied();
+                                var taskAttack = new TaskAttack(this.Owner, true);
+                                taskAttack.Assign();
                             }
+                        }
+
+                        if (this.explosionAnim.Progress > 0.8f)
+                        {
+                            // Do attack.
+                            this.Owner.SkipDeathAnimation = true;
+                            this.Owner.Kill();
                         }
                     }
                     else
                     {
-                        if (!followTask.IsActive)
+                        if (!this.followTask.IsActive)
                         {
                             this.followTask = new TaskMoveToEntity(this.Owner, this.combatTarget);
-                            followTask.Assign();
-                        } else
+                            this.followTask.Assign();
+                        } 
+                        else
                         {
-                            
-                            Vector3 ownerPos = this.Owner.transform.position;
-                            Vector3 tgtPos = this.combatTarget.transform.position;
-                            var distanceToTarget = Vector3.Magnitude(tgtPos - ownerPos);
-
-                            if (distanceToTarget > 10f)
+                            var distanceToTarget = Vector3.Distance(this.Owner.transform.position, this.combatTarget.transform.position);
+                            if (distanceToTarget > this.Intelligence.CombatRange + 5)
                             {
-                                followTask.End("Out of Range", true);
+                                this.followTask.End("Out of Range", true);
                                 sender.AdvanceTo(EntityGoal.Idle);
                             }
-                            if (distanceToTarget < 2f)
+                            else if (distanceToTarget < 2f)
                             {
-                                if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Attack))
+                                if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.PlayAnimation))
                                 {
-                                    var attackTask = new TaskAttack(this.Owner, true);
-                                    attackTask.Assign();
-                                    this.explosionAttack = attackTask;
+                                    this.explosionAnim = new TaskPlayAnimation(this.Owner, "Explode");
+                                    this.explosionAnim.Assign();
                                 }
                             }
                         }
@@ -188,7 +183,7 @@
             if (this.EntityScanner != null)
             {
                 var nearbyTargets = this.EntityScanner.GetAllDynamicInRange();
-                var target = nearbyTargets.FirstOrDefault();
+                var target = nearbyTargets.FirstOrDefault(target => this.IsValidTarget(target));
                 if (target != null && this.IsValidTarget(target))
                 {
                     if (this.flags.HasFlag(EntityFlags.AttackOnSight))

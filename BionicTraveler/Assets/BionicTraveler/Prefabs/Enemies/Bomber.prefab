@@ -108,7 +108,7 @@ MonoBehaviour:
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
   name: Bomber
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
-  defaultWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: 2c7f2c52904be2245a0a9da23beac32d, type: 2}
   cannotBeKnockedBack: 0
   dontUpdateAnimatorForMovement: 0
 --- !u!61 &3296278867289772420
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.059524536, y: -0.4091797}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.0179749, y: 0.85429764}
   m_EdgeRadius: 0
 --- !u!114 &236860840564019662
 MonoBehaviour:
@@ -179,7 +179,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

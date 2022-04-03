@@ -24,9 +24,16 @@ namespace BionicTraveler.Scripts.Combat
         /// <inheritdoc/>
         public override Entity[] GetTargets()
         {
+            var ourCollider = this.GetComponent<Collider2D>();
+            if (ourCollider == null)
+            {
+                Debug.LogWarning("MeleeAttack: No collider found on " + this.gameObject.name);
+                return new Entity[0];
+            }
+
             // Manually trace collisions as our attack moves quite fast and might skip colliders otherwise.
             var colls = new List<Collider2D>();
-            Physics2D.GetContacts(this.GetComponent<Collider2D>(), colls);
+            Physics2D.GetContacts(ourCollider, colls);
             var nonTriggerColls = colls.Where(coll => !coll.isTrigger).ToArray();
             var hitEntities = nonTriggerColls.Select(coll => coll.GetComponent<Entity>())
                 .Where(entity => entity != null && !this.processedEntities.Contains(entity))
