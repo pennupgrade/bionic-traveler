@@ -37,7 +37,7 @@ namespace BionicTraveler.Scripts.Quests
         {
             this.currentNotif = GameObject.Instantiate(this.notifPrefab, this.questManager.transform.position, Quaternion.identity);
             TextMeshProUGUI t = this.currentNotif.transform.GetChild(0).transform.GetComponentInChildren<TextMeshProUGUI>();
-            t.SetText(q.getTitle() + " has been completed!");
+            t.SetText(q.Title + " has been completed!");
             this.listCompleteQuests.Remove(q);
 
             this.currentNotif.transform.parent = this.transform;
@@ -54,10 +54,11 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void Update()
         {
-            if (this.currentNotif)
+            if (this.currentNotif != null)
             {
                 if (this.timeElapsedSinceBannerCreation.HasTimeElapsed(5.0f)) {
                     Destroy(this.currentNotif);
+                    this.currentNotif = null;
                 }
             } else
             {
