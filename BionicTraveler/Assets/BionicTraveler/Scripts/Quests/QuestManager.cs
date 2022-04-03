@@ -18,6 +18,8 @@ namespace BionicTraveler.Scripts.Quests
         [SerializeField]
         private List<Quest> quests;
 
+        private QuestUI ui;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="QuestManager"/> class.
         /// </summary>
@@ -74,6 +76,7 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void Start()
         {
+            this.ui = GameObject.Find("PlayerQuestUI").GetComponent<QuestUI>();
             if (Debug.isDebugBuild)
             {
                 foreach (Quest q in this.quests)
@@ -137,6 +140,9 @@ namespace BionicTraveler.Scripts.Quests
             {
                 this.activeQuest = null;
             }
+
+            // Spawn Notification Object
+            this.ui.AddToCompleteList(quest);
         }
     }
 }

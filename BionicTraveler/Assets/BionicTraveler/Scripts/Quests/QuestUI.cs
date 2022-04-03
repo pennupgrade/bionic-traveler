@@ -5,6 +5,8 @@ namespace BionicTraveler.Scripts.Quests
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.UI;
+    using TMPro;
 
     /// <summary>
     /// Please document me.
@@ -15,7 +17,6 @@ namespace BionicTraveler.Scripts.Quests
 
         public GameObject currentNotif;
 
-        private List<Quest> listAssignQuests;
         private List<Quest> listCompleteQuests;
 
         [SerializeField]
@@ -29,25 +30,23 @@ namespace BionicTraveler.Scripts.Quests
         public void Start()
         {
             this.questManager = GameObject.Find("PlayerQuestManager").GetComponent<QuestManager>();
-            this.listAssignQuests = new List<Quest>();
             this.listCompleteQuests = new List<Quest>();
         }
 
-        public void InvokeAssignUI(Quest q)
+        private void InvokeCompleteUI(Quest q)
         {
-            // Only spawn a new notification if current notification is null
-            if (!currentNotif)
-            {
-                this.currentNotif = GameObject.Instantiate(this.notifPrefab, this.questManager.transform.position, Quaternion.identity);
+            this.currentNotif = GameObject.Instantiate(this.notifPrefab, this.questManager.transform.position, Quaternion.identity);
+            TextMeshProUGUI t = this.currentNotif.transform.GetChild(0).transform.GetComponentInChildren<TextMeshProUGUI>();
+            t.SetText(q.getTitle() + " has been completed!");
+            this.listCompleteQuests.Remove(q);
 
-                this.currentNotif.transform.parent = this.transform;
-                this.timeElapsedSinceBannerCreation = GameTime.Now;
-            }
+            this.currentNotif.transform.parent = this.transform;
+            this.timeElapsedSinceBannerCreation = GameTime.Now;
         }
 
-        public void InvokeCompleteUI(Quest q)
+        public void AddToCompleteList(Quest q)
         {
-
+            this.listCompleteQuests.Add(q);
         }
 
         /// <summary>
@@ -55,10 +54,17 @@ namespace BionicTraveler.Scripts.Quests
         /// </summary>
         public void Update()
         {
-            if (currentNotif)
+            if (this.currentNotif)
             {
-                if (this.timeElapsedSinceBannerCreation.HasTimeElapsed(5.0f)){
-
+                if (this.timeElapsedSinceBannerCreation.HasTimeElapsed(5.0f)) {
+                    Destroy(this.currentNotif);
+                }
+            } else
+            {
+                if (this.listCompleteQuests.Count > 0)
+                {
+                    Quest firstQuest = this.listCompleteQuests[0];
+                    this.InvokeCompleteUI(firstQuest);
                 }
             }
         }
