@@ -29,6 +29,21 @@ namespace BionicTraveler.Scripts.Quests
             this.completedQuests = new List<Quest>();
         }
 
+        private void Save()
+        {
+
+            SaveManager.Instance.Save("PlayerCurrentQuests", this.currentQuests);
+            SaveManager.Instance.Save("PlayerCompletedQuests", this.completedQuests);
+        }
+
+        private void Load()
+        {
+
+            this.currentQuests = (List<Quest>)SaveManager.Instance.Load("PlayerCurrentQuests");
+            this.completedQuests = (List<Quest>)SaveManager.Instance.Load("PlayerCompletedQuests");
+            //ActiveChips = (List<Chip>) SaveManager.Instance.Load("ActiveChips");
+        }
+
         /// <summary>
         /// Delegate to inform about quest progress.
         /// </summary>
@@ -56,6 +71,8 @@ namespace BionicTraveler.Scripts.Quests
             {
                 QuestManager.instance = this;
             }
+            SaveManager.Instance.IsSaving += this.Save;
+            SaveManager.Instance.IsLoading += this.Load;
         }
 
         /// <summary>
@@ -147,6 +164,11 @@ namespace BionicTraveler.Scripts.Quests
             // Fire event.
             var questCompletedEvent = new QuestEventQuestCompleted(quest.Title);
             this.ProcessEvent(questCompletedEvent);
+        }
+        private void OnDestroy()
+        {
+            SaveManager.Instance.IsSaving -= this.Save;
+            SaveManager.Instance.IsLoading -= this.Load;
         }
     }
 }
