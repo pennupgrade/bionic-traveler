@@ -104,8 +104,6 @@ namespace BionicTraveler.Scripts
             Scene scene = SceneManager.GetActiveScene();
             Save("ActiveScene", scene.name);
 
-            Debug.Log(scene.name);
-
             BinaryFormatter bf = new BinaryFormatter();
             FileStream stream = new FileStream(this.GetSavePath(slot), FileMode.Create);
             bf.Serialize(stream, this.store);

@@ -3,6 +3,8 @@ namespace BionicTraveler.Scripts.Quests
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using UnityEditor;
     using UnityEngine;
 
     /// <summary>
@@ -36,7 +38,8 @@ namespace BionicTraveler.Scripts.Quests
     /// For instance: Explore all Temples in the Universe.
     /// </summary>
     [CreateAssetMenu(fileName = "MyNewQuest", menuName = "Quests/Quest")]
-    public class Quest : ScriptableObject
+    [Serializable]
+    public class Quest : ScriptableObject, ISerializable
     {
         [SerializeField]
         private string title;
@@ -152,5 +155,32 @@ namespace BionicTraveler.Scripts.Quests
             this.state = state;
             this.StateChanged?.Invoke(this, state);
         }
+
+        // Implement this method to serialize data. The method is called on serialization.
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("QuestData", AssetDatabase.GetAssetPath(this), typeof(string));
+            info.AddValue("state", state);
+            info.AddValue("activeStageIndex", activeStageIndex);
+        }
+
+        // The special constructor is used to deserialize values.
+        // In this case, it recreate the original ScriptableObject.
+        public Quest(SerializationInfo info, StreamingContext context)
+        {
+            Quest q = (Quest)AssetDatabase.LoadAssetAtPath((string)info.GetValue("QuestData", typeof(string)), typeof(Quest));
+            this.title = q.title;
+            this.description = q.description;
+            this.stages = q.stages;
+            this.state = (QuestState)info.GetValue("state", typeof(QuestState));
+            this.activeStageIndex = (int)info.GetValue("activeStageIndex", typeof(int));
+            if (this.activeStageIndex < this.stages.Count)
+            {
+                this.activeStage = this.stages[this.activeStageIndex];
+                this.activeStage.Objective.CompleteStateChanged += this.Objective_CompleteStateChanged;
+                this.activeStage.Initialize();
+            } 
+        }
+
     }
 }
