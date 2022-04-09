@@ -10,6 +10,7 @@ namespace BionicTraveler.Scripts.World
     using Framework;
     using UnityEngine;
     using UnityEditor;
+    using BionicTraveler.Scripts.Quests;
 
     /// <summary>
     /// Player Entity class.
@@ -273,9 +274,7 @@ namespace BionicTraveler.Scripts.World
 
         private void Inventory_ItemsChanged(BasicInventory sender, InventoryItem item)
         {
-            // TODO: Improve lookup/make singleton.
-            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-            questManager.ProcessEvent(new Quests.QuestEventInventory());
+            QuestManager.Instance.ProcessEvent(new Quests.QuestEventInventory());
         }
 
         private void OnDestroy()

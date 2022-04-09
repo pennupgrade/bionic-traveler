@@ -17,8 +17,7 @@
 
         private void Start()
         {
-            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-            questManager.OnQuestFinished += this.OnQuestFinished;
+            QuestManager.Instance.OnQuestFinished += this.OnQuestFinished;
         }
 
         private void OnQuestFinished(Quest quest)

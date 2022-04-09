@@ -41,7 +41,7 @@ namespace BionicTraveler.Scripts.Quests
         public event QuestProgressChangedEventHandler OnQuestFinished;
 
         /// <summary>
-        /// Gets the audio manager instance.
+        /// Gets the quest manager instance.
         /// </summary>
         public static QuestManager Instance => QuestManager.instance;
 
@@ -143,6 +143,10 @@ namespace BionicTraveler.Scripts.Quests
 
             // Spawn Notification Object
             this.ui.AddToCompleteList(quest);
+
+            // Fire event.
+            var questCompletedEvent = new QuestEventQuestCompleted(quest.Title);
+            this.ProcessEvent(questCompletedEvent);
         }
     }
 }

@@ -4,6 +4,7 @@
     using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Combat;
     using BionicTraveler.Scripts.Items;
+    using BionicTraveler.Scripts.Quests;
     using UnityEngine;
     using UnityEngine.AI;
 
@@ -233,10 +234,8 @@
         public override void OnDied()
         {
             var item = this.Inventory.DropAll();
-            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-
             var killQuest = new Quests.QuestEventEnemyKilled(this.name);
-            questManager.ProcessEvent(killQuest);
+            QuestManager.Instance.ProcessEvent(killQuest);
 
             this.taskManager.ShutDown();
             base.OnDied();

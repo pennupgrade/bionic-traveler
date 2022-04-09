@@ -19,6 +19,11 @@
         /// The player's inventory has changed.
         /// </summary>
         SpokenWith,
+
+        /// <summary>
+        /// A quest has been completed.
+        /// </summary>
+        QuestCompleted,
     }
 
     /// <summary>
@@ -52,6 +57,7 @@
     /// <summary>
     /// Event related to killing an enemy changes.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Very short classes.")]
     public class QuestEventEnemyKilled : QuestEvent
     {
         /// <summary>
@@ -75,6 +81,7 @@
     /// <summary>
     /// Event related to inventory changes.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Very short classes.")]
     public class QuestEventSpokenTo : QuestEvent
     {
         /// <summary>
@@ -86,11 +93,36 @@
             this.NpcName = npcName;
         }
 
+        /// <inheritdoc/>
         public override QuestEventType Type => QuestEventType.SpokenWith;
 
         /// <summary>
         /// Gets the name of the NPC that was spoken to.
         /// </summary>
         public string NpcName { get; }
+    }
+
+    /// <summary>
+    /// Event fired when a quest is completed.
+    /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Very short classes.")]
+    public class QuestEventQuestCompleted : QuestEvent
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuestEventQuestCompleted"/> class.
+        /// </summary>
+        /// <param name="questName">The name of the quest.</param>
+        public QuestEventQuestCompleted(string questName)
+        {
+            this.QuestName = questName;
+        }
+
+        /// <inheritdoc/>
+        public override QuestEventType Type => QuestEventType.SpokenWith;
+
+        /// <summary>
+        /// Gets the name of the quest.
+        /// </summary>
+        public string QuestName { get; }
     }
 }
