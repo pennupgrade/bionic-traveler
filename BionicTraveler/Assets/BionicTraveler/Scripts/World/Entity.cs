@@ -299,7 +299,11 @@
         /// </summary>
         public void OnDyingAnimationFinished()
         {
-            this.OnBeforeDied();
+            // It seems sometimes Unity fires anim events twice, so we block that here.
+            if (this.isDying)
+            {
+                this.OnBeforeDied();
+            }
         }
 
         /// <summary>
