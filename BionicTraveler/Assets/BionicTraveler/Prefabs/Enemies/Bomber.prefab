@@ -277,3 +277,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flags: 1
+  inflateSound: {fileID: 8300000, guid: d10188150f61c437fbc365332bdf2641, type: 3}
+  popSound: {fileID: 8300000, guid: 7919930abbdc1454da5c6631d5b895a8, type: 3}

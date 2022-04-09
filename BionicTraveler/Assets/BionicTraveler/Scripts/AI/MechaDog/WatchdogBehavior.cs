@@ -5,6 +5,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using Framework;
     using UnityEngine;
@@ -48,6 +49,18 @@ namespace BionicTraveler.Scripts.AI.MechaDog
         [Tooltip("Range of the Watchdog's melee attack")]
         private float meleeMin = 5f;
 
+        [SerializeField]
+        private AudioClip shootSound;
+
+        [SerializeField]
+        private AudioClip changeColorSound;
+
+        [SerializeField]
+        private AudioClip dashSound;
+
+        [SerializeField]
+        private AudioClip deathSound;
+
         private EntityTask combatTask = null;
 
         private Vector3 homePos;
@@ -57,8 +70,14 @@ namespace BionicTraveler.Scripts.AI.MechaDog
         [SerializeField]
         private GameObject charge;
 
+        public void PlayDeathSound(Entity sender, Entity killer)
+        {
+            AudioManager.Instance.PlayOneShot(deathSound);
+            this.Owner.Dying -= this.PlayDeathSound;
+        }
         private void Start()
         {
+            this.Owner.Dying += this.PlayDeathSound;
             this.homePos = this.transform.position;
             this.rb = this.GetComponent<Rigidbody2D>();
             this.anim = this.GetComponent<Animator>();
@@ -116,7 +135,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                     break;
             }
         }
-
+        
         private void PatrolState(FSM<WatchdogStates> sender, WatchdogStates currentState, FSMSubState subState)
         {
             switch (subState)
@@ -181,6 +200,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                             this.combatTask = new TaskWatchdogCharge(this.Owner, this.entityTarget, this.charge);
                             this.combatTask.Ended += this.CombatTask_Ended;
                             this.combatTask.Assign();
+                            AudioManager.Instance.PlayOneShot(dashSound);
                         }
                     }
 
@@ -196,6 +216,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
                                 this.combatTask.Ended += this.CombatTask_Ended;
                                 this.combatTask.Assign();
                                 this.blindTime = GameTime.Now;
+                                AudioManager.Instance.PlayOneShot(shootSound);
                             }
                         }
                     }

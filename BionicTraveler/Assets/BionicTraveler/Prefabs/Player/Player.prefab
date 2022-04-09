@@ -519,6 +519,7 @@ MonoBehaviour:
   cannotBeKnockedBack: 0
   dontUpdateAnimatorForMovement: 0
   blinded: {fileID: 5251341807680866553, guid: f52d7954ac8304377a1871827af4e35a, type: 3}
+  blindSound: {fileID: 8300000, guid: 042c87efaf62b4028ab65d7942a55892, type: 3}
 --- !u!95 &8686891111388916192
 Animator:
   serializedVersion: 3
