@@ -18,6 +18,9 @@
         [SerializeField]
         private int killCount;
 
+        [System.NonSerialized]
+        private int currentKillCount;
+
         /// <inheritdoc/>
         public override object Clone()
         {
@@ -48,13 +51,12 @@
 
         private void CheckHasKilledEnough()
         {
-            this.killCount--;
-            if (this.killCount < 1)
+            this.currentKillCount++;
+            if (this.currentKillCount >= this.killCount)
             {
-                Debug.Log("killed enough of the enemy");
+                Debug.Log("Killed enough of the enemy");
                 this.SetAsComplete();
             }
         }
-
     }
 }

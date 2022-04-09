@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 2290134899210715429}
   - component: {fileID: 2290134899210715428}
   - component: {fileID: 2290134899210715431}
-  - component: {fileID: 2290134899210715416}
   - component: {fileID: 2290134899210715419}
+  - component: {fileID: 3587328814613343166}
+  - component: {fileID: 3426047084139678277}
   m_Layer: 0
   m_Name: DetectionGuard
   m_TagString: Untagged
@@ -199,18 +200,6 @@ MonoBehaviour:
   defaultWeapon: {fileID: 0}
   cannotBeKnockedBack: 0
   dontUpdateAnimatorForMovement: 0
---- !u!114 &2290134899210715416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7427415959348594826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61bdc4f46199db945a6ffd00bea5d50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2290134899210715419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +224,37 @@ MonoBehaviour:
   danger: []
   avoid: []
   combinedWeight: []
+--- !u!195 &3587328814613343166
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427415959348594826}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3426047084139678277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427415959348594826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d315dd7ee7454242aaa2abdc8973743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
