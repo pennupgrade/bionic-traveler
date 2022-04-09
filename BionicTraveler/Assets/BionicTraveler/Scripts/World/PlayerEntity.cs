@@ -13,6 +13,8 @@ namespace BionicTraveler.Scripts.World
     using BionicTraveler.Scripts.Quests;
     using UnityEngine.AI;
     using BionicTraveler.Scripts.AI;
+    using BionicTraveler.Scripts.Audio;
+    using UnityEngine.UI;
 
     /// <summary>
     /// Player Entity class.
@@ -24,6 +26,10 @@ namespace BionicTraveler.Scripts.World
 
         [SerializeField]
         private GameObject blinded;
+
+        [SerializeField]
+        private AudioClip blindSound;
+
 
         private GameTime blindStart;
         private GameObject blindObject;
@@ -174,7 +180,31 @@ namespace BionicTraveler.Scripts.World
             {
                 this.Blind();
             }
+
+            if (this.blindObject != null)
+            {
+                var c = this.blindObject.GetComponent<Image>().color;
+
+                if (this.blindStart.HasTimeElapsed(3f))
+                {
+                    c.a = Mathf.Lerp(c.a, 0, 0.01f);
+                    this.blindObject.GetComponent<Image>().color = c;
+                }
+                else
+                {
+                    c.a = Mathf.Lerp(c.a, 0.7f, 0.1f);
+                    this.blindObject.GetComponent<Image>().color = c;
+                }
+                if (c.a <= 0.05)
+                {
+                    this.blindStart = null;
+                    GameObject.Destroy(this.blindObject);
+                }
+            }
+
             
+
+
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
                 interactable => Vector3.Distance(
@@ -262,15 +292,15 @@ namespace BionicTraveler.Scripts.World
         /// </summary>
         public void Blind()
         {
-            if (this.blindStart == null)
+            AudioManager.Instance.PlayOneShot(blindSound);
+            this.blindStart = GameTime.Now;
+            if (this.blindObject == null)
             {
-                this.blindStart = GameTime.Now;
                 this.blindObject = GameObject.Instantiate(this.blinded);
                 this.blindObject.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
-            }
-            else if (this.blindStart.HasTimeElapsed(3f))
-            {
-                GameObject.Destroy(this.blindObject);
+                var c = this.blindObject.GetComponent<Image>().color;
+                c.a = 0;
+                this.blindObject.GetComponent<Image>().color = c;
             }
         }
 

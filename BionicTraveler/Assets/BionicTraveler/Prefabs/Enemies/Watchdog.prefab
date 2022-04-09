@@ -298,4 +298,8 @@ MonoBehaviour:
   blindingCooldown: 5
   meleeMax: 12
   meleeMin: 5
+  shootSound: {fileID: 8300000, guid: 1a0536f2ea4de4aae875169f13910c11, type: 3}
+  changeColorSound: {fileID: 8300000, guid: eaca29b70da824561a0ecc64dbc162cf, type: 3}
+  dashSound: {fileID: 8300000, guid: 85e59b319e1c044d49b63850724ee1c4, type: 3}
+  deathSound: {fileID: 8300000, guid: b31da8e7dc14e4cb3af1759260697886, type: 3}
   charge: {fileID: 6426616405275219400, guid: 26330fe21a12848318bc3283c6937b4f, type: 3}

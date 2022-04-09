@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using BionicTraveler.Assets.Framework;
+    using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
@@ -16,6 +17,12 @@
         private Entity combatTarget;
         private TaskPlayAnimation explosionAnim;
         private TaskMoveToEntity followTask;
+
+        [SerializeField]
+        private AudioClip inflateSound;
+
+        [SerializeField]
+        private AudioClip popSound;
 
         /// <summary>
         /// Describes an entity's main goal.
@@ -132,6 +139,7 @@
                             if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.Attack))
                             {
                                 var taskAttack = new TaskAttack(this.Owner, true);
+                                AudioManager.Instance.PlayOneShot(popSound);
                                 taskAttack.Assign();
                             }
                         }
@@ -162,6 +170,7 @@
                             {
                                 if (!this.Owner.TaskManager.IsTaskActive(EntityTaskType.PlayAnimation))
                                 {
+                                    AudioManager.Instance.PlayOneShot(inflateSound);
                                     this.explosionAnim = new TaskPlayAnimation(this.Owner, "Explode");
                                     this.explosionAnim.Assign();
                                 }
