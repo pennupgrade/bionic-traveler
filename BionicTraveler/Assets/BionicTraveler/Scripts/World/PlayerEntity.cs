@@ -11,6 +11,8 @@ namespace BionicTraveler.Scripts.World
     using UnityEngine;
     using UnityEditor;
     using BionicTraveler.Scripts.Quests;
+    using UnityEngine.AI;
+    using BionicTraveler.Scripts.AI;
 
     /// <summary>
     /// Player Entity class.
@@ -85,6 +87,25 @@ namespace BionicTraveler.Scripts.World
             this.GetComponent<BodypartBehaviour>().enabled = state;
             this.GetComponent<PlayerInteraction>().enabled = state;
             this.HasControl = state;
+        }
+
+        /// <summary>
+        /// Enables scripted sequence movement support for the player. This allows movement tasks
+        /// to directly steer the player via the navmesh.
+        /// </summary>
+        public void EnableScriptedSequenceMovement()
+        {
+            this.GetComponent<EntityMovement>().enabled = true;
+            this.GetComponent<NavMeshAgent>().enabled = true;
+        }
+
+        /// <summary>
+        /// Disables scripted sequence movement support for the player. This resumes normal player movement.
+        /// </summary>
+        public void DisableScriptedSequenceMovement()
+        {
+            this.GetComponent<EntityMovement>().enabled = false;
+            this.GetComponent<NavMeshAgent>().enabled = false;
         }
 
         protected override void Start()
