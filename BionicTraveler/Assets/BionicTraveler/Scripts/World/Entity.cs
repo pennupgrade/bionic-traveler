@@ -15,7 +15,10 @@
     public abstract class Entity : MonoBehaviour
     {
         [SerializeField]
-        private float baseMovementSpeed = 1f;
+        private float baseMovementSpeed = 3f;
+
+        [SerializeField]
+        private float walkSpeed = 2f;
 
         private int maxHealth = 100;
         private int health;
@@ -119,6 +122,11 @@
         /// Gets the current movement speed base on <see cref="BaseMovementSpeed"/> and any potential effects.
         /// </summary>
         public float MovementSpeed { get; private set; }
+
+        /// <summary>
+        /// Gets the default walk speed for this entity.
+        /// </summary>
+        public float WalkSpeed => this.walkSpeed;
 
         /// <summary>
         /// Gets or sets a value indicating whether this entity should skip its death animation.

@@ -92,6 +92,7 @@ namespace BionicTraveler.Scripts.Sequences
                 player.EnableScriptedSequenceMovement();
 
                 this.playerMoveTask = new TaskGoToPoint(player, this.playerMoveToPos.transform.position);
+                this.playerMoveTask.ForceWalking = true;
                 this.playerMoveTask.Assign();
 
                 this.state = BridgeState.PlayerWalking;

@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 7
+  walkSpeed: 2
   loot: {fileID: 0}
   name: 
   relationships: {fileID: 11400000, guid: 518db983fc518114899421f1fc0ec833, type: 2}

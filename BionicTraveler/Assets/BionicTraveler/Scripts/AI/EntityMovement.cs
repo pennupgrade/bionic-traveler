@@ -75,7 +75,7 @@
         private bool usedNavmeshLastTick;
         private Vector3 targetDirection;
         private bool forceWalking;
-        private float originalSpeed;
+        private float desiredSpeed;
         private Entity owner;
         private bool startedMovement;
         private bool dontUpdateAnimator;
@@ -116,13 +116,11 @@
             {
                 if (value)
                 {
-                    // TODO: Customize outside of agent.
-                    this.originalSpeed = this.agent.speed;
-                    this.agent.speed = 1.5f;
+                    this.desiredSpeed = this.owner.WalkSpeed;
                 }
                 else
                 {
-                    this.agent.speed = this.originalSpeed;
+                    this.desiredSpeed = this.owner.BaseMovementSpeed;
                 }
 
             }
@@ -171,8 +169,8 @@
             this.lastPathfindingUpdate = GameTime.Default;
             this.isInitialized = true;
             this.owner = this.GetComponent<Entity>();
+            this.desiredSpeed = this.owner.BaseMovementSpeed;
             this.agent.speed = this.owner.BaseMovementSpeed;
-            this.originalSpeed = this.agent.speed;
             this.dontUpdateAnimator = (this.owner as DynamicEntity).DontUpdateAnimatorForMovement;
         }
 
@@ -244,8 +242,9 @@
                 return;
             }
 
-            // Update speed each tick.
-            this.agent.speed = this.owner.MovementSpeed;
+            // Update speed each tick. Choose the smaller between our desired speed and our current movement
+            // speed which is affected by area effects.
+            this.agent.speed = Math.Min(this.desiredSpeed, this.owner.MovementSpeed);
 
             // Support both, entity and static spatial targets.
             var targetPosition = this.targetEntity != null ? this.targetEntity.GetComponent<Collider2D>().bounds.center :

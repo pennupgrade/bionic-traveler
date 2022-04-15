@@ -23,6 +23,16 @@ namespace BionicTraveler.Scripts.AI
             this.movement = this.Owner.GetComponent<EntityMovement>();
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether a slower movement speed is used, i.e. walking.
+        /// </summary>
+        public bool ForceWalking
+        {
+            get => this.movement.ForceWalking;
+            set => this.movement.ForceWalking = value;
+        }
+
+        /// <inheritdoc/>
         public override EntityTaskType Type => EntityTaskType.GoToPoint;
 
         /// <inheritdoc/>
