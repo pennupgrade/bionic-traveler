@@ -25,10 +25,10 @@
         /// </summary>
         /// <param name="dialogueInteractable">The dialogue.</param>
         /// <param name="persistent">Whether this state should be saved across game sessions.</param>
-        public void MarkDialogueAsCompleted(DialogueInteractable dialogueInteractable, bool persistent)
+        public void MarkDialogueAsCompleted(DialogueData dialogueInteractable, bool persistent)
         {
             // TODO: Persist if necessary.
-            this.completedDialogues.Add(dialogueInteractable.name);
+            this.completedDialogues.Add(dialogueInteractable.Name);
         }
 
         /// <summary>

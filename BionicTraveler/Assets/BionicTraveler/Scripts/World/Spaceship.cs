@@ -2,13 +2,14 @@ namespace BionicTraveler.Scripts
 {
     using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Interaction;
+    using BionicTraveler.Scripts.Quests;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
     /// The player's spaceship, which allows her to travel to other planets and charge her battery.
     /// </summary>
-    public class Spaceship : DialogueObject
+    public class Spaceship : MonoBehaviour, IInteractable
     {
         [Tooltip("The sound to play when the spaceship is being interacted with.")]
         [SerializeField]
@@ -18,18 +19,34 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         private GameObject playerExitPoint;
 
+        [SerializeField]
+        [Tooltip("The dialogue host to use. Defaults to the host attached to the GameObject.")]
+        private DialogueHost dialogueHost;
+
+        [SerializeField]
+        private YarnProgram deniedDialogue;
+
         /// <summary>
         /// Gets the point where the player is spawned when they exit the ship.
         /// </summary>
         public GameObject PlayerExitPoint => this.playerExitPoint;
 
         /// <inheritdoc/>
-        public override void OnInteract(GameObject obj)
+        public void OnInteract(GameObject obj)
         {
             Debug.Log("Interacted with Spaceship, healed Player");
             obj.GetComponent<PlayerEntity>()?.RestoreEnergy();
             AudioManager.Instance.PlayOneShot(this.interactionSound);
-            //base.OnInteract(obj);
+
+            if (QuestManager.Instance.HasCompletedQuest("SpaceshipPrerequisite"))
+            {
+                // Go to the next planet.
+            }
+            else
+            {
+                // Show the dialogue for the first time.
+                this.StartDialogue(obj);
+            }
         }
 
         /// <summary>
@@ -38,7 +55,17 @@ namespace BionicTraveler.Scripts
         /// <param name="interacter">The entity interacting with the spaceship.</param>
         public void StartDialogue(GameObject interacter)
         {
-            base.OnInteract(interacter);
+            if (this.dialogueHost == null)
+            {
+                this.dialogueHost = this.GetComponent<DialogueHost>();
+                if (this.dialogueHost == null)
+                {
+                    Debug.LogError($"{this.name} is missing a DialogueHost component.");
+                    return;
+                }
+            }
+
+            this.dialogueHost.StartDialogue(interacter, this.deniedDialogue.name);
         }
     }
 }

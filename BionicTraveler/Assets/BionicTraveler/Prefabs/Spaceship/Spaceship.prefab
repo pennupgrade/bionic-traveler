@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4353204424951039292}
   - component: {fileID: 4353204424951039295}
   - component: {fileID: 4353204424951039294}
+  - component: {fileID: 5498574269564065022}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Interactable
@@ -96,8 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34330b9382050e341b721a8ec1bcb711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runner: {fileID: 0}
+  dialogue: {fileID: 0}
   dialogueStartNode: 
+  multipleRuns: 0
+  persistState: 0
+  overrideCharacterName: 
+  disableSpeechAudio: 0
+  interactionSound: {fileID: 0}
+  playerExitPoint: {fileID: 0}
 --- !u!61 &4353204424951039294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 1.5123291}
   m_EdgeRadius: 0
+--- !u!114 &5498574269564065022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353204424951039281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

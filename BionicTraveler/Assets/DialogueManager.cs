@@ -18,7 +18,7 @@ namespace BionicTraveler
 
         private DialogueRunner runner;
         private DialogueUI ui;
-        private DialogueInteractable currentSource;
+        private DialogueData currentSource;
 
         /// <summary>
         /// Start is called before the first frame update.
@@ -38,7 +38,7 @@ namespace BionicTraveler
         /// <param name="source">The source.</param>
         /// <param name="dialogue">The dialogue.</param>
         /// <param name="startNode">The start node.</param>
-        public void StartNewDialogue(DialogueInteractable source, YarnProgram dialogue, string startNode)
+        public void StartNewDialogue(DialogueData source, YarnProgram dialogue, string startNode)
         {
             this.currentSource = source;
             this.runner.Add(dialogue);

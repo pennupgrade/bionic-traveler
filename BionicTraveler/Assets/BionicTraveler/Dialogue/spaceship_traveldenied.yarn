@@ -1,0 +1,8 @@
+title: Start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Spaceship">>
+You cannot travel just yet.
+===

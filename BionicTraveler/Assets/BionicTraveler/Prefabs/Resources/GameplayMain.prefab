@@ -7255,7 +7255,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2872445315250322599}
   m_HandleRect: {fileID: 2872445315250322598}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10267,7 +10267,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f0d1ef43071f8074fab1f3a4253aed73, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[0]
@@ -10280,7 +10280,7 @@ PrefabInstance:
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: fb0e3335ed03a60449a07a0de686741f, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[3]
       value: 

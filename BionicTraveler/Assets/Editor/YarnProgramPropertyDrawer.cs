@@ -1,7 +1,9 @@
 ﻿namespace Editor
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using System.Text.RegularExpressions;
     using BionicTraveler.Scripts.Interaction;
     using UnityEditor;
     using UnityEngine;
@@ -12,6 +14,8 @@
     [CustomPropertyDrawer(typeof(DialogueNodeSelectorAttribute))]
     public class YarnProgramPropertyDrawer : PropertyDrawer
     {
+        private static Regex arrayElementRegex = new Regex(@"\[(.*?)\]");
+
         private bool showField;
 
         /// <inheritdoc/>
@@ -20,11 +24,45 @@
             var targetObject = property.serializedObject.targetObject;
             var attrib = this.attribute as DialogueNodeSelectorAttribute;
 
-            // Get the actual dialogue interactable via name from the attribute.
-            var field = typeof(DialogueInteractable).GetField(
+            // We only support value look for DialogueData directly and for DialogueHost.
+            YarnProgram value = null;
+            if (targetObject.GetType() == typeof(DialogueData))
+            {
+                var field = typeof(DialogueData).GetField(
                 attrib.Dialogue,
                 BindingFlags.Instance | BindingFlags.NonPublic);
-            var value = field.GetValue(targetObject) as YarnProgram;
+                value = field.GetValue(targetObject) as YarnProgram;
+            }
+            else if (targetObject.GetType() == typeof(DialogueHost))
+            {
+                // If we are within a DialogueHost, try to identify what array element we are.
+                var path = property.propertyPath.Replace("." + property.name, string.Empty);
+                var indexMatch = arrayElementRegex.Match(path);
+                if (indexMatch != null)
+                {
+                    var val = indexMatch.Value.Replace("[", string.Empty).Replace("]", string.Empty);
+                    if (int.TryParse(val, out int itemIndex))
+                    {
+                        // We now know which array element we are.
+                        // Get the list of dialogues field.
+                        var listField = targetObject.GetType().GetField(
+                            "dialogues",
+                            BindingFlags.Instance | BindingFlags.NonPublic);
+                        var listValue = listField.GetValue(targetObject);
+                        if (listValue is List<DialogueData> dialogueList)
+                        {
+                            value = dialogueList[itemIndex].Dialogue;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("DialogueNodeSelectorAttribute can only be used on DialogueData or DialogueHost");
+                return;
+            }
+
+            // Get the actual dialogue interactable via name from the attribute.
             if (value != null)
             {
                 var nodes = value.GetProgram().Nodes.Keys.ToList();

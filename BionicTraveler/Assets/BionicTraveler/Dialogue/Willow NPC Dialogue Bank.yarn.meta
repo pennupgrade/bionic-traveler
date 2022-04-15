@@ -23,5 +23,5 @@ ScriptedImporter:
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: b4026371347976243a17ad2d782ac183, type: 3}
   localizations: []
