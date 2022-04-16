@@ -260,7 +260,7 @@
 
             if (this.IsBeingKnockedBack)
             {
-                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f)
+                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f && !this.IsPlayer)
                 {
                     this.IsBeingKnockedBack = false;
                     var navMesh = this.GetComponent<NavMeshAgent>();
