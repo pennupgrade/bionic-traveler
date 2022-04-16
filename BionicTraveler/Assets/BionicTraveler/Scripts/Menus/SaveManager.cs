@@ -39,6 +39,8 @@ namespace BionicTraveler.Scripts
         [SerializeField]
         private Text saveTime3;
 
+        private int lastSlot = -1;
+
         /// <summary>
         /// Subscribable event for classes that want to save to store before SaveManager store info saves internally.
         /// </summary>
@@ -111,7 +113,7 @@ namespace BionicTraveler.Scripts
             bf.Serialize(stream, this.store);
             stream.Close();
 
-
+            this.lastSlot = slot;
         }
 
         private void OnSceneLoaded()
@@ -154,6 +156,30 @@ namespace BionicTraveler.Scripts
         }
 
         /// <summary>
+        /// Attempts to load the last save. If no save has been made, reloads current scene instead.
+        /// </summary>
+        /// <param name="reason">The reason for the reload.</param>
+        /// <returns>Whether or not a save slot was found.</returns>
+        public bool TryLoadLastSave(string reason)
+        {
+            Debug.Log(reason);
+
+            // Loads game from the most recent save slot
+            int lastSlot = SaveManager.Instance.GetLastSlot();
+            // If there is no available save slot
+            if (lastSlot < 0)
+            {
+                LevelLoadingManager.Instance.ReloadCurrentScene();
+                return false;
+            }
+            else
+            {
+                SaveManager.Instance.LoadGame(lastSlot);
+                return true;
+            }
+        }
+
+        /// <summary>
         /// Ope) overriden to also handle keeping track of self's state with isOpened.
         /// </summary>
         public override void Open()
@@ -169,6 +195,15 @@ namespace BionicTraveler.Scripts
         {
             base.Close();
             this.isOpened = false;
+        }
+
+        /// <summary>
+        /// Gets the most recent saved slot
+        /// </summary>
+        /// <returns>Returns the number of the most recent slot that was saved to</returns>
+        public int GetLastSlot()
+        {
+            return this.lastSlot;
         }
 
         private Text FindText(int slot)

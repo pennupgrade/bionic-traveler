@@ -10,6 +10,9 @@ namespace BionicTraveler.Scripts.World
     using Framework;
     using UnityEngine;
     using UnityEditor;
+    using BionicTraveler.Scripts.Quests;
+    using UnityEngine.AI;
+    using BionicTraveler.Scripts.AI;
 
     /// <summary>
     /// Player Entity class.
@@ -203,10 +206,12 @@ namespace BionicTraveler.Scripts.World
 
             if (!this.diedFromLowEnergy)
             {
-                LevelLoadingManager.Instance.ReloadCurrentScene();
+                //LevelLoadingManager.Instance.ReloadCurrentScene();
+                SaveManager.Instance.TryLoadLastSave("PlayerEntity::OnDied: Player died");
             }
             else
             {
+                /*
                 // If we died from low energy, we get moved back to our spaceship. If our current
                 // scene does not have one, load last scene that does.
                 // TODO: This really needs a proper refactor to get the last scene with a spaceship and then move us there.
@@ -220,6 +225,9 @@ namespace BionicTraveler.Scripts.World
                     Debug.Log("PlayerEntity::OnDied: Died from low energy, but no spaceship on scene. Loading previous scene");
                     LevelLoadingManager.Instance.StartLoadLevel("LandscapeScene");
                 }
+                */
+
+                SaveManager.Instance.TryLoadLastSave("PlayerEntity::OnDied: Died from low energy");
             }
         }
 
@@ -273,9 +281,7 @@ namespace BionicTraveler.Scripts.World
 
         private void Inventory_ItemsChanged(BasicInventory sender, InventoryItem item)
         {
-            // TODO: Improve lookup/make singleton.
-            var questManager = GameObject.FindObjectOfType<Quests.QuestManager>();
-            questManager.ProcessEvent(new Quests.QuestEventInventory());
+            QuestManager.Instance.ProcessEvent(new Quests.QuestEventInventory());
         }
 
         private void OnDestroy()
