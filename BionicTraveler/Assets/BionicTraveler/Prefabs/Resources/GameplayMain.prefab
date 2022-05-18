@@ -10272,15 +10272,15 @@ PrefabInstance:
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 43e62622b3eea6b438af5dba5bc9d977, type: 2}
+      objectReference: {fileID: 11400000, guid: e1deaa205c31a684db9c33315996ec22, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 6812725e3112ad44392e3e151d7f8e8a, type: 2}
+      objectReference: {fileID: 11400000, guid: 219682216c04d60428b0f7b3ea354035, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: fb0e3335ed03a60449a07a0de686741f, type: 2}
+      objectReference: {fileID: 11400000, guid: 6812725e3112ad44392e3e151d7f8e8a, type: 2}
     - target: {fileID: 6818921655187003254, guid: f6cc8ba15fde6644a998765d87ca0384, type: 3}
       propertyPath: quests.Array.data[3]
       value: 

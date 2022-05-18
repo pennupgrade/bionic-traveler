@@ -7,7 +7,7 @@ namespace BionicTraveler.Scripts.Combat
     /// <summary>
     /// Please document me.
     /// </summary>
-    public class AoeAttackIndicatorScript : MonoBehaviour
+    public class AOEAttackIndicatorScript : MonoBehaviour
     {
         private GameTime spawnedTime;
         private Transform tgtTransform;

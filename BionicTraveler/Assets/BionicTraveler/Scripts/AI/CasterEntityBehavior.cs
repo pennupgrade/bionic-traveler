@@ -208,7 +208,7 @@
                     AudioManager.Instance.PlayOneShot(casterAttackSound);
 
                     GameObject spawnedAttack = GameObject.Instantiate(this.aoe, this.combatTarget.transform.position, Quaternion.identity);
-                    spawnedAttack.GetComponent<AoeAttackIndicatorScript>().Initialize(this.Owner, this.combatTarget.transform);
+                    spawnedAttack.GetComponent<AOEAttackIndicatorScript>().Initialize(this.Owner, this.combatTarget.transform);
                     this.activeAttacks.Add(spawnedAttack);
 
                     var moveTask = new TaskMoveToEntity(this.Owner, this.combatTarget);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5862754147467049184}
   - component: {fileID: 805581051003454144}
   m_Layer: 0
-  m_Name: AoeIndicator
+  m_Name: AOEIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8b6f79a6864795545be48d5f5b5e69d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce6c75ca41830a43839465f8c979411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoeAttack: {fileID: 8837091373638637389, guid: 6a9aec31edd6cf24dbcdfa1b79e3de85, type: 3}
   aoeAttackData: {fileID: 11400000, guid: e89109209eb560f408e2b515c2efde8d, type: 2}
   trackTime: 1.25
   triggerTime: 2.2
