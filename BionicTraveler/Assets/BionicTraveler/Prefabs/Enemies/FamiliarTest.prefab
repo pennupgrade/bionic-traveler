@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 8288416212411655830}
   - component: {fileID: 369515535994139971}
   - component: {fileID: 369515535994139970}
+  - component: {fileID: 1836565727647298722}
   m_Layer: 0
   m_Name: FamiliarTest
   m_TagString: Enemy
@@ -107,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 5
+  walkSpeed: 1
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
   name: Caster
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
@@ -280,6 +282,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flags: 1
   aoe: {fileID: 8837091373638637389, guid: 39e340f1a031f164aa1ce6ed385c0c74, type: 3}
+  teleportInSound: {fileID: 0}
+  teleportOutSound: {fileID: 0}
+  casterAttackSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!114 &369515535994139971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,9 +312,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
   dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
-  dialogueStartNode: blueGuy_start
-  multipleRuns: 0
-  persistState: 0
-  overrideCharacterName: 
-  disableSpeechAudio: 0
+--- !u!114 &1836565727647298722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142724886269355024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
+    dialogueStartNode: blueGuy_start
+    multipleRuns: 0
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
