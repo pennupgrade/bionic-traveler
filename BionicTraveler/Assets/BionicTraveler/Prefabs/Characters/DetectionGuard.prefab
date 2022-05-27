@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 2290134899210715431}
   - component: {fileID: 2290134899210715419}
   - component: {fileID: 3587328814613343166}
-  - component: {fileID: 3426047084139678277}
+  - component: {fileID: 6352022391019507478}
+  - component: {fileID: 1171808149726055660}
   m_Layer: 0
   m_Name: DetectionGuard
   m_TagString: Untagged
@@ -103,12 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
   dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
-  dialogueStartNode: greenGuy_start
-  multipleRuns: 0
-  persistState: 0
-  overrideCharacterName: 
-  disableSpeechAudio: 0
 --- !u!61 &7427415959348594822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 1
+  walkSpeed: 1
   loot: {fileID: 0}
   name: 
   relationships: {fileID: 0}
@@ -246,7 +244,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3426047084139678277
+--- !u!114 &6352022391019507478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -258,3 +256,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d315dd7ee7454242aaa2abdc8973743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1171808149726055660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427415959348594826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
+    dialogueStartNode: greenGuy_start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0

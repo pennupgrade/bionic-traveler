@@ -164,7 +164,7 @@
             this.IsBeingKnockedBack = true;
 
             var navMesh = this.GetComponent<NavMeshAgent>();
-            if (navMesh != null)
+            if (!this.IsPlayer && navMesh != null)
             {
                 navMesh.enabled = false;
             }
@@ -260,11 +260,13 @@
 
             if (this.IsBeingKnockedBack)
             {
-                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f && !this.IsPlayer)
+                if (this.GetComponent<Rigidbody2D>().velocity.magnitude < 0.3f)
                 {
                     this.IsBeingKnockedBack = false;
+
+                    // Player navmesh is used for cutscenes only, do not reactivate here.
                     var navMesh = this.GetComponent<NavMeshAgent>();
-                    if (navMesh != null)
+                    if (!this.IsPlayer && navMesh != null)
                     {
                         navMesh.enabled = true;
                     }
