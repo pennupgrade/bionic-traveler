@@ -176,11 +176,6 @@ namespace BionicTraveler.Scripts.World
         {
             base.Update();
 
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                this.Blind();
-            }
-
             if (this.blindObject != null)
             {
                 var c = this.blindObject.GetComponent<Image>().color;
@@ -201,9 +196,6 @@ namespace BionicTraveler.Scripts.World
                     GameObject.Destroy(this.blindObject);
                 }
             }
-
-            
-
 
             // TODO: This is inefficient in an open world, refine later; Create helper function to find objects of a certain type
             var interactables = GameObject.FindGameObjectsWithTag("Interactable").Where(
