@@ -1,0 +1,133 @@
+title: Start
+tags: 
+colorID: 0
+position: -832,-571
+---
+// programming team should replace the following if statements with equivalents in the code
+
+<<if askingAbout("Tyrant") is true>>
+    Dess: So what do you know about the Scrouge?
+    [[1]]
+    [[2]]
+    [[3]]
+    [[4 (Child)]]
+    [[5 (Teenager)]]
+    [[6]]
+    [[7 (Female)]]
+<<else>>
+    [[8 (Teenager)]]
+    [[9 (Parent)]]
+    [[10 (Rich)]]
+    [[11]]
+    [[12]]
+    [[13]]
+<<endif>>
+===
+title: 1
+tags: 
+colorID: 0
+position: 457,-530
+---
+Connecticut Citizen: He’s been around for a long time and ever since he came it’s been peaceful! Never seen him before though…
+===
+title: 2
+tags: 
+colorID: 0
+position: 460,-321
+---
+Connecticut Citizen: I heard that the Tyrant has a secret task force, and all I can say is I haven’t seen a crime in decades!
+===
+title: 3
+tags: 
+colorID: 0
+position: 468,-93
+---
+Connecticut Citizen: Long may the Tyrant reign supreme! His generosity blesses us with divine power!
+===
+title: 4 (Child)
+tags: 
+colorID: 0
+position: 473,128
+---
+Connecticut Citizen: My dad tells me I’ll get to meet the Tyrant one day! Hopefully he blesses me with his divine power!
+===
+title: 5 (Teenager)
+tags: 
+colorID: 0
+position: 679,-533
+---
+Connecticut Citizen: My coronation ceremony is coming up soon! I can’t wait to meet the Tyrant!
+===
+title: 8 (Teenager)
+tags: 
+colorID: 0
+position: 703,133
+---
+Connecticut Citizen: Have you had your coronation ceremony yet?
+===
+title: 10 (Rich)
+tags: 
+colorID: 0
+position: 912,-307
+---
+Connecticut Citizen: They’re having another party at the central capital tonight! I’m gonna have the time of my life!
+===
+title: 6
+tags: 
+colorID: 0
+position: 689,-314
+---
+Connecticut Citizen: Wow! Look at those ears! You’re so cute!
+===
+title: 9 (Parent)
+tags: 
+colorID: 0
+position: 902,-531
+---
+Connecticut Citizen: These powers make my daily life so much easier!
+===
+title: 11
+tags: 
+colorID: 0
+position: 915,-81
+---
+Connecticut Citizen: I would never forget ears like those! Are you new around here?
+===
+title: 12
+tags: 
+colorID: 0
+position: 941,131
+---
+Connecticut Citizen: *whistle* sheeeeesh
+===
+title: 13
+tags: 
+colorID: 0
+position: 1146,-90
+---
+Connecticut Citizen: Check out my tail! Isn’t it amazing?
+Dess:
+[[It's pretty cool.|13a]]
+[[...|13b]]
+===
+title: 7 (Female)
+tags: 
+colorID: 0
+position: 695,-89
+---
+Connecticut Citizen: I’ve heard that the Tyrant is extremely handsome! If only I could’ve seen his face during my coronation ceremony! [i]*Swoon*[/i]
+===
+title: 13a
+tags: 
+colorID: 0
+position: 1276,-485
+---
+Connecticut Citizen: I know, right? Not many have a chance to see a tail as glorious as mine!
+===
+title: 13b
+tags: 
+colorID: 0
+position: 1501,-493
+---
+Connecticut Citizen: C’mon? All the ladies go crazy over my tail!
+===

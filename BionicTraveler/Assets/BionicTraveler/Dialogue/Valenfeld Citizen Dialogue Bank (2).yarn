@@ -1,0 +1,92 @@
+title: Start
+tags: 
+colorID: 0
+position: -522,-396
+---
+// programming team should replace the following if statements with equivalents in the code
+
+<<if askingAbout("Scrouge") is true>>
+    Dess: So what do you know about the Scrouge?
+    [[1]]
+    [[2]]
+    [[3]]
+    [[4]]
+    [[5]]
+<<else>>
+    [[6 (Mother)]]
+    [[7]]
+    [[8]]
+    [[9 (Child)]]
+    [[10]]
+<<endif>>
+===
+title: 1
+tags: 
+colorID: 0
+position: 457,-528
+---
+Valenfeld Citizen: If you really seek death, the Sage should know something about the Scourge…
+===
+title: 2
+tags: 
+colorID: 0
+position: 462,-321
+---
+Valenfeld Citizen: Young lady, you really shouldn’t throw away your life so easily! Why don’t you settle down and marry my son instead?
+===
+title: 3
+tags: 
+colorID: 0
+position: 468,-93
+---
+Valenfeld Citizen: Do you seek vengeance on the Scourge as well? Very well, I believe the old lady in Willow will be of help to you…I pray for your success
+===
+title: 4
+tags: 
+colorID: 0
+position: 473,128
+---
+Valenfeld Citizen: The Sage is the only one in this village that has faced the Scourge and survived.
+===
+title: 5
+tags: 
+colorID: 0
+position: 677,-533
+---
+Valenfeld Citizen: I would advise you stay as far away from the Scourge as possible, young lad.
+===
+title: 6
+tags: 
+colorID: 0
+position: 687,-320
+---
+Valenfeld Mother: I lost my husband and son to the Scourge…I don’t know how much longer I can take this!
+===
+title: 7
+tags: 
+colorID: 0
+position: 698,-90
+---
+Valenfeld Citizen: It won’t be long until the Scourge follows us here! We’re all doomed!
+===
+title: 8
+tags: 
+colorID: 0
+position: 708,131
+---
+Valenfeld Citizen: I wonder how long this safety will last…
+===
+title: 9
+tags: 
+colorID: 0
+position: 903,-530
+---
+Valenfeld Child: My dad will kill the Scourge for us! That’s what he said when he led a party to kill it three years ago
+===
+title: 10
+tags: 
+colorID: 0
+position: 912,-307
+---
+Valenfeld Citizen: Do you seek refuge in Valenfeld? Feel welcome to stay as long as you like…
+===

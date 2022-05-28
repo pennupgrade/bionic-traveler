@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1fd9e09d06a2e304aad6e5d2419571a1
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: "Error on line 57 at position 3:\nmismatched input ']'
+    expecting FORMAT_FUNCTION_EXPRESSION_START\r\n[i]*Dess suddenly grows a pair
+    of (removable) bunny ears*[/i]\r\n  ^"
+  baseLanguage: {instanceID: 0}
+  localizations: []

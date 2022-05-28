@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9295df5e7fee0a744945908636120475
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: The node 'Dess-Beck Dialogue End' contains illegal characters
+    in its title.
+  baseLanguage: {instanceID: 0}
+  localizations: []

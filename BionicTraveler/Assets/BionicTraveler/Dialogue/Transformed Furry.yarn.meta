@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 640a56ed724f77f4cbf6667359f541ec
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: "Error on line 6 at position 41:\nmismatched input ']'
+    expecting FORMAT_FUNCTION_EXPRESSION_START\r\nTransformed Furry: Heyyy~ You like
+    my [i]ears[/i]?\r\n                                        ^"
+  baseLanguage: {instanceID: 0}
+  localizations: []

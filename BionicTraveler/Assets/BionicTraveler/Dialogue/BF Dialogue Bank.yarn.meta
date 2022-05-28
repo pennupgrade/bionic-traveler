@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: 85800875827b6b9498276ea41ef69dce
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - BF Dialogue Bank-Start-0
+  - BF Dialogue Bank-Start-1
+  - BF Dialogue Bank-1-2
+  - BF Dialogue Bank-1-3
+  - BF Dialogue Bank-2-4
+  - BF Dialogue Bank-2-5
+  - BF Dialogue Bank-3-6
+  - BF Dialogue Bank-4-7
+  - BF Dialogue Bank-4-8
+  - BF Dialogue Bank-4-9
+  - BF Dialogue Bank-5-10
+  - BF Dialogue Bank-6-11
+  - BF Dialogue Bank-7-12
+  - BF Dialogue Bank-7-13
+  - BF Dialogue Bank-8-14
+  - BF Dialogue Bank-8-15
+  - BF Dialogue Bank-9-16
+  - BF Dialogue Bank-10-17
+  - BF Dialogue Bank-10-18
+  - BF Dialogue Bank-11-19
+  - BF Dialogue Bank-11-20
+  - BF Dialogue Bank-11-21
+  - BF Dialogue Bank-12-22
+  - BF Dialogue Bank-12-23
+  - BF Dialogue Bank-13-24
+  - BF Dialogue Bank-13-25
+  - BF Dialogue Bank-13-26
+  - BF Dialogue Bank-14-27
+  - BF Dialogue Bank-15-28
+  - BF Dialogue Bank-16-29
+  - BF Dialogue Bank-16-30
+  - BF Dialogue Bank-17-31
+  - BF Dialogue Bank-18-32
+  - BF Dialogue Bank-18-33
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
