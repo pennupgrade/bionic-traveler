@@ -1,0 +1,66 @@
+title: Before Become Rat
+tags: 
+colorID: 0
+position: -32,-238
+---
+Rat Man: Hey, ya new here? Check this shit out! 
+[[After Become Rat]]
+===
+title: After Become Rat
+tags: 
+colorID: 0
+position: 326,-230
+---
+Rat Man: Squeak squeak... (Aw man...)
+[[ Leave |END]]
+[[ Call Lyra |Kiss_the_Rat]]
+===
+title: Kiss_the_Rat
+tags: 
+colorID: 0
+position: 780,-549
+---
+Lyra: Dess? You called me?
+Dess: Umm...
+Rat man:  “Squeak squeak… (*sob*)”
+Dess: There’s this rat dude here, he hasn’t turned back to normal.
+Lyra: Why don’t you give him a kiss?
+Dess: WTF Lyra why would I do that??!
+Lyra: Just give it a shot
+
+[[NO |END]]
+[[Haha well maybe just a little...jk, unless...? |KISS]]
+===
+title: KISS
+tags: 
+colorID: 0
+position: 1155,-185
+---
+Dess: Jeez fine (kisses rat)
+Rat man: “Squeak squeak? ( (￣▽￣*)ゞ) ”
+Dess: LYRA, THAT DIDNT WORK
+Lyra: LMAO nope guess not but it was pretty funny ngl
+
+[[Back to normal]]
+===
+title: Back to normal
+tags: 
+colorID: 0
+position: 1389,-452
+---
+Rat Man: Wow thanks for the kiss man ♡ (￣З￣)
+Rat Man: Fortunately my spells wear off rather quickly
+Dess: Greattt...
+Dess: Anyway, I'd like to ask if there's any way that I can receive some ears.
+Rat Man: Ah, so you've heard of me! Another valued customer! 
+Rat Man: Sure thing, anything for my adoring fans
+[i]*Dess suddenly grows a pair of (removable) bunny ears*[/i]
+Rat Man: There ya go! Always a pleasure.
+===
+title: END
+tags: 
+colorID: 0
+position: 741,49
+---
+
+===

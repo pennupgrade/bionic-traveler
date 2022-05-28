@@ -1,0 +1,98 @@
+title: Start
+tags: 
+colorID: 0
+position: -269,-255
+---
+//Not sure how to randomly select dialogue since there is no random() in yarn.
+//If we want to implement it, it needs to be done in unity (https://yarnspinnerstaging.azureedge.net/docs/unity/functions/)
+//Additionally, we cannot pass a random number into the dialogue trigger ([[]]) to conditionally choose an option, since it only recognizes strings and not vars. Currently the only way around this is to use 18 else ifs. If needed, writing can implement it.
+
+[[1]]
+[[2]]
+[[3]]
+[[4]]
+[[5]]
+[[6]]
+[[7]]
+[[8]]
+[[9]]
+[[10]]
+[[11]]
+[[12]]
+[[13]]
+[[14]]
+[[15]]
+[[16]]
+[[17]]
+[[18]]
+===
+title: 1
+tags: 
+colorID: 0
+position: 458,-528
+---
+Discouraged Villager: We can barely go out and hunt anymore since the animals became corrupted by the scourge.
+===
+title: 2
+tags: 
+colorID: 0
+position: 462,-319
+---
+Worried Villager: The village chief’s son hasn’t come back home in weeks. I hope he’s ok and hasn’t met his fate at the hands of the scourge.
+===
+title: 3
+tags: 
+colorID: 0
+position: 469,-92
+---
+Hopeless Villager: We’re doomed! We can’t leave the village and we can’t gather enough food. We need the help of the Sage!
+===
+title: 4
+tags: 
+colorID: 0
+position: 475,130
+---
+Grieving Villager: My husband went to speak to the Sage months ago to save us all… I never saw him again.
+===
+title: 5
+tags: 
+colorID: 0
+position: 732,-526
+---
+Scared Villager: I went out into the forest the other day and nearly lost my life. The scourge has the wild animals running mad!
+===
+title: 6
+tags: 
+colorID: 0
+position: 724,-307
+---
+Hopeful Villager: If anyone can save us, it’s the Sage. If only we could contact her…
+===
+title: 7
+tags: 
+colorID: 0
+position: 733,-83
+---
+Villager: The Sage!! She’s the only one who could perform such a miracle and return everything to normal!!
+===
+title: 8
+tags: 
+colorID: 0
+position: 733,141
+---
+Cautious Villager: Hm? The Sage? She lives in Valenfeld, far west of here. Hey… don’t you dare think about going there just yet. It’s too dangerous.
+===
+title: 9
+tags: 
+colorID: 0
+position: 968,-548
+---
+Angry Villager: Why hasn’t the Sage done anything to rid everyone of the curséd scourge? She must really be enjoying her safety out west in Valenfeld.
+===
+title: 10
+tags: 
+colorID: 0
+position: 1006,-306
+---
+Confident Villager: The Sage is the wisest of us all. She would know how to free us from the scourge’s wrath.
+===

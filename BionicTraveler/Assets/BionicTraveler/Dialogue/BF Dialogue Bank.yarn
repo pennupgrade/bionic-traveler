@@ -1,0 +1,172 @@
+title: Start
+tags: 
+colorID: 0
+position: 6,-143
+---
+//Not sure how to randomly select dialogue since there is no random() in yarn.
+//If we want to implement it, it needs to be done in unity (https://yarnspinnerstaging.azureedge.net/docs/unity/functions/)
+//Additionally, we cannot pass a random number into the dialogue trigger ([[]]) to conditionally choose an option, since it only recognizes strings and not vars. Currently the only way around this is to use 18 else ifs. If needed, writing can implement it.
+
+Ring....
+Lyra: Yello??
+
+[[1]]
+[[2]]
+[[3]]
+[[4]]
+[[5]]
+[[6]]
+[[7]]
+[[8]]
+[[9]]
+[[10]]
+[[11]]
+[[12]]
+[[13]]
+[[14]]
+[[15]]
+[[16]]
+[[17]]
+[[18]]
+===
+title: 1
+tags: 
+colorID: 0
+position: 458,-528
+---
+Lyra: Calling so soon? Ya miss me or something? 
+Lyra: Why don’t you hurry up and collect more data so we can see each other again then? :)
+===
+title: 2
+tags: 
+colorID: 0
+position: 462,-319
+---
+Lyra: I’m a busy gal you know? 3D printing gearboxes, adjusting motor functions on artificial limbs...
+Lyra: ...just kidding, I miss you.
+===
+title: 3
+tags: 
+colorID: 0
+position: 469,-92
+---
+Lyra: Lonely out there? Yeah, same. But at least my chair reclines!
+===
+title: 4
+tags: 
+colorID: 0
+position: 475,130
+---
+Lyra: Hey wanna hear a joke? What’s the difference between my petri dishes and you...?
+Lyra: My petri dishes have culture: hahahah
+Lyra: Don’t worry I’m just messing with you. Though you could do with some new clothes.
+===
+title: 5
+tags: 
+colorID: 0
+position: 732,-526
+---
+Lyra: Got bored and tried to make a blender with some scalpels and an old servo motor. I’m on my way to opening a smoothie shop.
+===
+title: 6
+tags: 
+colorID: 0
+position: 725,-305
+---
+Lyra: Heya, I’ve got five hundred and thirty nine simulations to review and only half a bottle of food paste. Wanna lend a hand?
+===
+title: 7
+tags: 
+colorID: 0
+position: 733,-83
+---
+Lyra: You know when you say a word so much that it stops making sense? 
+Lyra: Like Dess...Dess...Desss... Dessssss...Dess
+===
+title: 8
+tags: 
+colorID: 0
+position: 733,141
+---
+Lyra: 99 rivets of steel on the wall. 99 rivets of steel. 
+Lyra: Rotor spins, screw it in. 98 rivets of steel on the wall.
+===
+title: 9
+tags: 
+colorID: 0
+position: 968,-548
+---
+Lyra: It’s as bleak and droll as ever back on homeworld. Would be a little better if you were here though.
+===
+title: 10
+tags: 
+colorID: 0
+position: 1006,-306
+---
+Lyra: The corps just released a new flavor of food paste: chicken and beans. 
+Lyra: I think they forgot to cook the chicken though, tastes even worse than the steak and eggs. Yuckk!
+===
+title: 11
+tags: 
+colorID: 0
+position: 1003,-84
+---
+Lyra: Sup... ya lost, nerd? 
+Lyra: Have you tried mingling a bit with the locals? 
+Lyra: Just don’t find a new best friend and forget about me alright? Hehe
+===
+title: 12
+tags: 
+colorID: 0
+position: 982,156
+---
+Lyra: Hey Dess, here’s some professional advice: ya know that purple stuff you see around. 
+Lyra: Don’t breathe it in.
+===
+title: 13
+tags: 
+colorID: 0
+position: 1289,-549
+---
+Lyra: The miasma seems to be artificial. 
+Lyra: Maybe trail it and find out where it leads? But do keep your distance. 
+Lyra: I’ll get real bored if you die.
+===
+title: 14
+tags: 
+colorID: 0
+position: 1302,-297
+---
+Lyra: Hey, have you tried not dying?
+//if MC dies and then respawns this randomly occurs (this is our only conditional-based dialogue, if we cant have it be conditional-based just add it as normal)
+===
+title: 15
+tags: 
+colorID: 0
+position: 1289,-59
+---
+Lyra: Do take a good look around for me, Dess. Concrete and steel isn’t nearly as pretty as the views you get.
+===
+title: 16
+tags: 
+colorID: 0
+position: 1287,170
+---
+Lyra: Those cybernetics you’ve got are crazy teched, 
+Lyra: I would kill to tinker with them... so you better watch your back hehe.
+===
+title: 17
+tags: 
+colorID: 0
+position: 1562,-328
+---
+Lyra: Keep an eye on your battery levels, Dess. The ship has more than enough power to go around.
+===
+title: 18
+tags: 
+colorID: 0
+position: 1555,-59
+---
+Lyra: Make sure to take care of yourself out there. Eat something nice and stay rested. 
+Lyra: I wouldn’t know what to do without you.
+===

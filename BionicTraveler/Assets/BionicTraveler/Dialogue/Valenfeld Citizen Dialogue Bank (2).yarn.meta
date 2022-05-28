@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: d2a2ec914d7efe64b9acebf00265674b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Valenfeld Citizen Dialogue Bank (2)-Start-0
+  - Valenfeld Citizen Dialogue Bank (2)-1-1
+  - Valenfeld Citizen Dialogue Bank (2)-2-2
+  - Valenfeld Citizen Dialogue Bank (2)-3-3
+  - Valenfeld Citizen Dialogue Bank (2)-4-4
+  - Valenfeld Citizen Dialogue Bank (2)-5-5
+  - Valenfeld Citizen Dialogue Bank (2)-6-6
+  - Valenfeld Citizen Dialogue Bank (2)-7-7
+  - Valenfeld Citizen Dialogue Bank (2)-8-8
+  - Valenfeld Citizen Dialogue Bank (2)-9-9
+  - Valenfeld Citizen Dialogue Bank (2)-10-10
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
