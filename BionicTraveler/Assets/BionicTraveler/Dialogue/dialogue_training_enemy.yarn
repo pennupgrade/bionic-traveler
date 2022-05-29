@@ -1,0 +1,19 @@
+title: training_enemy_start
+tags: 
+colorID: 0
+---
+You think you are ready for this?
+[[Let's go!|enemy_fight]]
+[[Maybe another time...|enemy_leave]]
+===
+title: enemy_fight
+tags: 
+colorID: 0
+---
+<<set $decision_fight to 1>>
+===
+title: enemy_leave
+tags: 
+colorID: 0
+---
+===

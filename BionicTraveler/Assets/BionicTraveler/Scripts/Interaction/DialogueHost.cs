@@ -1,5 +1,6 @@
 ﻿namespace BionicTraveler.Scripts.Interaction
 {
+    using System;
     using System.Collections.Generic;
     using BionicTraveler.Scripts.Audio;
     using BionicTraveler.Scripts.Quests;
@@ -22,9 +23,19 @@
         private DialogueUI ui;
 
         /// <summary>
+        /// Event invoked when the dialogue has completed.
+        /// </summary>
+        public event Action<DialogueHost> DialogueCompleted;
+
+        /// <summary>
         /// Gets a value indicating whether or not the dialogue is finished running.
         /// </summary>
         public bool HasRun => this.hasRun;
+
+        /// <summary>
+        /// Gets the associated variable storage. This is only valid once a dialogue has been started.
+        /// </summary>
+        public VariableStorageBehaviour VariableStorage => this.runner.variableStorage;
 
         /// <summary>
         /// Starts the dialogue.
@@ -98,6 +109,8 @@
             player.IsIgnoredByEveryone = false;
             player.IsInDialogue = false;
             player.EnableInput();
+
+            this.DialogueCompleted?.Invoke(this);
         }
     }
 }

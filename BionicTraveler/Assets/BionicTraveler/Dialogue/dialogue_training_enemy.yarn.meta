@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 9ee0605f3e10a8b468b2d2b8fd1125f1
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - dialogue_training_enemy-training_enemy_start-0
+  - dialogue_training_enemy-training_enemy_start-1
+  - dialogue_training_enemy-training_enemy_start-2
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
