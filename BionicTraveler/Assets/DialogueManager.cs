@@ -19,6 +19,7 @@ namespace BionicTraveler
         private DialogueRunner runner;
         private DialogueUI ui;
         private DialogueData currentSource;
+        private string characterNameOverride;
 
         /// <summary>
         /// Start is called before the first frame update.
@@ -38,9 +39,11 @@ namespace BionicTraveler
         /// <param name="source">The source.</param>
         /// <param name="dialogue">The dialogue.</param>
         /// <param name="startNode">The start node.</param>
-        public void StartNewDialogue(DialogueData source, YarnProgram dialogue, string startNode)
+        /// <param name="characterNameOverride">The character name override to use, if any.</param>
+        public void StartNewDialogue(DialogueData source, YarnProgram dialogue, string startNode, string characterNameOverride)
         {
             this.currentSource = source;
+            this.characterNameOverride = characterNameOverride;
             this.runner.Add(dialogue);
             this.runner.StartDialogue(startNode);
         }
@@ -50,8 +53,10 @@ namespace BionicTraveler
             var avatarName = this.runner.variableStorage.GetValue("$npcface");
             if (avatarName.type == Yarn.Value.Type.Null)
             {
-                this.characterName.text = string.IsNullOrWhiteSpace(this.currentSource.OverrideCharacterName)
-                    ? "Anonymous" : this.currentSource.OverrideCharacterName;
+                var nameToUse = string.IsNullOrWhiteSpace(this.characterNameOverride)
+                    ? this.currentSource.OverrideCharacterName : this.characterNameOverride;
+                this.characterName.text = string.IsNullOrWhiteSpace(nameToUse)
+                    ? "Anonymous" : nameToUse;
             }
             else
             {

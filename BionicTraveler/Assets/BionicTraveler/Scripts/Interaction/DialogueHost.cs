@@ -33,6 +33,11 @@
         public bool HasRun => this.hasRun;
 
         /// <summary>
+        /// Gets the name last used for a character by this host.
+        /// </summary>
+        public string LastName { get; private set; }
+
+        /// <summary>
         /// Gets the associated variable storage. This is only valid once a dialogue has been started.
         /// </summary>
         public VariableStorageBehaviour VariableStorage => this.runner.variableStorage;
@@ -43,6 +48,18 @@
         /// <param name="interactor">The game object interacting with this dialogue host.</param>
         /// <param name="dialogue">The dialogue.</param>
         public void StartDialogue(GameObject interactor, string dialogue)
+        {
+            this.StartDialogue(interactor, dialogue, null, null);
+        }
+
+        /// <summary>
+        /// Starts the dialogue.
+        /// </summary>
+        /// <param name="interactor">The game object interacting with this dialogue host.</param>
+        /// <param name="dialogue">The dialogue.</param>
+        /// <param name="characterName">The character name.</param>
+        /// <param name="startNode">The startNode.</param>
+        public void StartDialogue(GameObject interactor, string dialogue, string characterName, string startNode)
         {
             this.dialogueData = this.dialogues.Find(x => x.Name == dialogue);
             if (this.dialogueData == null)
@@ -57,8 +74,12 @@
                 return;
             }
 
+            characterName ??= this.dialogueData.OverrideCharacterName;
+            startNode ??= this.dialogueData.DialogueStartNode;
+            this.LastName = characterName;
+
             Debug.Log("Dialogue has been started by " + interactor.name);
-            var speakWithQuest = new Quests.QuestEventSpokenTo(this.dialogueData.OverrideCharacterName);
+            var speakWithQuest = new Quests.QuestEventSpokenTo(characterName);
             QuestManager.Instance.ProcessEvent(speakWithQuest);
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
@@ -72,7 +93,7 @@
             this.ui.onLineFinishDisplaying.AddListener(this.LineFinishDisplayingListener);
 
             var manager = runnerGameobject.GetComponent<DialogueManager>();
-            manager.StartNewDialogue(this.dialogueData, this.dialogueData.Dialogue, this.dialogueData.DialogueStartNode);
+            manager.StartNewDialogue(this.dialogueData, this.dialogueData.Dialogue, startNode, characterName);
 
             this.runner = runnerGameobject.GetComponent<DialogueRunner>();
             this.runner.onDialogueComplete.AddListener(this.DialogueCompletedHandler);

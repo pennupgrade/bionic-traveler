@@ -17,3 +17,21 @@ tags:
 colorID: 0
 ---
 ===
+title: enemy_start
+tags: 
+colorID: 0
+---
+Die!
+===
+title: enemy_won
+tags: 
+colorID: 0
+---
+I told you so!
+===
+title: enemy_lost
+tags: 
+colorID: 0
+---
+You beat me!
+===
