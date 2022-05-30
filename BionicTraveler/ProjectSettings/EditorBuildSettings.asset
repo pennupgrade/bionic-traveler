@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/BionicTraveler/Levels/Fantasy/BlueMushroomHouse.unity
+    guid: 788859b472787df4890dd998c5f0a57b
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/Fantasy/FantasyRealm.unity
+    guid: 4c248b74e71c35746b76827b66445067
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/Fantasy/YellowMushroomHouse.unity
+    guid: 851fb99f14759404a9ff92fcf894e80f
+  - enabled: 1
     path: Assets/BionicTraveler/Levels/Preload.unity
     guid: 947da4940276701449ef71e458d0991d
   - enabled: 1
