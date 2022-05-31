@@ -72,7 +72,7 @@ namespace BionicTraveler.Scripts.Menus
         /// </summary>
         private void Update()
         {
-            if (this.isOnTreasure && Input.GetButton("Interact"))
+            if (this.isOnTreasure && Input.GetButtonDown("Interact"))
             {
                 InventoryUI.Instance.SetInventoryData(this.inventory);
                 WindowManager.Instance.ToggleMenu(InventoryUI.Instance);

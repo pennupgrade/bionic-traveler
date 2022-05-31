@@ -171,7 +171,7 @@ Transform:
   - {fileID: 165932372}
   - {fileID: 1785819066}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &150958890
 PrefabInstance:
@@ -288,7 +288,7 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Bomber
     disableSpeechAudio: 0
 --- !u!1 &165932371
 GameObject:
@@ -6902,6 +6902,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &290132132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.167645
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8842778
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604223, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_Name
+      value: Barrel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
 --- !u!1001 &488754590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7021,8 +7078,65 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Watchdog
     disableSpeechAudio: 0
+--- !u!1001 &548256426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.8509083
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6781025
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 830565518332926849, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 993295391354806860, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
+      propertyPath: m_Name
+      value: Pickup_Arm_Teleport Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c773fe01020d8424e8b0e0c97f3ca465, type: 3}
 --- !u!1 &558440301
 GameObject:
   m_ObjectHideFlags: 0
@@ -14207,7 +14321,7 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Box
     disableSpeechAudio: 0
 --- !u!1 &668148746
 GameObject:
@@ -14245,7 +14359,7 @@ Transform:
   - {fileID: 932652977}
   - {fileID: 842364421}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &757904934
 GameObject:
@@ -17923,7 +18037,7 @@ Transform:
   - {fileID: 757904935}
   - {fileID: 1735201446}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &793088734
 MonoBehaviour:
@@ -18087,7 +18201,7 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Bear
     disableSpeechAudio: 0
 --- !u!1001 &852493998
 PrefabInstance:
@@ -18325,8 +18439,65 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Caster
     disableSpeechAudio: 0
+--- !u!1001 &991974820
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.096292
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5624648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604223, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_Name
+      value: Barrel (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
 --- !u!1001 &1154298723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18442,7 +18613,7 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Soldier
     disableSpeechAudio: 0
 --- !u!1001 &1516461068
 PrefabInstance:
@@ -18555,7 +18726,7 @@ MonoBehaviour:
     dialogueStartNode: training_enemy_start
     multipleRuns: 1
     persistState: 0
-    overrideCharacterName: Wild Knight
+    overrideCharacterName: Bat
     disableSpeechAudio: 0
 --- !u!1 &1587764386
 GameObject:
@@ -19601,6 +19772,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1606563115
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.549005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8385763
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604223, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_Name
+      value: Barrel (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
 --- !u!1 &1630604473
 GameObject:
   m_ObjectHideFlags: 0
@@ -23093,6 +23321,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1684546107
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.928528
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.059879
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604195, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028348944008604223, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
+      propertyPath: m_Name
+      value: Barrel (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aab0078ba5293e543a7d8edd0d0ab52d, type: 3}
 --- !u!1 &1735201445
 GameObject:
   m_ObjectHideFlags: 0
@@ -23186,7 +23471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1785819065
 GameObject:

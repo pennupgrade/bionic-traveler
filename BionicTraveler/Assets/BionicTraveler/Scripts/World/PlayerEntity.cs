@@ -311,10 +311,11 @@ namespace BionicTraveler.Scripts.World
             // TODO: This really needs a proper refactor to get the last scene with a spaceship and then move us there.
             if (this.diedFromLowEnergy)
             {
+                // May 30 2022: We no longer use the spaceship logic.
                 // Probe current scene. Not fast or pretty, but works.
-                var spaceship = GameObject.FindObjectOfType<Spaceship>();
-                this.gameObject.transform.position = spaceship.PlayerExitPoint.transform.position;
-                spaceship.StartDialogue(this.gameObject);
+                //var spaceship = GameObject.FindObjectOfType<Spaceship>();
+                //this.gameObject.transform.position = spaceship.PlayerExitPoint.transform.position;
+                //spaceship.StartDialogue(this.gameObject);
             }
 
             this.diedFromLowEnergy = false;
