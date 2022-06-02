@@ -92,12 +92,10 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape:
-    - - {x: 5, y: -22}
-      - {x: -16, y: -17}
-      - {x: -16, y: -12}
-      - {x: -1, y: -9}
-      - {x: 16, y: -12}
-      - {x: 16, y: -16}
+    - - {x: 5, y: -15}
+      - {x: -15, y: -12}
+      - {x: -2, y: -6}
+      - {x: 15, y: -9}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

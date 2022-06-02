@@ -32,6 +32,7 @@ namespace BionicTraveler.Scripts.Combat
             }
 
             // Manually trace collisions as our attack moves quite fast and might skip colliders otherwise.
+            // why do we use non trigger colliders?
             var colls = new List<Collider2D>();
             Physics2D.GetContacts(ourCollider, colls);
             var nonTriggerColls = colls.Where(coll => !coll.isTrigger).ToArray();
