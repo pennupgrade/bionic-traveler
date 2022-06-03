@@ -57,6 +57,23 @@ namespace BionicTraveler.Scripts
             return this.difficulty;
         }
 
+        /// <inheritdoc/>
+        public override void Open()
+        {
+            base.Open();
+            this.gameObject.SetActive(true);
+        }
+
+        /// <inheritdoc/>
+        public override void Close()
+        {
+            base.Close();
+
+            // Something is wrong with this menu and we can still interact with it even when the canvas
+            // is disabled. We fix that here.
+            this.gameObject.SetActive(false);
+        }
+
         private void SetDifficulty(int diff)
         {
             AudioManager.Instance.PlayOneShot(clickSound);

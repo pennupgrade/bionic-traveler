@@ -48,5 +48,13 @@
         {
             this.audioSource.Stop();
         }
+
+        /// <summary>
+        /// Properly closes the current menu.
+        /// </summary>
+        public void CloseMenu()
+        {
+            WindowManager.Instance.ToggleMenu(this);
+        }
     }
 }
