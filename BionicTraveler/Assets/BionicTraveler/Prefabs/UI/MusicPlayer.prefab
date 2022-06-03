@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5130606282265424657
 CanvasRenderer:
@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sound Team:
-
-    Chris'
+  m_text: "Sound Team:\nKevin Zhao (Lead)\nBen Chrepta\r\nChristopher Yu\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
