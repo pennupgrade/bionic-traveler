@@ -1,0 +1,9 @@
+title: showroom_scifi_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sci-Fi Guide">>
+The scifi realm team was led by Meggie Cheng. 
+The scifi realm was originally supposed to consist of both a government center and a civilian center that made up the population centers of homeworld, while also have a research outpost of the wilderness of the wild planet. 
+===

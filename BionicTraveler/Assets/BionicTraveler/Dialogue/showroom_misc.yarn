@@ -1,0 +1,8 @@
+title: showroom_misc_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Misc Guide">>
+There are all the miscellaneous assets that were completed by the art team, but ultimately unable to be imported into the game proper.
+===
