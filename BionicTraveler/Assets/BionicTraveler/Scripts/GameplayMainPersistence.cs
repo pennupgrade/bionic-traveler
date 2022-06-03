@@ -29,7 +29,8 @@ namespace BionicTraveler.Scripts
         {
             // Do not inject when we are on the Preload scene as we do not want any player related
             // stuff loaded just then.
-            var isPreloadScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Preload";
+            var isPreloadScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Preload"
+                 || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "MainMenu";
             if (isPreloadScene)
             {
                 return;

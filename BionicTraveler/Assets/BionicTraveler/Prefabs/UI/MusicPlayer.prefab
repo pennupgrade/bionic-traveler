@@ -2552,7 +2552,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fa801d6270ff44d0a9d067a13a16e79, type: 3}
   - {fileID: 8300000, guid: ffbec7499e3bb4524a7a57645207ddd4, type: 3}
   songDropdown: {fileID: 7146613175627665328}
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 4809895845412620965}
   audioSource: {fileID: 774090852}
 --- !u!1 &7146613176816607031
 GameObject:
