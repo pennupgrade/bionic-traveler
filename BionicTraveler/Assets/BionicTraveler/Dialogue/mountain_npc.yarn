@@ -1,0 +1,10 @@
+title: mountain_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Mountain Dweller">>
+This is the Mountains!
+Just up North you will find an ancient temple, a mountain village, and a lake.
+Hermits live in this secluded mountain and whisper of a beast roaming up north circulate nonstop
+===

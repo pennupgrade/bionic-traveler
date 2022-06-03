@@ -1,0 +1,10 @@
+title: lake_dungeon_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "bff">>
+Welcome to the ancient Lake Temple.
+It is an unfinished dungeon; 
+Would have granted some prize upon beating its boss!
+===

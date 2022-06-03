@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -726899913262531797, guid: dfa84dbb163de32418bbfe49122796ff, type: 3}
+  m_Sprite: {fileID: 8719296598699246924, guid: dfa84dbb163de32418bbfe49122796ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,12 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
   dialogue: {fileID: 2480198943629176163, guid: cb4c0a67e552c1c45887c7ba1279b15e, type: 3}
-  dialogueStartNode: Start
-  multipleRuns: 0
-  persistState: 0
-  overrideCharacterName: Sage
-  disableSpeechAudio: 0
 --- !u!61 &3385645814944223618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +115,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 3}
+    oldSize: {x: 2.5, y: 3.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

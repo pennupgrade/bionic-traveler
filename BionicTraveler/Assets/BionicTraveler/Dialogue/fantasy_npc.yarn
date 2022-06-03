@@ -1,0 +1,10 @@
+title: fantasy_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Foxy Resident">>
+Welcome to Connecticut!
+The residences the common folk of the beastmen race; 
+A weird rat wizard lives here and he would have given you bunny ears that would allow you to enter Upper Connecticut.
+===

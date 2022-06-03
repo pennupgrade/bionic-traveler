@@ -1,0 +1,12 @@
+title: valenfeld_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Valenfeld Citizen">>
+Welcome to Valenfeld! You will find the town gates by following the path. 
+Valenfeld is the home of the sage; 
+He tells of a terrible beast terrorizing people in the north; 
+He gives you a good luck charm to aid you in that fight;
+Beware! Few outsiders can enter Valenfeld.
+===

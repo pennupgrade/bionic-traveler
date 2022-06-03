@@ -1,0 +1,10 @@
+title: fantasy2_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Rabbit Resident">>
+Welcome to Upper Connecticut!
+Where the rich and powerful of the beastmen live; 
+A corrupt tyrant lives within the castle, guarding secrets of this planet
+===
