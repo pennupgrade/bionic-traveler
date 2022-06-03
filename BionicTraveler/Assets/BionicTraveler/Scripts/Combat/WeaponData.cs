@@ -37,6 +37,10 @@
         [Tooltip("The associated item that represents this weapon in an entity's inventory when this weapon is unequiped.")]
         private ItemData itemData;
 
+        [SerializeField]
+        [Tooltip("The attach offset relative to the player when the weapon is physically equipped.")]
+        private Vector3 attachOffset;
+
         /// <summary>
         /// Gets the weapon's unique identifier.
         /// </summary>
@@ -71,5 +75,10 @@
         /// Gets the item that represents this weapon in an entity's inventory.
         /// </summary>
         public ItemData ItemData => this.ItemData;
+
+        /// <summary>
+        /// Gets the attach offset of the weapon relative to the player.
+        /// </summary>
+        public Vector3 AttachOffset => this.attachOffset;
     }
 }

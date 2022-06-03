@@ -37,7 +37,7 @@
             this.weaponWorldObject = this.Equip();
             this.equippedWeaponBehavior = this.weaponWorldObject.AddComponent<WeaponBehaviour>();
             this.equippedWeaponBehavior.SetData(this.equippedWeapon);
-            this.equippedWeaponBehavior.SetWorldObject(this.weaponWorldObject);
+            this.equippedWeaponBehavior.SetWorldObject(this.weaponWorldObject, this.owner);
             this.HideCurrentWeapon();
 
             // TODO: If we ever change our weapon

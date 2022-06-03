@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.Combat
     using System.Linq;
     using BionicTraveler.Assets.Framework;
     using BionicTraveler.Scripts.World;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -17,6 +18,7 @@ namespace BionicTraveler.Scripts.Combat
         private DynamicEntity owner;
         private Attack lastAttack;
         private bool isAttacking;
+        private int initialSortingLayer;
 
         /// <summary>
         /// Gets the weapon data used.
@@ -63,9 +65,18 @@ namespace BionicTraveler.Scripts.Combat
         /// Sets the world object representing this behaviour.
         /// </summary>
         /// <param name="gameObject">The world object.</param>
-        public void SetWorldObject(GameObject gameObject)
+        /// <param name="owner">The entity owning the world object.</param>
+        public void SetWorldObject(GameObject gameObject, DynamicEntity owner)
         {
             this.WorldObject = gameObject;
+            this.owner = owner;
+            this.SetToIdle();
+
+            var spriteRenderer = this.WorldObject.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                this.initialSortingLayer = spriteRenderer.sortingOrder;
+            }
         }
 
         /// <summary>
@@ -124,13 +135,7 @@ namespace BionicTraveler.Scripts.Combat
         {
             this.lastAttack?.StopAttack();
             this.isAttacking = false;
-
-            // Reset weapon to its idle animation - usually just one static frame.
-            var animator = this.GetComponent<Animator>();
-            if (animator != null)
-            {
-                animator.Play("Idle");
-            }
+            this.SetToIdle();
         }
 
         /// <summary>
@@ -177,6 +182,54 @@ namespace BionicTraveler.Scripts.Combat
             {
                 throw new InvalidOperationException($"Weapon behavior requires {nameof(this.WeaponData)} " +
                     $"to be specified. Call {nameof(this.SetData)} after behavior creation.");
+            }
+        }
+
+        private void Update()
+        {
+            if (this.owner != null && this.WorldObject != null && !this.isAttacking)
+            {
+                var offset = this.WeaponData.AttachOffset;
+                if (this.owner.Direction == Vector3.right)
+                {
+                    offset.x *= -1;
+                }
+                else if (this.owner.Direction == Vector3.down)
+                {
+                    // Quick fix when walking down, make sword overlay player.
+                    this.WorldObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                }
+                else if (this.owner.Direction == Vector3.up)
+                {
+                    this.WorldObject.GetComponent<SpriteRenderer>().sortingOrder = this.initialSortingLayer;
+                }
+
+                this.WorldObject.transform.localPosition = offset;
+                this.SetToIdle();
+            }
+        }
+
+        private void SetToIdle()
+        {
+            // Reset weapon to its idle animation - usually just one static frame.
+            var animator = this.GetComponent<Animator>();
+            if (animator != null)
+            {
+                if (this.owner.Direction == Vector3.right)
+                {
+                    animator.Play("Idle");
+                }
+                else
+                {
+                    if (animator.HasAnimation("IdleLeft"))
+                    {
+                        animator.Play("IdleLeft");
+                    }
+                    else
+                    {
+                        animator.Play("Idle");
+                    }
+                }
             }
         }
 
