@@ -2,6 +2,7 @@ namespace BionicTraveler.Scripts
 {
     using BionicTraveler.Scripts.Audio;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Script should be attached to the GameObject 'SettingsMenu'
@@ -72,6 +73,11 @@ namespace BionicTraveler.Scripts
             // Something is wrong with this menu and we can still interact with it even when the canvas
             // is disabled. We fix that here.
             this.gameObject.SetActive(false);
+        }
+
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         private void SetDifficulty(int diff)
