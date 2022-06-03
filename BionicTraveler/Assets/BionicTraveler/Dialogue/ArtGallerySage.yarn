@@ -1,0 +1,34 @@
+title: ArtGallery_Start
+tags: 
+colorID: 0
+position: -122,-267
+---
+Welcome to our Art Gallery! This is where we show off many of our assets that did not make it into the game or were not used enough. 
+If you want to leave, just talk to me again. Oh, and I can also play lots of game music!
+[[Thanks, I will explore!|ArtGallery_Explore]]
+[[Give me the tunes!|ArtGallery_Sound]]
+[[Get me out of here.|ArtGallery_Leave]]
+===
+title: ArtGallery_Explore
+tags: 
+colorID: 0
+position: 340,-66
+---
+Enjoy!
+===
+title: ArtGallery_Sound
+tags: 
+colorID: 0
+position: 345,-466
+---
+<<set $decision_sound to 1>>
+Here it comes!
+===
+title: ArtGallery_Leave
+tags: 
+colorID: 0
+position: 345,-466
+---
+<<set $decision_leave to 1>>
+See you soon!
+===

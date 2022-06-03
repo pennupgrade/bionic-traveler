@@ -74,4 +74,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BionicTraveler/Levels/VerticalSlice/wilderness/Lake Dungeon/SacrificeArea.unity
     guid: 54b2b2010cef64bb2951ab6bf3dfbabf
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/Portfolio Construction/ArtGallery.unity
+    guid: 45f2efdbcfdfd5744ba49aa13a0c19d1
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/MainMenu.unity
+    guid: 48077d63f16d4664590c62320ed70ec7
   m_configObjects: {}
