@@ -9,11 +9,29 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  stringIDs:
+  - Transformed Furry-Start-0
+  - Transformed Furry-Start-1
+  - Transformed Furry-Start-2
+  - Transformed Furry-Start-3
+  - Transformed Furry-Start-4
+  - Transformed Furry-Start-5
+  - Transformed Furry-Start-6
+  - Transformed Furry-Start-7
+  - Transformed Furry-Start-8
+  - Transformed Furry-Start-9
+  - Transformed Furry-Start-10
+  - Transformed Furry-Start-11
+  - Transformed Furry-Start-12
+  - Transformed Furry-Start-13
+  - Transformed Furry-Start-14
+  - Transformed Furry-Start-15
+  - Transformed Furry-Start-16
+  - Transformed Furry-Start-17
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: "Error on line 6 at position 41:\nmismatched input ']'
     expecting FORMAT_FUNCTION_EXPRESSION_START\r\nTransformed Furry: Heyyy~ You like
     my [i]ears[/i]?\r\n                                        ^"
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 640a56ed724f77f4cbf6667359f541ec, type: 3}
   localizations: []

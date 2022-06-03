@@ -9,12 +9,37 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  stringIDs:
+  - Familiar1-Start-0
+  - Familiar1-Start-1
+  - Familiar1-Start-2
+  - Familiar1-Node-3
+  - Familiar1-Node-4
+  - Familiar1-Node-5
+  - Familiar1-Node_2-6
+  - Familiar1-Node_2-7
+  - Familiar1-Node_3-8
+  - Familiar1-Node_3-9
+  - Familiar1-Node_4-10
+  - Familiar1-Node_4-11
+  - Familiar1-Node_5-12
+  - Familiar1-Node_5-13
+  - Familiar1-Node_5-14
+  - Familiar1-Node_6-15
+  - Familiar1-Node_6-16
+  - Familiar1-Node_7-17
+  - Familiar1-Node_7-18
+  - Familiar1-Node_8-19
+  - Familiar1-Node_8-20
+  - Familiar1-Node_9-21
+  - Familiar1-Node_9-22
+  - Familiar1-Node_9-23
+  - Familiar1-Node_10-24
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: 'Error on line 7 at position 46:token recognition error
     at: ''[''
 
 '
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: d2327784d567e2d4ca97d4aedd8cc8da, type: 3}
   localizations: []

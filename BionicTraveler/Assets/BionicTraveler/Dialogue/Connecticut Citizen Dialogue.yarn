@@ -3,128 +3,123 @@ tags:
 colorID: 0
 position: -832,-571
 ---
-// programming team should replace the following if statements with equivalents in the code
-
-<<if askingAbout("Tyrant") is true>>
-    Dess: So what do you know about the Scrouge?
-    [[1]]
-    [[2]]
-    [[3]]
-    [[4 (Child)]]
-    [[5 (Teenager)]]
-    [[6]]
-    [[7 (Female)]]
-<<else>>
-    [[8 (Teenager)]]
-    [[9 (Parent)]]
-    [[10 (Rich)]]
-    [[11]]
-    [[12]]
-    [[13]]
-<<endif>>
+Dess: So what do you know about the Scrouge?
+[[one]] One
+[[two]] Two
+[[three]] Three
+[[four_child]] Four
+[[five_teenager]] Five
+[[six]] Six
+[[seven_female]] Seven
+[[eight_teenager]] Eight
+[[nine_parent]] Nine
+[[ten_rich]] Ten
+[[eleven]] Eleven
+[[twelve]] Twelve 
+[[thirteen]] Thirteen
 ===
-title: 1
+title: one
 tags: 
 colorID: 0
 position: 457,-530
 ---
 Connecticut Citizen: He’s been around for a long time and ever since he came it’s been peaceful! Never seen him before though…
 ===
-title: 2
+title: two
 tags: 
 colorID: 0
 position: 460,-321
 ---
 Connecticut Citizen: I heard that the Tyrant has a secret task force, and all I can say is I haven’t seen a crime in decades!
 ===
-title: 3
+title: three
 tags: 
 colorID: 0
 position: 468,-93
 ---
 Connecticut Citizen: Long may the Tyrant reign supreme! His generosity blesses us with divine power!
 ===
-title: 4 (Child)
+title: four_child
 tags: 
 colorID: 0
 position: 473,128
 ---
 Connecticut Citizen: My dad tells me I’ll get to meet the Tyrant one day! Hopefully he blesses me with his divine power!
 ===
-title: 5 (Teenager)
+title: five_teenager
 tags: 
 colorID: 0
 position: 679,-533
 ---
 Connecticut Citizen: My coronation ceremony is coming up soon! I can’t wait to meet the Tyrant!
 ===
-title: 8 (Teenager)
+title: eight_teenager
 tags: 
 colorID: 0
 position: 703,133
 ---
 Connecticut Citizen: Have you had your coronation ceremony yet?
 ===
-title: 10 (Rich)
+title: ten_rich
 tags: 
 colorID: 0
 position: 912,-307
 ---
 Connecticut Citizen: They’re having another party at the central capital tonight! I’m gonna have the time of my life!
 ===
-title: 6
+title: six
 tags: 
 colorID: 0
 position: 689,-314
 ---
 Connecticut Citizen: Wow! Look at those ears! You’re so cute!
 ===
-title: 9 (Parent)
+title: nine_parent
 tags: 
 colorID: 0
 position: 902,-531
 ---
 Connecticut Citizen: These powers make my daily life so much easier!
 ===
-title: 11
+title: eleven
 tags: 
 colorID: 0
 position: 915,-81
 ---
 Connecticut Citizen: I would never forget ears like those! Are you new around here?
 ===
-title: 12
+title: twelve
 tags: 
 colorID: 0
 position: 941,131
 ---
 Connecticut Citizen: *whistle* sheeeeesh
 ===
-title: 13
+title: thirteen
 tags: 
 colorID: 0
 position: 1146,-90
 ---
 Connecticut Citizen: Check out my tail! Isn’t it amazing?
 Dess:
-[[It's pretty cool.|13a]]
-[[...|13b]]
+[[It's pretty cool.|thirteena]]
+[[...|thirteenb]]
 ===
-title: 7 (Female)
+title: seven_Female
 tags: 
 colorID: 0
 position: 695,-89
 ---
-Connecticut Citizen: I’ve heard that the Tyrant is extremely handsome! If only I could’ve seen his face during my coronation ceremony! [i]*Swoon*[/i]
+Connecticut Citizen: I’ve heard that the Tyrant is extremely handsome! If only I could’ve seen his face during my coronation ceremony! *Swoon*
 ===
-title: 13a
+title: thirteena
 tags: 
 colorID: 0
 position: 1276,-485
 ---
 Connecticut Citizen: I know, right? Not many have a chance to see a tail as glorious as mine!
 ===
-title: 13b
+title: thirteenb
 tags: 
 colorID: 0
 position: 1501,-493

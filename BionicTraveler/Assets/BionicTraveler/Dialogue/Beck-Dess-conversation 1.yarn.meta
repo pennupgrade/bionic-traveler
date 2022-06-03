@@ -9,10 +9,17 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  stringIDs:
+  - Beck-Dess-conversation 1-Start-0
+  - Beck-Dess-conversation 1-Start-1
+  - Beck-Dess-conversation 1-Start-2
+  - Beck-Dess-conversation 1-Start-3
+  - Beck-Dess-conversation 1-Start-4
+  - Beck-Dess-conversation 1-DessBeckDialogueEnd-5
+  - Beck-Dess-conversation 1-DessBeckDialogueEnd-6
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: The node 'Dess-Beck Dialogue End' contains illegal characters
     in its title.
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 9295df5e7fee0a744945908636120475, type: 3}
   localizations: []

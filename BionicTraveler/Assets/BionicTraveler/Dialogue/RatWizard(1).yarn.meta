@@ -9,11 +9,36 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  stringIDs:
+  - RatWizard(1)-Before_Become_Rat-0
+  - RatWizard(1)-After_Become_Rat-1
+  - RatWizard(1)-After_Become_Rat-2
+  - RatWizard(1)-After_Become_Rat-3
+  - RatWizard(1)-Kiss_the_Rat-4
+  - RatWizard(1)-Kiss_the_Rat-5
+  - RatWizard(1)-Kiss_the_Rat-6
+  - RatWizard(1)-Kiss_the_Rat-7
+  - RatWizard(1)-Kiss_the_Rat-8
+  - RatWizard(1)-Kiss_the_Rat-9
+  - RatWizard(1)-Kiss_the_Rat-10
+  - RatWizard(1)-Kiss_the_Rat-11
+  - RatWizard(1)-Kiss_the_Rat-12
+  - RatWizard(1)-KISS-13
+  - RatWizard(1)-KISS-14
+  - RatWizard(1)-KISS-15
+  - RatWizard(1)-KISS-16
+  - RatWizard(1)-Back_to_normal-17
+  - RatWizard(1)-Back_to_normal-18
+  - RatWizard(1)-Back_to_normal-19
+  - RatWizard(1)-Back_to_normal-20
+  - RatWizard(1)-Back_to_normal-21
+  - RatWizard(1)-Back_to_normal-22
+  - RatWizard(1)-Back_to_normal-23
+  - RatWizard(1)-Back_to_normal-24
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: "Error on line 57 at position 3:\nmismatched input ']'
     expecting FORMAT_FUNCTION_EXPRESSION_START\r\n[i]*Dess suddenly grows a pair
     of (removable) bunny ears*[/i]\r\n  ^"
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 1fd9e09d06a2e304aad6e5d2419571a1, type: 3}
   localizations: []
