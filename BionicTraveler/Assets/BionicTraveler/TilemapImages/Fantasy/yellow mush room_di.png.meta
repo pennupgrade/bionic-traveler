@@ -1,229 +1,241 @@
 fileFormatVersion: 2
-guid: e2552fe041a7f1f418d2b9612552ea48
+guid: 32975dc75b5eacb4db56940e7ae88886
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6000177195152787182
-    second: red mush room_0
+      213: 4243630174392218162
+    second: yellow mush room_0
   - first:
-      213: -7975691545847315900
-    second: red mush room_1
+      213: 4454131376837928121
+    second: yellow mush room_1
   - first:
-      213: 2850587880526303581
-    second: red mush room_2
+      213: -8433140948833928793
+    second: yellow mush room_2
   - first:
-      213: -4920106173448903128
-    second: red mush room_3
+      213: 4393877719533396578
+    second: yellow mush room_3
   - first:
-      213: 191729713980019897
-    second: red mush room_4
+      213: 6300494916313863182
+    second: yellow mush room_4
   - first:
-      213: -6094685752465365125
-    second: red mush room_5
+      213: -4741993086374174096
+    second: yellow mush room_5
   - first:
-      213: -6303053651341971364
-    second: red mush room_6
+      213: -5709257124617751089
+    second: yellow mush room_6
   - first:
-      213: -859793170083706543
-    second: red mush room_7
+      213: 3868058856103127505
+    second: yellow mush room_7
   - first:
-      213: -4461385225312235548
-    second: red mush room_8
+      213: 5560907101864405608
+    second: yellow mush room_8
   - first:
-      213: 4934458380256909578
-    second: red mush room_9
+      213: -4918980126996512618
+    second: yellow mush room_9
   - first:
-      213: -5044187480871073765
-    second: red mush room_10
+      213: 7008976460834315941
+    second: yellow mush room_10
   - first:
-      213: 2562171688554376592
-    second: red mush room_11
+      213: -8274041255368911171
+    second: yellow mush room_11
   - first:
-      213: -7902032012202174533
-    second: red mush room_12
+      213: 9149540613210313297
+    second: yellow mush room_12
   - first:
-      213: 2902241277988304491
-    second: red mush room_13
+      213: -3045276182012731094
+    second: yellow mush room_13
   - first:
-      213: 3220504909033116528
-    second: red mush room_14
+      213: 2169939209401338029
+    second: yellow mush room_14
   - first:
-      213: -9030246354193490799
-    second: red mush room_15
+      213: 2598273561124681457
+    second: yellow mush room_15
   - first:
-      213: 929926529398822122
-    second: red mush room_16
+      213: -5274983891457503101
+    second: yellow mush room_16
   - first:
-      213: 1709299153692365444
-    second: red mush room_17
+      213: 7104772930191305505
+    second: yellow mush room_17
   - first:
-      213: 194391048774603194
-    second: red mush room_18
+      213: -8377287514559605157
+    second: yellow mush room_18
   - first:
-      213: 3806565189420697568
-    second: red mush room_19
+      213: -4665589432913399227
+    second: yellow mush room_19
   - first:
-      213: -7454401282664912060
-    second: red mush room_20
+      213: 4675055193409305361
+    second: yellow mush room_20
   - first:
-      213: 87901460497253779
-    second: red mush room_21
+      213: 1895810579983815083
+    second: yellow mush room_21
   - first:
-      213: -5561341074585344930
-    second: red mush room_22
+      213: 2741182954087997541
+    second: yellow mush room_22
   - first:
-      213: -5858349547878985145
-    second: red mush room_23
+      213: 3616926530025246008
+    second: yellow mush room_23
   - first:
-      213: 1530361948256109504
-    second: red mush room_24
+      213: -7757537988683331299
+    second: yellow mush room_24
   - first:
-      213: -5316408194208107505
-    second: red mush room_25
+      213: -5916299464689036277
+    second: yellow mush room_25
   - first:
-      213: -3181634681851052417
-    second: red mush room_26
+      213: -1270544819793198757
+    second: yellow mush room_26
   - first:
-      213: 2472062843661739715
-    second: red mush room_27
+      213: 7235105850294899205
+    second: yellow mush room_27
   - first:
-      213: 4410754712596400519
-    second: red mush room_28
+      213: -5300951756573388531
+    second: yellow mush room_28
   - first:
-      213: -1209240794232971652
-    second: red mush room_29
+      213: -4719644683393805351
+    second: yellow mush room_29
   - first:
-      213: 2367674549135029746
-    second: red mush room_30
+      213: -164122898120906985
+    second: yellow mush room_30
   - first:
-      213: -8570515071823953541
-    second: red mush room_31
+      213: 6895002696278057055
+    second: yellow mush room_31
   - first:
-      213: 2463850641758639374
-    second: red mush room_32
+      213: 8394118258521627440
+    second: yellow mush room_32
   - first:
-      213: -6682919602446378623
-    second: red mush room_33
+      213: 3363641668977310348
+    second: yellow mush room_33
   - first:
-      213: -2841783172959170621
-    second: red mush room_34
+      213: -3532122633255434669
+    second: yellow mush room_34
   - first:
-      213: -6469560775843975568
-    second: red mush room_35
+      213: 6680657514087068520
+    second: yellow mush room_35
   - first:
-      213: -2148229147469940928
-    second: red mush room_36
+      213: 6907631125586357426
+    second: yellow mush room_36
   - first:
-      213: 7139378912701865921
-    second: red mush room_37
+      213: 5993053604126259827
+    second: yellow mush room_37
   - first:
-      213: -3106955613422490121
-    second: red mush room_38
+      213: -6972482992737923696
+    second: yellow mush room_38
   - first:
-      213: 9089000687744156753
-    second: red mush room_39
+      213: -1479981353765142649
+    second: yellow mush room_39
   - first:
-      213: -8500116768508679206
-    second: red mush room_40
+      213: -4118558673534842458
+    second: yellow mush room_40
   - first:
-      213: 38000862615789746
-    second: red mush room_41
+      213: -9204134807126110850
+    second: yellow mush room_41
   - first:
-      213: -6350019205995213352
-    second: red mush room_42
+      213: 7269348573435874128
+    second: yellow mush room_42
   - first:
-      213: -7019949697940163289
-    second: red mush room_43
+      213: -37071950546901661
+    second: yellow mush room_43
   - first:
-      213: 403992707147060293
-    second: red mush room_44
+      213: 5877284922640088918
+    second: yellow mush room_44
   - first:
-      213: -8519427915342941269
-    second: red mush room_45
+      213: -221691540934748455
+    second: yellow mush room_45
   - first:
-      213: 8114388607320585039
-    second: red mush room_46
+      213: -2435495846030494023
+    second: yellow mush room_46
   - first:
-      213: -1688818547916132874
-    second: red mush room_47
+      213: 3004502551917400251
+    second: yellow mush room_47
   - first:
-      213: -6519838001167814431
-    second: red mush room_48
+      213: 7861623149986659721
+    second: yellow mush room_48
   - first:
-      213: -6153206590490422122
-    second: red mush room_49
+      213: 1011903987443778186
+    second: yellow mush room_49
   - first:
-      213: 3437123967261240165
-    second: red mush room_50
+      213: 2828891381832102524
+    second: yellow mush room_50
   - first:
-      213: -2692719493962471324
-    second: red mush room_51
+      213: 832440216687344824
+    second: yellow mush room_51
   - first:
-      213: 279579973588458295
-    second: red mush room_52
+      213: -385678334927880532
+    second: yellow mush room_52
   - first:
-      213: 1577388003785001716
-    second: red mush room_53
+      213: 5184746946053592489
+    second: yellow mush room_53
   - first:
-      213: 6627509174350464824
-    second: red mush room_54
+      213: -7704307975099074713
+    second: yellow mush room_54
   - first:
-      213: -8358875109011678284
-    second: red mush room_55
+      213: 8908012178679417372
+    second: yellow mush room_55
   - first:
-      213: -7735983589061173688
-    second: red mush room_56
+      213: -7783116592356613961
+    second: yellow mush room_56
   - first:
-      213: 6152090439547951785
-    second: red mush room_57
+      213: 8853508793152739916
+    second: yellow mush room_57
   - first:
-      213: -9154480813336037679
-    second: red mush room_58
+      213: -7472306243136485687
+    second: yellow mush room_58
   - first:
-      213: 1597982727681375443
-    second: red mush room_59
+      213: 3979834684522014940
+    second: yellow mush room_59
   - first:
-      213: -8508880527065120473
-    second: red mush room_60
+      213: 1101230320948807780
+    second: yellow mush room_60
   - first:
-      213: -8406691082404854718
-    second: red mush room_61
+      213: -7305056153863018574
+    second: yellow mush room_61
   - first:
-      213: -4199987733975062373
-    second: red mush room_62
+      213: -8565641108796979653
+    second: yellow mush room_62
   - first:
-      213: -6160122496888952151
-    second: red mush room_63
+      213: -5558308038255671630
+    second: yellow mush room_63
   - first:
-      213: 2672129679634166957
-    second: red mush room_64
+      213: -3355659185610302034
+    second: yellow mush room_64
   - first:
-      213: 4520407151393585718
-    second: red mush room_65
+      213: -9078004693020161569
+    second: yellow mush room_65
   - first:
-      213: -5109331454437914844
-    second: red mush room_66
+      213: -3531968291271050003
+    second: yellow mush room_66
   - first:
-      213: 1265113184182257401
-    second: red mush room_67
+      213: 8621309896313800464
+    second: yellow mush room_67
   - first:
-      213: 7296167798668163575
-    second: red mush room_68
+      213: -131442515864685231
+    second: yellow mush room_68
   - first:
-      213: -6739914764107399927
-    second: red mush room_69
+      213: 3189443940199589658
+    second: yellow mush room_69
   - first:
-      213: 93639081440426680
-    second: red mush room_70
+      213: 2355723442643834571
+    second: yellow mush room_70
   - first:
-      213: 2670127068279985575
-    second: red mush room_71
+      213: -7316844031843699816
+    second: yellow mush room_71
   - first:
-      213: -6824072481422835557
-    second: red mush room_72
+      213: -9021507146336615977
+    second: yellow mush room_72
   - first:
-      213: -5273467610082443256
-    second: red mush room_73
+      213: -8424435378301315177
+    second: yellow mush room_73
+  - first:
+      213: -5001990971856282337
+    second: yellow mush room_74
+  - first:
+      213: 5798011421416802237
+    second: yellow mush room_75
+  - first:
+      213: -3909577418816291559
+    second: yellow mush room_76
+  - first:
+      213: -7697397269157894582
+    second: yellow mush room_77
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -290,7 +302,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -302,7 +314,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -314,7 +326,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -325,7 +337,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: red mush room_0
+      name: yellow mush room_0
       rect:
         serializedVersion: 2
         x: 0
@@ -333,20 +345,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 219b48d91a61bbca0800000000000000
-      internalID: -6000177195152787182
+      spriteID: 232f6cee82764ea30800000000000000
+      internalID: 4243630174392218162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_1
+      name: yellow mush room_1
       rect:
         serializedVersion: 2
         x: 16
@@ -354,20 +366,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4424fabcbc6a05190800000000000000
-      internalID: -7975691545847315900
+      spriteID: 9b4a85363e040dd30800000000000000
+      internalID: 4454131376837928121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_2
+      name: yellow mush room_2
       rect:
         serializedVersion: 2
         x: 32
@@ -375,20 +387,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d51ddc303925f8720800000000000000
-      internalID: 2850587880526303581
+      spriteID: 7a9f3fbdcf677fa80800000000000000
+      internalID: -8433140948833928793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_3
+      name: yellow mush room_3
       rect:
         serializedVersion: 2
         x: 48
@@ -396,20 +408,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8262f5ac08548bbb0800000000000000
-      internalID: -4920106173448903128
+      spriteID: 262aa4391803afc30800000000000000
+      internalID: 4393877719533396578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_4
+      name: yellow mush room_4
       rect:
         serializedVersion: 2
         x: 64
@@ -417,20 +429,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b49aa6b82929a200800000000000000
-      internalID: 191729713980019897
+      spriteID: e04da04bebadf6750800000000000000
+      internalID: 6300494916313863182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_5
+      name: yellow mush room_5
       rect:
         serializedVersion: 2
         x: 80
@@ -438,20 +450,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b77eaa269935b6ba0800000000000000
-      internalID: -6094685752465365125
+      spriteID: 0722f4f796e013eb0800000000000000
+      internalID: -4741993086374174096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_6
+      name: yellow mush room_6
       rect:
         serializedVersion: 2
         x: 96
@@ -459,20 +471,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50788f591e0788a0800000000000000
-      internalID: -6303053651341971364
+      spriteID: fc57ac3e4e4a4c0b0800000000000000
+      internalID: -5709257124617751089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_7
+      name: yellow mush room_7
       rect:
         serializedVersion: 2
         x: 112
@@ -480,20 +492,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1598adccaa66114f0800000000000000
-      internalID: -859793170083706543
+      spriteID: 1d9a458290b1ea530800000000000000
+      internalID: 3868058856103127505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_8
+      name: yellow mush room_8
       rect:
         serializedVersion: 2
         x: 128
@@ -501,20 +513,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ef861766c9f512c0800000000000000
-      internalID: -4461385225312235548
+      spriteID: 86a2393db8f4c2d40800000000000000
+      internalID: 5560907101864405608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_9
+      name: yellow mush room_9
       rect:
         serializedVersion: 2
         x: 144
@@ -522,20 +534,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a099922c0c7ba7440800000000000000
-      internalID: 4934458380256909578
+      spriteID: 690ca29e2a54cbbb0800000000000000
+      internalID: -4918980126996512618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_10
+      name: yellow mush room_10
       rect:
         serializedVersion: 2
         x: 0
@@ -543,20 +555,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b18053e16327ff9b0800000000000000
-      internalID: -5044187480871073765
+      spriteID: 5ae9a1bb4f2e44160800000000000000
+      internalID: 7008976460834315941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_11
+      name: yellow mush room_11
       rect:
         serializedVersion: 2
         x: 16
@@ -564,20 +576,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09da8d56399ae8320800000000000000
-      internalID: 2562171688554376592
+      spriteID: db61fc4e053bc2d80800000000000000
+      internalID: -8274041255368911171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_12
+      name: yellow mush room_12
       rect:
         serializedVersion: 2
         x: 32
@@ -585,20 +597,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb79cec60c7565290800000000000000
-      internalID: -7902032012202174533
+      spriteID: 152196c16b2b9fe70800000000000000
+      internalID: 9149540613210313297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_13
+      name: yellow mush room_13
       rect:
         serializedVersion: 2
         x: 48
@@ -606,20 +618,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b66f7fac015d64820800000000000000
-      internalID: 2902241277988304491
+      spriteID: a216c2072710db5d0800000000000000
+      internalID: -3045276182012731094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_14
+      name: yellow mush room_14
       rect:
         serializedVersion: 2
         x: 64
@@ -627,20 +639,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 073125cd62881bc20800000000000000
-      internalID: 3220504909033116528
+      spriteID: da80f80d63c2d1e10800000000000000
+      internalID: 2169939209401338029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_15
+      name: yellow mush room_15
       rect:
         serializedVersion: 2
         x: 80
@@ -648,20 +660,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19cd70009ce1ea280800000000000000
-      internalID: -9030246354193490799
+      spriteID: 1f63020a90cee0420800000000000000
+      internalID: 2598273561124681457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_16
+      name: yellow mush room_16
       rect:
         serializedVersion: 2
         x: 96
@@ -669,20 +681,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae457046043c7ec00800000000000000
-      internalID: 929926529398822122
+      spriteID: 38094c9491e7bc6b0800000000000000
+      internalID: -5274983891457503101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_17
+      name: yellow mush room_17
       rect:
         serializedVersion: 2
         x: 112
@@ -690,20 +702,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48295b62686a8b710800000000000000
-      internalID: 1709299153692365444
+      spriteID: 12b2dd95659399260800000000000000
+      internalID: 7104772930191305505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_18
+      name: yellow mush room_18
       rect:
         serializedVersion: 2
         x: 128
@@ -711,20 +723,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab1d9b101ad92b200800000000000000
-      internalID: 194391048774603194
+      spriteID: b561c59e365edbb80800000000000000
+      internalID: -8377287514559605157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_19
+      name: yellow mush room_19
       rect:
         serializedVersion: 2
         x: 144
@@ -732,20 +744,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e7c9c92fd2a3d430800000000000000
-      internalID: 3806565189420697568
+      spriteID: 542716f412f704fb0800000000000000
+      internalID: -4665589432913399227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_20
+      name: yellow mush room_20
       rect:
         serializedVersion: 2
         x: 0
@@ -753,20 +765,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44baa8d4785ac8890800000000000000
-      internalID: -7454401282664912060
+      spriteID: 11bb18ccde121e040800000000000000
+      internalID: 4675055193409305361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_21
+      name: yellow mush room_21
       rect:
         serializedVersion: 2
         x: 16
@@ -774,20 +786,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3954d20a9e9483100800000000000000
-      internalID: 87901460497253779
+      spriteID: ba1dc559da54f4a10800000000000000
+      internalID: 1895810579983815083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_22
+      name: yellow mush room_22
       rect:
         serializedVersion: 2
         x: 32
@@ -795,20 +807,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e542d8602c522d2b0800000000000000
-      internalID: -5561341074585344930
+      spriteID: 56065c29f53aa0620800000000000000
+      internalID: 2741182954087997541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_23
+      name: yellow mush room_23
       rect:
         serializedVersion: 2
         x: 48
@@ -816,20 +828,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7425a940026f2bea0800000000000000
-      internalID: -5858349547878985145
+      spriteID: 83d47d80487e13230800000000000000
+      internalID: 3616926530025246008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_24
+      name: yellow mush room_24
       rect:
         serializedVersion: 2
         x: 64
@@ -837,20 +849,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3849f6510fc3510800000000000000
-      internalID: 1530361948256109504
+      spriteID: d198eecec40b75490800000000000000
+      internalID: -7757537988683331299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_25
+      name: yellow mush room_25
       rect:
         serializedVersion: 2
         x: 80
@@ -858,20 +870,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f04ff373ae25836b0800000000000000
-      internalID: -5316408194208107505
+      spriteID: b0450669bf415eda0800000000000000
+      internalID: -5916299464689036277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_26
+      name: yellow mush room_26
       rect:
         serializedVersion: 2
         x: 96
@@ -879,20 +891,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7e74372d1098d3d0800000000000000
-      internalID: -3181634681851052417
+      spriteID: b518301d73e1e5ee0800000000000000
+      internalID: -1270544819793198757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_27
+      name: yellow mush room_27
       rect:
         serializedVersion: 2
         x: 112
@@ -900,20 +912,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c666ea0f088e4220800000000000000
-      internalID: 2472062843661739715
+      spriteID: 5029d270072486460800000000000000
+      internalID: 7235105850294899205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_28
+      name: yellow mush room_28
       rect:
         serializedVersion: 2
         x: 128
@@ -921,20 +933,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78940bbba06263d30800000000000000
-      internalID: 4410754712596400519
+      spriteID: d01d5f9867c3f66b0800000000000000
+      internalID: -5300951756573388531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_29
+      name: yellow mush room_29
       rect:
         serializedVersion: 2
         x: 144
@@ -942,20 +954,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7e15db87e9e73fe0800000000000000
-      internalID: -1209240794232971652
+      spriteID: 9d3504c8a24708eb0800000000000000
+      internalID: -4719644683393805351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_30
+      name: yellow mush room_30
       rect:
         serializedVersion: 2
         x: 0
@@ -963,20 +975,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f53dec357babd020800000000000000
-      internalID: 2367674549135029746
+      spriteID: 717eefdf71be8bdf0800000000000000
+      internalID: -164122898120906985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_31
+      name: yellow mush room_31
       rect:
         serializedVersion: 2
         x: 16
@@ -984,20 +996,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b714dc163f96f0980800000000000000
-      internalID: -8570515071823953541
+      spriteID: f50a305cb68ffaf50800000000000000
+      internalID: 6895002696278057055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_32
+      name: yellow mush room_32
       rect:
         serializedVersion: 2
         x: 32
@@ -1005,20 +1017,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0554a9ca1b513220800000000000000
-      internalID: 2463850641758639374
+      spriteID: 03b5dc90516ed7470800000000000000
+      internalID: 8394118258521627440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_33
+      name: yellow mush room_33
       rect:
         serializedVersion: 2
         x: 48
@@ -1026,20 +1038,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18950b977008143a0800000000000000
-      internalID: -6682919602446378623
+      spriteID: c8a381fc64e0eae20800000000000000
+      internalID: 3363641668977310348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_34
+      name: yellow mush room_34
       rect:
         serializedVersion: 2
         x: 64
@@ -1047,20 +1059,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cf0617b245ff88d0800000000000000
-      internalID: -2841783172959170621
+      spriteID: 35641b5dd216bfec0800000000000000
+      internalID: -3532122633255434669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_35
+      name: yellow mush room_35
       rect:
         serializedVersion: 2
         x: 80
@@ -1068,20 +1080,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07ee40760c08736a0800000000000000
-      internalID: -6469560775843975568
+      spriteID: 86334390d9676bc50800000000000000
+      internalID: 6680657514087068520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_36
+      name: yellow mush room_36
       rect:
         serializedVersion: 2
         x: 96
@@ -1089,20 +1101,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 047f9e0e8f4ff22e0800000000000000
-      internalID: -2148229147469940928
+      spriteID: 2bca10819e5dcdf50800000000000000
+      internalID: 6907631125586357426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_37
+      name: yellow mush room_37
       rect:
         serializedVersion: 2
         x: 112
@@ -1110,20 +1122,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf52888b4b241360800000000000000
-      internalID: 7139378912701865921
+      spriteID: 37af1d9108a9b2350800000000000000
+      internalID: 5993053604126259827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_38
+      name: yellow mush room_38
       rect:
         serializedVersion: 2
         x: 128
@@ -1131,20 +1143,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fdeb09b450e1e4d0800000000000000
-      internalID: -3106955613422490121
+      spriteID: 09d476fe8a3cc3f90800000000000000
+      internalID: -6972482992737923696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_39
+      name: yellow mush room_39
       rect:
         serializedVersion: 2
         x: 144
@@ -1152,20 +1164,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 154854c48fd922e70800000000000000
-      internalID: 9089000687744156753
+      spriteID: 78f70aecccc067be0800000000000000
+      internalID: -1479981353765142649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_40
+      name: yellow mush room_40
       rect:
         serializedVersion: 2
         x: 0
@@ -1173,20 +1185,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adbe2b7a5d4890a80800000000000000
-      internalID: -8500116768508679206
+      spriteID: 6a90a5d15b0f7d6c0800000000000000
+      internalID: -4118558673534842458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_41
+      name: yellow mush room_41
       rect:
         serializedVersion: 2
         x: 16
@@ -1194,20 +1206,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b06f5d4591078000800000000000000
-      internalID: 38000862615789746
+      spriteID: e7d80749828544080800000000000000
+      internalID: -9204134807126110850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_42
+      name: yellow mush room_42
       rect:
         serializedVersion: 2
         x: 32
@@ -1215,20 +1227,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dd4fbd0d2330e7a0800000000000000
-      internalID: -6350019205995213352
+      spriteID: 05b432c430ae1e460800000000000000
+      internalID: 7269348573435874128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_43
+      name: yellow mush room_43
       rect:
         serializedVersion: 2
         x: 48
@@ -1236,20 +1248,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7257a2961f0249e90800000000000000
-      internalID: -7019949697940163289
+      spriteID: 3656584e14b4c7ff0800000000000000
+      internalID: -37071950546901661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_44
+      name: yellow mush room_44
       rect:
         serializedVersion: 2
         x: 64
@@ -1257,20 +1269,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54459590a354b9500800000000000000
-      internalID: 403992707147060293
+      spriteID: 65fb8b97f7f409150800000000000000
+      internalID: 5877284922640088918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_45
+      name: yellow mush room_45
       rect:
         serializedVersion: 2
         x: 80
@@ -1278,20 +1290,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba3ff68e279e4c980800000000000000
-      internalID: -8519427915342941269
+      spriteID: 9d610e4d7b46cecf0800000000000000
+      internalID: -221691540934748455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_46
+      name: yellow mush room_46
       rect:
         serializedVersion: 2
         x: 96
@@ -1299,20 +1311,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f43f1dc42791c9070800000000000000
-      internalID: 8114388607320585039
+      spriteID: 9b6b96d8e61633ed0800000000000000
+      internalID: -2435495846030494023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_47
+      name: yellow mush room_47
       rect:
         serializedVersion: 2
         x: 112
@@ -1320,20 +1332,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd2e597a7c1098e0800000000000000
-      internalID: -1688818547916132874
+      spriteID: bb09ac5072322b920800000000000000
+      internalID: 3004502551917400251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_48
+      name: yellow mush room_48
       rect:
         serializedVersion: 2
         x: 128
@@ -1341,20 +1353,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e0bc4ba1e1e485a0800000000000000
-      internalID: -6519838001167814431
+      spriteID: 98d31fc2a981a1d60800000000000000
+      internalID: 7861623149986659721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_49
+      name: yellow mush room_49
       rect:
         serializedVersion: 2
         x: 144
@@ -1362,20 +1374,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 694d930053b6b9aa0800000000000000
-      internalID: -6153206590490422122
+      spriteID: a824366b0510b0e00800000000000000
+      internalID: 1011903987443778186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_50
+      name: yellow mush room_50
       rect:
         serializedVersion: 2
         x: 0
@@ -1383,20 +1395,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56b669d990e13bf20800000000000000
-      internalID: 3437123967261240165
+      spriteID: c72344249bd324720800000000000000
+      internalID: 2828891381832102524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_51
+      name: yellow mush room_51
       rect:
         serializedVersion: 2
         x: 16
@@ -1404,20 +1416,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 468e89a03e981aad0800000000000000
-      internalID: -2692719493962471324
+      spriteID: 8bcf56477fb6d8b00800000000000000
+      internalID: 832440216687344824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_52
+      name: yellow mush room_52
       rect:
         serializedVersion: 2
         x: 32
@@ -1425,20 +1437,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73b9d04318441e300800000000000000
-      internalID: 279579973588458295
+      spriteID: cae3f09099bc5aaf0800000000000000
+      internalID: -385678334927880532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_53
+      name: yellow mush room_53
       rect:
         serializedVersion: 2
         x: 48
@@ -1446,20 +1458,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fa4196380204e510800000000000000
-      internalID: 1577388003785001716
+      spriteID: 9a5d0d1a0ebe3f740800000000000000
+      internalID: 5184746946053592489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_54
+      name: yellow mush room_54
       rect:
         serializedVersion: 2
         x: 64
@@ -1467,20 +1479,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8374dc2ea74a9fb50800000000000000
-      internalID: 6627509174350464824
+      spriteID: 767b20047bcc41590800000000000000
+      internalID: -7704307975099074713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_55
+      name: yellow mush room_55
       rect:
         serializedVersion: 2
         x: 80
@@ -1488,20 +1500,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bb1185206f4ffb80800000000000000
-      internalID: -8358875109011678284
+      spriteID: c1a4a0d31ed9f9b70800000000000000
+      internalID: 8908012178679417372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_56
+      name: yellow mush room_56
       rect:
         serializedVersion: 2
         x: 96
@@ -1509,20 +1521,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84ed1c9a9e344a490800000000000000
-      internalID: -7735983589061173688
+      spriteID: 7b0a22b22b0dcf390800000000000000
+      internalID: -7783116592356613961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_57
+      name: yellow mush room_57
       rect:
         serializedVersion: 2
         x: 112
@@ -1530,20 +1542,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aa155bd8ad906550800000000000000
-      internalID: 6152090439547951785
+      spriteID: c4a9aa7e65bfdda70800000000000000
+      internalID: 8853508793152739916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_58
+      name: yellow mush room_58
       rect:
         serializedVersion: 2
         x: 128
@@ -1551,20 +1563,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d6f9f9e330c4f080800000000000000
-      internalID: -9154480813336037679
+      spriteID: 9c68ae4df090d4890800000000000000
+      internalID: -7472306243136485687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_59
+      name: yellow mush room_59
       rect:
         serializedVersion: 2
         x: 144
@@ -1572,20 +1584,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dc78a803dc2d2610800000000000000
-      internalID: 1597982727681375443
+      spriteID: cd8a6bb3f863b3730800000000000000
+      internalID: 3979834684522014940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_60
+      name: yellow mush room_60
       rect:
         serializedVersion: 2
         x: 160
@@ -1593,20 +1605,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7218b0c1e326ae980800000000000000
-      internalID: -8508880527065120473
+      spriteID: 4680b00742b584f00800000000000000
+      internalID: 1101230320948807780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_61
+      name: yellow mush room_61
       rect:
         serializedVersion: 2
         x: 176
@@ -1614,20 +1626,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24480d8400f655b80800000000000000
-      internalID: -8406691082404854718
+      spriteID: 2b7a6b4c12a3f9a90800000000000000
+      internalID: -7305056153863018574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_62
+      name: yellow mush room_62
       rect:
         serializedVersion: 2
         x: 0
@@ -1635,20 +1647,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b982b6f8865a6b5c0800000000000000
-      internalID: -4199987733975062373
+      spriteID: b364ca45bcab02980800000000000000
+      internalID: -8565641108796979653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_63
+      name: yellow mush room_63
       rect:
         serializedVersion: 2
         x: 16
@@ -1656,20 +1668,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aaaa001a39d28aa0800000000000000
-      internalID: -6160122496888952151
+      spriteID: 2b68293d94cecd2b0800000000000000
+      internalID: -5558308038255671630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_64
+      name: yellow mush room_64
       rect:
         serializedVersion: 2
         x: 32
@@ -1677,20 +1689,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da47f5c39cf451520800000000000000
-      internalID: 2672129679634166957
+      spriteID: eaddb6eefbd4e61d0800000000000000
+      internalID: -3355659185610302034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_65
+      name: yellow mush room_65
       rect:
         serializedVersion: 2
         x: 48
@@ -1698,20 +1710,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63a33f2aa56bbbe30800000000000000
-      internalID: 4520407151393585718
+      spriteID: fd9443b34d2740280800000000000000
+      internalID: -9078004693020161569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_66
+      name: yellow mush room_66
       rect:
         serializedVersion: 2
         x: 64
@@ -1719,20 +1731,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4278f72dc120819b0800000000000000
-      internalID: -5109331454437914844
+      spriteID: dec78d06d8debfec0800000000000000
+      internalID: -3531968291271050003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_67
+      name: yellow mush room_67
       rect:
         serializedVersion: 2
         x: 80
@@ -1740,20 +1752,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f6c8d7fcb59e8110800000000000000
-      internalID: 1265113184182257401
+      spriteID: 017085c4cab05a770800000000000000
+      internalID: 8621309896313800464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_68
+      name: yellow mush room_68
       rect:
         serializedVersion: 2
         x: 96
@@ -1761,20 +1773,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f97245c4f1314560800000000000000
-      internalID: 7296167798668163575
+      spriteID: 155708d6ab50d2ef0800000000000000
+      internalID: -131442515864685231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_69
+      name: yellow mush room_69
       rect:
         serializedVersion: 2
         x: 112
@@ -1782,20 +1794,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90db7fc4b330772a0800000000000000
-      internalID: -6739914764107399927
+      spriteID: a176e9e7d5e234c20800000000000000
+      internalID: 3189443940199589658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_70
+      name: yellow mush room_70
       rect:
         serializedVersion: 2
         x: 128
@@ -1803,20 +1815,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bab95a9f3cac4100800000000000000
-      internalID: 93639081440426680
+      spriteID: bc698db6df531b020800000000000000
+      internalID: 2355723442643834571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_71
+      name: yellow mush room_71
       rect:
         serializedVersion: 2
         x: 144
@@ -1824,20 +1836,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a5dbf1fb623e0520800000000000000
-      internalID: 2670127068279985575
+      spriteID: 893f40d8e19557a90800000000000000
+      internalID: -7316844031843699816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_72
+      name: yellow mush room_72
       rect:
         serializedVersion: 2
         x: 160
@@ -1845,24 +1857,45 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b90064fcb360c41a0800000000000000
-      internalID: -6824072481422835557
+      spriteID: 7d145f36c0b2dc280800000000000000
+      internalID: -9021507146336615977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: red mush room_73
+      name: yellow mush room_73
       rect:
         serializedVersion: 2
         x: 176
         y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 797dd1378a4661b80800000000000000
+      internalID: -8424435378301315177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow mush room_74
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -1872,8 +1905,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 800028e0621e0d6b0800000000000000
-      internalID: -5273467610082443256
+      spriteID: f1d9bc876bb559ab0800000000000000
+      internalID: -5001990971856282337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow mush room_75
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7c4392baca67050800000000000000
+      internalID: 5798011421416802237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow mush room_76
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91df0992d046eb9c0800000000000000
+      internalID: -3909577418816291559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow mush room_77
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4628cc57f95d2590800000000000000
+      internalID: -7697397269157894582
       vertices: []
       indices: 
       edges: []
