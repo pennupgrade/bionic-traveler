@@ -13,8 +13,11 @@ ScriptedImporter:
   - dialogue_training_enemy-training_enemy_start-0
   - dialogue_training_enemy-training_enemy_start-1
   - dialogue_training_enemy-training_enemy_start-2
+  - dialogue_training_enemy-enemy_start-3
+  - dialogue_training_enemy-enemy_won-4
+  - dialogue_training_enemy-enemy_lost-5
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 9ee0605f3e10a8b468b2d2b8fd1125f1, type: 3}
   localizations: []

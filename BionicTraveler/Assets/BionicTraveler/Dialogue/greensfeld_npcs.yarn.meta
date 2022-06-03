@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: deb3dd8d5d8f87c4ea7eb63245a1a581
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - blue guy-blueGuy_start-0
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
+  localizations: []
