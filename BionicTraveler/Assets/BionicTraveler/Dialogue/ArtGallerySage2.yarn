@@ -1,0 +1,44 @@
+title: ArtGallery2_Start
+tags: 
+colorID: 0
+position: -122,-267
+---
+<<set $decision_sound to 0>>
+Welcome to the UPGRADE 2021-2022 Art Gallery! 
+All assets here where drawn in-house by members of the UPGRADE Art Team!
+We also have lots of cool sounds!
+[[Disregard!|ArtGallery2_Explore]]
+[[Give me sounds!|ArtGallery2_Sound]]
+[[Art Team Credits|ArtGallery2_Credits]]
+===
+title: ArtGallery2_Explore
+tags: 
+colorID: 0
+position: 340,-66
+---
+Enjoy!
+===
+title: ArtGallery2_Sound
+tags: 
+colorID: 0
+position: 345,-466
+---
+<<set $decision_sound to 1>>
+Here it comes!
+===
+title: ArtGallery2_Credits
+tags: 
+colorID: 0
+position: 345,-466
+---
+Our Art Director is Meggie Cheng, and our team consists of:
+Amy Liu
+Diana Ou Yang
+Dineth Meegoda
+Faye Zhang
+George Wang
+Jackie 
+Maggie Song
+Rachel Lin
+Ry Nankivel
+===

@@ -103843,6 +103843,104 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2055283552
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8672352183282293560, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 743760bdbf41e82478dbb56e1485628a, type: 3}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293561, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672352183282293563, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+      propertyPath: m_Name
+      value: Sage (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+--- !u!1 &2055283553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8672352183282293563, guid: 2c4bff90575884047a13515e9be4ae14, type: 3}
+  m_PrefabInstance: {fileID: 2055283552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2055283554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055283553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af48ddd404807c2449db7e60af32b7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  galleryMenu: {fileID: 774090851}
+--- !u!114 &2055283555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055283553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 743760bdbf41e82478dbb56e1485628a, type: 3}
+    dialogueStartNode: ArtGallery2_Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: Gallery Employee
+    disableSpeechAudio: 0
 --- !u!4 &2058277904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5850758420984419112, guid: 42701e6c808ad7243b1909014bd77b14, type: 3}

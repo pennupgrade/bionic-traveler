@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 743760bdbf41e82478dbb56e1485628a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - ArtGallerySage2-ArtGallery2_Start-0
+  - ArtGallerySage2-ArtGallery2_Start-1
+  - ArtGallerySage2-ArtGallery2_Start-2
+  - ArtGallerySage2-ArtGallery2_Start-3
+  - ArtGallerySage2-ArtGallery2_Explore-4
+  - ArtGallerySage2-ArtGallery2_Sound-5
+  - ArtGallerySage2-ArtGallery2_Leave-6
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
