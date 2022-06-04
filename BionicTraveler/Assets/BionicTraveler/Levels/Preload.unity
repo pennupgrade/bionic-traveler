@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashScreen: {fileID: 1297511147}
-  startScene: LandscapeScene
+  startScene: MainMenu
 --- !u!4 &1487605642
 Transform:
   m_ObjectHideFlags: 0
