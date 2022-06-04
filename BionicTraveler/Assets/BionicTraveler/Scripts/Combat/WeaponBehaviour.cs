@@ -187,7 +187,7 @@ namespace BionicTraveler.Scripts.Combat
 
         private void Update()
         {
-            if (this.owner != null && this.WorldObject != null && !this.isAttacking)
+            if (this.owner != null && this.WorldObject != null && !this.isAttacking && !this.IsUnarmed)
             {
                 var offset = this.WeaponData.AttachOffset;
                 if (this.owner.Direction == Vector3.right)

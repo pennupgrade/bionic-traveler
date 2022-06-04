@@ -4,6 +4,7 @@ namespace BionicTraveler.Scripts.Interaction
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Main gallery interaction script.
@@ -22,7 +23,7 @@ namespace BionicTraveler.Scripts.Interaction
         {
             if (sender.VariableStorage.GetValue("$decision_leave").AsBool)
             {
-                LevelLoadingManager.Instance.StartLoadLevel("MainMenu");
+                SceneManager.LoadScene("MainMenu");
             }
 
             if (sender.VariableStorage.GetValue("$decision_sound").AsBool)

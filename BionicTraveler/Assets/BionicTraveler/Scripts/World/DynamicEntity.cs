@@ -17,6 +17,7 @@
 
         private Vector3 velocity;
         private bool stunned;
+        private bool wasKinematic;
 
         [SerializeField]
         [TooltipAttribute("The items to drop.")]
@@ -159,6 +160,7 @@
         /// <param name="force">The force to be applied.</param>
         public void ApplyForce(Vector2 force)
         {
+            this.wasKinematic = this.gameObject.GetComponent<Rigidbody2D>().isKinematic;
             this.GetComponent<Rigidbody2D>().isKinematic = false;
             this.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
             this.IsBeingKnockedBack = true;
@@ -269,6 +271,12 @@
                     if (!this.IsPlayer && navMesh != null)
                     {
                         navMesh.enabled = true;
+                    }
+
+                    if (this.wasKinematic)
+                    {
+                        this.GetComponent<Rigidbody2D>().isKinematic = true;
+                        this.wasKinematic = false;
                     }
                 }
             }

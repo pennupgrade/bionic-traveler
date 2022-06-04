@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 487756301059670875}
   - component: {fileID: -1351428897941687236}
   - component: {fileID: 9056305168725713087}
+  - component: {fileID: 5352878657759599975}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -103,11 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28e73d6181564947b67bde56d90d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMovementSpeed: 1
+  baseMovementSpeed: 2
+  walkSpeed: 2
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
   name: Bat
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
-  defaultWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: 279de41824d1ed24086e03ab02a35495, type: 2}
   cannotBeKnockedBack: 0
   dontUpdateAnimatorForMovement: 0
 --- !u!61 &2221845346357989194
@@ -263,3 +265,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatRange: 25
   patrolRange: 7
+--- !u!114 &5352878657759599975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221845346357989190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2a623361a5b514fb9184ed86a38c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flags: 1

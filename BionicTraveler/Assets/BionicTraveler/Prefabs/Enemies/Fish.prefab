@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 1
+  walkSpeed: 1
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
   name: Fish
   relationships: {fileID: 11400000, guid: e815f3c72950e2b448cf0957a4c77e80, type: 2}
@@ -197,12 +198,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5687904464648532464
 MonoBehaviour:
   m_ObjectHideFlags: 0

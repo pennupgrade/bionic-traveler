@@ -6,6 +6,7 @@ namespace BionicTraveler.Scripts.Combat
     using BionicTraveler.Scripts.AI;
     using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.World;
+    using Framework;
     using UnityEngine;
 
     /// <summary>
@@ -28,6 +29,8 @@ namespace BionicTraveler.Scripts.Combat
         private YarnProgram dialogue;
 
         private string currentEnemyName;
+        private bool hasEnemySpawned;
+        private GameObject currentEnemy;
 
         private void Start()
         {
@@ -85,7 +88,7 @@ namespace BionicTraveler.Scripts.Combat
             var taskGoTo = new TaskGoToPoint(enemy.GetComponent<DynamicEntity>(), this.enemySpawn.transform.position);
             taskGoTo.Assign();
 
-            var timeout = 5.0f;
+            var timeout = 8.0f;
             var walkStart = Time.time;
             while (!taskGoTo.HasEnded)
             {
@@ -107,6 +110,8 @@ namespace BionicTraveler.Scripts.Combat
             playerEntity.IsIgnoredByEveryone = false;
             playerEntity.Damaged += this.PlayerEntity_Damaged;
             newEnemy.GetComponent<DynamicEntity>().Damaged += this.EnemyTrainingManager_Damaged;
+            this.currentEnemy = newEnemy;
+            this.hasEnemySpawned = true;
 
             // Dialogue.
             this.currentEnemyName = enemy.GetComponent<DialogueHost>().LastName;
@@ -150,6 +155,7 @@ namespace BionicTraveler.Scripts.Combat
                         LevelLoadingManager.Instance.ReloadCurrentScene();
                     };
 
+                    this.hasEnemySpawned = false;
                     sender.Kill();
                 };
 
@@ -167,6 +173,24 @@ namespace BionicTraveler.Scripts.Combat
                 }
 
                 enemy.SetActive(visible);
+            }
+        }
+
+        private void Update()
+        {
+            // Some enemies, such as the bomber, kill themselves with an animation.
+            // Hence we check for their existence to determine whether the fight is over.
+            if (this.hasEnemySpawned && this.currentEnemy.IsDestroyed())
+            {
+                this.hasEnemySpawned = false;
+
+                var player = GameObject.FindGameObjectWithTag("Player");
+                this.dialogueHost.DialogueCompleted += host =>
+                {
+                    LevelLoadingManager.Instance.ReloadCurrentScene();
+                };
+
+                this.dialogueHost.StartDialogue(player, this.dialogue.name, this.currentEnemyName, "enemy_lost");
             }
         }
     }

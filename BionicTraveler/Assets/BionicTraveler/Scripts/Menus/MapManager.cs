@@ -37,15 +37,15 @@ namespace BionicTraveler.Scripts
         {
             base.Start();
             this.indicatorTransform = playerIndicator.GetComponent<RectTransform>();
-            this.playerObject = GameObject.FindGameObjectsWithTag("Player")[0];
         }
 
         /// <summary>
         /// Called every frame.
-        /// Maps the position of the the player to the indicator based on offset and scale. 
+        /// Maps the position of the the player to the indicator based on offset and scale.
         /// </summary>
-        private void Update() 
+        private void Update()
         {
+            this.playerObject = GameObject.FindGameObjectWithTag("Player");
             this.indicatorTransform.anchoredPosition = (playerObject.transform.position - offset) * scale;
         }
 

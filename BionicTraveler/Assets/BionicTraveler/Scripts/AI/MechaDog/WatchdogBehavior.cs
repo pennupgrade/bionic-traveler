@@ -283,7 +283,7 @@ namespace BionicTraveler.Scripts.AI.MechaDog
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (this.enabled && collision.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Hit Player!!");
                 collision.gameObject.GetComponent<PlayerEntity>().Kill();
