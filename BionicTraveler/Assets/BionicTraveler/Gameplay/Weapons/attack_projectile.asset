@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Projectile
   type: 1
-  damage: 50
+  damage: 20
   range: 20
   minimumAggressiveRange: 10
   maximumAggressiveRange: 15
-  cooldown: 1
+  cooldown: 3
   freezeDuration: 0
   cost: 0
   reloadTime: 0

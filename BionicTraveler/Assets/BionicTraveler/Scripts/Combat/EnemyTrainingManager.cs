@@ -38,6 +38,8 @@ namespace BionicTraveler.Scripts.Combat
             {
                 var trainingEnemy = enemy.GetComponent<TrainingEnemy>();
                 trainingEnemy.Engaged += this.TrainingEnemy_Engaged;
+
+                enemy.GetComponent<DynamicEntity>().IsInvincible = true;
             }
 
             this.dialogueHost = this.GetComponent<DialogueHost>();
