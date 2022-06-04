@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Numerics;
-using BionicTraveler.Scripts.World;
-using UnityEngine.Diagnostics;
-using UnityEngine.UIElements;
-using UnityEngine.XR;
-
 namespace BionicTraveler.Scripts
 {
+    using System.Collections;
+    using BionicTraveler.Scripts.World;
     using Framework;
     using UnityEngine;
+
+    public enum SlideDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down
+    }
 
     /// <summary>
     /// Transitions into a new scene on trigger.
@@ -23,6 +26,13 @@ namespace BionicTraveler.Scripts
         [Tooltip("The name of the game object that this transition should lead to.")]
         private string spawnPointOverride;
 
+        [SerializeField]
+        [Tooltip("The direction to slide the player in.")]
+        private SlideDirection slideDirection;
+
+        [SerializeField]
+        private bool slidePlayer;
+
         private bool justSpawnedPlayer;
         private GameObject player;
 
@@ -34,8 +44,30 @@ namespace BionicTraveler.Scripts
         {
             this.justSpawnedPlayer = true;
             this.player = player;
-            this.player.GetComponent<PlayerEntity>().SetDirection(this.player.transform.position + Vector3.down);
-            StartCoroutine(Transition(Vector3.down, 2.01f));
+
+            if (this.slidePlayer)
+            {
+                var dir = this.GetSlideVector(this.slideDirection);
+                this.player.GetComponent<PlayerEntity>().SetDirection(this.player.transform.position + dir);
+                this.StartCoroutine(this.Transition(dir, 1.5f));
+            }
+        }
+
+        private Vector3 GetSlideVector(SlideDirection slideDirection)
+        {
+            switch (slideDirection)
+            {
+                case SlideDirection.Left:
+                    return Vector3.left;
+                case SlideDirection.Right:
+                    return Vector3.right;
+                case SlideDirection.Up:
+                    return Vector3.up;
+                case SlideDirection.Down:
+                    return Vector3.down;
+                default:
+                    return Vector3.zero;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -68,14 +100,14 @@ namespace BionicTraveler.Scripts
             Transform t = this.player.transform;
             float i = 0f;
             this.player.GetComponent<PlayerEntity>().DisableInput();
-            
+
             while (i < dist)
             {
                 i += Time.deltaTime;
                 t.position += 2 * Time.deltaTime * dir;
                 yield return null;
             }
-            
+
             this.player.GetComponent<PlayerEntity>().EnableInput();
         }
     }
