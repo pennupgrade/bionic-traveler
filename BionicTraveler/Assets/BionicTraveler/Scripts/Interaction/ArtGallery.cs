@@ -14,9 +14,16 @@ namespace BionicTraveler.Scripts.Interaction
         [SerializeField]
         private Menu galleryMenu;
 
+        [SerializeField]
+        private bool autoStartDialogue;
+
         private void Start()
         {
             this.GetComponent<DialogueHost>().DialogueCompleted += this.ArtGallery_DialogueCompleted;
+            if (this.autoStartDialogue)
+            {
+                this.GetComponent<DialogueNPC>().OnInteract(GameObject.FindGameObjectWithTag("Player"));
+            }
         }
 
         private void ArtGallery_DialogueCompleted(DialogueHost sender)

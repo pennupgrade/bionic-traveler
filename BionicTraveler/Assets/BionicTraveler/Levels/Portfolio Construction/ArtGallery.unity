@@ -4919,6 +4919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   galleryMenu: {fileID: 774090851}
+  autoStartDialogue: 1
 --- !u!1001 &715794333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103984,6 +103985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   galleryMenu: {fileID: 774090851}
+  autoStartDialogue: 0
 --- !u!114 &2055283555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105510,6 +105512,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2911654270169427839, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911654270169427839, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911654270169427839, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911654270169427839, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5202686819838080871, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -105557,6 +105575,10 @@ PrefabInstance:
     - target: {fileID: 7146613175400209411, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146613175589548515, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7146613175627665359, guid: 7ffc88b28bd853842bcc7ec6f6061b98, type: 3}
       propertyPath: m_AnchorMax.y

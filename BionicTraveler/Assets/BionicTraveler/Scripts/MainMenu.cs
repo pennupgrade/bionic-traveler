@@ -16,7 +16,7 @@ namespace BionicTraveler.Scripts
         private CanvasGroup menu;
 
         [SerializeField]
-        private Dropdown sceneDropdown;
+        private TMPro.TMP_Dropdown sceneDropdown;
 
         private string[] sceneOptions;
 
@@ -27,7 +27,7 @@ namespace BionicTraveler.Scripts
         {
             this.sceneDropdown.ClearOptions();
 
-            var optionDataList = new List<Dropdown.OptionData>();
+            var optionDataList = new List<TMPro.TMP_Dropdown.OptionData>();
             for (int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
             {
                 string name = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
@@ -36,7 +36,7 @@ namespace BionicTraveler.Scripts
                     continue;
                 }
 
-                optionDataList.Add(new Dropdown.OptionData(name));
+                optionDataList.Add(new TMPro.TMP_Dropdown.OptionData(name));
             }
 
             this.sceneOptions = optionDataList.Select(x => x.text).ToArray();
@@ -56,6 +56,11 @@ namespace BionicTraveler.Scripts
         public void StartBattleArena()
         {
             this.LoadLevel("EnemyTrainingPlatform");
+        }
+
+        public void LoadArtGallery()
+        {
+            this.LoadLevel("ArtGallery");
         }
 
         public void QuitGame()

@@ -13,7 +13,7 @@
         private AudioClip[] clips;
 
         [SerializeField]
-        private Dropdown songDropdown;
+        private TMPro.TMP_Dropdown songDropdown;
 
         [SerializeField]
         private Slider volumeSlider;
