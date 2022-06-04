@@ -76,6 +76,9 @@
                 case FSMSubState.Remain:
                     if (interactableComp.HasRun)
                     {
+                        var speakWithQuest = new Quests.QuestEventSpokenTo("Familiar");
+                        QuestManager.Instance.ProcessEvent(speakWithQuest);
+
                         sender.AdvanceTo(FamiliarState.Walk);
                     }
 

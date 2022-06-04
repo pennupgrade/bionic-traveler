@@ -88,6 +88,12 @@ colorID: 0
 position: 3118,330
 ---
 Winsor: Look if ya need some time to think about it. I understand. Talking plants ain't something you see often. Go take some time to process if you need. I'll be here photosynthesizing.
-[[Player: Bye]]
-[[Player: Fine, let's go.]]
+[[Player: Bye|Node_End]]
+[[Player: Fine, let's go.|Node_End]]
+===
+title: Node_End
+tags: 
+colorID: 0
+position: 3118,330
+---
 ===
