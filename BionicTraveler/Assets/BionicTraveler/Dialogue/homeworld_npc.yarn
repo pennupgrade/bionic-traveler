@@ -3,8 +3,9 @@ tags:
 colorID: 0
 position: 665,299
 ---
-<<set $npcface to "bff">>
-Homeworld of our protagonist; 
+<<set $npcface to "Charlie Beck">>
+This is the homeworld of our protagonist; 
+In the beginning, Dess attends try-outs for the imperial legion, but fails the test.
 We venture out of here into the unknown wilderness of the newly discovered planet seeking a cure for the disease of our best friend. 
 The government seems supportive, but are their intentions pure?
 ===

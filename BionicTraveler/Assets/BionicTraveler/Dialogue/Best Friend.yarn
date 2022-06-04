@@ -17,7 +17,7 @@ position: 526,-415
 BF: Whaddya mean? I'm here to guide you.
 BF: This is the vertical slice for the game! I'm supposed to be a proof of concept for dialogue.
 BF: Oops, I broke the fourth wall again didn't I?
-
+<<set $npcface to "Dess">>
 MC: (What does that even mean?)
 [[BFF_End]]
 ===
@@ -26,11 +26,13 @@ tags:
 colorID: 0
 position: 520,30
 ---
+<<set $npcface to "Lyra-bff">>
 BF: Don't you know?? Jeez...
 BF: I told you, ya gotta go talk to the townspeople and see what they have to say about this place. From what it sounds like, they're going bonkers over there.
 BF: I also picked up some high-frequency energy waves on my scouter a bit further north. Could it be related to those corrupted monsters we've been seeing??
 BF: So chop chop!! Go look for me! It's a bummer that I can't move from here but I know you'll be able to find something :)
 
+<<set $npcface to "Dess">>
 MC: Got it.
 [[BFF_End]]
 ===
@@ -39,6 +41,7 @@ tags:
 colorID: 0
 position: 859,-209
 ---
+<<set $npcface to "Lyra-bff">>
 BF: Anywho, if ya need any help for directions, just hit me up!
 BF: And hurry back alright? Cuz I'm starvingg
 ===
