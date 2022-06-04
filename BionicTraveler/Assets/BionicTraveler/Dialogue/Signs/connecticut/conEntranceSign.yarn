@@ -1,0 +1,8 @@
+title: conEntrance_sign
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sign">>
+Up NORTH you will find Connecticut.
+===

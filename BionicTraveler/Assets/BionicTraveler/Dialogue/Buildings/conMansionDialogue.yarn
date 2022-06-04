@@ -1,0 +1,8 @@
+title: conMansion_sign
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sign">>
+Private Residence; DO NOT TRESPASS!
+===

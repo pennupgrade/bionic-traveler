@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5842776791380539655}
   - component: {fileID: -478750487614935293}
   - component: {fileID: 6597358519741625008}
+  - component: {fileID: 1172132869745638570}
+  - component: {fileID: 5530476966241510422}
   m_Layer: 0
   m_Name: TYRANT_PALACE
   m_TagString: Untagged
@@ -136,7 +138,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4985271, y: 0.27318245}
@@ -161,3 +163,36 @@ PolygonCollider2D:
       - {x: 8.558916, y: 3.8852024}
       - {x: 15.308916, y: 0.3227024}
       - {x: 15.308916, y: -2.6772976}
+--- !u!114 &1172132869745638570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321024307278366981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: f27233dabc3a26d488afc70222227ed1, type: 3}
+    dialogueStartNode: conTyrantPalace_sign
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
+--- !u!114 &5530476966241510422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321024307278366981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
+  dialogue: {fileID: 2480198943629176163, guid: f27233dabc3a26d488afc70222227ed1, type: 3}

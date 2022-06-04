@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7260960985751358262}
   - component: {fileID: 7329292027103687541}
   - component: {fileID: 3936111016308081427}
+  - component: {fileID: 5672149257619665192}
+  - component: {fileID: 8896327515596698448}
   m_Layer: 0
   m_Name: purpleMushroomMansion
   m_TagString: Untagged
@@ -192,3 +194,36 @@ PolygonCollider2D:
       - {x: -12.218412, y: -6.925849}
       - {x: -15.089756, y: -2.6535254}
       - {x: -20.465448, y: -0.52416897}
+--- !u!114 &5672149257619665192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7180120625885931561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 6b956b3ecd756fd44917a70646e67ca4, type: 3}
+    dialogueStartNode: conMansion_sign
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
+--- !u!114 &8896327515596698448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7180120625885931561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
+  dialogue: {fileID: 2480198943629176163, guid: 6b956b3ecd756fd44917a70646e67ca4, type: 3}

@@ -1,0 +1,8 @@
+title: conBridge_sign
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sign">>
+Now Departing Connecticut!
+===

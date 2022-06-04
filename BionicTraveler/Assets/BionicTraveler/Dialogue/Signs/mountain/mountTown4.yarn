@@ -1,0 +1,9 @@
+title: mountTown4_sign
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sign">>
+Town 4
+Living in Terror of the Beast is our Motto!
+===

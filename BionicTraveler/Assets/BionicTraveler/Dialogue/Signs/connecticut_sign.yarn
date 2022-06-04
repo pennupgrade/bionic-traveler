@@ -1,0 +1,8 @@
+title: greensfeld_sign
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Sign">>
+Welcome to Connecticut 
+===
