@@ -1,5 +1,6 @@
 namespace BionicTraveler.Scripts
 {
+    using BionicTraveler.Scripts.World;
     using System;
     using System.Collections;
     using UnityEngine;
@@ -151,6 +152,10 @@ namespace BionicTraveler.Scripts
             this.IsLoading = false;
             this.FinishedLoading?.Invoke();
             Debug.Log("Old level unloaded");
+
+            // In case something disabled player input, we re-enable it.
+            var player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerEntity>().EnableInput();
         }
 
         private IEnumerator LoadSceneAsync()
