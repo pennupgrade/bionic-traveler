@@ -3,7 +3,7 @@ tags:
 colorID: 0
 position: 665,299
 ---
-<<set $npcface to "bff">>
+<<set $npcface to "Lyra-BFF">>
 Welcome to the ancient Mountain Temple.
 It is an unfinished dungeon; 
 Would have granted some prize upon beating its boss!

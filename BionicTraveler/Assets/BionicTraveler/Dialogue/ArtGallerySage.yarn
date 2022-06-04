@@ -3,6 +3,7 @@ tags:
 colorID: 0
 position: -122,-267
 ---
+<<set $npcface to "Gallery Sage">>
 Welcome to our Art Gallery! This is where we show off many of our assets that did not make it into the game or were not used enough. 
 If you want to leave, just talk to me again. Talk to my clone over to the left there for more information!
 [[Thanks, I will explore!|ArtGallery_Explore]]

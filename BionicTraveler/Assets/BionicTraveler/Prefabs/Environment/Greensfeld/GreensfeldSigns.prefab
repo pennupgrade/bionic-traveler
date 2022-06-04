@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 2480198943629176163, guid: d703733c60558d048865392ea6270a9f, type: 3}
     - target: {fileID: -1499025815341687389, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
       propertyPath: dialogues.Array.data[0].dialogueStartNode
-      value: greensTemple_sign
+      value: greensTown1_sign
       objectReference: {fileID: 0}
     - target: {fileID: 3437799357981345990, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
       propertyPath: m_Name
@@ -403,6 +403,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2183743666383568716}
     m_Modifications:
+    - target: {fileID: -1499025815341687389, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
+      propertyPath: dialogues.Array.data[0].dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 0b4eeed0b75908b48b7f5ef85ccca19e, type: 3}
+    - target: {fileID: -1499025815341687389, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
+      propertyPath: dialogues.Array.data[0].dialogueStartNode
+      value: greensTown3_sign
+      objectReference: {fileID: 0}
     - target: {fileID: 3437799357981345990, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
       propertyPath: m_Name
       value: Town3Sign
@@ -451,6 +459,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3630416864010081130, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 0b4eeed0b75908b48b7f5ef85ccca19e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36c7d66104f38fe4aab4bf69904fd348, type: 3}
 --- !u!4 &3601669165925500918 stripped

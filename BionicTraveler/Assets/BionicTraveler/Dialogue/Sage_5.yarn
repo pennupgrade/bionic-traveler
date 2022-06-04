@@ -3,12 +3,18 @@ tags:
 colorID: 0
 position: -545,-503
 ---
+<<set $npcface to "Sage">>
 Sage: ……
+<<set $npcface to "Dess">>
 Dess: Hello. I was told you were looking for me?
+<<set $npcface to "Sage">>
 Sage: Yes, this one must introduce thyself first. This wise one is the consultant of this village’s people.
 Sage: Speak. How should I refer to you?
+<<set $npcface to "Dess">>
 Dess: Call me Dess.
+<<set $npcface to "Sage">>
 Sage: Dess, your arrival is blessed. What brings you to this wise one?
+<<set $npcface to "Dess">>
 Dess: Well…
 Dess: I was almost beat up by your darn familiar. What was that about? 
 [[Question_About_Village_Pass]]
@@ -20,7 +26,9 @@ tags:
 colorID: 0
 position: -366,-773
 ---
+<<set $npcface to "Dess">>
 Dess: What is this supposed to mean?
+<<set $npcface to "Sage">>
 Sage: One welcomes you to our village. It seems you have passed the Familiar’s test of strength. 
 [[Hint_To_Bear]]
 ===
@@ -29,6 +37,7 @@ tags:
 colorID: 0
 position: -97,-572
 ---
+<<set $npcface to "Sage">>
 Sage: One must apologize for our brazen methods in determining if you were to be a threat to our lands.
 Sage: To one it seems you have passed the Familiar’s test of strength. 
 [[Hint_To_Bear]]
@@ -38,11 +47,15 @@ tags:
 colorID: 0
 position: 312,-620
 ---
+<<set $npcface to "Sage">>
 Sage: This wise one was impressed with your strength. One believes you to be our sentinel.
 Sage: As you may have noticed, the people of our village have been corrupted by unclean energy. 
+<<set $npcface to "Dess">>
 Dess: I’m aware. I had to clean a couple monsters on my way here.
+<<set $npcface to "Sage">>
 Sage: Ah, this wise one acknowledges your experiences as those of our village have been fighting the same battles.
 Sage: Might you consider our existence reasonable. Please eliminate the poison in our lands. This one believes it to originate from northwest beyond our village.
+<<set $npcface to "Dess">>
 Dess: What do I get out of helping you?
 [[Questions_Sage]]
 Dess: Alright.
@@ -53,6 +66,7 @@ tags:
 colorID: 0
 position: 166,-869
 ---
+<<set $npcface to "Sage">>
 Sage: Your travels will be made easier if you remove the corrupt essence flooding our area. Please help with the cleansing. 
 [[Sage_Dialogue_End]]
 ===
@@ -61,5 +75,6 @@ tags:
 colorID: 0
 position: 653,-840
 ---
+<<set $npcface to "Sage">>
 Sage: This one wishes you the best on your journey.
 ===

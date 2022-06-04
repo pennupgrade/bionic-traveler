@@ -1,9 +1,9 @@
-title: greensTown3_sign
+title: greensTown2_sign
 tags: 
 colorID: 0
 position: 665,299
 ---
 <<set $npcface to "Sign">>
-Welcome to Town 3
-We are so secluded from everyone else?
+Town 2
+Population: 1
 ===

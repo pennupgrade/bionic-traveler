@@ -8,17 +8,28 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
+  baseLanguageID: en-US
   stringIDs:
   - ArtGallerySage2-ArtGallery2_Start-0
   - ArtGallerySage2-ArtGallery2_Start-1
   - ArtGallerySage2-ArtGallery2_Start-2
   - ArtGallerySage2-ArtGallery2_Start-3
-  - ArtGallerySage2-ArtGallery2_Explore-4
-  - ArtGallerySage2-ArtGallery2_Sound-5
-  - ArtGallerySage2-ArtGallery2_Leave-6
+  - ArtGallerySage2-ArtGallery2_Start-4
+  - ArtGallerySage2-ArtGallery2_Start-5
+  - ArtGallerySage2-ArtGallery2_Explore-6
+  - ArtGallerySage2-ArtGallery2_Sound-7
+  - ArtGallerySage2-ArtGallery2_Credits-8
+  - ArtGallerySage2-ArtGallery2_Credits-9
+  - ArtGallerySage2-ArtGallery2_Credits-10
+  - ArtGallerySage2-ArtGallery2_Credits-11
+  - ArtGallerySage2-ArtGallery2_Credits-12
+  - ArtGallerySage2-ArtGallery2_Credits-13
+  - ArtGallerySage2-ArtGallery2_Credits-14
+  - ArtGallerySage2-ArtGallery2_Credits-15
+  - ArtGallerySage2-ArtGallery2_Credits-16
+  - ArtGallerySage2-ArtGallery2_Credits-17
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 743760bdbf41e82478dbb56e1485628a, type: 3}
   localizations: []

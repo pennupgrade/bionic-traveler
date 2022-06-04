@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueHost: {fileID: 0}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 2480198943629176163, guid: b865de03602b05648a72dae0d681279f, type: 3}
 --- !u!114 &-1499025815341687389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogue: {fileID: 0}
-    dialogueStartNode: 
+  - dialogue: {fileID: 2480198943629176163, guid: b865de03602b05648a72dae0d681279f, type: 3}
+    dialogueStartNode: greensfeld_sign
     multipleRuns: 1
     persistState: 0
     overrideCharacterName: 

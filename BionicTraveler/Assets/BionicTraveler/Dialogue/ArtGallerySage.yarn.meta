@@ -8,13 +8,19 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  baseLanguageID: en-US
+  stringIDs:
+  - ArtGallerySage-ArtGallery_Start-0
+  - ArtGallerySage-ArtGallery_Start-1
+  - ArtGallerySage-ArtGallery_Start-2
+  - ArtGallerySage-ArtGallery_Start-3
+  - ArtGallerySage-ArtGallery_Explore-4
+  - ArtGallerySage-ArtGallery_Leave-5
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: 'Error on line 25 at position 1:token recognition error
     at: ''=''
 
 '
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 8549c0690be443a4e869dda836b5ca6c, type: 3}
   localizations: []

@@ -10,9 +10,9 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
   stringIDs:
-  - spaceship_traveldenied-spaceship_traveldenied-0
+  - spaceship_traveldenied-Start-0
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: c4b6e1be21020fa4496a0a2bf29264a2, type: 3}
   localizations: []

@@ -3,5 +3,6 @@ tags:
 colorID: 0
 position: 665,299
 ---
-hello I am blue guy
+<<set $npcface to "Greensfeld Girl">>
+Hi there!
 ===

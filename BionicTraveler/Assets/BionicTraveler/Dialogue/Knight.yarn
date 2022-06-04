@@ -3,13 +3,18 @@ tags:
 colorID: 0
 position: 21,-75
 ---
+<<set $npcface to "Anonymous">>
 ...
 You observe the mysterious creature that appears before you.
+<<set $npcface to "Mysterious Creature">>
 Mysterious Creature: ...
 Mysterious Creature: Me smell hoomun....
 Mysterious Creature: !!!
+<<set $npcface to "Anonymous">>
 Seems you've been spotted.
+<<set $npcface to "Dess">>
 MC: Ugh, you're in my way!
+<<set $npcface to "Mysterious Creature">>
 Mysterious Creature: ALL HOOMUN MUUST DIIEEE
 Mysterious Creature: ME KILL HOOMUN
 Mysterious Creature: RHAAARRRGH

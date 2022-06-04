@@ -3,6 +3,7 @@ tags:
 colorID: 0
 position: -122,-267
 ---
+<<set $npcface to "Gallery Sage 2">>
 <<set $decision_sound to 0>>
 Welcome to the UPGRADE 2021-2022 Art Gallery! 
 All assets here where drawn in-house by members of the UPGRADE Art Team!

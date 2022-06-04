@@ -1,8 +1,9 @@
-title: greensTemple_sign
+title: greensTown1_sign
 tags: 
 colorID: 0
 position: 665,299
 ---
 <<set $npcface to "Sign">>
-Field Temple
+Town 1
+Population: 13
 ===

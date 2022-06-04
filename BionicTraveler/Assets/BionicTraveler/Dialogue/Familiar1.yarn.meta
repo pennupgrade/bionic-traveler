@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
+  baseLanguageID: en-US
   stringIDs:
   - Familiar1-Start-0
   - Familiar1-Start-1
@@ -35,6 +35,8 @@ ScriptedImporter:
   - Familiar1-Node_9-22
   - Familiar1-Node_9-23
   - Familiar1-Node_10-24
+  - Familiar1-Node_10-25
+  - Familiar1-Node_10-26
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 'Error on line 7 at position 46:token recognition error
