@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+guid: 4eaa7696c8cf02340a51c235f2232a64
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Sage_5-Start-0
+  - Sage_5-Start-1
+  - Sage_5-Start-2
+  - Sage_5-Start-3
+  - Sage_5-Start-4
+  - Sage_5-Start-5
+  - Sage_5-Start-6
+  - Sage_5-Start-7
+  - Sage_5-Start-8
+  - Sage_5-Question_About_Village_Pass-9
+  - Sage_5-Question_About_Village_Pass-10
+  - Sage_5-Why_Dess_Was_Beat_Up-11
+  - Sage_5-Why_Dess_Was_Beat_Up-12
+  - Sage_5-Hint_To_Bear-13
+  - Sage_5-Hint_To_Bear-14
+  - Sage_5-Hint_To_Bear-15
+  - Sage_5-Hint_To_Bear-16
+  - Sage_5-Hint_To_Bear-17
+  - Sage_5-Hint_To_Bear-18
+  - Sage_5-Hint_To_Bear-19
+  - Sage_5-Questions_Sage-20
+  - Sage_5-Sage_Dialogue_End-21
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 'Error on line 13 at position 73:token recognition error
+    at: ''[''
+
+'
+  baseLanguage: {fileID: 7128917941130120860, guid: 4eaa7696c8cf02340a51c235f2232a64, type: 3}
+  localizations: []
