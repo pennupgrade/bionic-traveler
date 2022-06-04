@@ -3,7 +3,7 @@ tags:
 colorID: 0
 position: 213,-186
 ---
-<<set $npcface to "bff">>
+<<set $npcface to "Lyra-bff">>
 BF: Heya MC!! Whatcha up to?
 [[Wait, why are you here?|BFF_Huh]]
 [[Where should I go?|BFF_Hint]]

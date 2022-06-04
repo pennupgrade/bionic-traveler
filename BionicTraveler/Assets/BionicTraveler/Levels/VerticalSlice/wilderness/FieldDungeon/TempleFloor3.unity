@@ -188,6 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
+--- !u!1 &148793953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4404789230605972977, guid: 7472994c48d0a7d40b81451a49b40404, type: 3}
+  m_PrefabInstance: {fileID: 148793952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452133305
 GameObject:
   m_ObjectHideFlags: 0
@@ -14833,17 +14838,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 3496051770209787461, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
+      propertyPath: spawnsLocations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3496051770209787461, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
+      propertyPath: spawnsLocations.Array.data[0]
+      value: 
+      objectReference: {fileID: 148793953}
     - target: {fileID: 3496051770209787462, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3496051770209787462, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -635.2
+      value: -634.13
       objectReference: {fileID: 0}
     - target: {fileID: 3496051770209787462, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.5
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 3496051770209787462, guid: 83342fa0bf11c314ba8a22cec8cee394, type: 3}
       propertyPath: m_LocalPosition.z

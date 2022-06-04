@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4530118393428030013}
   - component: {fileID: 6884578465279974205}
   - component: {fileID: 513838053344853133}
+  - component: {fileID: 6338071250054777381}
   m_Layer: 0
   m_Name: NPCPurple
   m_TagString: Untagged
@@ -122,9 +123,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
   dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
-  dialogueStartNode: blueGuy_start
-  multipleRuns: 0
-  persistState: 0
-  overrideCharacterName: 
-  disableSpeechAudio: 0
+--- !u!114 &6338071250054777381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157240124122716363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
+    dialogueStartNode: blueGuy_start
+    multipleRuns: 0
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0

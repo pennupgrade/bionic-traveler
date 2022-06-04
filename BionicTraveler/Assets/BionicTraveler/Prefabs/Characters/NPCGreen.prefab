@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4681377223807758756}
   - component: {fileID: 5475461218483289855}
   - component: {fileID: 7899619294247205735}
+  - component: {fileID: 6875421633628215737}
   m_Layer: 0
   m_Name: NPCGreen
   m_TagString: Untagged
@@ -124,3 +125,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueHost: {fileID: 0}
   dialogue: {fileID: 0}
+--- !u!114 &6875421633628215737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650921839752409013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
+    dialogueStartNode: greenGuy_start
+    multipleRuns: 0
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
