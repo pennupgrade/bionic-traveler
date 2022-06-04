@@ -193,6 +193,11 @@ namespace BionicTraveler.Scripts.Combat
                 if (this.owner.Direction == Vector3.right)
                 {
                     offset.x *= -1;
+                    this.WorldObject.GetComponent<SpriteRenderer>().sortingOrder = this.initialSortingLayer;
+                }
+                else if (this.owner.Direction == Vector3.left)
+                {
+                    this.WorldObject.GetComponent<SpriteRenderer>().sortingOrder = this.initialSortingLayer;
                 }
                 else if (this.owner.Direction == Vector3.down)
                 {
