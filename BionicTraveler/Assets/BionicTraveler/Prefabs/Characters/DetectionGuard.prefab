@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueHost: {fileID: 0}
-  dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
+  dialogue: {fileID: 2480198943629176163, guid: 2fcfb2afc9c409440b5968dae3f86ca8, type: 3}
 --- !u!61 &7427415959348594822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
-    dialogueStartNode: greenGuy_start
+  - dialogue: {fileID: 2480198943629176163, guid: 2fcfb2afc9c409440b5968dae3f86ca8, type: 3}
+    dialogueStartNode: Start
     multipleRuns: 1
     persistState: 0
     overrideCharacterName: 

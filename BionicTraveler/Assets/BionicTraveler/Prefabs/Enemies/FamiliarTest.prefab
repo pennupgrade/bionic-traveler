@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueHost: {fileID: 0}
-  dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
+  dialogue: {fileID: 2480198943629176163, guid: d2327784d567e2d4ca97d4aedd8cc8da, type: 3}
 --- !u!114 &1836565727647298722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,8 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - dialogue: {fileID: 2480198943629176163, guid: 3efa4d7027a77c64e9b783214be356ed, type: 3}
-    dialogueStartNode: blueGuy_start
+  - dialogue: {fileID: 2480198943629176163, guid: d2327784d567e2d4ca97d4aedd8cc8da, type: 3}
+    dialogueStartNode: Start
     multipleRuns: 0
     persistState: 0
     overrideCharacterName: 

@@ -110,7 +110,6 @@
             {
                 case FSMSubState.Enter:
                     // Enable combat behavior.
-                    this.Owner.SetHealth(5);
                     this.GetComponent<CasterEntityBehavior>().enabled = true;
                     break;
 
@@ -145,6 +144,7 @@
                 sender.SetHealth(100);
                 this.GetComponent<CasterEntityBehavior>().enabled = false;
                 this.hasFought = true;
+                this.Owner.IsInvincible = true;
             }
         }
 
@@ -184,20 +184,6 @@
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Start is called before the first frame update.
-        /// </summary>
-        public void Start()
-        {
-        }
-
-        /// <summary>
-        /// Update is called once per frame.
-        /// </summary>
-        public void Update()
-        {
         }
     }
 }
