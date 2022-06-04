@@ -26,7 +26,7 @@ namespace BionicTraveler.Scripts
             if (gameObject.transform.position.y < 80)
             {
                 var pos = gameObject.transform.position;
-                gameObject.transform.position = new Vector3(pos.x, pos.y+.04f, pos.z);
+                gameObject.transform.position = new Vector3(pos.x, pos.y+.008f, pos.z);
             } 
             else
             {
