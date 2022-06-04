@@ -369,11 +369,83 @@ Transform:
   m_Father: {fileID: 1937036746}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &30208911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 715794333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &30208912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30208911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: b5b521558e33412478277bed025157b5, type: 3}
+    dialogueStartNode: evilGuy_start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!4 &34234148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 920562775213799188, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
   m_PrefabInstance: {fileID: 715794333}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65957709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 78392080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &65957710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65957709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: ffc229ae37dc6014aa92a8971b5e4e13, type: 3}
+    dialogueStartNode: valenfeld_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
+--- !u!1 &71896000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 1976907292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &71896001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71896000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: ff4bcfb9ebe31db4fa85a67a5f88645b, type: 3}
+    dialogueStartNode: BFF_Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &78239460
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 2480198943629176163, guid: b4026371347976243a17ad2d782ac183, type: 3}
+      objectReference: {fileID: 2480198943629176163, guid: ffc229ae37dc6014aa92a8971b5e4e13, type: 3}
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogueStartNode
       value: Start
@@ -1209,6 +1281,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &141293003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 1516917421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &141293004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141293003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: f0dfdf65000981145bea933cf718c96d, type: 3}
+    dialogueStartNode: homeworld_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &161317776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1598,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &204028438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 2066619384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204028439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204028438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 2fcfb2afc9c409440b5968dae3f86ca8, type: 3}
+    dialogueStartNode: Start
+    multipleRuns: 0
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &208967161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2130,7 @@ PrefabInstance:
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 2480198943629176163, guid: cb4c0a67e552c1c45887c7ba1279b15e, type: 3}
+      objectReference: {fileID: 2480198943629176163, guid: 640a56ed724f77f4cbf6667359f541ec, type: 3}
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogueStartNode
       value: Start
@@ -2716,6 +2836,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &366662039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 909683923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &366662040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366662039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: deb3dd8d5d8f87c4ea7eb63245a1a581, type: 3}
+    dialogueStartNode: greensfeld_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &375459123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,6 +3891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 9295df5e7fee0a744945908636120475, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &560429379 stripped
@@ -4756,6 +4904,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &670663685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 444665195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &670663686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670663685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 24833eccce763174888ad788a06e4329, type: 3}
+    dialogueStartNode: Yolo_Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1001 &679067985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4920,6 +5092,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   galleryMenu: {fileID: 774090851}
   autoStartDialogue: 1
+--- !u!1 &685249981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 1177436954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &685249982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685249981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 33b2ee24272b2d647bb8337ed0f87a99, type: 3}
+    dialogueStartNode: fantasy_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1001 &715794333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4994,7 +5190,7 @@ PrefabInstance:
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 2480198943629176163, guid: b4026371347976243a17ad2d782ac183, type: 3}
+      objectReference: {fileID: 2480198943629176163, guid: b5b521558e33412478277bed025157b5, type: 3}
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogueStartNode
       value: Start
@@ -5755,7 +5951,7 @@ PrefabInstance:
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 2480198943629176163, guid: 3311dd8f74272d34793ee8dc624dc773, type: 3}
+      objectReference: {fileID: 2480198943629176163, guid: 63baa24d372ccf24a9cfa110a09515db, type: 3}
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogueStartNode
       value: Start
@@ -5992,6 +6188,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &897949402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 1809400440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &897949403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897949402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: e1181d5b3bc30654daa6bd80c745fab7, type: 3}
+    dialogueStartNode: field_dungeon_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1001 &909683923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6063,6 +6283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: deb3dd8d5d8f87c4ea7eb63245a1a581, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &909683924 stripped
@@ -81395,6 +81619,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7459720621466159599, guid: 2676bbee06e1e0345be17394ef82acca, type: 3}
   m_PrefabInstance: {fileID: 3941865359445888864}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076902036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 560429378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076902037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076902036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 9295df5e7fee0a744945908636120475, type: 3}
+    dialogueStartNode: Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1001 &1078064857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82032,6 +82280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 33b2ee24272b2d647bb8337ed0f87a99, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &1177436955 stripped
@@ -88524,6 +88776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: f0dfdf65000981145bea933cf718c96d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &1516917422 stripped
@@ -98937,6 +99193,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 920562775213799188, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
   m_PrefabInstance: {fileID: 1624646772}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1632511551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 1761271338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1632511552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632511551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
+    dialogueStartNode: greenGuy_start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &1644370379
 GameObject:
   m_ObjectHideFlags: 0
@@ -102177,6 +102457,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 920562775213799188, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
   m_PrefabInstance: {fileID: 1761271338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1767329861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 847677745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1767329862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767329861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 63baa24d372ccf24a9cfa110a09515db, type: 3}
+    dialogueStartNode: lake_dungeon_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &1784830024
 GameObject:
   m_ObjectHideFlags: 0
@@ -102534,6 +102838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: e1181d5b3bc30654daa6bd80c745fab7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &1809400441 stripped
@@ -103119,6 +103427,30 @@ PolygonCollider2D:
       - {x: -0.625, y: 10.4375}
       - {x: -0.6875, y: 10.375}
       - {x: -0.75, y: 10.4375}
+--- !u!1 &1905037311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 2144033918}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1905037312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905037311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 06b56ec6c0d48824ea423219bbea3706, type: 3}
+    dialogueStartNode: fantasy2_npc
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &1917783857
 GameObject:
   m_ObjectHideFlags: 0
@@ -103343,6 +103675,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1940383807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 2127824429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1940383808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940383807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 08ec508e0b0cc4941bdeed434f43c2ad, type: 3}
+    dialogueStartNode: Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1 &1955160584
 GameObject:
   m_ObjectHideFlags: 0
@@ -103519,7 +103875,7 @@ PrefabInstance:
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 2480198943629176163, guid: 85800875827b6b9498276ea41ef69dce, type: 3}
+      objectReference: {fileID: 2480198943629176163, guid: ff4bcfb9ebe31db4fa85a67a5f88645b, type: 3}
     - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
       propertyPath: dialogueStartNode
       value: Start
@@ -103906,6 +104262,30 @@ Transform:
   m_Father: {fileID: 288986769}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2044022592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6650921839752409013, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+  m_PrefabInstance: {fileID: 277022535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2044022593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044022592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf0142c315673546aac6ecbc433268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - dialogue: {fileID: 2480198943629176163, guid: 640a56ed724f77f4cbf6667359f541ec, type: 3}
+    dialogueStartNode: Start
+    multipleRuns: 1
+    persistState: 0
+    overrideCharacterName: 
+    disableSpeechAudio: 0
 --- !u!1001 &2055283552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104085,6 +104465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 2fcfb2afc9c409440b5968dae3f86ca8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &2066619385 stripped
@@ -104997,6 +105381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 08ec508e0b0cc4941bdeed434f43c2ad, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &2127824430 stripped
@@ -105075,6 +105463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCGreen (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7899619294247205735, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 2480198943629176163, guid: 06b56ec6c0d48824ea423219bbea3706, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4040c393d7286c4dae59d8e44663bec, type: 3}
 --- !u!4 &2144033919 stripped
