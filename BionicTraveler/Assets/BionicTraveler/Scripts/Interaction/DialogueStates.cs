@@ -32,6 +32,15 @@
         }
 
         /// <summary>
+        /// Adds a custom completion state by name.
+        /// </summary>
+        /// <param name="name">The name of the completion state.</param>
+        public void SetCustomState(string name)
+        {
+            this.completedDialogues.Add(name);
+        }
+
+        /// <summary>
         /// Checks the given conditions against the global dialogue state.
         /// </summary>
         /// <param name="conditions">The conditions.</param>

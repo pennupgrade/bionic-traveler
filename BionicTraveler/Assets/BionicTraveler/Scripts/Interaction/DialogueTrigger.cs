@@ -1,9 +1,9 @@
 namespace BionicTraveler.Scripts.Interaction
 {
-    using BionicTraveler.Scripts.World;
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using BionicTraveler.Scripts.World;
     using UnityEngine;
 
     /// <summary>
@@ -23,13 +23,30 @@ namespace BionicTraveler.Scripts.Interaction
             "of other triggers that have executed.")]
         private List<string> conditions;
 
+        private bool hasTriggered;
+
         private void OnTriggerEnter2D(Collider2D collider)
         {
+            this.Check(collider);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            this.Check(collision);
+        }
+
+        private void Check(Collider2D collider)
+        {
+            if (this.hasTriggered)
+            {
+                return;
+            }
+
             if (this.conditions != null)
             {
                 if (!DialogueStates.Instance.CheckConditions(this.conditions))
                 {
-                    Debug.Log("Not all conditions are met, cannot start dialogue!");
+                    //Debug.Log("Not all conditions are met, cannot start dialogue!");
                     return;
                 }
             }
@@ -41,6 +58,7 @@ namespace BionicTraveler.Scripts.Interaction
                 if (entity.IsPlayer || (this.canBeTriggeredByAI && entity.IsDynamic))
                 {
                     this.interactable.OnInteract(collider.gameObject);
+                    this.hasTriggered = true;
                 }
             }
         }
