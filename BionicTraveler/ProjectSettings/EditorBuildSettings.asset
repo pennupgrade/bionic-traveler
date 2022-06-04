@@ -83,4 +83,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BionicTraveler/Levels/EnemyTrainingPlatform.unity
     guid: d9bcf99e938d1f6418ffd37ad66cf60b
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/Portfolio Construction/FanFic.unity
+    guid: 6f9349a4155052145b2069295cdf09d7
+  - enabled: 1
+    path: Assets/BionicTraveler/Levels/Portfolio Construction/Credits Roll.unity
+    guid: 2fba7a6830748f4439c7f14591029ac2
   m_configObjects: {}

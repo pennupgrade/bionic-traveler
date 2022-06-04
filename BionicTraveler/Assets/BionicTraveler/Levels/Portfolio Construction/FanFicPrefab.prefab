@@ -547,7 +547,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 396395891328329481}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1122,7 +1122,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 322, y: 0}
-  m_SizeDelta: {x: 160, y: 160}
+  m_SizeDelta: {x: 220, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6138375000825010873
 CanvasRenderer:
@@ -1152,8 +1152,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 74016dacb1a830347816aca34e16367d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1305,8 +1305,8 @@ MonoBehaviour:
 
     Kaan Erodogmus'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7d43f70a4173b364392de30cba647e7f, type: 2}
+  m_sharedMaterial: {fileID: -9007402577735529978, guid: 7d43f70a4173b364392de30cba647e7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1439,15 +1439,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click to Launch Entire Quest Map Externally
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 7af4ade2fe3be744d8bb41114bb8caca, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7d43f70a4173b364392de30cba647e7f, type: 2}
+  m_sharedMaterial: {fileID: -9007402577735529978, guid: 7d43f70a4173b364392de30cba647e7f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1464,8 +1464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

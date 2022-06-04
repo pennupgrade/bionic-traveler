@@ -63,6 +63,16 @@ namespace BionicTraveler.Scripts
             this.LoadLevel("ArtGallery");
         }
 
+        public void LoadFanFic()
+        {
+            this.LoadLevel("FanFic");
+        }
+
+        public void LoadCredits()
+        {
+            this.LoadLevel("Credits Roll");
+        }
+
         public void QuitGame()
         {
 #if UNITY_EDITOR

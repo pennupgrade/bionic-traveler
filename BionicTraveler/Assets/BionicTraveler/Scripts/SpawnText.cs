@@ -21,6 +21,7 @@ namespace BionicTraveler.Scripts
         {
             logAnimator = gameObject.GetComponent<Animator>();
             spawned = false;
+            Time.timeScale = 1.0f;
         }
 
         /// <summary>
@@ -34,6 +35,11 @@ namespace BionicTraveler.Scripts
                 Instantiate(canvas);
                 spawned = true;
             }
+        }
+
+        public void GoBack()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }
 }

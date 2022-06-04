@@ -15,6 +15,7 @@ namespace BionicTraveler.Scripts
         /// </summary>
         public void Start()
         {
+            Time.timeScale = 1.0f;
         }
 
         /// <summary>
@@ -31,6 +32,11 @@ namespace BionicTraveler.Scripts
             {
                 gameObject.transform.position = new Vector3(0, -80, 0);
             }
+        }
+
+        public void GoBack()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
     }
 }
