@@ -129,8 +129,8 @@ namespace BionicTraveler.Scripts.World
             SaveManager.Instance.Save("PlayerPositionY", this.transform.position.y);
             SaveManager.Instance.Save("PlayerEnergy", this.Energy);
             SaveManager.Instance.Save("PlayerHealth", this.Health);
-            SaveManager.Instance.Save("PlayerInventory", this.Inventory.Items);
-            SaveManager.Instance.Save("PlayerWeaponData", AssetDatabase.GetAssetPath(this.WeaponsInventory.WeaponData));
+            //SaveManager.Instance.Save("PlayerInventory", this.Inventory.Items);
+            //SaveManager.Instance.Save("PlayerWeaponData", AssetDatabase.GetAssetPath(this.WeaponsInventory.WeaponData));
 
 
             SaveManager.Instance.Save("PlayerKeyData", this.KeyManager.KeyData);
@@ -142,23 +142,22 @@ namespace BionicTraveler.Scripts.World
 
         private void Load()
         {
-            
             this.transform.position = new Vector3((float)SaveManager.Instance.Load("PlayerPositionX"), (float)SaveManager.Instance.Load("PlayerPositionY"), 0);
             this.SetHealth((int) SaveManager.Instance.Load("PlayerHealth"));
             this.SetEnergy((float)SaveManager.Instance.Load("PlayerEnergy"));
 
-            this.Inventory.Clear();
-            IReadOnlyCollection<InventoryItem> items = (IReadOnlyCollection <InventoryItem>) SaveManager.Instance.Load("PlayerInventory");
-            if (items != null)
-                foreach (var item in items)
-                {
-                    for (var i = 0; i < item.Quantity; i++)
-                        this.Inventory.AddItem(item.ItemData);
-                }
-            
-            WeaponData weaponData = (WeaponData)AssetDatabase.LoadAssetAtPath((string)SaveManager.Instance.Load("PlayerWeaponData"), typeof(WeaponData));
-            this.WeaponsInventory.Destroy();
-            this.WeaponsInventory.AddWeapon(weaponData);
+            //this.Inventory.Clear();
+            //IReadOnlyCollection<InventoryItem> items = (IReadOnlyCollection <InventoryItem>) SaveManager.Instance.Load("PlayerInventory");
+            //if (items != null)
+            //    foreach (var item in items)
+            //    {
+            //        for (var i = 0; i < item.Quantity; i++)
+            //            this.Inventory.AddItem(item.ItemData);
+            //    }
+
+            //WeaponData weaponData = (WeaponData)AssetDatabase.LoadAssetAtPath((string)SaveManager.Instance.Load("PlayerWeaponData"), typeof(WeaponData));
+            //this.WeaponsInventory.Destroy();
+            //this.WeaponsInventory.AddWeapon(weaponData);
             this.KeyManager = new KeyManager((List<KeyData>)SaveManager.Instance.Load("PlayerKeyData"));
             //ActiveChips = (List<Chip>) SaveManager.Instance.Load("ActiveChips");
         }

@@ -159,27 +159,27 @@ namespace BionicTraveler.Scripts.Quests
         // Implement this method to serialize data. The method is called on serialization.
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("QuestData", AssetDatabase.GetAssetPath(this), typeof(string));
-            info.AddValue("state", state);
-            info.AddValue("activeStageIndex", activeStageIndex);
+            //info.AddValue("QuestData", AssetDatabase.GetAssetPath(this), typeof(string));
+            //info.AddValue("state", state);
+            //info.AddValue("activeStageIndex", activeStageIndex);
         }
 
         // The special constructor is used to deserialize values.
         // In this case, it recreate the original ScriptableObject.
         public Quest(SerializationInfo info, StreamingContext context)
         {
-            Quest q = (Quest)AssetDatabase.LoadAssetAtPath((string)info.GetValue("QuestData", typeof(string)), typeof(Quest));
-            this.title = q.title;
-            this.description = q.description;
-            this.stages = q.stages;
-            this.state = (QuestState)info.GetValue("state", typeof(QuestState));
-            this.activeStageIndex = (int)info.GetValue("activeStageIndex", typeof(int));
-            if (this.activeStageIndex < this.stages.Count)
-            {
-                this.activeStage = this.stages[this.activeStageIndex];
-                this.activeStage.Objective.CompleteStateChanged += this.Objective_CompleteStateChanged;
-                this.activeStage.Initialize();
-            } 
+            //Quest q = (Quest)AssetDatabase.LoadAssetAtPath((string)info.GetValue("QuestData", typeof(string)), typeof(Quest));
+            //this.title = q.title;
+            //this.description = q.description;
+            //this.stages = q.stages;
+            //this.state = (QuestState)info.GetValue("state", typeof(QuestState));
+            //this.activeStageIndex = (int)info.GetValue("activeStageIndex", typeof(int));
+            //if (this.activeStageIndex < this.stages.Count)
+            //{
+            //    this.activeStage = this.stages[this.activeStageIndex];
+            //    this.activeStage.Objective.CompleteStateChanged += this.Objective_CompleteStateChanged;
+            //    this.activeStage.Initialize();
+            //}
         }
 
     }

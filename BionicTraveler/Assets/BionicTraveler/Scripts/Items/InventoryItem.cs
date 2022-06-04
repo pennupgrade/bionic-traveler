@@ -69,16 +69,16 @@
         // Implement this method to serialize data. The method is called on serialization.
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("ItemData", AssetDatabase.GetAssetPath(ItemData), typeof(string));
-            info.AddValue("quantity", Quantity);
+            //info.AddValue("ItemData", AssetDatabase.GetAssetPath(ItemData), typeof(string));
+            //info.AddValue("quantity", Quantity);
         }
 
         // The special constructor is used to deserialize values.
         // In this case, it recreate the original ScriptableObject.
         public InventoryItem(SerializationInfo info, StreamingContext context)
         {
-            Quantity = (int) info.GetValue("quantity", typeof(int));
-            ItemData = (ItemData) AssetDatabase.LoadAssetAtPath((string)info.GetValue("ItemData", typeof(string)), typeof(ItemData));
+            //Quantity = (int)info.GetValue("quantity", typeof(int));
+            //ItemData = (ItemData)AssetDatabase.LoadAssetAtPath((string)info.GetValue("ItemData", typeof(string)), typeof(ItemData));
         }
     }
 }
