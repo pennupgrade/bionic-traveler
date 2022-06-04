@@ -7,6 +7,7 @@ namespace BionicTraveler.Scripts.Sequences
     using BionicTraveler.Scripts.Interaction;
     using BionicTraveler.Scripts.World;
     using UnityEngine;
+    using UnityEngine.Tilemaps;
 
     /// <summary>
     /// The sequence responsible for spawning the bridge and making a new NPC appear and walk to the player.
@@ -26,7 +27,7 @@ namespace BionicTraveler.Scripts.Sequences
         private GameObject playerMoveToPos;
 
         [SerializeField]
-        private GameObject bridgePrefab;
+        private GameObject bridgeObject;
 
         [SerializeField]
         private GameObject npcSpawnPos;
@@ -39,6 +40,9 @@ namespace BionicTraveler.Scripts.Sequences
 
         [SerializeField]
         private YarnProgram npcMoveDialogue;
+
+        [SerializeField]
+        private DialogueHost signDialogueHost;
 
         private TaskGoToPoint playerMoveTask;
         private TaskGoToPoint npcMoveTask;
@@ -57,6 +61,20 @@ namespace BionicTraveler.Scripts.Sequences
                 case BridgeState.PlayerWalking:
                     if (this.playerMoveTask != null && this.playerMoveTask.HasEnded)
                     {
+                        DialogueStates.Instance.SetCustomState("ConnBridge_PlayerFinishedWalking");
+                        this.state = BridgeState.SpawningBridge;
+                    }
+
+                    break;
+
+                case BridgeState.SpawningBridge:
+                    if (this.signDialogueHost.HasRun)
+                    {
+                        // Dialogue re-enables input, we disable it again.
+                        var player = GameObject.FindGameObjectWithTag("Player");
+                        player.GetComponent<PlayerEntity>().DisableInput();
+                        this.StartCoroutine(this.FadeInBridge());
+
                         // Spawn NPC.
                         this.npcSpawned = Instantiate(this.npcSpawnPrefab, this.npcSpawnPos.transform.position, Quaternion.identity);
                         this.npcMoveTask = new TaskGoToPoint(this.npcSpawned.GetComponent<DynamicEntity>(), this.npcMovePos.transform.position);
@@ -96,6 +114,19 @@ namespace BionicTraveler.Scripts.Sequences
                 this.playerMoveTask.Assign();
 
                 this.state = BridgeState.PlayerWalking;
+            }
+        }
+
+        private IEnumerator FadeInBridge()
+        {
+            var bridgeRenderer = this.bridgeObject.GetComponent<Tilemap>();
+            var time = 2.0f;
+            var startTime = Time.time;
+            while (Time.time - startTime < time)
+            {
+                var t = (Time.time - startTime) / time;
+                bridgeRenderer.color = new Color(1, 1, 1, Mathf.Lerp(0f, 1f, t));
+                yield return null;
             }
         }
     }

@@ -81,13 +81,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -7417794202126423852, guid: 8859177fbfa32a64088dfa15619387e5, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 7083459063286001175, guid: d2cfb3f47df801748bf0c9147ea9c8c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2, y: 2.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,12 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 3
+  walkSpeed: 1
   loot: {fileID: 11400000, guid: 5d74b963cee644a54b473ec1d34b6306, type: 2}
-  name: TestNPC
+  name: Connecticut NPC
   relationships: {fileID: 11400000, guid: c2aeb18feb94a3c4ca337fddffa28d15, type: 2}
   defaultWeapon: {fileID: 11400000, guid: 09a3b337279c63046af8a9902da9262e, type: 2}
   cannotBeKnockedBack: 0
-  dontUpdateAnimatorForMovement: 0
+  dontUpdateAnimatorForMovement: 1
 --- !u!61 &1734254569279392859
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -129,8 +130,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
+    oldSize: {x: 2, y: 2.1875}
+    newSize: {x: 2, y: 2.1875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -194,7 +195,7 @@ Animator:
   m_GameObject: {fileID: 1734254569279392855}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c614c0193f275d45b97a1c4c7b9e06a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0119f853eade9d74a9d6d6faf1c53826, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

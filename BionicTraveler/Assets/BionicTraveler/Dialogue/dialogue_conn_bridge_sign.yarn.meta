@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 50cdbc9ce72c961419c4dd7af227f763
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - dialogue_conn_bridge_sign-Start-0
+  - dialogue_conn_bridge_sign-Node1-1
+  - dialogue_conn_bridge_sign-Node1-2
+  - dialogue_conn_bridge_sign-Node2-3
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

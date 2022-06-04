@@ -1,0 +1,23 @@
+title: Start
+tags: 
+colorID: 0
+position: 665,299
+---
+Beware of the current when crossing the bridge!
+[[Node1]]
+===
+title: Node1
+tags: 
+colorID: 0
+position: 665,299
+---
+But what bridge?
+[[*Toss a rock in the water*|Node2]]
+===
+title: Node2
+tags: 
+colorID: 0
+position: 665,299
+---
+Nothing happens!
+===
