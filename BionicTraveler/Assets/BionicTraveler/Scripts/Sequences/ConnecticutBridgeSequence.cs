@@ -109,7 +109,6 @@ namespace BionicTraveler.Scripts.Sequences
                 player.DisableInput();
                 player.EnableScriptedSequenceMovement();
 
-                player.GetComponent<EntityMovement>().StopDistance = 0.5f;
                 this.playerMoveTask = new TaskGoToPoint(player, this.playerMoveToPos.transform.position);
                 this.playerMoveTask.ForceWalking = true;
                 this.playerMoveTask.Assign();
