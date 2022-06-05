@@ -4,7 +4,7 @@ colorID: 0
 position: 758,120
 ---
 <<set $npcface to "???">>
-???: You there! With the metal arm and angry eyes.
+You there! With the metal arm and angry eyes.
 [[Player: Where are you? I'll show you angry.|Node]]
 [[Player: Who said that? Reveal yourself.|Node_2]]
 ===
@@ -14,7 +14,7 @@ colorID: 0
 position: 1068,28
 ---
 <<set $npcface to "???">>
-???: Woah there, take a breather angry eyes. You're really not helping your case here.
+Woah there, take a breather angry eyes. You're really not helping your case here.
 [[Player: *Deep Breath* As you wish.|Node_2]]
 [[Player: Nobody is gonna tell me how to breathe!|Node_3]]
 ===
@@ -33,7 +33,8 @@ colorID: 0
 position: 1412,-57
 ---
 Alright, we can talk again once you've calmed down again. We'll try not to get off on the wrong foot next time.
-Player: You search around, but can't find the source of the voice.
+<<set $npcface to "Dess">>
+*You search around, but can't find the source of the voice.*
 ===
 title: Node_4
 tags: 
@@ -48,7 +49,12 @@ tags:
 colorID: 0
 position: 1723,326
 ---
-Yeah, crazy right? one day I was pooffed into reality with conscious thought. Momma always said that I should do something with the time I have, not that I have a momma nor do I think plants die of old age, but I was like, bread making, that's the sort of thing for me. So I tried to become a baker, went to culinary school, learned the shebang with the yeast and the dough and the oven, but you know as a plant I ain't got any limbs just branches, and me and wheat, well we're not really siblings, more like distant cousins, and I was like, "Can I really put my cousin in food" 
+Yeah, crazy right? one day I was pooffed into reality with conscious thought. 
+Momma always said that I should do something with the time I have, not that I have a momma nor do I think plants die of old age, 
+but I was like, bread making, that's the sort of thing for me. 
+So I tried to become a baker, went to culinary school, learned the shebang with the yeast and the dough and the oven, 
+but you know as a plant I ain't got any limbs just branches, and me and wheat, well we're not really siblings, more like distant cousins, 
+and I was like, "Can I really put my cousin in food" 
 [[Player: Please get to the point.|Node_6]]
 [[Player: Continue...|Node_7]]
 ===
@@ -57,7 +63,26 @@ tags:
 colorID: 0
 position: 2060,177
 ---
-Well, then I realized. Talking plants are kinda novel, could make some good dough off this gimmick. I of course mean dough as in money, we already went over the whole no baking shtick. Well after some serious contemplation, I decided to join the circus. Yep, I was a class act, went up in the big ring, said some lines, and riled up the crowd. The kids loved me I tell ya. It was a pretty cushy job, paid the bills, the co-workers were interesting folk, but it didn't fill me with happiness you know. Felt like I wasn't living up to my full potential. So I told the owner of the circus that I was quitting. They were all like, "How could ya quit now, you're my best performer" and it was true, I was great at what I did. And they were like, "Tell ya what, stay for another two weeks, so I can find your replacement." Now ya see, the owner was a spicy Appalachian Spruce, worked their charm on me real thoroughly. I stayed in the circus for another year and a half. But that was then, I was young and foolish. That kinda stuff wouldn't move me now. Unless they got a big trunk I s'pose. When I finally got outta the circus. I decided that I should think about my roots. I was a potted plant at heart, and I should embrace that. So I found a nice old couple, and offered my services. They put me in their foyer by the grand piano, in a nice sunny spot. It was lovely for a time, the sun on my leaves, the sweet succulent water on my soil, but I would get bored just sitting there. I tried to make conversation a couple times. Freaked the couple out, they said plants shouldn't talk. Now, I just felt that ain't right. I was a guest in their home, sure I was gettin paid, but I at least wanted some dignity and respect. My craft is not easy ya know. So I left in the middle of the night, snuck away while they were tuckered out. Left them a little present on the floor too. After that debacle, I finally met the sage that you so desperately wish to see as well. She'd never trained a potted plant before, so she was up for the task. It was hard you know, I won't lie about that. I wasn't built for magic, but it was fulfilling, lit a fire in my heart. So that's why I'm here talking to you. I can help you see the sage, you just need to follow me.
+Well, then I realized. Talking plants are kinda novel, could make some good dough off this gimmick. I of course mean dough as in money, 
+we already went over the whole no baking shtick. 
+Well after some serious contemplation, I decided to join the circus. Yep, I was a class act, went up in the big ring, said some lines, and riled up the crowd. 
+The kids loved me I tell ya. 
+It was a pretty cushy job, paid the bills, the co-workers were interesting folk, but it didn't fill me with happiness you know. 
+Felt like I wasn't living up to my full potential. 
+So I told the owner of the circus that I was quitting. They were all like, "How could ya quit now, you're my best performer" and it was true, I was great at what I did. 
+And they were like, "Tell ya what, stay for another two weeks, so I can find your replacement." 
+Now ya see, the owner was a spicy Appalachian Spruce, worked their charm on me real thoroughly. 
+I stayed in the circus for another year and a half. But that was then, I was young and foolish. That kinda stuff wouldn't move me now. 
+Unless they got a big trunk I s'pose. When I finally got outta the circus. 
+I decided that I should think about my roots. I was a potted plant at heart, and I should embrace that. So I found a nice old couple, and offered my services. 
+They put me in their foyer by the grand piano, in a nice sunny spot. 
+It was lovely for a time, the sun on my leaves, the sweet succulent water on my soil, but I would get bored just sitting there. I tried to make conversation a couple times. 
+Freaked the couple out, they said plants shouldn't talk.
+Now, I just felt that ain't right. I was a guest in their home, sure I was gettin paid, but I at least wanted some dignity and respect. 
+My craft is not easy ya know. So I left in the middle of the night, snuck away while they were tuckered out. 
+Left them a little present on the floor too. After that debacle, I finally met the sage that you so desperately wish to see as well. 
+She'd never trained a potted plant before, so she was up for the task. It was hard you know, I won't lie about that. 
+I wasn't built for magic, but it was fulfilling, lit a fire in my heart. So that's why I'm here talking to you. I can help you see the sage, you just need to follow me.
 [[Player: I'm gonna need to ask some more questions. Like what is your name?|Node_8]]
 ===
 title: Node_7
@@ -74,7 +99,7 @@ colorID: 0
 position: 2431,333
 ---
 <<set $npcface to "Winsor">>
-Winsor: I'm Winsor,and I'm your best shot at getting into the city. 
+I'm Winsor,and I'm your best shot at getting into the city. 
 [[Player: Why should I trust you?|Node_9]]
 ===
 title: Node_9
@@ -82,7 +107,8 @@ tags:
 colorID: 0
 position: 2776,333
 ---
-Winsor: I'm not much of a cynic, but you don't seem to have many options. Besides What have you got to lose. 
+<<set $npcface to "Winsor">>
+I'm not much of a cynic, but you don't seem to have many options. Besides What have you got to lose. 
 [[Player: My life|Node_10]]
 [[Player: My sanity|Node_10]]
 ===
@@ -91,7 +117,8 @@ tags:
 colorID: 0
 position: 3118,330
 ---
-Winsor: Look if ya need some time to think about it. I understand. Talking plants ain't something you see often. Go take some time to process if you need. I'll be here photosynthesizing.
+<<set $npcface to "Winsor">>
+Look if ya need some time to think about it. I understand. Talking plants ain't something you see often. Go take some time to process if you need. I'll be here photosynthesizing.
 [[Player: Bye|Node_End]]
 [[Player: Fine, let's go.|Node_End]]
 ===

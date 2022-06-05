@@ -3,6 +3,7 @@ tags:
 colorID: 0
 position: 578,11
 ---
+<<set $npcface to "Evil Guy">>
 hahaha I am evil and I will defeat you
 [[oh no so scary|evilGuy_scared]]
 [[you dingus I will defeat you first|evilGuy_confident]]

@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 197303fa200433b4dafeae97afa41a22
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: 'Error on line 110 at position 21:token recognition error
+    at: ''1''
+
+'
+  baseLanguage: {instanceID: 0}
+  localizations: []
