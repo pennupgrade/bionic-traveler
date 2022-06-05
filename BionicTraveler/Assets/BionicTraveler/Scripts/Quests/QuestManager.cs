@@ -94,12 +94,9 @@ namespace BionicTraveler.Scripts.Quests
         public void Start()
         {
             this.ui = GameObject.Find("PlayerQuestUI").GetComponent<QuestUI>();
-            if (Debug.isDebugBuild)
+            foreach (Quest q in this.quests)
             {
-                foreach (Quest q in this.quests)
-                {
-                    this.AddQuest(q);
-                }
+                this.AddQuest(q);
             }
         }
 
