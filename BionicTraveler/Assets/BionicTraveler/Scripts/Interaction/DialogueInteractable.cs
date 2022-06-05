@@ -35,5 +35,10 @@ namespace BionicTraveler.Scripts.Interaction
             Debug.Log("Name is " + this.dialogue.name);
             this.dialogueHost.StartDialogue(obj, this.dialogue.name);
         }
+
+        /// <inheritdoc/>
+        public void OnInteractProximity(GameObject obj)
+        {
+        }
     }
 }

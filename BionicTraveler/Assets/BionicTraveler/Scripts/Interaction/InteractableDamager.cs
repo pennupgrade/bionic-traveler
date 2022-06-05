@@ -13,5 +13,10 @@ namespace BionicTraveler.Scripts.Interaction
         {
             obj.GetComponent<PlayerEntity>()?.RemoveEnergy(1);
         }
+
+        /// <inheritdoc/>
+        public void OnInteractProximity(GameObject obj)
+        {
+        }
     }
 }

@@ -203,7 +203,7 @@ namespace BionicTraveler.Scripts.World
 
             foreach (var a in interactables)
             {
-                a.GetComponent<IInteractable>().OnInteract(this.gameObject);
+                a.GetComponent<IInteractable>().OnInteractProximity(this.gameObject);
             }
 
             //player pickup

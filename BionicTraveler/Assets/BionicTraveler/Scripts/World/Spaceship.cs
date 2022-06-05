@@ -34,10 +34,6 @@ namespace BionicTraveler.Scripts
         /// <inheritdoc/>
         public void OnInteract(GameObject obj)
         {
-            Debug.Log("Interacted with Spaceship, healed Player");
-            obj.GetComponent<PlayerEntity>()?.RestoreEnergy();
-            AudioManager.Instance.PlayOneShot(this.interactionSound);
-
             if (QuestManager.Instance.HasCompletedQuest("SpaceshipPrerequisite"))
             {
                 // Go to the next planet.
@@ -47,6 +43,14 @@ namespace BionicTraveler.Scripts
                 // Show the dialogue for the first time.
                 this.StartDialogue(obj);
             }
+        }
+
+        /// <inheritdoc/>
+        public void OnInteractProximity(GameObject obj)
+        {
+            Debug.Log("Interacted with Spaceship, healed Player");
+            obj.GetComponent<PlayerEntity>()?.RestoreEnergy();
+            AudioManager.Instance.PlayOneShot(this.interactionSound);
         }
 
         /// <summary>
