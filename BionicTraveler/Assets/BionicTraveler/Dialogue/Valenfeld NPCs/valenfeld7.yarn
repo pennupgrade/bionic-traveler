@@ -1,0 +1,8 @@
+title: greenGuy_start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Valenfeld Citizen">>
+It won’t be long until the Scourge follows us here! We’re all doomed!
+===

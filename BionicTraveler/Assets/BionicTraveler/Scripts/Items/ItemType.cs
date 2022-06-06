@@ -23,6 +23,6 @@
         /// <summary>
         /// A key that can be picked up and stays with the player permanently.
         /// </summary>
-        Key,
+        Key
     }
 }

@@ -79,7 +79,7 @@
     }
 
     /// <summary>
-    /// Event related to inventory changes.
+    /// Event related to dialogue.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Very short classes.")]
     public class QuestEventSpokenTo : QuestEvent

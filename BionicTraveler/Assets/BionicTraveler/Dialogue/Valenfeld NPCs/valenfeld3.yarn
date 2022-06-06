@@ -1,0 +1,10 @@
+title: greenGuy_start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Valenfeld Citizen">>
+Do you seek vengeance on the Scourge as well? 
+Very well, I believe the old lady in Willow will be of help to you…
+I pray for your success
+===

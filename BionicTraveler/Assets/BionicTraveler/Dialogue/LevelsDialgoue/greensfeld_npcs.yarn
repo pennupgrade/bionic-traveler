@@ -1,0 +1,9 @@
+title: greensfeld_npc
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Greensfeld Girl">>
+This is the first town that the player would hit; 
+The player hears about a mystical village of valenfeld from the townspeople here.
+===

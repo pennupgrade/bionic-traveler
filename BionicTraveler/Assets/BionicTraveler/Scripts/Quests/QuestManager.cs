@@ -161,7 +161,14 @@ namespace BionicTraveler.Scripts.Quests
             // Fire event.
             var questCompletedEvent = new QuestEventQuestCompleted(quest.Title);
             this.ProcessEvent(questCompletedEvent);
+
+            // If there are still quests, then set current List head as active quest
+            //if (this.currentQuests.Count > 0)
+            //{
+            //    this.SetActiveQuest(this.currentQuests[0]);
+            //}
         }
+
         private void OnDestroy()
         {
             SaveManager.Instance.IsSaving -= this.Save;

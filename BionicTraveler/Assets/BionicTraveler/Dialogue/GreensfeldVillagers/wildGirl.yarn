@@ -1,0 +1,17 @@
+title: greenGuy_start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Greensfeld Woman">>
+My husband went to speak to the Sage months ago to save us all… I never saw him again.
+[[Player: And where is this sage you speak of? | End]]
+===
+title: End
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Greensfeld Woman">>
+Hm? The Sage? She lives in Valenfeld, far west of here. Hey… don’t you dare think about going there just yet. It’s too dangerous.
+===

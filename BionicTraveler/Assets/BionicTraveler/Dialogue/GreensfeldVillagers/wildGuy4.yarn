@@ -1,0 +1,20 @@
+title: greenGuy_start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Citizen">>
+The Sage is the wisest of us all. She would know how to free us from the scourge’s wrath.
+[[Player: And where is this sage you speak of? | End]]
+===
+title: End
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Citizen">>
+Hm? The Sage? She lives in Valenfeld, far west of here. Hey… don’t you dare think about going there just yet. It’s too dangerous.
+If you'd like to help us, there's been a lot of monsters hanging around the Ancient Field Temples lately...
+They must be working with the scourge!
+===
+

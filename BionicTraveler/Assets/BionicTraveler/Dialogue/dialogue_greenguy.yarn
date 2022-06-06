@@ -1,8 +1,0 @@
-title: greenGuy_start
-tags: 
-colorID: 0
-position: 665,299
----
-<<set $npcface to "Greensfeld Boy">>
-Hello stranger!
-===

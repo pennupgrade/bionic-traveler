@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c940cd920b6554ca3596e7c6ccfced, type: 3}
+  m_Name: item_fieldTempleSheet
+  m_EditorClassIdentifier: 
+  id: item_fieldTempleSheet
+  displayName: Mystery Paper
+  description: 
+  maxNumber: 3
+  inventorySprite: {fileID: 1714756807398554617, guid: 1e761b63e10a4ce48ac57fa7f9e4913c, type: 3}
+  pickupSprite: {fileID: 1714756807398554617, guid: 1e761b63e10a4ce48ac57fa7f9e4913c, type: 3}
+  pickupRange: 1
+  type: 0
+  consumable: {fileID: 0}
+  equippable: {fileID: 0}
+  useAudio: {fileID: 0}

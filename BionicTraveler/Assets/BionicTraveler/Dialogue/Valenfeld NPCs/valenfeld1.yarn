@@ -1,0 +1,18 @@
+title: greenGuy_start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Valenfeld Citizen">>
+Welcome, stranger. This is Valenfeld, home of the Sage.
+<<set $npcface to "Dess">>
+[[Player: So what do you know about the Scrouge? | End]]
+===
+title: End
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Valenfeld Citizen">>
+If you really seek death, the Sage should know something about the Scourge…===
+===

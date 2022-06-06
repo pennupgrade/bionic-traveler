@@ -78,9 +78,10 @@
             startNode ??= this.dialogueData.DialogueStartNode;
             this.LastName = characterName;
 
-            Debug.Log("Dialogue has been started by " + interactor.name);
-            var speakWithQuest = new Quests.QuestEventSpokenTo(characterName);
-            QuestManager.Instance.ProcessEvent(speakWithQuest);
+            // MOVED TO COMPLETE DIALOGUE
+            //Debug.Log("Dialogue has been started by " + interactor.name);
+            //var speakWithQuest = new Quests.QuestEventSpokenTo(characterName);
+            //QuestManager.Instance.ProcessEvent(speakWithQuest);
 
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>();
             player.IsIgnoredByEveryone = true;
@@ -120,6 +121,12 @@
             // We need to clear the runner, otherwise we cannot load the same program again
             // or other programs with nodes with the same names.
             this.hasRun = true;
+
+            // Fire complete dialogue event
+            Debug.Log("Dialogue has been started by " + this.LastName);
+            var speakWithQuest = new Quests.QuestEventSpokenTo(this.LastName);
+            QuestManager.Instance.ProcessEvent(speakWithQuest);
+
             this.runner.Clear();
             this.runner.onDialogueComplete.RemoveListener(this.DialogueCompletedHandler);
             this.ui.onLineStart.RemoveListener(this.LineStartListener);

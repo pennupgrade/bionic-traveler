@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8672352183282293560}
   - component: {fileID: 8672352183282293559}
   - component: {fileID: 36354959627959622}
+  - component: {fileID: 5179801019111417004}
   m_Layer: 0
   m_Name: Sage
   m_TagString: Untagged
@@ -97,12 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b0875ded50b2a45a1a404e9fd85160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueHost: {fileID: 0}
   dialogue: {fileID: 2480198943629176163, guid: 89083074ca038184f97c6f87032d5729, type: 3}
-  dialogueStartNode: greenGuy_start
-  multipleRuns: 0
-  persistState: 0
-  overrideCharacterName: Sage
-  disableSpeechAudio: 0
 --- !u!61 &8672352183282293559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +145,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5179801019111417004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672352183282293563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28e73d6181564947b67bde56d90d3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMovementSpeed: 0
+  walkSpeed: 0
+  loot: {fileID: 0}
+  name: Sage
+  relationships: {fileID: 0}
+  defaultWeapon: {fileID: 0}
+  cannotBeKnockedBack: 0
+  dontUpdateAnimatorForMovement: 0

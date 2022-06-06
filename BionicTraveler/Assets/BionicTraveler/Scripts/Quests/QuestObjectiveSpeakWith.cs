@@ -43,6 +43,9 @@
             {
                 Debug.Log("Complete Quest: Spoken to " + name + "!");
                 this.SetAsComplete();
+            } else
+            {
+                Debug.Log("Did not speak to the right person");
             }
         }
     }

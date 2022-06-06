@@ -1,0 +1,49 @@
+title: blueGuy_Start
+tags: 
+colorID: 0
+position: 665,299
+---
+<<set $npcface to "Greensfeld Girl">>
+Hi! I have never seen you around before. Who are you? 
+[[Player: Call me Dess.|Node]]
+===
+title: Node
+tags:
+colorID: 0
+position: 0,0
+---
+<<set $npcface to "Greensfeld Girl">>
+What kind of name is that?! Anywho... what are you doing here?
+[[Player: Tell me about Greensfeld.|Node_2]]
+===
+title: Node_2
+tags:
+colorID: 0
+position: 0,0
+---
+<<set $npcface to "Greensfeld Girl">>
+Greensfeld is the majority of the grassy plains that cover this planet.
+To the WEST is Valenfeld.
+To the NORTH is the Misty Mountains.
+To the NORTHEAST is Connecticut. I can never seem to pronounce it correctly.
+I used to go hunting in the mountains, but these days I can never go anymore. 
+[[Player: Why can't you go anymore?|Node_3]]
+===
+title: Node_3
+tags:
+colorID: 0
+position: 0,0
+---
+<<set $npcface to "Greensfeld Girl">>
+We can barely go out, let alone hunt anymore since the animals became corrupted by the scourge.
+Not to mention, the village chief's son hasn't come back home in weeks. 
+I hope he's ok and hasn’t met his fate at the hands of the scourge.
+The Village Chief is planning to visit the Sage. If there's anyone who can save us, it's the sage!
+[[Player: Thank you.|Node_End]]
+===
+title: Node_End
+tags: 
+colorID: 0
+position: 3118,330
+---
+===
